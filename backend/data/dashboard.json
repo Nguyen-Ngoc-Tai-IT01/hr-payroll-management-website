@@ -1,0 +1,18 @@
+﻿{
+  "summaryCards": {
+    "totalEmployees": 45,
+    "newHiresThisMonth": 3,
+    "totalPayrollThisMonth": 650000000,
+    "onLeaveToday": 2
+  },
+  "attendanceToday": {
+    "present": 40,
+    "late": 3,
+    "absent": 2
+  },
+  "salaryChartData": [
+    { "month": "Tháng 1", "total": 620000000 },
+    { "month": "Tháng 2", "total": 635000000 },
+    { "month": "Tháng 3", "total": 650000000 }
+  ]
+}

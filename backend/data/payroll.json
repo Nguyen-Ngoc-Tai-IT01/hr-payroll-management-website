@@ -1,0 +1,26 @@
+﻿[
+  {
+    "id": 1001,
+    "employeeId": 1,
+    "month": 3,
+    "year": 2026,
+    "baseSalary": 15000000,
+    "workingDays": 22,
+    "allowance": 1000000,
+    "taxAndInsurance": 1500000,
+    "netSalary": 14500000,
+    "paymentStatus": "Đã thanh toán"
+  },
+  {
+    "id": 1002,
+    "employeeId": 2,
+    "month": 3,
+    "year": 2026,
+    "baseSalary": 20000000,
+    "workingDays": 21,
+    "allowance": 2000000,
+    "taxAndInsurance": 2200000,
+    "netSalary": 19800000,
+    "paymentStatus": "Chờ thanh toán"
+  }
+]

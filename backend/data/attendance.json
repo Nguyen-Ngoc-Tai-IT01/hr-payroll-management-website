@@ -1,0 +1,29 @@
+﻿[
+  {
+    "id": 101,
+    "employeeId": 1,
+    "date": "2026-03-30",
+    "checkIn": "08:00",
+    "checkOut": "17:30",
+    "status": "Có mặt",
+    "note": ""
+  },
+  {
+    "id": 102,
+    "employeeId": 2,
+    "date": "2026-03-30",
+    "checkIn": "08:20",
+    "checkOut": "17:00",
+    "status": "Đi muộn",
+    "note": "Kẹt xe"
+  },
+  {
+    "id": 103,
+    "employeeId": 3,
+    "date": "2026-03-30",
+    "checkIn": null,
+    "checkOut": null,
+    "status": "Nghỉ phép",
+    "note": "Nghỉ ốm"
+  }
+]

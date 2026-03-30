@@ -1,0 +1,35 @@
+﻿[
+  {
+    "id": 1,
+    "fullName": "Nguyễn Văn A",
+    "email": "nva@company.com",
+    "phone": "0901234567",
+    "department": "Phòng IT",
+    "position": "Frontend Developer",
+    "baseSalary": 15000000,
+    "joinDate": "2023-05-10",
+    "status": "Đang làm việc"
+  },
+  {
+    "id": 2,
+    "fullName": "Trần Thị B",
+    "email": "ttb@company.com",
+    "phone": "0912345678",
+    "department": "Phòng Nhân sự",
+    "position": "Trưởng phòng",
+    "baseSalary": 20000000,
+    "joinDate": "2022-01-15",
+    "status": "Đang làm việc"
+  },
+  {
+    "id": 3,
+    "fullName": "Lê Văn C",
+    "email": "lvc@company.com",
+    "phone": "0987654321",
+    "department": "Phòng Kế toán",
+    "position": "Nhân viên",
+    "baseSalary": 12000000,
+    "joinDate": "2024-02-01",
+    "status": "Nghỉ phép"
+  }
+]
