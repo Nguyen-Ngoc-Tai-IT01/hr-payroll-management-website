@@ -8,11 +8,14 @@ import Settings from './pages/admin/Settings';
 import Profile from './pages/admin/Profile';
 import Reports from './pages/admin/Reports';
 
+// sêu
+import Attendance from './pages/attendance/Attendance';  
+import Leaves from './pages/attendance/Leaves';   
+
 // --- 2. IMPORT TRANG CỦA TEAM (Tạm ẩn chờ anh em code xong) ---
 // import Login from './pages/auth/Login';
 // import Dashboard from './pages/dashboard/Dashboard';         // Tuyến
 // import EmployeeList from './pages/employees/EmployeeList';   // Hiệp
-// import Attendance from './pages/attendance/Attendance';      // Sêu
 // import PayrollList from './pages/payroll/PayrollList';       // Vỹ
 
 
@@ -95,11 +98,14 @@ function App() {
           <Route path="/profile" element={<Profile />} />
           <Route path="/reports" element={<Reports />} />
 
+          {/* route của sêu đang hoạt động */}
+          <Route path="/attendance" element={<Attendance />} />
+          <Route path="/leaves" element={<Leaves />} />
+
           {/* --- ROUTES CỦA TEAM (Các bạn khác sẽ tự mở comment khi code xong) --- */}
           {/* <Route path="/login" element={<Login />} /> */}
           {/* <Route path="/dashboard" element={<Dashboard />} /> */}
           {/* <Route path="/employees" element={<EmployeeList />} /> */}
-          {/* <Route path="/attendance" element={<Attendance />} /> */}
           {/* <Route path="/payroll" element={<PayrollList />} /> */}
         </Routes>
       </div>
@@ -107,4 +113,4 @@ function App() {
   );
 }
 
-export default App;
+ export default App; 

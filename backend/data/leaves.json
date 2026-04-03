@@ -1,0 +1,319 @@
+[
+  {
+    "id": 1,
+    "employeeId": "EMP001",
+    "type": "Nghỉ phép năm",
+    "fromDate": "2026-04-05",
+    "toDate": "2026-04-06",
+    "reason": "Đi du lịch gia đình",
+    "status": "Từ chối",
+    "fullName": "Nguyễn Ngọc"
+  },
+  {
+    "id": 2,
+    "employeeId": "EMP002",
+    "type": "Việc riêng",
+    "fromDate": "2026-04-10",
+    "toDate": "2026-04-10",
+    "reason": "Giải quyết việc ở quê",
+    "status": "Từ chối"
+  },
+  {
+    "id": 3,
+    "employeeId": "EMP003",
+    "type": "Nghỉ phép năm",
+    "fromDate": "2026-04-15",
+    "toDate": "2026-04-17",
+    "reason": "Nghỉ xả hơi sau đồ án",
+    "status": "Từ chối"
+  },
+  {
+    "id": 4,
+    "employeeId": "EMP004",
+    "type": "Nghỉ ốm",
+    "fromDate": "2026-04-01",
+    "toDate": "2026-04-01",
+    "reason": "Sốt nhẹ",
+    "status": "Đã duyệt"
+  },
+  {
+    "id": 5,
+    "employeeId": "EMP005",
+    "type": "Việc riêng",
+    "fromDate": "2026-04-20",
+    "toDate": "2026-04-20",
+    "reason": "Đi làm giấy tờ xe",
+    "status": "Từ chối",
+    "fullName": "Nguyễn Trọng Tuyến"
+  },
+  {
+    "id": 6,
+    "employeeId": "EMP006",
+    "type": "Nghỉ phép năm",
+    "fromDate": "2026-05-01",
+    "toDate": "2026-05-05",
+    "reason": "Nghỉ lễ dài ngày",
+    "status": "Đã duyệt"
+  },
+  {
+    "id": 7,
+    "employeeId": "EMP007",
+    "type": "Nghỉ ốm",
+    "fromDate": "2026-04-03",
+    "toDate": "2026-04-04",
+    "reason": "Đau mắt đỏ",
+    "status": "Đã duyệt"
+  },
+  {
+    "id": 8,
+    "employeeId": "EMP008",
+    "type": "Nghỉ phép năm",
+    "fromDate": "2026-04-12",
+    "toDate": "2026-04-12",
+    "reason": "Đi đám cưới em họ",
+    "status": "Đã duyệt"
+  },
+  {
+    "id": 9,
+    "employeeId": "EMP009",
+    "type": "Việc riêng",
+    "fromDate": "2026-04-18",
+    "toDate": "2026-04-18",
+    "reason": "Hỏng xe đột xuất",
+    "status": "Đã duyệt"
+  },
+  {
+    "id": 10,
+    "employeeId": "EMP010",
+    "type": "Nghỉ ốm",
+    "fromDate": "2026-04-22",
+    "toDate": "2026-04-22",
+    "reason": "Ngộ độc thực phẩm",
+    "status": "Đã duyệt"
+  },
+  {
+    "id": 11,
+    "employeeId": "EMP011",
+    "type": "Nghỉ phép năm",
+    "fromDate": "2026-04-25",
+    "toDate": "2026-04-26",
+    "reason": "Về quê thăm ông bà",
+    "status": "Đã duyệt"
+  },
+  {
+    "id": 12,
+    "employeeId": "EMP012",
+    "type": "Việc riêng",
+    "fromDate": "2026-04-07",
+    "toDate": "2026-04-07",
+    "reason": "Đi họp phụ huynh cho con",
+    "status": "Đã duyệt"
+  },
+  {
+    "id": 13,
+    "employeeId": "EMP013",
+    "type": "Nghỉ ốm",
+    "fromDate": "2026-04-08",
+    "toDate": "2026-04-09",
+    "reason": "Cảm cúm",
+    "status": "Đã duyệt"
+  },
+  {
+    "id": 14,
+    "employeeId": "EMP014",
+    "type": "Nghỉ phép năm",
+    "fromDate": "2026-04-28",
+    "toDate": "2026-04-29",
+    "reason": "Sửa sang nhà cửa",
+    "status": "Chờ duyệt"
+  },
+  {
+    "id": 15,
+    "employeeId": "EMP015",
+    "type": "Việc riêng",
+    "fromDate": "2026-04-14",
+    "toDate": "2026-04-14",
+    "reason": "Khám sức khỏe định kỳ",
+    "status": "Đã duyệt"
+  },
+  {
+    "id": 16,
+    "employeeId": "EMP016",
+    "type": "Nghỉ phép năm",
+    "fromDate": "2026-04-01",
+    "toDate": "2026-04-10",
+    "reason": "Xin nghỉ trước khi nghỉ việc",
+    "status": "Đã duyệt"
+  },
+  {
+    "id": 17,
+    "employeeId": "EMP017",
+    "type": "Nghỉ ốm",
+    "fromDate": "2026-04-11",
+    "toDate": "2026-04-11",
+    "reason": "Đau răng",
+    "status": "Đã duyệt"
+  },
+  {
+    "id": 18,
+    "employeeId": "EMP018",
+    "type": "Việc riêng",
+    "fromDate": "2026-04-16",
+    "toDate": "2026-04-16",
+    "reason": "Chuyển trọ",
+    "status": "Đã duyệt"
+  },
+  {
+    "id": 19,
+    "employeeId": "EMP019",
+    "type": "Nghỉ phép năm",
+    "fromDate": "2026-04-30",
+    "toDate": "2026-05-02",
+    "reason": "Đi lễ hội",
+    "status": "Chờ duyệt"
+  },
+  {
+    "id": 20,
+    "employeeId": "EMP020",
+    "type": "Nghỉ ốm",
+    "fromDate": "2026-04-05",
+    "toDate": "2026-04-05",
+    "reason": "Nhức đầu chóng mặt",
+    "status": "Đã duyệt"
+  },
+  {
+    "id": 21,
+    "employeeId": "EMP021",
+    "type": "Nghỉ phép năm",
+    "fromDate": "2026-04-01",
+    "toDate": "2026-04-15",
+    "reason": "Giải quyết việc cá nhân dài hạn",
+    "status": "Từ chối"
+  },
+  {
+    "id": 22,
+    "employeeId": "EMP022",
+    "type": "Việc riêng",
+    "fromDate": "2026-04-24",
+    "toDate": "2026-04-24",
+    "reason": "Lên phường công chứng",
+    "status": "Đã duyệt"
+  },
+  {
+    "id": 23,
+    "employeeId": "EMP023",
+    "type": "Nghỉ ốm",
+    "fromDate": "2026-04-13",
+    "toDate": "2026-04-13",
+    "reason": "Viêm họng mất tiếng",
+    "status": "Đã duyệt"
+  },
+  {
+    "id": 24,
+    "employeeId": "EMP024",
+    "type": "Nghỉ phép năm",
+    "fromDate": "2026-04-09",
+    "toDate": "2026-04-09",
+    "reason": "Sinh nhật con trai",
+    "status": "Đã duyệt"
+  },
+  {
+    "id": 25,
+    "employeeId": "EMP025",
+    "type": "Việc riêng",
+    "fromDate": "2026-04-27",
+    "toDate": "2026-04-27",
+    "reason": "Đi nhận bằng tốt nghiệp",
+    "status": "Đã duyệt"
+  },
+  {
+    "id": 26,
+    "employeeId": "EMP026",
+    "type": "Nghỉ phép năm",
+    "fromDate": "2026-04-19",
+    "toDate": "2026-04-19",
+    "reason": "Đi đám giỗ",
+    "status": "Đã duyệt"
+  },
+  {
+    "id": 27,
+    "employeeId": "EMP027",
+    "type": "Nghỉ ốm",
+    "fromDate": "2026-04-06",
+    "toDate": "2026-04-06",
+    "reason": "Dị ứng thời tiết",
+    "status": "Đã duyệt"
+  },
+  {
+    "id": 28,
+    "employeeId": "EMP028",
+    "type": "Việc riêng",
+    "fromDate": "2026-04-01",
+    "toDate": "2026-04-05",
+    "reason": "Có việc đột xuất",
+    "status": "Đã duyệt"
+  },
+  {
+    "id": 29,
+    "employeeId": "EMP029",
+    "type": "Nghỉ phép năm",
+    "fromDate": "2026-04-21",
+    "toDate": "2026-04-21",
+    "reason": "Kỷ niệm ngày cưới",
+    "status": "Đã duyệt"
+  },
+  {
+    "id": 30,
+    "employeeId": "EMP030",
+    "type": "Nghỉ ốm",
+    "fromDate": "2026-04-14",
+    "toDate": "2026-04-14",
+    "reason": "Say nắng",
+    "status": "Từ chối"
+  },
+  {
+    "id": 31,
+    "employeeId": "EMP031",
+    "type": "Việc riêng",
+    "fromDate": "2026-04-23",
+    "toDate": "2026-04-23",
+    "reason": "Đi bảo trì nhà",
+    "status": "Đã duyệt"
+  },
+  {
+    "id": 32,
+    "employeeId": "EMP032",
+    "type": "Nghỉ phép năm",
+    "fromDate": "2026-04-17",
+    "toDate": "2026-04-17",
+    "reason": "Đưa mẹ đi khám bệnh",
+    "status": "Đã duyệt"
+  },
+  {
+    "id": 33,
+    "employeeId": "EMP033",
+    "type": "Việc riêng",
+    "fromDate": "2026-04-02",
+    "toDate": "2026-04-02",
+    "reason": "Hỏng điện nước tại nhà",
+    "status": "Đã duyệt"
+  },
+  {
+    "id": 34,
+    "employeeId": "EMP034",
+    "type": "Nghỉ ốm",
+    "fromDate": "2026-04-29",
+    "toDate": "2026-04-29",
+    "reason": "Đau dạ dày",
+    "status": "Từ chối"
+  },
+  {
+    "id": 35,
+    "employeeId": "EMP035",
+    "type": "Việc riêng",
+    "fromDate": "2026-04-01",
+    "toDate": "2026-04-03",
+    "reason": "Chuyển nhà về quê",
+    "status": "Đã duyệt"
+  }
+]
