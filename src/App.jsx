@@ -1,52 +1,109 @@
-import { Routes, Route } from "react-router-dom";
+import React from 'react';
+import { Routes, Route, NavLink, Link } from 'react-router-dom';
+import './App.css'; 
+import './pages/admin/Admin.css'; 
 
-// Import trang của Tuyến
-import Login from "./pages/auth/Login";
-import Dashboard from "./pages/dashboard/Dashboard";
+// --- 1. IMPORT CÁC TRANG CỦA TÀI (Đã code xong) ---
+import Settings from './pages/admin/Settings';
+import Profile from './pages/admin/Profile';
+import Reports from './pages/admin/Reports';
 
-// Import trang của Hiệp
-import EmployeeList from "./pages/employees/EmployeeList";
-import EmployeeForm from "./pages/employees/EmployeeForm";
-import EmployeeDetail from "./pages/employees/EmployeeDetail";
+// --- 2. IMPORT TRANG CỦA TEAM (Tạm ẩn chờ anh em code xong) ---
+// import Login from './pages/auth/Login';
+// import Dashboard from './pages/dashboard/Dashboard';         // Tuyến
+// import EmployeeList from './pages/employees/EmployeeList';   // Hiệp
+// import Attendance from './pages/attendance/Attendance';      // Sêu
+// import PayrollList from './pages/payroll/PayrollList';       // Vỹ
 
-// Import trang của Sêu
-import Attendance from "./pages/attendance/Attendance";
-import Leaves from "./pages/attendance/Leaves";
 
-// Import trang của Vỹ
-import PayrollList from "./pages/payroll/PayrollList";
-import Payslip from "./pages/payroll/Payslip";
+// --- Trang Giới thiệu (Dành cho cả Team) ---
+function Home() {
+  return (
+    <div className="dashboard-wrapper" style={{ minHeight: 'calc(100vh - 70px)' }}>
+      <div className="page-header" style={{ textAlign: 'center', marginBottom: '40px', marginTop: '20px' }}>
+        <h1 style={{ fontSize: '32px', color: '#0f172a', marginBottom: '10px' }}>👋 Chào mừng đến với HR System</h1>
+        <p>Hệ thống Quản lý Nhân sự và Tiền lương chuyên nghiệp</p>
+      </div>
 
-// Import trang của Tài
-import Settings from "./pages/admin/Settings";
-import Profile from "./pages/admin/Profile";
-import Reports from "./pages/admin/Reports";
+      <div className="dash-card" style={{ maxWidth: '850px', margin: '0 auto', padding: '35px' }}>
+        <h3 className="card-title" style={{ textAlign: 'center', color: '#3b82f6', fontSize: '20px' }}>
+          Lối tắt truy cập các Phân hệ
+        </h3>
+        
+        {/* Lưới nút bấm cho cả 5 người */}
+        <div className="grid-2" style={{ marginBottom: '30px' }}>
+          <Link to="/dashboard" className="p-btn p-btn-outline" style={{ textAlign: 'center' }}>📈 Tổng quan (Tuyến)</Link>
+          <Link to="/employees" className="p-btn p-btn-outline" style={{ textAlign: 'center' }}>👥 Quản lý Nhân sự (Hiệp)</Link>
+          <Link to="/attendance" className="p-btn p-btn-outline" style={{ textAlign: 'center' }}>📅 Quản lý Chấm công (Sêu)</Link>
+          <Link to="/payroll" className="p-btn p-btn-outline" style={{ textAlign: 'center' }}>💰 Quản lý Tiền lương (Vỹ)</Link>
+        </div>
+
+        <hr style={{ border: 'none', borderTop: '1px dashed #e2e8f0', margin: '20px 0' }}/>
+
+        <h3 className="card-title" style={{ textAlign: 'center', color: '#059669', fontSize: '18px' }}>
+          Khu vực dành cho Quản trị viên
+        </h3>
+        <div className="home-actions">
+          <Link to="/profile" className="p-btn p-btn-primary">👤 Hồ sơ của tôi</Link>
+          <Link to="/settings" className="p-btn p-btn-outline">⚙️ Cài đặt hệ thống</Link>
+          <Link to="/reports" className="p-btn p-btn-success">📊 Xem báo cáo</Link>
+        </div>
+      </div>
+    </div>
+  );
+}
 
 function App() {
   return (
-    <Routes>
-      {/* Route của Tuyến */}
-      <Route path="/login" element={<Login />} />
-      <Route path="/" element={<Dashboard />} />
+    <div className="app-container">
+      {/* --- THANH MENU ĐIỀU HƯỚNG DÙNG CHUNG CHUNG CẢ TEAM --- */}
+      <nav className="top-nav-modern">
+        <div className="nav-brand">
+          <div className="brand-logo">HR</div>
+          <span className="brand-name">Admin Portal</span>
+        </div>
+        
+        <div className="nav-menu">
+          <NavLink to="/" className={({isActive}) => isActive ? "nav-item active" : "nav-item"}>🏠 Trang chủ</NavLink>
+          <NavLink to="/dashboard" className={({isActive}) => isActive ? "nav-item active" : "nav-item"}>📈 Tổng quan</NavLink>
+          <NavLink to="/employees" className={({isActive}) => isActive ? "nav-item active" : "nav-item"}>👥 Nhân sự</NavLink>
+          <NavLink to="/attendance" className={({isActive}) => isActive ? "nav-item active" : "nav-item"}>📅 Chấm công</NavLink>
+          <NavLink to="/payroll" className={({isActive}) => isActive ? "nav-item active" : "nav-item"}>💰 Lương</NavLink>
+          
+          {/* Vạch kẻ phân cách menu Admin */}
+          <span style={{ borderLeft: '1px solid #e2e8f0', margin: '0 5px' }}></span>
+          
+          <NavLink to="/reports" className={({isActive}) => isActive ? "nav-item active" : "nav-item"}>📊 Báo cáo</NavLink>
+          <NavLink to="/settings" className={({isActive}) => isActive ? "nav-item active" : "nav-item"}>⚙️ Cài đặt</NavLink>
+        </div>
 
-      {/* Route của Hiệp */}
-      <Route path="/employees" element={<EmployeeList />} />
-      <Route path="/employees/new" element={<EmployeeForm />} />
-      <Route path="/employees/:id" element={<EmployeeDetail />} />
+        <div className="nav-user">
+          <div className="nav-avatar">NT</div>
+          {/* Tạm thời để tên chung, sau này Tuyến sẽ đổi thành tên động */}
+          <span>Xin chào, Admin!</span> 
+        </div>
+      </nav>
 
-      {/* Route của Sêu */}
-      <Route path="/attendance" element={<Attendance />} />
-      <Route path="/leaves" element={<Leaves />} />
+      {/* --- KHU VỰC HIỂN THỊ NỘI DUNG TRANG --- */}
+      <div className="main-content">
+        <Routes>
+          {/* Trang chủ */}
+          <Route path="/" element={<Home />} />
 
-      {/* Route của Vỹ */}
-      <Route path="/payroll" element={<PayrollList />} />
-      <Route path="/payroll/payslip/:id" element={<Payslip />} />
+          {/* --- ROUTES CỦA TÀI (Đang hoạt động) --- */}
+          <Route path="/settings" element={<Settings />} />
+          <Route path="/profile" element={<Profile />} />
+          <Route path="/reports" element={<Reports />} />
 
-      {/* Route của Tài */}
-      <Route path="/settings" element={<Settings />} />
-      <Route path="/profile" element={<Profile />} />
-      <Route path="/reports" element={<Reports />} />
-    </Routes>
+          {/* --- ROUTES CỦA TEAM (Các bạn khác sẽ tự mở comment khi code xong) --- */}
+          {/* <Route path="/login" element={<Login />} /> */}
+          {/* <Route path="/dashboard" element={<Dashboard />} /> */}
+          {/* <Route path="/employees" element={<EmployeeList />} /> */}
+          {/* <Route path="/attendance" element={<Attendance />} /> */}
+          {/* <Route path="/payroll" element={<PayrollList />} /> */}
+        </Routes>
+      </div>
+    </div>
   );
 }
 

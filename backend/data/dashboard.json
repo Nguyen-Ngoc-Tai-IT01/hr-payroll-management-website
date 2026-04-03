@@ -1,18 +1,29 @@
 ﻿{
-  "summaryCards": {
-    "totalEmployees": 45,
-    "newHiresThisMonth": 3,
-    "totalPayrollThisMonth": 650000000,
-    "onLeaveToday": 2
+  "summary": {
+    "totalEmployees": 31,
+    "newHiresThisMonth": 2,
+    "resignedThisMonth": 1,
+    "totalDepartments": 7
   },
   "attendanceToday": {
-    "present": 40,
-    "late": 3,
-    "absent": 2
+    "present": 28,
+    "absent": 1,
+    "onLeave": 2,
+    "late": 3
   },
-  "salaryChartData": [
-    { "month": "Tháng 1", "total": 620000000 },
-    { "month": "Tháng 2", "total": 635000000 },
-    { "month": "Tháng 3", "total": 650000000 }
+  "financial": {
+    "totalPayrollEstimated": 685000000,
+    "averageSalary": 22096774,
+    "budgetUsed": "85%"
+  },
+  "departmentStats": [
+    { "name": "Phòng Phần mềm", "count": 10 },
+    { "name": "Phòng Kinh doanh", "count": 4 },
+    { "name": "Phòng Marketing", "count": 4 },
+    { "name": "Phòng IT", "count": 3 },
+    { "name": "Phòng Nhân sự", "count": 3 },
+    { "name": "Phòng Kế toán", "count": 2 },
+    { "name": "Ban Giám đốc", "count": 2 },
+    { "name": "Phòng CSKH", "count": 3 }
   ]
 }
