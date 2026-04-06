@@ -1,5 +1,4 @@
 ﻿[
-
   {"id": "EMP001", "username": "admin_tai", "password": "123", "fullName": "Nguyễn Ngọc Tài", "email": "tai108742@donga.edu.vn", "phone": "0912000001", "department": "Phòng IT", "position": "System Admin", "role": "Admin", "baseSalary": 25000000, "joinDate": "2023-01-15", "status": "Đang làm việc"},
   {"id": "EMP002", "username": "hr_hiep", "password": "123", "fullName": "Huỳnh Công Hiệp", "email": "hiep.hr@it24b.vn", "phone": "0912000002", "department": "Phòng Nhân sự", "position": "Trưởng phòng Nhân sự", "role": "HR", "baseSalary": 22000000, "joinDate": "2023-02-01", "status": "Đang làm việc"},
   {"id": "EMP003", "username": "time_seu", "password": "123", "fullName": "Sêu", "email": "seu.admin@it24b.vn", "phone": "0912000003", "department": "Phòng Nhân sự", "position": "Chuyên viên Chấm công", "role": "Timekeeper", "baseSalary": 15000000, "joinDate": "2023-03-10", "status": "Đang làm việc"},
@@ -79,5 +78,4 @@
   { "id": 33, "fullName": "Hồ Văn Thân", "email": "hvt@company.com", "phone": "0922334455", "department": "Phòng Kế toán", "position": "Kế toán trưởng", "baseSalary": 12000000, "joinDate": "2024-02-01", "status": "Đang làm việc" },
   { "id": 34, "fullName": "Ngô Thị Dậu", "email": "ntd@company.com", "phone": "0933445566", "department": "Phòng Kinh doanh", "position": "Nhân viên", "baseSalary": 18000000, "joinDate": "2023-08-20", "status": "Đang làm việc" },
   { "id": 35, "fullName": "Dương Văn Tuất", "email": "dvt@company.com", "phone": "0944556677", "department": "Phòng Marketing", "position": "Trưởng phòng", "baseSalary": 25000000, "joinDate": "2021-11-05", "status": "Đang làm việc" }
-
 ]

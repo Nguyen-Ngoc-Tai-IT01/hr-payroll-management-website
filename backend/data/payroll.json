@@ -43,5 +43,4 @@
   { "id": 1033, "employeeId": 33, "month": 3, "year": 2026, "baseSalary": 12000000, "workingDays": 22, "allowance": 500000, "taxAndInsurance": 1000000, "netSalary": 11500000, "paymentStatus": "Đã thanh toán" },
   { "id": 1034, "employeeId": 34, "month": 3, "year": 2026, "baseSalary": 18000000, "workingDays": 23, "allowance": 1000000, "taxAndInsurance": 1800000, "netSalary": 17200000, "paymentStatus": "Chờ thanh toán" },
   { "id": 1035, "employeeId": 35, "month": 3, "year": 2026, "baseSalary": 25000000, "workingDays": 22, "allowance": 2000000, "taxAndInsurance": 2500000, "netSalary": 24500000, "paymentStatus": "Đã thanh toán" }
-
 ]

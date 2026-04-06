@@ -44,7 +44,29 @@ const PayrollList = () => {
   };
 
   const formatMonthYear = (month, year) => {
-    return `${String(month).padStart(2, '0')}/${year}`;
+    if (typeof month === 'string') {
+      const trimmed = month.trim();
+      if (trimmed.includes('/')) {
+        return trimmed;
+      }
+      if (trimmed.length === 1 || trimmed.length === 2) {
+        return `${trimmed.padStart(2, '0')}/${year ?? ''}`.replace(/\/$/, '');
+      }
+      return trimmed;
+    }
+
+    if (typeof month === 'number' || (typeof month === 'string' && /^\\\d+\\b$/.test(month))) {
+      const monthNumber = Number(month);
+      if (!Number.isNaN(monthNumber)) {
+        return `${String(monthNumber).padStart(2, '0')}/${year ?? ''}`.replace(/\/$/, '');
+      }
+    }
+
+    if (year) {
+      return `${month || ''}/${year}`;
+    }
+
+    return month || '';
   };
 
   // TÌM KIẾM & LỌC
