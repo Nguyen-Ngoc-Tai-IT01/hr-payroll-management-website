@@ -1,4 +1,5 @@
 import React from 'react';
+<<<<<<< Updated upstream
 import { Routes, Route, NavLink, Link } from 'react-router-dom';
 import './App.css'; 
 import './pages/admin/Admin.css'; 
@@ -114,3 +115,41 @@ function App() {
 }
 
  export default App; 
+=======
+import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
+
+// Import component Header vừa tạo
+// (Lưu ý: Đảm bảo đường dẫn này đúng với nơi bạn lưu file Header.jsx nhé)
+import Header from './components/Header'; 
+
+// Import các trang của Vỹ
+import PayrollList from './pages/payroll/PayrollList';
+import Payslip from './pages/payroll/Payslip';
+
+function App() {
+  return (
+    <BrowserRouter>
+      {/* 1. Header đặt ở đây để luôn hiển thị trên cùng ở mọi trang */}
+      <Header />
+
+      {/* 2. Vùng chứa nội dung chính bên dưới Header */}
+      <div style={{ backgroundColor: '#f8fafc', minHeight: 'calc(100vh - 64px)', padding: '20px' }}>
+        <Routes>
+          {/* Tạm thời redirect trang chủ về thẳng trang payroll để bạn dễ test */}
+          <Route path="/" element={<Navigate to="/payroll" replace />} />
+
+          {/* --- CÁC ROUTE CỦA VỸ --- */}
+          <Route path="/payroll" element={<PayrollList />} />
+          <Route path="/payroll/payslip/:id" element={<Payslip />} />
+
+          {/* --- CÁC ROUTE CỦA TEAM (Tuyến, Hiệp, Sêu, Tài sẽ thêm vào đây sau) --- */}
+          {/* <Route path="/login" element={<Login />} /> */}
+          {/* <Route path="/employees" element={<Employees />} /> */}
+        </Routes>
+      </div>
+    </BrowserRouter>
+  );
+}
+
+export default App;
+>>>>>>> Stashed changes

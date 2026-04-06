@@ -1,0 +1,108 @@
+/* src/pages/payroll/Payroll.module.css */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+  font-family: Arial, sans-serif;
+}
+
+.title {
+  text-align: center;
+  color: #333;
+  margin-bottom: 24px;
+}
+
+.filterContainer {
+  display: flex;
+  gap: 16px;
+  margin-bottom: 20px;
+  align-items: center;
+}
+
+.searchInput {
+  padding: 10px 16px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  flex: 1;
+  max-width: 400px;
+  font-size: 14px;
+  outline: none;
+}
+
+.searchInput:focus {
+  border-color: #3b82f6;
+}
+
+.filterSelect {
+  padding: 10px 16px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 14px;
+  background-color: white;
+  cursor: pointer;
+  outline: none;
+}
+
+.tableWrapper {
+  overflow-x: auto;
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+  border: 1px solid #e2e8f0;
+}
+
+.payrollTable {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 900px; 
+}
+
+.payrollTable th,
+.payrollTable td {
+  padding: 14px 16px;
+  border-bottom: 1px solid #e2e8f0;
+  text-align: left;
+  vertical-align: middle;
+}
+
+.payrollTable th {
+  background-color: #f8fafc;
+  font-weight: 600;
+  color: #475569;
+  white-space: nowrap; 
+}
+
+.payrollTable tr:hover {
+  background-color: #f1f5f9;
+}
+
+.netSalaryText {
+  font-weight: bold;
+  color: #16a34a; 
+}
+
+.actionBtn {
+  display: inline-block;
+  padding: 8px 16px;
+  background-color: #3b82f6;
+  color: white;
+  text-decoration: none;
+  border-radius: 6px;
+  font-size: 13px;
+  font-weight: 500;
+  white-space: nowrap; 
+  text-align: center;
+  transition: background-color 0.2s ease;
+  cursor: pointer;
+}
+
+.actionBtn:hover {
+  background-color: #2563eb;
+}
+
+.noData {
+  text-align: center;
+  padding: 40px;
+  color: #64748b;
+  font-style: italic;
+}
