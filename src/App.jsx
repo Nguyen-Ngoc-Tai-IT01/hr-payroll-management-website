@@ -1,26 +1,28 @@
 import React from 'react';
-<<<<<<< Updated upstream
 import { Routes, Route, NavLink, Link } from 'react-router-dom';
 import './App.css'; 
 import './pages/admin/Admin.css'; 
 
-// --- 1. IMPORT CÁC TRANG CỦA TÀI (Đã code xong) ---
+// --- 1. IMPORT CÁC TRANG CỦA TÀI ---
 import Settings from './pages/admin/Settings';
 import Profile from './pages/admin/Profile';
 import Reports from './pages/admin/Reports';
 
-// sêu
+// --- 2. IMPORT TRANG CỦA SÊU ---
 import Attendance from './pages/attendance/Attendance';  
 import Leaves from './pages/attendance/Leaves';   
 
-// --- 2. IMPORT TRANG CỦA TEAM (Tạm ẩn chờ anh em code xong) ---
+// --- 3. IMPORT TRANG CỦA VỸ (Vừa lấy về) ---
+import PayrollList from './pages/payroll/PayrollList';
+import Payslip from './pages/payroll/Payslip';
+
+// --- 4. IMPORT TRANG CỦA TEAM (Tạm ẩn chờ anh em code xong) ---
 // import Login from './pages/auth/Login';
 // import Dashboard from './pages/dashboard/Dashboard';         // Tuyến
 // import EmployeeList from './pages/employees/EmployeeList';   // Hiệp
-// import PayrollList from './pages/payroll/PayrollList';       // Vỹ
 
 
-// --- Trang Giới thiệu (Dành cho cả Team) ---
+// --- TRANG CHỦ (Home) ---
 function Home() {
   return (
     <div className="dashboard-wrapper" style={{ minHeight: 'calc(100vh - 70px)' }}>
@@ -57,10 +59,11 @@ function Home() {
   );
 }
 
+// --- COMPONENT APP CHÍNH ---
 function App() {
   return (
     <div className="app-container">
-      {/* --- THANH MENU ĐIỀU HƯỚNG DÙNG CHUNG CHUNG CẢ TEAM --- */}
+      {/* --- THANH MENU ĐIỀU HƯỚNG DÙNG CHUNG CỦA CẢ TEAM --- */}
       <nav className="top-nav-modern">
         <div className="nav-brand">
           <div className="brand-logo">HR</div>
@@ -88,68 +91,33 @@ function App() {
         </div>
       </nav>
 
-      {/* --- KHU VỰC HIỂN THỊ NỘI DUNG TRANG --- */}
+      {/* --- KHU VỰC HIỂN THỊ NỘI DUNG TRANG CHÍNH --- */}
       <div className="main-content">
         <Routes>
           {/* Trang chủ */}
           <Route path="/" element={<Home />} />
 
-          {/* --- ROUTES CỦA TÀI (Đang hoạt động) --- */}
+          {/* --- ROUTES CỦA TÀI --- */}
           <Route path="/settings" element={<Settings />} />
           <Route path="/profile" element={<Profile />} />
           <Route path="/reports" element={<Reports />} />
 
-          {/* route của sêu đang hoạt động */}
+          {/* --- ROUTES CỦA SÊU --- */}
           <Route path="/attendance" element={<Attendance />} />
           <Route path="/leaves" element={<Leaves />} />
+
+          {/* --- ROUTES CỦA VỸ (Đã được tích hợp thành công) --- */}
+          <Route path="/payroll" element={<PayrollList />} />
+          <Route path="/payroll/payslip/:id" element={<Payslip />} />
 
           {/* --- ROUTES CỦA TEAM (Các bạn khác sẽ tự mở comment khi code xong) --- */}
           {/* <Route path="/login" element={<Login />} /> */}
           {/* <Route path="/dashboard" element={<Dashboard />} /> */}
           {/* <Route path="/employees" element={<EmployeeList />} /> */}
-          {/* <Route path="/payroll" element={<PayrollList />} /> */}
         </Routes>
       </div>
     </div>
   );
 }
 
- export default App; 
-=======
-import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
-
-// Import component Header vừa tạo
-// (Lưu ý: Đảm bảo đường dẫn này đúng với nơi bạn lưu file Header.jsx nhé)
-import Header from './components/Header'; 
-
-// Import các trang của Vỹ
-import PayrollList from './pages/payroll/PayrollList';
-import Payslip from './pages/payroll/Payslip';
-
-function App() {
-  return (
-    <BrowserRouter>
-      {/* 1. Header đặt ở đây để luôn hiển thị trên cùng ở mọi trang */}
-      <Header />
-
-      {/* 2. Vùng chứa nội dung chính bên dưới Header */}
-      <div style={{ backgroundColor: '#f8fafc', minHeight: 'calc(100vh - 64px)', padding: '20px' }}>
-        <Routes>
-          {/* Tạm thời redirect trang chủ về thẳng trang payroll để bạn dễ test */}
-          <Route path="/" element={<Navigate to="/payroll" replace />} />
-
-          {/* --- CÁC ROUTE CỦA VỸ --- */}
-          <Route path="/payroll" element={<PayrollList />} />
-          <Route path="/payroll/payslip/:id" element={<Payslip />} />
-
-          {/* --- CÁC ROUTE CỦA TEAM (Tuyến, Hiệp, Sêu, Tài sẽ thêm vào đây sau) --- */}
-          {/* <Route path="/login" element={<Login />} /> */}
-          {/* <Route path="/employees" element={<Employees />} /> */}
-        </Routes>
-      </div>
-    </BrowserRouter>
-  );
-}
-
 export default App;
->>>>>>> Stashed changes

@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import Swal from 'sweetalert2';
 import Leaves from './Leaves'; 
+import './Attendance.css'; 
 
 const initialFormState = { 
-  employeeId: '', fullName: '', month: '03/2026', 
+  employeeId: '', fullName: '', month: '04/2026', 
   standardDays: 22, actualDays: 0, lateCount: 0, overtimeHours: 0 
 };
 
@@ -15,11 +16,12 @@ const Attendance = () => {
   const [editingId, setEditingId] = useState(null);
   const [formData, setFormData] = useState(initialFormState);
 
-  // logic phân trang
+  // tìm kiếm và phân trang
+  const [searchTerm, setSearchTerm] = useState('');
   const [currentPage, setCurrentPage] = useState(1);
-  const [recordsPerPage] = useState(10); // Mỗi trang hiện 10 dòng
+  const [recordsPerPage] = useState(10); 
 
-  //lấy thời gian hiện tại
+  // lấy thời gian hiện tại
   const [currentTime, setCurrentTime] = useState(new Date());
 
   useEffect(() => {
@@ -44,19 +46,28 @@ const Attendance = () => {
     }
   };
 
-  // Tính toán dữ liệu cho trang hiện tại
+  // lọc dữ liệu theo mã nhân viên
+  const filteredRecords = attendanceRecords.filter(rec => 
+    rec.employeeId.toLowerCase().includes(searchTerm.toLowerCase())
+  );
+
+  // phân trang trên dữ liệu đã lọc
   const indexOfLastRecord = currentPage * recordsPerPage;
   const indexOfFirstRecord = indexOfLastRecord - recordsPerPage;
-  const currentRecords = attendanceRecords.slice(indexOfFirstRecord, indexOfLastRecord);
-  const totalPages = Math.ceil(attendanceRecords.length / recordsPerPage);
+  const currentRecords = filteredRecords.slice(indexOfFirstRecord, indexOfLastRecord);
+  const totalPages = Math.ceil(filteredRecords.length / recordsPerPage) || 1;
 
   const renderName = (rec) => {
     if (rec.fullName) return rec.fullName;
     const emp = employees.find(e => e.id === rec.employeeId);
-    return emp ? emp.fullName : "Nhân viên " + rec.employeeId;
+    return emp ? emp.fullName : `NV-${rec.employeeId}`;
   };
 
-  const handleAdd = () => { setFormData(initialFormState); setEditingId(null); setShowForm(true); };
+  const handleAdd = () => { 
+    setFormData(initialFormState); 
+    setEditingId(null); 
+    setShowForm(true); 
+  };
 
   const handleEdit = (record) => {
     setFormData({ ...record, fullName: renderName(record) });
@@ -99,114 +110,165 @@ const Attendance = () => {
       body: JSON.stringify(submitData)
     });
 
-    if (res.ok) { setShowForm(false); loadData(); Swal.fire({ toast: true, position: 'top-end', icon: 'success', title: 'Đã lưu', showConfirmButton: false, timer: 1500 }); }
+    if (res.ok) { 
+      setShowForm(false); 
+      loadData(); 
+      Swal.fire({ toast: true, position: 'top-end', icon: 'success', title: 'Đã lưu', showConfirmButton: false, timer: 1500 }); 
+    }
   };
 
   const handleExport = () => {
     const headers = ["Mã NV", "Họ và Tên", "Công thực", "Đi muộn", "Tăng ca"];
-    const rows = attendanceRecords.map(rec => [rec.employeeId, renderName(rec), rec.actualDays, rec.lateCount, rec.overtimeHours + "h"]);
+    const rows = filteredRecords.map(rec => [rec.employeeId, renderName(rec), rec.actualDays, rec.lateCount, rec.overtimeHours + "h"]);
     const csvContent = [headers.join(","), ...rows.map(row => row.join(","))].join("\n");
     const blob = new Blob(["\uFEFF" + csvContent], { type: 'text/csv;charset=utf-8;' });
     const url = URL.createObjectURL(blob);
     const link = document.createElement("a");
-    link.href = url; link.setAttribute("download", `Bao_cao_cham_cong.csv`); link.click();
+    link.href = url; 
+    link.setAttribute("download", `Bao_cao_cham_cong.csv`); 
+    link.click();
   };
 
   return (
-    <div style={{ padding: '25px', backgroundColor: '#f1f5f9', minHeight: '100vh', fontFamily: 'Segoe UI, sans-serif' }}>
+    <div className="attendance-wrapper">
       
-      {/* header */}
-      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '20px' }}>
+      {/* header chung */}
+      <div className="page-header" style={{ marginBottom: '20px' }}>
         <div style={{ display: 'flex', alignItems: 'center', gap: '15px' }}>
-          <h2 style={{ margin: 0, color: '#1e293b' }}>📅 Quản Lý Chấm Công ({currentTime.toLocaleDateString('vi-VN')})</h2>
-          <span style={{ backgroundColor: '#e2e8f0', padding: '5px 12px', borderRadius: '20px', fontSize: '14px', fontWeight: 'bold', color: '#475569' }}>
+          <h2 className="header-title">📅 Hệ Thống Quản Lý Chấm Công ({currentTime.toLocaleDateString('vi-VN')})</h2>
+          <span className="time-badge">
             🕒 {currentTime.toLocaleTimeString('vi-VN')}
           </span>
         </div>
-        <div style={{ display: 'flex', gap: '10px' }}>
-          <button onClick={handleExport} style={{ padding: '10px 20px', backgroundColor: '#198754', color: 'white', border: 'none', borderRadius: '6px', cursor: 'pointer', fontWeight: 'bold', display: 'flex', alignItems: 'center', gap: '5px' }}>
-            📥 Xuất báo cáo chấm công
-          </button>
-          <button onClick={handleAdd} style={{ padding: '10px 20px', backgroundColor: '#0d6efd', color: 'white', border: 'none', borderRadius: '6px', cursor: 'pointer', fontWeight: 'bold' }}>
-            + Thêm mới
-          </button>
-        </div>
       </div>
 
-      {/* tabs xin phép và chấm công*/}
-      <div style={{ display: 'flex', gap: '5px', marginBottom: '20px' }}>
-        <button onClick={() => setActiveTab('attendance')} style={{ padding: '10px 20px', border: 'none', borderRadius: '8px 8px 0 0', cursor: 'pointer', backgroundColor: activeTab === 'attendance' ? '#fff' : '#e2e8f0', fontWeight: 'bold', color: activeTab === 'attendance' ? '#0d6efd' : '#64748b' }}>Bảng Chấm Công</button>
-        <button onClick={() => setActiveTab('leaves')} style={{ padding: '10px 20px', border: 'none', borderRadius: '8px 8px 0 0', cursor: 'pointer', backgroundColor: activeTab === 'leaves' ? '#fff' : '#e2e8f0', fontWeight: 'bold', color: activeTab === 'leaves' ? '#0d6efd' : '#64748b' }}>Đơn Nghỉ Phép</button>
+      {/* thanh tab chuyển đổi */}
+      <div className="tabs-container">
+        <button onClick={() => setActiveTab('attendance')} className={`tab-btn ${activeTab === 'attendance' ? 'active' : ''}`}>
+          Bảng Chấm Công
+        </button>
+        <button onClick={() => setActiveTab('leaves')} className={`tab-btn ${activeTab === 'leaves' ? 'active' : ''}`}>
+          Đơn Nghỉ Phép
+        </button>
       </div>
 
+      {/* khu vực hiển thị nội dung tùy theo tab */}
       {activeTab === 'attendance' ? (
-        <div style={{ backgroundColor: '#fff', borderRadius: '0 12px 12px 12px', boxShadow: '0 4px 6px -1px rgba(0,0,0,0.1)', overflow: 'hidden' }}>
-          <table style={{ width: '100%', borderCollapse: 'collapse' }}>
-            <thead style={{ backgroundColor: '#f8fafc', borderBottom: '2px solid #e2e8f0' }}>
-              <tr style={{ textAlign: 'center' }}>
-                <th style={{ padding: '15px' }}>Mã NV</th>
-                <th style={{ textAlign: 'left' }}>Họ và Tên</th>
-                <th>Công thực</th>
-                <th>Đi muộn</th>
-                <th>Tăng ca</th>
-                <th>Thao tác</th>
-              </tr>
-            </thead>
-            <tbody>
-              {currentRecords.map((rec, index) => (
-                <tr key={rec.id} style={{ textAlign: 'center', borderBottom: '1px solid #f1f5f9', backgroundColor: index % 2 === 0 ? '#fff' : '#fcfcfd' }} className="row-hover">
-                  <td style={{ fontWeight: 'bold', color: '#475569', padding: '12px' }}>{rec.employeeId} </td>
-                  <td style={{ textAlign: 'left', fontWeight: '500' }}>{renderName(rec)}</td>
-                  <td style={{ color: '#2563eb', fontWeight: 'bold', fontSize: '18px' }}>{rec.actualDays} ngày </td>
-                  <td style={{ color: rec.lateCount > 0 ? '#dc3545' : '#198754', fontWeight: 'bold' }}>{rec.lateCount} lần</td>
-                  <td>{rec.overtimeHours} giờ</td>
-                  <td>
-                    <button onClick={() => handleEdit(rec)} style={{ backgroundColor: '#0d6efd',color: 'white', border: 'none', padding: '6px 12px', borderRadius: '4px', cursor: 'pointer', marginRight: '5px', fontWeight: 'bold' }}>Sửa</button>
-                    <button onClick={() => handleDelete(rec.id)} style={{ backgroundColor: '#dc3545', color: 'white', border: 'none', padding: '6px 12px', borderRadius: '4px', cursor: 'pointer', fontWeight: 'bold' }}>Xóa</button>
-                  </td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-
-          {/* phân trang */}
-          <div style={{ display: 'flex', justifyContent: 'center', padding: '20px', gap: '5px' }}>
-            <button disabled={currentPage === 1} onClick={() => setCurrentPage(currentPage - 1)} style={{ padding: '8px 12px', borderRadius: '5px', border: '1px solid #ddd', cursor: 'pointer' }}>Trước</button>
-            {[...Array(totalPages)].map((_, i) => (
-              <button key={i} onClick={() => setCurrentPage(i + 1)} style={{ padding: '8px 15px', borderRadius: '5px', border: 'none', backgroundColor: currentPage === i + 1 ? '#0d6efd' : '#e2e8f0', color: currentPage === i + 1 ? 'white' : '#333', cursor: 'pointer', fontWeight: 'bold' }}>
-                {i + 1}
+        <div style={{ animation: 'fadeIn 0.3s ease' }}>
+          
+          {/* thanh công cụ tìm kiếm của chấm công */}
+          <div className="page-header" style={{ marginTop: '10px', backgroundColor: '#fff', padding: '15px 20px', borderRadius: '12px', boxShadow: '0 2px 4px rgba(0,0,0,0.05)' }}>
+            <h2 className="header-title" style={{ fontSize: '18px', color: '#3b82f6' }}>📋 Quản Lý Bảng Chấm Công</h2>
+            <div className="btn-group" style={{ alignItems: 'center' }}>
+              <input 
+                type="text" 
+                placeholder="Nhập Mã NV tìm nhanh..." 
+                value={searchTerm}
+                onChange={(e) => {
+                  setSearchTerm(e.target.value);
+                  setCurrentPage(1); 
+                }}
+                className="form-input"
+                style={{ width: '220px', padding: '10px', borderRadius: '8px' }}
+              />
+              <button onClick={handleExport} className="btn btn-success">
+                📥 Xuất báo cáo
               </button>
-            ))}
-            <button disabled={currentPage === totalPages} onClick={() => setCurrentPage(currentPage + 1)} style={{ padding: '8px 12px', borderRadius: '5px', border: '1px solid #ddd', cursor: 'pointer' }}>Sau</button>
+              <button onClick={handleAdd} className="btn btn-primary">
+                + Thêm mới
+              </button>
+            </div>
+          </div>
+
+          {/* bảng chấm công */}
+          <div className="table-card" style={{ marginTop: '20px' }}>
+            <table className="custom-table">
+              <thead>
+                <tr style={{ textAlign: 'center' }}>
+                  <th>Mã NV</th>
+                  <th style={{ textAlign: 'left' }}>Họ và Tên</th>
+                  <th>Công thực</th>
+                  <th>Đi muộn</th>
+                  <th>Tăng ca</th>
+                  <th>Thao tác</th>
+                </tr>
+              </thead>
+              <tbody>
+                {currentRecords.length > 0 ? currentRecords.map((rec) => (
+                  <tr key={rec.id} className="table-row" style={{ textAlign: 'center' }}>
+                    <td style={{ fontWeight: 'bold', color: '#475569' }}>{rec.employeeId} </td>
+                    <td style={{ textAlign: 'left', fontWeight: '500' }}>{renderName(rec)}</td>
+                    <td style={{ color: '#2563eb', fontWeight: 'bold', fontSize: '18px' }}>{rec.actualDays} ngày </td>
+                    <td style={{ color: rec.lateCount > 0 ? '#dc3545' : '#198754', fontWeight: 'bold' }}>{rec.lateCount} lần</td>
+                    <td>{rec.overtimeHours} giờ</td>
+                    <td>
+                      <button onClick={() => handleEdit(rec)} className="btn btn-primary btn-sm" style={{ display: 'inline-block', marginRight: '5px' }}>Sửa</button>
+                      <button onClick={() => handleDelete(rec.id)} className="btn btn-danger btn-sm" style={{ display: 'inline-block' }}>Xóa</button>
+                    </td>
+                  </tr>
+                )) : (
+                  <tr><td colSpan="6" style={{ textAlign: 'center', padding: '20px', color: '#64748b' }}>Hệ thống không tìm thấy nhân viên nào khớp với mã NV này!</td></tr>
+                )}
+              </tbody>
+            </table>
+
+            {/* phân trang */}
+            <div className="pagination">
+              <button disabled={currentPage === 1} onClick={() => setCurrentPage(currentPage - 1)} className="page-btn">Trước</button>
+              {[...Array(totalPages)].map((_, i) => (
+                <button key={i} onClick={() => setCurrentPage(i + 1)} className={`page-btn ${currentPage === i + 1 ? 'active' : ''}`}>
+                  {i + 1}
+                </button>
+              ))}
+              <button disabled={currentPage === totalPages} onClick={() => setCurrentPage(currentPage + 1)} className="page-btn">Sau</button>
+            </div>
           </div>
         </div>
       ) : (
-        <Leaves />
+        /* tab nghỉ phép: gọi component leaves */
+        <div style={{ animation: 'fadeIn 0.3s ease', marginTop: '10px' }}>
+          <Leaves />
+        </div>
       )}
 
-      {/* form modal */}
+      {/* form modal thêm/sửa chấm công */}
       {showForm && (
-        <div style={{ position: 'fixed', top: 0, left: 0, right: 0, bottom: 0, backgroundColor: 'rgba(0,0,0,0.5)', display: 'flex', justifyContent: 'center', alignItems: 'center', zIndex: 1000 }}>
-          <div style={{ backgroundColor: 'white', padding: '30px', borderRadius: '15px', width: '400px', boxShadow: '0 20px 25px -5px rgba(0,0,0,0.1)' }}>
-            <h3 style={{ marginTop: 0, textAlign: 'center', color: '#1e293b' }}>{editingId ? '📝 Sửa Chấm Công' : '🆕 Thêm Mới'}</h3>
-            <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '15px' }}>
-              <input required placeholder="Mã NV" disabled={editingId !== null} value={formData.employeeId} onChange={e => setFormData({...formData, employeeId: e.target.value.toUpperCase()})} style={{ padding: '12px', borderRadius: '8px', border: '1px solid #cbd5e1' }} />
-              <input required placeholder="Tên nhân viên" value={formData.fullName} onChange={e => setFormData({...formData, fullName: e.target.value})} style={{ padding: '12px', borderRadius: '8px', border: '1px solid #cbd5e1' }} />
-              <div style={{ display: 'flex', gap: '10px' }}>
-                <div style={{ flex: 1 }}><label>Công thực:</label><input type="number" step="0.5" value={formData.actualDays} onChange={e => setFormData({...formData, actualDays: e.target.value})} style={{ width: '100%', padding: '10px' }} /></div>
-                <div style={{ flex: 1 }}><label>Đi muộn:</label><input type="number" value={formData.lateCount} onChange={e => setFormData({...formData, lateCount: e.target.value})} style={{ width: '100%', padding: '10px' }} /></div>
+        <div className="modal-overlay">
+          <div className="modal-content">
+            <h3 style={{ marginTop: 0, textAlign: 'center', color: '#1e293b' }}>
+              {editingId ? '📝 Sửa Chấm Công' : '🆕 Thêm Mới'}
+            </h3>
+            <form onSubmit={handleSubmit} className="form-group">
+              <div>
+                <label className="form-label">Mã nhân viên:</label>
+                <input required placeholder="Mã NV" className="form-input" disabled={editingId !== null} value={formData.employeeId} onChange={e => setFormData({...formData, employeeId: e.target.value.toUpperCase()})} />
               </div>
-              <label>Tăng ca (giờ):</label>
-              <input type="number" value={formData.overtimeHours} onChange={e => setFormData({...formData, overtimeHours: e.target.value})} style={{ padding: '10px' }} />
-              <div style={{ display: 'flex', justifyContent: 'flex-end', gap: '10px', marginTop: '10px' }}>
-                <button type="button" onClick={() => setShowForm(false)} style={{ padding: '10px 20px', borderRadius: '6px', border: '1px solid #ddd' }}>Hủy</button>
-                <button type="submit" style={{ padding: '10px 25px', backgroundColor: '#198754', color: 'white', border: 'none', borderRadius: '6px', fontWeight: 'bold' }}>Lưu dữ liệu</button>
+              <div>
+                <label className="form-label">Tên nhân viên:</label>
+                <input required placeholder="Tên nhân viên" className="form-input" value={formData.fullName} onChange={e => setFormData({...formData, fullName: e.target.value})} />
+              </div>
+              <div className="form-row">
+                <div className="form-col">
+                  <label className="form-label">Công thực:</label>
+                  <input type="number" step="0.5" className="form-input" value={formData.actualDays} onChange={e => setFormData({...formData, actualDays: e.target.value})} />
+                </div>
+                <div className="form-col">
+                  <label className="form-label">Đi muộn:</label>
+                  <input type="number" className="form-input" value={formData.lateCount} onChange={e => setFormData({...formData, lateCount: e.target.value})} />
+                </div>
+              </div>
+              <div>
+                <label className="form-label">Tăng ca (giờ):</label>
+                <input type="number" className="form-input" value={formData.overtimeHours} onChange={e => setFormData({...formData, overtimeHours: e.target.value})} />
+              </div>
+              <div className="form-row" style={{ justifyContent: 'flex-end', marginTop: '10px' }}>
+                <button type="button" onClick={() => setShowForm(false)} className="btn btn-outline">Hủy</button>
+                <button type="submit" className="btn btn-success">Lưu dữ liệu</button>
               </div>
             </form>
           </div>
         </div>
       )}
-      <style>{`.row-hover:hover { background-color: #f1f5f9 !important; transition: 0.2s; }`}</style>
     </div>
   );
 };

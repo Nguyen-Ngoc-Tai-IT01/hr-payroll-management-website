@@ -1,4 +1,4 @@
-﻿[
+[
   {
     "id": "ATT_0326_001",
     "employeeId": "EMP001",
@@ -328,7 +328,7 @@
     "employeeId": "EMP034",
     "month": "03/2026",
     "standardDays": 22,
-    "actualDays": 22,
+    "actualDays": 21,
     "lateCount": 0,
     "leaveDays": 0,
     "overtimeHours": 0

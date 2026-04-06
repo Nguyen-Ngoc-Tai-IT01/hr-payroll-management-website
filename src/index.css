@@ -1,8 +1,8 @@
 * {
   margin: 0;
-<<<<<<< Updated upstream
+
   padding: 0;
-=======
+
 }
 
 #root {
@@ -10,6 +10,6 @@
   min-height: 100svh;
   display: flex;
   flex-direction: column;
->>>>>>> Stashed changes
+
   box-sizing: border-box;
 }

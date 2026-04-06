@@ -1,5 +1,5 @@
 ﻿[
-<<<<<<< Updated upstream
+
   {"id": "EMP001", "username": "admin_tai", "password": "123", "fullName": "Nguyễn Ngọc Tài", "email": "tai108742@donga.edu.vn", "phone": "0912000001", "department": "Phòng IT", "position": "System Admin", "role": "Admin", "baseSalary": 25000000, "joinDate": "2023-01-15", "status": "Đang làm việc"},
   {"id": "EMP002", "username": "hr_hiep", "password": "123", "fullName": "Huỳnh Công Hiệp", "email": "hiep.hr@it24b.vn", "phone": "0912000002", "department": "Phòng Nhân sự", "position": "Trưởng phòng Nhân sự", "role": "HR", "baseSalary": 22000000, "joinDate": "2023-02-01", "status": "Đang làm việc"},
   {"id": "EMP003", "username": "time_seu", "password": "123", "fullName": "Sêu", "email": "seu.admin@it24b.vn", "phone": "0912000003", "department": "Phòng Nhân sự", "position": "Chuyên viên Chấm công", "role": "Timekeeper", "baseSalary": 15000000, "joinDate": "2023-03-10", "status": "Đang làm việc"},
@@ -42,8 +42,8 @@
 
   {"id": "EMP033", "username": "sup_01", "password": "123", "fullName": "Vũ Chăm Sóc", "email": "cskh.01@it24b.vn", "phone": "0922000001", "department": "Phòng CSKH", "position": "Nhân viên CSKH", "role": "Employee", "baseSalary": 9000000, "joinDate": "2024-01-15", "status": "Đang làm việc"},
   {"id": "EMP034", "username": "sup_02", "password": "123", "fullName": "Dương Tư Vấn", "email": "cskh.02@it24b.vn", "phone": "0922000002", "department": "Phòng CSKH", "position": "Nhân viên CSKH", "role": "Employee", "baseSalary": 9000000, "joinDate": "2024-02-20", "status": "Đang làm việc"},
-  {"id": "EMP035", "username": "sup_03", "password": "123", "fullName": "Bạch Giải Đáp", "email": "cskh.03@it24b.vn", "phone": "0922000003", "department": "Phòng CSKH", "position": "Nhân viên CSKH", "role": "Employee", "baseSalary": 9000000, "joinDate": "2023-10-10", "status": "Đã nghỉ việc"}
-=======
+  {"id": "EMP035", "username": "sup_03", "password": "123", "fullName": "Bạch Giải Đáp", "email": "cskh.03@it24b.vn", "phone": "0922000003", "department": "Phòng CSKH", "position": "Nhân viên CSKH", "role": "Employee", "baseSalary": 9000000, "joinDate": "2023-10-10", "status": "Đã nghỉ việc"},
+
   { "id": 1, "fullName": "Nguyễn Văn An", "email": "nva@company.com", "phone": "0901234567", "department": "Phòng IT", "position": "Frontend Developer", "baseSalary": 15000000, "joinDate": "2023-05-10", "status": "Đang làm việc" },
   { "id": 2, "fullName": "Trần Thị Bình", "email": "ttb@company.com", "phone": "0912345678", "department": "Phòng Nhân sự", "position": "Trưởng phòng", "baseSalary": 20000000, "joinDate": "2022-01-15", "status": "Đang làm việc" },
   { "id": 3, "fullName": "Lê Hoàng Cường", "email": "lhc@company.com", "phone": "0987654321", "department": "Phòng Kế toán", "position": "Nhân viên", "baseSalary": 12000000, "joinDate": "2024-02-01", "status": "Đang làm việc" },
@@ -79,5 +79,5 @@
   { "id": 33, "fullName": "Hồ Văn Thân", "email": "hvt@company.com", "phone": "0922334455", "department": "Phòng Kế toán", "position": "Kế toán trưởng", "baseSalary": 12000000, "joinDate": "2024-02-01", "status": "Đang làm việc" },
   { "id": 34, "fullName": "Ngô Thị Dậu", "email": "ntd@company.com", "phone": "0933445566", "department": "Phòng Kinh doanh", "position": "Nhân viên", "baseSalary": 18000000, "joinDate": "2023-08-20", "status": "Đang làm việc" },
   { "id": 35, "fullName": "Dương Văn Tuất", "email": "dvt@company.com", "phone": "0944556677", "department": "Phòng Marketing", "position": "Trưởng phòng", "baseSalary": 25000000, "joinDate": "2021-11-05", "status": "Đang làm việc" }
->>>>>>> Stashed changes
+
 ]

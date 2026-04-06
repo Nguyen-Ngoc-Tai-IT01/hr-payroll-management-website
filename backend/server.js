@@ -1,28 +1,20 @@
 // backend/server.js
 const express = require('express');
 const cors = require('cors'); 
-const payrollRoutes = require('./routes/payrollRoutes'); 
+const bodyParser = require('body-parser'); // 
 
 const app = express();
 const PORT = 5000;
 
-
 app.use(cors());
-<<<<<<< Updated upstream
 app.use(bodyParser.json());
 app.use(express.json()); 
 
-// sêu
-app.use('/api/attendance', require('./routes/attendanceRoutes'));
-app.use('/api/employees', require('./routes/employeeRoutes'));
-app.use('/api/leaves', require('./routes/leaveRoutes'));
-=======
-
-
-app.use(express.json()); 
-
-app.use('/api/payroll', payrollRoutes);
->>>>>>> Stashed changes
+// --- ROUTES CỦA CẢ NHÓM ĐÃ GỘP CHUNG ---
+app.use('/api/payroll', require('./routes/payrollRoutes'));       // Của Vỹ
+app.use('/api/attendance', require('./routes/attendanceRoutes'));  // Của Sêu
+app.use('/api/employees', require('./routes/employeeRoutes'));    // Của hiệp sêu lấy để dùng
+app.use('/api/leaves', require('./routes/leaveRoutes'));          // Của Sêu
 
 app.get('/', (req, res) => {
   res.send('HR Payroll Backend is running!');
