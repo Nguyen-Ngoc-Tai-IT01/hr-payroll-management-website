@@ -1,12 +1,38 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import './Admin.css';
 
 function Reports() {
+  // 1. Tạo biến lưu trữ dữ liệu lấy từ Backend
+  const [reportData, setReportData] = useState({
+    total: 0,
+    active: 0
+  });
+
+  // 2. Tự động gọi API khi vừa mở trang Báo cáo
+  useEffect(() => {
+    fetch('http://localhost:5000/api/reports/employees')
+      .then(response => response.json())
+      .then(data => {
+        if (data.success) {
+          setReportData({
+            total: data.total,
+            active: data.active
+          });
+        }
+      })
+      .catch(error => console.error("Lỗi kết nối Backend:", error));
+  }, []);
+
   return (
     <div className="dashboard-wrapper">
       <div className="page-header">
         <h2>Trung tâm Báo cáo</h2>
-        <p>Xuất dữ liệu từ các phòng ban để phục vụ kiểm toán và tính lương</p>
+        <p>
+          Xuất dữ liệu từ các phòng ban để phục vụ kiểm toán và tính lương. <br />
+          <span style={{ color: '#059669', fontWeight: '500', fontSize: '14px', display: 'inline-block', marginTop: '5px' }}>
+            📊 Dữ liệu Backend: Hệ thống đang ghi nhận {reportData.total} nhân sự ({reportData.active} người đang làm việc).
+          </span>
+        </p>
       </div>
 
       <div className="report-grid">
