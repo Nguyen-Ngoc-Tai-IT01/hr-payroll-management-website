@@ -12,9 +12,11 @@ import Profile from './pages/admin/Profile';
 import Reports from './pages/admin/Reports';
 
 // --- 2. IMPORT TRANG CỦA TEAM (Tạm ẩn chờ anh em code xong) ---
-import Login from './pages/auth/Login';
-import Dashboard from './pages/dashboard/Dashboard';         // Tuyến
-import EmployeeList from './pages/employees/EmployeeList';   // Hiệp
+// import Login from './pages/auth/Login';
+// import Dashboard from './pages/dashboard/Dashboard';         // Tuyến
+// import EmployeeList from './pages/employees/EmployeeList';   // Hiệp
+import Leaves from './pages/attendance/Leaves';
+import Payslip from './pages/payroll/Payslip'
 import Attendance from './pages/attendance/Attendance';      // Sêu
 import PayrollList from './pages/payroll/PayrollList';       // Vỹ
 
@@ -121,9 +123,9 @@ function App() {
           <Route path="/payroll/payslip/:id" element={<Payslip />} />
 
           {/* --- ROUTES CỦA TEAM (Các bạn khác sẽ tự mở comment khi code xong) --- */}
-          <Route path="/login" element={<Login />} />
-          <Route path="/dashboard" element={<Dashboard />} />
-          <Route path="/employees" element={<EmployeeList />} />
+          {/* <Route path="/login" element={<Login />} /> */}
+          {/* <Route path="/dashboard" element={<Dashboard />} /> */}
+          {/* <Route path="/employees" element={<EmployeeList />} /> */}
           <Route path="/attendance" element={<Attendance />} />
           <Route path="/payroll" element={<PayrollList />} />
         </Routes>

@@ -1,63 +1,85 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './Admin.css';
 
 function Profile() {
+  // Trạng thái lưu thông tin cá nhân của Admin
+  const [profile, setProfile] = useState({
+    fullName: 'Nguyễn Ngọc Tài',
+    email: 'tai108742@donga.edu.vn',
+    phone: '0912000001',
+    role: 'System Admin',
+    department: 'Phòng IT',
+    joinDate: '15/01/2023'
+  });
+
+  const [isEditing, setIsEditing] = useState(false);
+
+  const handleSave = () => {
+    setIsEditing(false);
+    alert('✅ Đã cập nhật hồ sơ thành công!');
+  };
+
   return (
     <div className="dashboard-wrapper">
       <div className="page-header">
         <h2>Hồ sơ Quản trị viên</h2>
-        <p>Hồ sơ cá nhân và thông tin tài khoản của bạn trên hệ thống</p>
+        <p>Quản lý thông tin cá nhân và tài khoản của bạn</p>
       </div>
 
-      <div className="grid-2">
-        {/* Cột trái: Thẻ thông tin nhanh */}
-        <div className="dash-card profile-card-left">
-          <div className="avatar-large">NT</div>
-          <h2 style={{ fontSize: '22px', margin: '0 0 5px' }}>Nguyễn Ngọc Tài</h2>
-          <p style={{ margin: '0 0 15px', color: '#64748b' }}> tai108742@donga.edu.vn </p>
-          <span className="p-tag"> Quản trị viên hệ thống (SA)</span>
-          <hr style={{ margin: '24px 0', border: 'none', borderTop: '1px solid #edf2f9' }} />
-          
-          <p style={{ display: 'flex', justifyContent: 'space-between', fontSize: '14px', marginBottom: '10px' }}>
-            <span>Phòng ban:</span> <strong>Lớp IT24B - Trưởng nhóm</strong>
-          </p>
-          <p style={{ display: 'flex', justifyContent: 'space-between', fontSize: '14px' }}>
-            <span>Quyền hạn:</span> <strong style={{ color: '#059669' }}>Tất cả các quyền</strong>
-          </p>
-          <button type="button" className="p-btn p-btn-primary" style={{ marginTop: '24px', width: '100%' }}> Đổi ảnh đại diện </button>
+      <div className="dash-card" style={{ maxWidth: '800px', margin: '0 auto', display: 'flex', gap: '30px', alignItems: 'flex-start' }}>
+        
+        {/* Cột trái: Avatar */}
+        <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '15px', padding: '20px', backgroundColor: '#f8fafc', borderRadius: '12px', minWidth: '200px' }}>
+          <div style={{ width: '100px', height: '100px', borderRadius: '50%', backgroundColor: '#3b82f6', color: 'white', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '36px', fontWeight: 'bold' }}>
+            NT
+          </div>
+          <div style={{ textAlign: 'center' }}>
+            <h3 style={{ margin: '0 0 5px 0', fontSize: '18px' }}>{profile.fullName}</h3>
+            <span style={{ backgroundColor: '#dbeafe', color: '#1d4ed8', padding: '4px 10px', borderRadius: '20px', fontSize: '12px', fontWeight: '600' }}>
+              {profile.role}
+            </span>
+          </div>
         </div>
 
-        {/* Cột phải: Form cập nhật */}
-        <div className="dash-card">
-          <h3 className="card-title">Cập nhật thông tin</h3>
-          <form>
-            <div className="grid-2">
-              <div className="p-form-group">
-                <label>Họ và tên</label>
-                <input type="text" className="p-input" defaultValue="Nguyễn Ngọc Tài" placeholder="Nhập họ và tên..." />
-              </div>
-              <div className="p-form-group">
-                <label>Email liên hệ</label>
-                <input type="email" className="p-input" defaultValue="admin.tai@company.com" placeholder="Email công việc..." />
-              </div>
-              <div className="p-form-group">
-                <label>Tên đăng nhập (Username)</label>
-                <input type="text" className="p-input" value="admin_tai" readOnly />
-              </div>
-              <div className="p-form-group">
-                <label>Số điện thoại</label>
-                <input type="text" className="p-input" defaultValue="0912 345 678" placeholder="0912..." />
-              </div>
+        {/* Cột phải: Form thông tin */}
+        <div style={{ flex: 1, width: '100%' }}>
+          <div className="grid-2" style={{ gap: '20px' }}>
+            <div className="form-group">
+              <label style={{ display: 'block', marginBottom: '8px', color: '#64748b', fontSize: '14px' }}>Họ và tên</label>
+              <input type="text" value={profile.fullName} disabled={!isEditing} 
+                     onChange={(e) => setProfile({...profile, fullName: e.target.value})}
+                     style={{ width: '100%', padding: '10px', borderRadius: '6px', border: '1px solid #cbd5e1' }} />
             </div>
-            
-            <div className="p-form-group" style={{ marginTop: '10px' }}>
-              <label>Đổi mật khẩu (Bỏ trống nếu không muốn đổi)</label>
-              <input type="password" className="p-input" placeholder="Mật khẩu mới..." />
+            <div className="form-group">
+              <label style={{ display: 'block', marginBottom: '8px', color: '#64748b', fontSize: '14px' }}>Email</label>
+              <input type="email" value={profile.email} disabled={!isEditing}
+                     onChange={(e) => setProfile({...profile, email: e.target.value})}
+                     style={{ width: '100%', padding: '10px', borderRadius: '6px', border: '1px solid #cbd5e1' }} />
             </div>
+            <div className="form-group">
+              <label style={{ display: 'block', marginBottom: '8px', color: '#64748b', fontSize: '14px' }}>Số điện thoại</label>
+              <input type="text" value={profile.phone} disabled={!isEditing}
+                     onChange={(e) => setProfile({...profile, phone: e.target.value})}
+                     style={{ width: '100%', padding: '10px', borderRadius: '6px', border: '1px solid #cbd5e1' }} />
+            </div>
+            <div className="form-group">
+              <label style={{ display: 'block', marginBottom: '8px', color: '#64748b', fontSize: '14px' }}>Phòng ban</label>
+              <input type="text" value={profile.department} disabled style={{ width: '100%', padding: '10px', borderRadius: '6px', border: '1px solid #cbd5e1', backgroundColor: '#f1f5f9' }} />
+            </div>
+          </div>
 
-            <button type="button" className="p-btn p-btn-success" style={{ marginTop: '10px' }}> Lưu thay đổi </button>
-          </form>
+          <div style={{ marginTop: '25px', display: 'flex', justifyContent: 'flex-end', gap: '10px' }}>
+            {isEditing ? (
+              <>
+                <button className="p-btn p-btn-outline" onClick={() => setIsEditing(false)}>Hủy</button>
+                <button className="p-btn p-btn-primary" onClick={handleSave}>💾 Lưu thay đổi</button>
+              </>
+            ) : (
+              <button className="p-btn p-btn-primary" onClick={() => setIsEditing(true)}>✏️ Chỉnh sửa hồ sơ</button>
+            )}
+          </div>
         </div>
+
       </div>
     </div>
   );

@@ -138,7 +138,7 @@ const Leaves = () => {
           {/* ô tìm kiếm */}
           <input 
             type="text" 
-            placeholder="Nhập Mã NV tìm nhanh..." 
+            placeholder="Nhập mã NV tìm nhanh..." 
             value={searchTerm}
             onChange={(e) => {
               setSearchTerm(e.target.value);
