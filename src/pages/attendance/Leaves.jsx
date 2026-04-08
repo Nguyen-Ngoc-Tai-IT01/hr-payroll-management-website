@@ -71,7 +71,7 @@ const Leaves = () => {
     const url = URL.createObjectURL(blob);
     const link = document.createElement("a");
     link.href = url;
-    link.setAttribute("download", `Bao_cao_Nghi_phep_IT24B.csv`);
+    link.setAttribute("download", `Bao_cao_Nghi_phep.csv`);
     link.click();
   };
 
