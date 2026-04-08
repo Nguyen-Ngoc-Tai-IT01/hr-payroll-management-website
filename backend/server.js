@@ -1,34 +1,26 @@
 // backend/server.js
 const express = require('express');
-const cors = require('cors');
+const cors = require('cors'); 
+const bodyParser = require('body-parser'); // 
 
 const app = express();
 const PORT = 5000;
 
-// Cấu hình Middleware
-app.use(cors()); // Cho phép Frontend gọi API
-app.use(express.json()); // Giúp Backend hiểu được dữ liệu dạng JSON gửi lên từ form
+app.use(cors());
+app.use(bodyParser.json());
+app.use(express.json()); 
 
-// ==========================================
-// KHU VỰC ĐĂNG KÝ API CHO CÁC THÀNH VIÊN
-// ==========================================
+// --- ROUTES CỦA CẢ NHÓM ĐÃ GỘP CHUNG ---
+app.use('/api/payroll', require('./routes/payrollRoutes'));       // Của Vỹ
+app.use('/api/attendance', require('./routes/attendanceRoutes'));  // Của Sêu
+app.use('/api/employees', require('./routes/employeeRoutes'));    // Của hiệp sêu lấy để dùng
+app.use('/api/leaves', require('./routes/leaveRoutes'));          // Của Sêu
 
-// 1. API Báo cáo & Admin (Của Tài)
-const reportRoutes = require('./routes/reportRoutes');
-app.use('/api/reports', reportRoutes);
-
-// 2. API của team (Tạm comment để anh em code sau)
-// app.use('/api/auth', require('./routes/authRoutes'));       // Tuyến
-// app.use('/api/employees', require('./routes/employeeRoutes')); // Hiệp
-// app.use('/api/attendance', require('./routes/attendanceRoutes')); // Sêu
-// app.use('/api/payroll', require('./routes/payrollRoutes'));    // Vỹ
-
-// API kiểm tra Server có sống không
 app.get('/', (req, res) => {
-  res.send('Máy chủ HR & Payroll Backend đang hoạt động tưng bừng! 🚀');
+  res.send('HR Payroll Backend is running!');
 });
 
-// Khởi động Server
+// Chạy server
 app.listen(PORT, () => {
-  console.log(`✅ Backend đang chạy tại http://localhost:${PORT}`);
+  console.log(`Server Backend đang chạy tại http://localhost:${PORT}`);
 });

@@ -1,5 +1,18 @@
 # React + Vite
 
+1. Clone the repository
+   git clone https://github.com/Nguyen-Ngoc-Tai-IT01/hr-payroll-management-website.git
+   
+3. Đi vào dự án và Cài đặt thư viện cho React (Frontend)
+   cd hr-payroll-management-website
+   npm install
+   
+4. Cài đặt thư viện cho Node.js (Backend)
+   cd backend
+   npm install
+
+
+
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
 Currently, two official plugins are available:

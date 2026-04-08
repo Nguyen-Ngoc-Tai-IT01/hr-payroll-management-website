@@ -1,28 +1,7 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import './Admin.css';
 
 function Reports() {
-  // 1. Tạo biến lưu trữ dữ liệu lấy từ Backend
-  const [reportData, setReportData] = useState({
-    total: 0,
-    active: 0
-  });
-
-  // 2. Tự động gọi API khi vừa mở trang Báo cáo
-  useEffect(() => {
-    fetch('http://localhost:5000/api/reports/employees')
-      .then(response => response.json())
-      .then(data => {
-        if (data.success) {
-          setReportData({
-            total: data.total,
-            active: data.active
-          });
-        }
-      })
-      .catch(error => console.error("Lỗi kết nối Backend:", error));
-  }, []);
-
   return (
     <div className="dashboard-wrapper">
       <div className="page-header">
@@ -40,16 +19,21 @@ function Reports() {
           <div className="report-icon-box">👥</div>
           <h3>Dữ liệu Nhân sự (Hiệp)</h3>
           <p>Danh sách chi tiết hồ sơ nhân viên, chức vụ, phòng ban định dạng CSV.</p>
-          <button className="p-btn p-btn-outline" style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '8px' }}>
+          <button className="p-btn p-btn-outline" style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '8px', cursor: 'pointer' }}>
              Tải CSV
           </button>
         </div>
 
+        {/* card chấm công của sêu đã gắn sự kiện onClick */}
         <div className="dash-card report-item-card">
           <div className="report-icon-box" style={{ color: '#e67e22', backgroundColor: '#fff7ed' }}>📅</div>
           <h3>Dữ liệu Chấm công (Sêu)</h3>
           <p>Báo cáo giờ Check-in/Check-out, số ngày nghỉ phép trong tháng này.</p>
-          <button className="p-btn p-btn-outline" style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '8px' }}>
+          <button 
+            onClick={handleExportAttendance} 
+            className="p-btn p-btn-outline" 
+            style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '8px', cursor: 'pointer', backgroundColor: '#e67e22', color: 'white', border: 'none' }}
+          >
              Tải CSV
           </button>
         </div>
@@ -58,7 +42,7 @@ function Reports() {
           <div className="report-icon-box" style={{ color: '#059669', backgroundColor: '#ecfdf5' }}>💰</div>
           <h3>Báo cáo Tiền lương (Vỹ)</h3>
           <p>Bảng lương chi tiết bao gồm lương cơ bản, phụ cấp và các khoản trừ.</p>
-          <button className="p-btn p-btn-outline" style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '8px' }}>
+          <button className="p-btn p-btn-outline" style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '8px', cursor: 'pointer' }}>
              Tải CSV
           </button>
         </div>

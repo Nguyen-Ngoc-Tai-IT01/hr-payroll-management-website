@@ -6,7 +6,7 @@ import './pages/admin/Admin.css';
 // --- IMPORT LOGO TỪ THƯ MỤC ASSETS ---
 import logo from './assets/logo.png';
 
-// --- 1. IMPORT CÁC TRANG CỦA TÀI (Đã code xong) ---
+// --- 1. IMPORT CÁC TRANG CỦA TÀI ---
 import Settings from './pages/admin/Settings';
 import Profile from './pages/admin/Profile';
 import Reports from './pages/admin/Reports';
@@ -19,7 +19,7 @@ import Attendance from './pages/attendance/Attendance';      // Sêu
 import PayrollList from './pages/payroll/PayrollList';       // Vỹ
 
 
-// --- Trang Giới thiệu (Dành cho cả Team) ---
+// --- TRANG CHỦ (Home) ---
 function Home() {
   return (
     <div className="dashboard-wrapper" style={{ minHeight: 'calc(100vh - 70px)' }}>
@@ -64,10 +64,11 @@ function Home() {
   );
 }
 
+// --- COMPONENT APP CHÍNH ---
 function App() {
   return (
     <div className="app-container">
-      {/* --- THANH MENU ĐIỀU HƯỚNG DÙNG CHUNG CẢ TEAM --- */}
+      {/* --- THANH MENU ĐIỀU HƯỚNG DÙNG CHUNG CHUNG CẢ TEAM --- */}
       <nav className="top-nav-modern">
         <div className="nav-brand">
           {/* Logo gắn trên góc trái của thanh Menu */}
@@ -100,16 +101,24 @@ function App() {
         </div>
       </nav>
 
-      {/* --- KHU VỰC HIỂN THỊ NỘI DUNG TRANG --- */}
+      {/* --- KHU VỰC HIỂN THỊ NỘI DUNG TRANG CHÍNH --- */}
       <div className="main-content">
         <Routes>
           {/* Trang chủ */}
           <Route path="/" element={<Home />} />
 
-          {/* --- ROUTES CỦA TÀI (Đang hoạt động) --- */}
+          {/* --- ROUTES CỦA TÀI --- */}
           <Route path="/settings" element={<Settings />} />
           <Route path="/profile" element={<Profile />} />
           <Route path="/reports" element={<Reports />} />
+
+          {/* --- ROUTES CỦA SÊU --- */}
+          <Route path="/attendance" element={<Attendance />} />
+          <Route path="/leaves" element={<Leaves />} />
+
+          {/* --- ROUTES CỦA VỸ (Đã được tích hợp thành công) --- */}
+          <Route path="/payroll" element={<PayrollList />} />
+          <Route path="/payroll/payslip/:id" element={<Payslip />} />
 
           {/* --- ROUTES CỦA TEAM (Các bạn khác sẽ tự mở comment khi code xong) --- */}
           <Route path="/login" element={<Login />} />
