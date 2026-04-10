@@ -21,21 +21,13 @@ import Attendance from './pages/attendance/Attendance';      // Sêu
 import PayrollList from './pages/payroll/PayrollList';       // Vỹ
 
 
-// --- TRANG CHỦ (Home) ---
+// --- Trang Giới thiệu (Dành cho cả Team) ---
 function Home() {
   return (
     <div className="dashboard-wrapper" style={{ minHeight: 'calc(100vh - 70px)' }}>
       <div className="page-header" style={{ textAlign: 'center', marginBottom: '40px', marginTop: '20px' }}>
-        {/* Đưa Logo to ra giữa trang chủ */}
-        <img 
-          src={logo} 
-          alt="Workforce Manager Logo" 
-          style={{ height: '140px', objectFit: 'contain', marginBottom: '15px', borderRadius: '10px' }} 
-        />
-        <h1 style={{ fontSize: '26px', color: '#0f172a', marginBottom: '10px' }}>
-          Hệ thống Quản lý Nhân sự và Tiền lương
-        </h1>
-        <p>Nền tảng quản trị doanh nghiệp toàn diện</p>
+        <h1 style={{ fontSize: '32px', color: '#0f172a', marginBottom: '10px' }}>👋 Chào mừng đến với HR System</h1>
+        <p>Hệ thống Quản lý Nhân sự và Tiền lương chuyên nghiệp</p>
       </div>
 
       <div className="dash-card" style={{ maxWidth: '850px', margin: '0 auto', padding: '35px' }}>
@@ -66,20 +58,14 @@ function Home() {
   );
 }
 
-// --- COMPONENT APP CHÍNH ---
 function App() {
   return (
     <div className="app-container">
       {/* --- THANH MENU ĐIỀU HƯỚNG DÙNG CHUNG CHUNG CẢ TEAM --- */}
       <nav className="top-nav-modern">
         <div className="nav-brand">
-          {/* Logo gắn trên góc trái của thanh Menu */}
-          <img 
-            src={logo} 
-            alt="Logo" 
-            style={{ height: '45px', objectFit: 'contain', cursor: 'pointer' }} 
-            onClick={() => window.location.href = '/'}
-          />
+          <div className="brand-logo">HR</div>
+          <span className="brand-name">Admin Portal</span>
         </div>
         
         <div className="nav-menu">
@@ -103,22 +89,22 @@ function App() {
         </div>
       </nav>
 
-      {/* --- KHU VỰC HIỂN THỊ NỘI DUNG TRANG CHÍNH --- */}
+      {/* --- KHU VỰC HIỂN THỊ NỘI DUNG TRANG --- */}
       <div className="main-content">
         <Routes>
           {/* Trang chủ */}
           <Route path="/" element={<Home />} />
 
-          {/* --- ROUTES CỦA TÀI --- */}
+          {/* --- ROUTES CỦA TÀI (Đang hoạt động) --- */}
           <Route path="/settings" element={<Settings />} />
           <Route path="/profile" element={<Profile />} />
           <Route path="/reports" element={<Reports />} />
 
-          {/* --- ROUTES CỦA SÊU --- */}
+          {/* route của sêu đang hoạt động */}
           <Route path="/attendance" element={<Attendance />} />
           <Route path="/leaves" element={<Leaves />} />
 
-          {/* --- ROUTES CỦA VỸ (Đã được tích hợp thành công) --- */}
+          {/* route chi tiết Payslip của Vỹ */}
           <Route path="/payroll" element={<PayrollList />} />
           <Route path="/payroll/payslip/:id" element={<Payslip />} />
 
@@ -126,12 +112,10 @@ function App() {
           {/* <Route path="/login" element={<Login />} /> */}
           {/* <Route path="/dashboard" element={<Dashboard />} /> */}
           {/* <Route path="/employees" element={<EmployeeList />} /> */}
-          <Route path="/attendance" element={<Attendance />} />
-          <Route path="/payroll" element={<PayrollList />} />
         </Routes>
       </div>
     </div>
   );
 }
 
-export default App;
+ export default App; 
