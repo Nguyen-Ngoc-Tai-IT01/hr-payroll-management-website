@@ -145,7 +145,7 @@ function App() {
           {/* --- ROUTES CỦA TÀI --- */}
           <Route path="/settings" element={<Settings />} />
           <Route path="/profile" element={<Profile />} />
-          <Route path="/reports" element={<Reports />} />
+          <Route path="/reports" element={<Reports />} />		
 
           {/* --- ROUTES CỦA SÊU --- */}
           <Route path="/attendance" element={<Attendance />} />

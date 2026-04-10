@@ -1,132 +1,147 @@
-import React, { useState, useEffect, useMemo } from 'react';
-import { Link } from 'react-router-dom';
-import './style.css';
+import React, { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
+import Swal from "sweetalert2";
+import "./style.css";
 
-const EmployeeList = () => {
+function EmployeeList() {
   const [employees, setEmployees] = useState([]);
   const [loading, setLoading] = useState(true);
-  const [search, setSearch] = useState('');
+  const [searchTerm, setSearchTerm] = useState("");
 
-  useEffect(() => {
-    fetch('/backend/data/employees.json')
-      .then(res => res.json())
-      .then(data => {
+  // Load dữ liệu từ backend
+  const loadEmployees = () => {
+    fetch("http://localhost:5000/api/employees")
+      .then((res) => res.json())
+      .then((data) => {
         setEmployees(data);
         setLoading(false);
       })
-      .catch(err => {
-        console.error("Lỗi load dữ liệu:", err);
+      .catch((err) => {
+        console.error("Lỗi lấy dữ liệu:", err);
+        Swal.fire("Lỗi", "Không thể kết nối server", "error");
         setLoading(false);
       });
+  };
+
+  useEffect(() => {
+    loadEmployees();
   }, []);
 
-  const filteredEmployees = useMemo(() => {
-    return employees.filter(emp =>
-      emp.fullName?.toLowerCase().includes(search.toLowerCase()) ||
-      emp.email?.toLowerCase().includes(search.toLowerCase()) ||
-      emp.department?.toLowerCase().includes(search.toLowerCase()) ||
-      emp.position?.toLowerCase().includes(search.toLowerCase())
-    );
-  }, [employees, search]);
+  // Xóa nhân viên
+  const handleDelete = (id) => {
+    Swal.fire({
+      title: "Xóa nhân viên?",
+      text: "Hành động này không thể hoàn tác!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonText: "Xóa",
+      cancelButtonText: "Hủy",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        fetch(`http://localhost:5000/api/employees/${id}`, {
+          method: "DELETE",
+        })
+          .then((res) => {
+            if (res.ok) {
+              Swal.fire("Đã xóa!", "", "success");
+              loadEmployees();
+            } else {
+              throw new Error();
+            }
+          })
+          .catch(() => {
+            Swal.fire("Lỗi", "Không thể xóa", "error");
+          });
+      }
+    });
+  };
 
-  if (loading) {
+  // Tìm kiếm
+  const filteredEmployees = employees.filter((emp) => {
+    const keyword = searchTerm.toLowerCase();
     return (
-      <div className="layout-container">
-        <div className="dashboard-wrapper" style={{ textAlign: 'center', paddingTop: '100px' }}>
-          <p className="text-muted">Đang tải danh sách nhân viên...</p>
-        </div>
-      </div>
+      emp.fullName?.toLowerCase().includes(keyword) ||
+      emp.id?.toLowerCase().includes(keyword)
     );
-  }
+  });
 
   return (
-    <div className="layout-container">
-      <div className="dashboard-wrapper">
-        {/* Header Section */}
-        <div className="page-header">
-          <div>
-            <h1>Danh sách Nhân viên</h1>
-            <p>
-              Quản lý thông tin nhân sự • <span className="highlight-count">{employees.length}</span> người
-            </p>
-          </div>
-          <Link to="/employees/new" className="p-btn p-btn-primary">
-            <span>+</span> Thêm nhân viên mới
-          </Link>
-        </div>
+    <div className="card">
+      {/* HEADER */}
+      <div className="card-header">
+        <h2>👥 Danh sách nhân sự</h2>
 
-        {/* Search Section */}
-        <div className="search-container">
-          <input
-            type="text"
-            placeholder="🔍 Tìm kiếm theo tên, email, phòng ban, chức vụ..."
-            value={search}
-            onChange={(e) => setSearch(e.target.value)}
-          />
-        </div>
-
-        {/* Table Card */}
-        <div className="dash-card">
-          <div className="table-responsive">
-            <table>
-              <thead>
-                <tr>
-                  <th style={{ width: '100px' }}>Mã NV</th>
-                  <th>Họ tên</th>
-                  <th>Email</th>
-                  <th>SĐT</th>
-                  <th style={{ width: '180px' }}>Phòng ban</th>
-                  <th>Chức vụ</th>
-                  <th style={{ width: '150px', textAlign: 'center' }}>Thao tác</th>
-                </tr>
-              </thead>
-              <tbody>
-                {filteredEmployees.length > 0 ? (
-                  filteredEmployees.map((emp) => (
-                    <tr key={emp.id}>
-                      <td className="emp-id">{emp.id}</td>
-                      <td className="emp-name">{emp.fullName}</td>
-                      <td className="text-muted">{emp.email}</td>
-                      <td className="text-muted">{emp.phone}</td>
-                      <td>
-                        <span className="department-tag">{emp.department}</span>
-                      </td>
-                      <td>{emp.position}</td>
-                      <td>
-                        <div className="action-group">
-                          <Link to={`/employees/${emp.id}`} className="action-link link-view">Xem</Link>
-                          <Link to={`/employees/edit/${emp.id}`} className="action-link link-edit">Sửa</Link>
-                          <button 
-                            onClick={() => alert(`Xóa nhân viên ${emp.fullName}`)}
-                            className="action-link link-delete"
-                          >
-                            Xóa
-                          </button>
-                        </div>
-                      </td>
-                    </tr>
-                  ))
-                ) : (
-                  <tr>
-                    <td colSpan="7" className="empty-state">
-                      Không tìm thấy nhân viên phù hợp với từ khóa "<b>{search}</b>"
-                    </td>
-                  </tr>
-                )}
-              </tbody>
-            </table>
-          </div>
-        </div>
-
-        {/* Footer info */}
-        {filteredEmployees.length > 0 && (
-          <div className="table-footer">
-            Hiển thị {filteredEmployees.length} / {employees.length} nhân viên
-          </div>
-        )}
+        <Link to="/employees/new" className="btn btn-primary">
+          + Thêm nhân viên
+        </Link>
       </div>
+
+      {/* SEARCH */}
+      <div style={{ marginBottom: "15px" }}>
+        <input
+          type="text"
+          placeholder="🔍 Tìm theo mã hoặc tên..."
+          className="input"
+          value={searchTerm}
+          onChange={(e) => setSearchTerm(e.target.value)}
+        />
+      </div>
+
+      {/* TABLE */}
+      {loading ? (
+        <p>⏳ Đang tải...</p>
+      ) : (
+        <table className="table">
+          <thead>
+            <tr>
+              <th>Mã NV</th>
+              <th>Họ tên</th>
+              <th>Phòng ban</th>
+              <th>Chức vụ</th>
+              <th>Trạng thái</th>
+              <th>Hành động</th>
+            </tr>
+          </thead>
+
+          <tbody>
+            {filteredEmployees.length > 0 ? (
+              filteredEmployees.map((emp) => (
+                <tr key={emp.id}>
+                  <td>{emp.id}</td>
+                  <td>{emp.fullName}</td>
+                  <td>{emp.department}</td>
+                  <td>{emp.position}</td>
+                  <td>{emp.status}</td>
+                  <td>
+                    <Link
+                      to={`/employees/${emp.id}`}
+                      className="btn btn-sm"
+                    >
+                      Xem
+                    </Link>
+
+                    <button
+                      onClick={() => handleDelete(emp.id)}
+                      className="btn btn-sm"
+                      style={{ marginLeft: "5px", color: "red" }}
+                    >
+                      Xóa
+                    </button>
+                  </td>
+                </tr>
+              ))
+            ) : (
+              <tr>
+                <td colSpan="6" style={{ textAlign: "center" }}>
+                  Không có dữ liệu
+                </td>
+              </tr>
+            )}
+          </tbody>
+        </table>
+      )}
     </div>
   );
-};
+}
 
 export default EmployeeList;
