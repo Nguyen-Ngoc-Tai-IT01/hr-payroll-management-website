@@ -78,4 +78,5 @@
   { "id": 33, "fullName": "Hồ Văn Thân", "email": "hvt@company.com", "phone": "0922334455", "department": "Phòng Kế toán", "position": "Kế toán trưởng", "baseSalary": 12000000, "joinDate": "2024-02-01", "status": "Đang làm việc" },
   { "id": 34, "fullName": "Ngô Thị Dậu", "email": "ntd@company.com", "phone": "0933445566", "department": "Phòng Kinh doanh", "position": "Nhân viên", "baseSalary": 18000000, "joinDate": "2023-08-20", "status": "Đang làm việc" },
   { "id": 35, "fullName": "Dương Văn Tuất", "email": "dvt@company.com", "phone": "0944556677", "department": "Phòng Marketing", "position": "Trưởng phòng", "baseSalary": 25000000, "joinDate": "2021-11-05", "status": "Đang làm việc" }
+
 ]
