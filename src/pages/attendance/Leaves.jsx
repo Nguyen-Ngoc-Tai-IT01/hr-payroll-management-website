@@ -152,7 +152,7 @@ const Leaves = () => {
       {/* khối trắng chứa thanh tìm kiếm và bảng dữ liệu (y hệt nhân sự) */}
       <div style={{ backgroundColor: 'white', padding: '20px', borderRadius: '12px', boxShadow: '0 4px 6px -1px rgba(0,0,0,0.1)' }}>
         
-        {/* 🚀 ĐÃ SỬA: THANH TÌM KIẾM VÀ TỔNG SỐ ĐƠN NGHỈ PHÉP */}
+        {/* THANH TÌM KIẾM VÀ TỔNG SỐ ĐƠN NGHỈ PHÉP */}
         <div style={{ marginBottom: '20px', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
           <input 
             type="text" 
