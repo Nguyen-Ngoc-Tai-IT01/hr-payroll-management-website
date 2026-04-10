@@ -1,0 +1,88 @@
+:root {
+  --primary: #3b82f6;
+  --bg-gradient: linear-gradient(135deg, #f8fafc 0%, #e0f2fe 100%);
+  --error: #ef4444;
+}
+
+/* Ép mọi thứ tính toán width/padding chuẩn xác */
+* { box-sizing: border-box; }
+
+.auth-page-wrapper {
+  min-height: calc(100vh - 70px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--bg-gradient);
+  padding: 20px;
+}
+
+.auth-card-modern {
+  background: white;
+  width: 100%;
+  max-width: 420px;
+  padding: 35px; /* Giảm nhẹ padding cho cân đối */
+  border-radius: 20px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+}
+
+.auth-header { text-align: center; margin-bottom: 30px; }
+.auth-header h2 { font-size: 24px; color: #1e293b; margin-bottom: 5px; }
+.auth-header p { color: #64748b; font-size: 14px; }
+
+/* Tối ưu nhóm input */
+.input-group-modern {
+  margin-bottom: 18px;
+  width: 100%;
+}
+
+.label-row {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 6px;
+}
+
+.label-row label {
+  font-weight: 600;
+  color: #334155;
+  font-size: 13px;
+}
+
+.modern-input {
+  width: 100%; /* Luôn lấy đủ 100% độ rộng của thẻ cha */
+  padding: 12px 16px;
+  border: 2px solid #e2e8f0;
+  border-radius: 10px;
+  font-size: 14px;
+  display: block; /* Ép input thành khối */
+  transition: 0.2s;
+}
+
+.modern-input:focus {
+  outline: none;
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+}
+
+.modern-input.input-error { border-color: var(--error); background: #fef2f2; }
+.error-text { color: var(--error); font-size: 12px; }
+
+/* Nút */
+.btn-grad-modern {
+  width: 100%;
+  padding: 14px;
+  background: var(--primary);
+  color: white;
+  border: none;
+  border-radius: 10px;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  margin-top: 10px;
+  transition: 0.3s;
+}
+
+.btn-grad-modern:hover { background: #2563eb; }
+
+/* Footer */
+.auth-footer { text-align: center; margin-top: 20px; font-size: 14px; color: #64748b; }
+.auth-footer a { color: var(--primary); font-weight: 600; text-decoration: none; }
