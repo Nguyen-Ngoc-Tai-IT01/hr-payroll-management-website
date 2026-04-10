@@ -1,0 +1,29 @@
+﻿{
+  "summary": {
+    "totalEmployees": 31,
+    "newHiresThisMonth": 2,
+    "resignedThisMonth": 1,
+    "totalDepartments": 7
+  },
+  "attendanceToday": {
+    "present": 28,
+    "absent": 1,
+    "onLeave": 2,
+    "late": 3
+  },
+  "financial": {
+    "totalPayrollEstimated": 685000000,
+    "averageSalary": 22096774,
+    "budgetUsed": "85%"
+  },
+  "departmentStats": [
+    { "name": "Phòng Phần mềm", "count": 10 },
+    { "name": "Phòng Kinh doanh", "count": 4 },
+    { "name": "Phòng Marketing", "count": 4 },
+    { "name": "Phòng IT", "count": 3 },
+    { "name": "Phòng Nhân sự", "count": 3 },
+    { "name": "Phòng Kế toán", "count": 2 },
+    { "name": "Ban Giám đốc", "count": 2 },
+    { "name": "Phòng CSKH", "count": 3 }
+  ]
+}

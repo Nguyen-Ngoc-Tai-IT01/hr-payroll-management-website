@@ -1,0 +1,9 @@
+﻿[
+  { "id": "ATT_0326_001", "employeeId": "EMP001", "month": "03/2026", "standardDays": 22, "actualDays": 22, "lateCount": 0, "leaveDays": 0, "overtimeHours": 5 },
+  { "id": "ATT_0326_002", "employeeId": "EMP002", "month": "03/2026", "standardDays": 22, "actualDays": 21.5, "lateCount": 2, "leaveDays": 0.5, "overtimeHours": 0 },
+  { "id": "ATT_0326_003", "employeeId": "EMP003", "month": "03/2026", "standardDays": 22, "actualDays": 22, "lateCount": 0, "leaveDays": 0, "overtimeHours": 12 },
+  { "id": "ATT_0326_004", "employeeId": "EMP004", "month": "03/2026", "standardDays": 22, "actualDays": 20, "lateCount": 0, "leaveDays": 2, "overtimeHours": 0 },
+  { "id": "ATT_0326_005", "employeeId": "EMP005", "month": "03/2026", "standardDays": 22, "actualDays": 22, "lateCount": 5, "leaveDays": 0, "overtimeHours": 2 },
+  { "id": "ATT_0326_006", "employeeId": "EMP006", "month": "03/2026", "standardDays": 22, "actualDays": 22, "lateCount": 0, "leaveDays": 0, "overtimeHours": 0 },
+  { "id": "ATT_0326_007", "employeeId": "EMP007", "month": "03/2026", "standardDays": 22, "actualDays": 21, "lateCount": 0, "leaveDays": 1, "overtimeHours": 0 }
+]

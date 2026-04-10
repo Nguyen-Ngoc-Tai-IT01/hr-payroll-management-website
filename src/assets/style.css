@@ -1,0 +1,256 @@
+/* ===== RESET ===== */
+body {
+  margin: 0;
+  font-family: 'Segoe UI', sans-serif;
+  background: #f1f5f9;
+  color: #1e293b;
+}
+
+/* ===== LAYOUT ===== */
+.app-layout {
+  display: flex;
+  height: 100vh;
+}
+
+/* ===== SIDEBAR ===== */
+.sidebar {
+  width: 240px;
+  background: linear-gradient(180deg, #0f172a, #1e293b);
+  color: white;
+  padding: 20px;
+}
+
+.sidebar-header {
+  margin-bottom: 30px;
+}
+
+.logo {
+  background: #3b82f6;
+  padding: 12px;
+  border-radius: 12px;
+  text-align: center;
+  font-weight: bold;
+  font-size: 18px;
+}
+
+/* MENU */
+.menu-item {
+  display: block;
+  padding: 12px;
+  border-radius: 10px;
+  color: #cbd5e1;
+  text-decoration: none;
+  margin-bottom: 10px;
+  transition: 0.3s;
+}
+
+.menu-item:hover {
+  background: rgba(255,255,255,0.1);
+}
+
+.menu-item.active {
+  background: #3b82f6;
+  color: white;
+  font-weight: bold;
+}
+
+/* ===== MAIN ===== */
+.main-section {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+/* ===== TOPBAR ===== */
+.topbar {
+  height: 65px;
+  background: white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 30px;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.topbar h3 {
+  margin: 0;
+}
+
+.user-info {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.avatar {
+  background: #3b82f6;
+  color: white;
+  border-radius: 50%;
+  padding: 8px 12px;
+  font-weight: bold;
+}
+
+/* ===== CONTENT ===== */
+.content {
+  padding: 30px;
+}
+
+/* ===== CARD ===== */
+.card {
+  background: white;
+  padding: 25px;
+  border-radius: 14px;
+  box-shadow: 0 8px 25px rgba(0,0,0,0.05);
+  max-width: 800px;
+}
+
+/* ===== CARD HEADER ===== */
+.card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 25px;
+}
+
+.card h2 {
+  margin-top: 0;
+}
+
+/* ===== BUTTON ===== */
+.btn {
+  padding: 8px 16px;
+  border-radius: 8px;
+  border: none;
+  font-size: 14px;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.btn-primary {
+  background: #3b82f6;
+  color: white;
+}
+
+.btn-primary:hover {
+  background: #2563eb;
+}
+
+.btn-outline {
+  border: 1px solid #3b82f6;
+  color: #3b82f6;
+  background: white;
+}
+
+.btn-outline:hover {
+  background: #3b82f6;
+  color: white;
+}
+
+.btn-danger {
+  background: #ef4444;
+  color: white;
+}
+
+.btn-danger:hover {
+  background: #dc2626;
+}
+
+/* ===== BUTTON GROUP ===== */
+.button-group {
+  display: flex;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+/* ===== TABLE ===== */
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.table th {
+  background: #3b82f6;
+  color: white;
+  padding: 14px;
+  text-align: left;
+}
+
+.table td {
+  padding: 14px;
+  border-bottom: 1px solid #eee;
+}
+
+.table tr:hover {
+  background: #f9fafb;
+}
+
+/* ===== LINK ===== */
+.link {
+  color: #3b82f6;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.link:hover {
+  text-decoration: underline;
+}
+
+/* ===== FORM ===== */
+.form {
+  margin-top: 20px;
+}
+
+.form-group {
+  margin-bottom: 15px;
+}
+
+.input {
+  width: 100%;
+  padding: 10px;
+  border-radius: 8px;
+  border: 1px solid #cbd5e1;
+  outline: none;
+  transition: 0.2s;
+}
+
+.input:focus {
+  border-color: #3b82f6;
+  box-shadow: 0 0 0 2px rgba(59,130,246,0.2);
+}
+
+/* ===== FORM TITLE ===== */
+.form h2 {
+  margin-bottom: 20px;
+}
+
+/* ===== DETAIL INFO ===== */
+.detail-item {
+  margin-bottom: 10px;
+  font-size: 15px;
+}
+
+.detail-item strong {
+  display: inline-block;
+  width: 100px;
+}
+
+/* ===== HOME ===== */
+.dashboard-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+
+.center {
+  text-align: center;
+}
+
+.home-actions {
+  margin-top: 20px;
+  display: flex;
+  gap: 15px;
+  justify-content: center;
+}

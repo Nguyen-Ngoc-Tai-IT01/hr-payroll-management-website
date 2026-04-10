@@ -1,0 +1,9 @@
+﻿[
+  { "id": "PAY_0326_001", "employeeId": "EMP001", "month": "03/2026", "baseSalary": 25000000, "allowance": 2000000, "bonus": 1000000, "deduction": 0, "netSalary": 28000000, "paymentStatus": "Đã thanh toán" },
+  { "id": "PAY_0326_002", "employeeId": "EMP002", "month": "03/2026", "baseSalary": 22000000, "allowance": 1500000, "bonus": 0, "deduction": 500000, "netSalary": 23000000, "paymentStatus": "Đã thanh toán" },
+  { "id": "PAY_0326_003", "employeeId": "EMP003", "month": "03/2026", "baseSalary": 15000000, "allowance": 1000000, "bonus": 2000000, "deduction": 0, "netSalary": 18000000, "paymentStatus": "Đã thanh toán" },
+  { "id": "PAY_0326_004", "employeeId": "EMP004", "month": "03/2026", "baseSalary": 18000000, "allowance": 1000000, "bonus": 0, "deduction": 1636363, "netSalary": 17363637, "paymentStatus": "Chờ thanh toán" },
+  { "id": "PAY_0326_005", "employeeId": "EMP005", "month": "03/2026", "baseSalary": 14000000, "allowance": 500000, "bonus": 0, "deduction": 250000, "netSalary": 14250000, "paymentStatus": "Đã thanh toán" },
+  { "id": "PAY_0326_006", "employeeId": "EMP006", "month": "03/2026", "baseSalary": 80000000, "allowance": 10000000, "bonus": 0, "deduction": 0, "netSalary": 90000000, "paymentStatus": "Đã thanh toán" },
+  { "id": "PAY_0326_007", "employeeId": "EMP007", "month": "03/2026", "baseSalary": 60000000, "allowance": 8000000, "bonus": 0, "deduction": 2727272, "netSalary": 65272728, "paymentStatus": "Đã thanh toán" }
+]
