@@ -51,16 +51,16 @@ const Login = () => {
             }
 
         } catch (err) {
-            let serverMsg = "Lỗi: Không thể kết nối đến máy chủ!";
+            let serverMsg = "Lỗi kết nối máy chủ!";
 
-            if (err.response?.status === 404) {
-                serverMsg = "Không tìm thấy API. Backend chưa chạy.";
-            } else if (err.response?.status === 401 || err.response?.status === 400) {
-                serverMsg = err.response?.data?.message || "Sai tên đăng nhập hoặc mật khẩu!";
+            if (err.response?.status === 401 || err.response?.status === 400) {
+                serverMsg = "Tài khoản hoặc mật khẩu không chính xác!";
             }
 
+            // Cập nhật state để khung lỗi hiện trên form
             setErrors({ server: serverMsg });
 
+            // Thông báo popup giữ nguyên
             Swal.fire({
                 title: "Đăng nhập thất bại",
                 text: serverMsg,

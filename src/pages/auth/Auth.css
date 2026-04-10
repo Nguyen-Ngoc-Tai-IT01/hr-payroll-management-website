@@ -86,3 +86,29 @@
 /* Footer */
 .auth-footer { text-align: center; margin-top: 20px; font-size: 14px; color: #64748b; }
 .auth-footer a { color: var(--primary); font-weight: 600; text-decoration: none; }
+/* Style cho hộp thông báo lỗi server */
+.server-error-box {
+    background-color: #fef2f2; /* Nền đỏ rất nhạt */
+    border: 1px solid #fee2e2; /* Viền đỏ nhạt */
+    color: #b91c1c;           /* Chữ đỏ đậm */
+    padding: 12px 16px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 14px;
+    font-weight: 500;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+}
+
+/* Hiệu ứng rung nhẹ khi có lỗi (tùy chọn) */
+.server-error-box {
+    animation: shake 0.4s ease-in-out;
+}
+
+@keyframes shake {
+    0%, 100% { transform: translateX(0); }
+    25% { transform: translateX(-5px); }
+    75% { transform: translateX(5px); }
+}
