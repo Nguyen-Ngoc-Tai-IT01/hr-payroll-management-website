@@ -336,10 +336,12 @@
     "employeeId": "EMP034",
     "month": "04/2026",
     "standardDays": 22,
-    "actualDays": 20.5,
+    "actualDays": 20,
     "lateCount": 1,
     "overtimeHours": 0,
-    "editCount": 0
+    "editCount": 1,
+    "fullName": "Dương Tư Vấn",
+    "lastEditDate": "13:11:59 10/4/2026"
   },
   {
     "id": "ATT_1035",

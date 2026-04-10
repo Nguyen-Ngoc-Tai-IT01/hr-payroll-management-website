@@ -56,7 +56,6 @@ function Reports() {
       return;
     }
     
-    // Lọc lại các cột cần thiết cho đẹp
     const formattedData = reportData.employeesList.map(emp => ({
       "Mã NV": emp.id,
       "Họ và Tên": emp.fullName,
@@ -68,124 +67,42 @@ function Reports() {
 
     const isSuccess = exportToCSV(formattedData, 'Bao_Cao_Nhan_Su');
     if (isSuccess) {
-      logExportHistory('Danh sách chi tiết nhân sự');
       Swal.fire({ toast: true, position: 'top-end', icon: 'success', title: 'Đã tải báo cáo nhân sự', showConfirmButton: false, timer: 2000 });
     }
   };
 
-  // --- 2. XUẤT BÁO CÁO CHẤM CÔNG ---
-  const handleExportAttendance = async () => {
-    try {
-      const response = await fetch('http://localhost:5000/api/attendance');
-      const result = await response.json();
-      const attData = result.data || result; 
-
-      if (!attData || attData.length === 0) {
-        Swal.fire('Thông báo', 'Tháng này chưa có dữ liệu chấm công nào!', 'info');
-        return;
-      }
-
-      const formattedData = attData.map(record => {
-        const emp = reportData.employeesList.find(e => e.id === record.employeeId);
-        return {
-          "Mã Nhân Viên": record.employeeId,
-          "Họ và Tên": record.fullName || (emp ? emp.fullName : "Chưa cập nhật"),
-          "Tháng": record.month || "04/2026",
-          "Số ngày công": record.actualDays,
-          "Số lần đi muộn": record.lateCount,
-          "Giờ tăng ca": record.overtimeHours
-        };
-      });
-
-      const isSuccess = exportToCSV(formattedData, 'Bao_Cao_Cham_Cong_Thang_4');
-      if (isSuccess) {
-        logExportHistory('Báo cáo Chấm công Tháng 4/2026'); 
-        Swal.fire({ toast: true, position: 'top-end', icon: 'success', title: 'Đã tải báo cáo chấm công', showConfirmButton: false, timer: 2000 });
-      }
-      
-    } catch (error) {
-      console.error("Lỗi khi tải chấm công:", error);
-      Swal.fire('Lỗi!', 'Không thể kết nối đến Server để lấy dữ liệu chấm công.', 'error');
-    }
-  };
-
-  // --- 3. XUẤT BÁO CÁO TIỀN LƯƠNG (MỚI THÊM) ---
-  const handleExportPayroll = async () => {
-    try {
-      // Gọi API của Vỹ
-      const response = await fetch('http://localhost:5000/api/payroll');
-      const result = await response.json();
-      
-      // Tùy theo API của bạn trả về array trực tiếp hay nằm trong object (như Vỹ viết là trả về object có chứa mảng data)
-      const payrollData = result.data || result;
-
-      if (!payrollData || payrollData.length === 0) {
-        Swal.fire('Thông báo', 'Chưa có dữ liệu bảng lương!', 'info');
-        return;
-      }
-
-      // Xào nấu dữ liệu: Định dạng tiền tệ cho Excel dễ đọc
-      const formattedData = payrollData.map(record => {
-        return {
-          "Mã Phiếu": `PR${String(record.id).padStart(3, '0')}`,
-          "Mã Nhân Viên": record.employeeId || "N/A",
-          "Họ và Tên": record.name,
-          "Phòng Ban": record.department,
-          "Kỳ Lương": `${String(record.month).padStart(2, '0')}/${record.year}`,
-          "Lương Cơ Bản (VND)": record.baseSalary,
-          "Phụ Cấp (VND)": record.allowance || 0,
-          "Khấu Trừ (VND)": record.deduction || 0,
-          "Thực Lãnh (VND)": record.netSalary,
-          "Trạng Thái": record.paymentStatus
-        };
-      });
-
-      const isSuccess = exportToCSV(formattedData, 'Bang_Luong_Tong_Hop');
-      if (isSuccess) {
-        logExportHistory('Bảng lương tổng hợp'); 
-        Swal.fire({ toast: true, position: 'top-end', icon: 'success', title: 'Đã tải báo cáo tiền lương', showConfirmButton: false, timer: 2000 });
-      }
-      
-    } catch (error) {
-      console.error("Lỗi khi tải báo cáo lương:", error);
-      Swal.fire('Lỗi!', 'Không thể kết nối đến Server để lấy dữ liệu tiền lương.', 'error');
-    }
-  };
-  // hàm lấy chấm công của sêu 
+  // --- 2. XUẤT BÁO CÁO CHẤM CÔNG (SÊU) ---
   const handleDownloadAttendance = async () => {
     try {
       const res = await fetch('http://localhost:5000/api/attendance');
       const data = await res.json();
 
       if (data.length === 0) {
-        alert("Chưa có dữ liệu chấm công nào!");
+        Swal.fire('Thông báo', 'Chưa có dữ liệu chấm công nào!', 'info');
         return;
       }
 
-      const headers = ["Mã NV", "Họ và Tên", "Công thực", "Đi muộn", "Tăng ca"];
-      const rows = data.map(rec => [
-        rec.employeeId, 
-        rec.fullName || `NV-${rec.employeeId}`, 
-        rec.actualDays, 
-        rec.lateCount, 
-        rec.overtimeHours + "h"
-      ]);
+      // Xào nấu dữ liệu trước khi xuất
+      const formattedData = data.map(rec => ({
+        "Mã NV": rec.employeeId,
+        "Họ và Tên": rec.fullName || `NV-${rec.employeeId}`,
+        "Công thực": `${rec.actualDays} ngày`,
+        "Đi muộn": `${rec.lateCount} lần`,
+        "Tăng ca": `${rec.overtimeHours} giờ`
+      }));
       
-      const csvContent = [headers.join(","), ...rows.map(row => row.join(","))].join("\n");
-      
-      const blob = new Blob(["\uFEFF" + csvContent], { type: 'text/csv;charset=utf-8;' });
-      const url = URL.createObjectURL(blob);
-      const link = document.createElement("a");
-      link.href = url; 
-      link.setAttribute("download", `Bao_cao_Cham_cong_Hoan_Chinh.csv`); 
-      link.click();
+      const isSuccess = exportToCSV(formattedData, 'Bao_Cao_Cham_Cong');
+      if (isSuccess) {
+        Swal.fire({ toast: true, position: 'top-end', icon: 'success', title: 'Đã tải báo cáo chấm công', showConfirmButton: false, timer: 2000 });
+      }
       
     } catch (error) {
       console.error(error);
-      alert("Không thể kết nối đến API Chấm công của Sêu");
+      Swal.fire('Lỗi', 'Không thể kết nối đến API Chấm công của Sêu', 'error');
     }
   };
 
+  // --- 3. XUẤT BÁO CÁO TIỀN LƯƠNG (VỸ) ---
   const handleExportPayroll = async () => {
     try {
       Swal.fire({
@@ -201,50 +118,26 @@ function Reports() {
       const payrollData = await res.json();
       const payrollRows = Array.isArray(payrollData) ? payrollData : [];
 
-      const headers = [
-        'Mã Phiếu',
-        'Mã Nhân Viên',
-        'Họ và Tên',
-        'Phòng Ban',
-        'Kỳ Lương',
-        'Lương Cơ Bản',
-        'Phụ Cấp',
-        'Thưởng',
-        'Khấu Trừ',
-        'Thực Lãnh',
-        'Trạng Thái'
-      ];
+      if (payrollRows.length === 0) {
+        Swal.fire('Thông báo', 'Chưa có bảng lương nào được tạo!', 'info');
+        return;
+      }
 
-      const rows = payrollRows.map((row) => [
-        row.id || '',
-        row.employeeId || '',
-        row.name || '',
-        row.department || '',
-        formatPayrollMonth(row),
-        row.baseSalary ?? '',
-        row.allowance ?? '',
-        row.bonus ?? '',
-        row.deduction ?? '',
-        row.netSalary ?? '',
-        row.paymentStatus || ''
-      ]);
+      const formattedData = payrollRows.map(row => ({
+        "Mã Phiếu": row.id || 'N/A',
+        "Mã Nhân Viên": row.employeeId || 'N/A',
+        "Họ và Tên": row.name || 'N/A',
+        "Phòng Ban": row.department || 'N/A',
+        "Lương Cơ Bản (VND)": row.baseSalary || 0,
+        "Phụ Cấp (VND)": row.allowance || 0,
+        "Khấu Trừ (VND)": row.deduction || 0,
+        "Thực Lãnh (VND)": row.netSalary || 0,
+        "Trạng Thái": row.paymentStatus || 'N/A'
+      }));
 
-      const escapedRow = (values) => values.map((value) => {
-        const stringValue = String(value ?? '').replace(/"/g, '""');
-        return /[",\n]/.test(stringValue) ? `"${stringValue}"` : stringValue;
-      }).join(',');
-
-      const csvContent = [headers.join(','), ...rows.map(escapedRow)].join('\n');
-      const blob = new Blob(['\uFEFF' + csvContent], { type: 'text/csv;charset=utf-8;' });
-      const url = URL.createObjectURL(blob);
-      const link = document.createElement('a');
-      link.href = url;
-      link.setAttribute('download', 'Bao_cao_Tien_luong.csv');
-      document.body.appendChild(link);
-      link.click();
-      document.body.removeChild(link);
-
+      exportToCSV(formattedData, 'Bao_Cao_Tien_Luong');
       Swal.fire({ icon: 'success', title: 'Hoàn tất!', text: 'Đã tải xuống báo cáo Tiền lương', timer: 2000, showConfirmButton: false });
+
     } catch (err) {
       console.error(err);
       Swal.fire('Lỗi!', 'Không thể tải báo cáo Tiền lương. Hãy kiểm tra lại Server!', 'error');
@@ -272,39 +165,39 @@ function Reports() {
           <p>Danh sách chi tiết hồ sơ nhân viên, chức vụ, phòng ban định dạng CSV.</p>
           <button 
             className="p-btn p-btn-outline" 
-            onClick={() => exportToCSV(reportData.employeesList, 'Bao_Cao_Nhan_Su')}
+            onClick={handleExportEmployees}
             style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '8px' }}>
              📥 Tải CSV Nhân Sự
           </button>
         </div>
 
-        {/* Các thẻ khác tạm thời hiện Alert chờ Sêu và Vỹ đẩy API lên */}
+        {/* Thẻ Báo cáo Chấm Công */}
         <div className="dash-card report-item-card">
           <div className="report-icon-box" style={{ color: '#e67e22', backgroundColor: '#fff7ed' }}>📅</div>
           <h3>Dữ liệu Chấm công (Sêu)</h3>
           <p>Báo cáo giờ Check-in/Check-out, số ngày nghỉ phép trong tháng này.</p>
           <button 
             className="p-btn p-btn-outline" 
-            onClick={() => alert("Đang chờ Sêu hoàn thiện API Chấm công!")}
+            onClick={handleDownloadAttendance} // Đã gắn hàm của Sêu vào đây
             style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '8px' }}>
              📥 Tải CSV Chấm Công
           </button>
         </div>
 
+        {/* Thẻ Báo cáo Tiền Lương */}
         <div className="dash-card report-item-card">
           <div className="report-icon-box" style={{ color: '#059669', backgroundColor: '#ecfdf5' }}>💰</div>
           <h3>Báo cáo Tiền lương (Vỹ)</h3>
           <p>Bảng lương chi tiết bao gồm lương cơ bản, phụ cấp và các khoản trừ.</p>
           <button 
             className="p-btn p-btn-outline"
-            onClick={() => alert("Đang chờ Vỹ hoàn thiện API Tiền lương!")} 
+            onClick={handleExportPayroll} // Đã gắn hàm của Vỹ vào đây
             style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '8px' }}>
              📥 Tải CSV Tiền Lương
           </button>
         </div>
       </div>
       
-      {/* (Phần Table Lịch sử xuất báo cáo giữ nguyên bên dưới...) */}
     </div>
   );
 }
