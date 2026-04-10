@@ -1,7 +1,16 @@
+
 import React from "react";
 import { Routes, Route, NavLink, Link } from "react-router-dom";
 import "./App.css";
 import "./pages/admin/Admin.css";
+import React, { useState, useEffect } from "react";
+import { Routes, Route, NavLink, Link } from "react-router-dom";
+import "./App.css";
+import "./pages/admin/Admin.css";
+
+// --- IMPORT để hiện thông báo đăng xuất ---
+import Swal from "sweetalert2";
+import "sweetalert2/dist/sweetalert2.min.css";
 
 // --- IMPORT LOGO ---
 import logo from "./assets/logo.png";
@@ -66,6 +75,25 @@ function Home() {
 }
 
 function App() {
+  const [user, setUser] = useState(null);
+
+  // Hàm này để các nơi khác có thể gọi để cập nhật lại UI
+  const checkUser = () => {
+    try {
+      const savedUser = localStorage.getItem("user");
+      setUser(savedUser ? JSON.parse(savedUser) : null);
+    } catch (error) {
+      setUser(null);
+    }
+  };
+
+  useEffect(() => {
+    checkUser(); // Kiểm tra lần đầu khi load
+    
+    // Lắng nghe sự kiện "userChanged" để cập nhật ngay lập tức
+    window.addEventListener("userChanged", checkUser);
+    return () => window.removeEventListener("userChanged", checkUser);
+  }, []);
   return (
     <div className="app-container">
       {/* Thanh Menu */}

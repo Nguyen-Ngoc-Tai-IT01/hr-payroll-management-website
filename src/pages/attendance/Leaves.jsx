@@ -50,12 +50,16 @@ const Leaves = () => {
     return emp ? emp.fullName : `NV-${req.employeeId}`;
   };
 
-  // lọc dữ liệu theo mã nhân viên
-  const filteredRecords = leaveRequests.filter(req => 
-    req.employeeId.toLowerCase().includes(searchTerm.toLowerCase())
-  );
+  // lọc dữ liệu theo mã nhân viên hoặc tên
+  const filteredRecords = leaveRequests.filter(req => {
+    const searchLower = searchTerm.toLowerCase();
+    const name = renderEmployeeName(req);
+    return (
+      (name && name.toLowerCase().includes(searchLower)) ||
+      (req.employeeId && req.employeeId.toLowerCase().includes(searchLower))
+    );
+  });
 
-  // phân trang trên dữ liệu đã lọc
   const indexOfLast = currentPage * recordsPerPage;
   const indexOfFirst = indexOfLast - recordsPerPage;
   const currentRecords = filteredRecords.slice(indexOfFirst, indexOfLast);
@@ -130,23 +134,12 @@ const Leaves = () => {
   };
 
   return (
-    <div>
-      {/* thanh công cụ tìm kiếm của nghỉ phép */}
-      <div className="page-header" style={{ backgroundColor: '#fff', padding: '15px 20px', borderRadius: '12px', boxShadow: '0 2px 4px rgba(0,0,0,0.05)' }}>
-        <h2 className="header-title" style={{ fontSize: '18px', color: '#0d6efd' }}>📝 Quản lý Đơn Nghỉ Phép</h2>
-        <div className="btn-group" style={{ alignItems: 'center' }}>
-          {/* ô tìm kiếm */}
-          <input 
-            type="text" 
-            placeholder="Nhập mã NV tìm nhanh..." 
-            value={searchTerm}
-            onChange={(e) => {
-              setSearchTerm(e.target.value);
-              setCurrentPage(1); 
-            }}
-            className="form-input"
-            style={{ width: '220px', padding: '10px', borderRadius: '8px' }}
-          />
+    <div style={{ marginTop: '10px' }}>
+      
+      {/* tiêu đề và nút chức năng nằm ngoài khối trắng */}
+      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '20px' }}>
+        <h2 style={{ color: '#1e293b', margin: 0, fontSize: '24px' }}>📝 Quản lý Đơn Nghỉ Phép</h2>
+        <div style={{ display: 'flex', gap: '10px' }}>
           <button onClick={handleExport} className="btn btn-success">
             📥 Xuất báo cáo
           </button>
@@ -156,58 +149,76 @@ const Leaves = () => {
         </div>
       </div>
 
-      {/* bảng dữ liệu */}
-      <div className="table-card" style={{ marginTop: '20px' }}>
-        <table className="custom-table" style={{ textAlign: 'left' }}>
-          <thead>
-            <tr>
-              <th>Nhân viên</th>
-              <th>Loại nghỉ</th>
-              <th>Thời gian</th>
-              <th>Lý do</th>
-              <th>Trạng thái</th>
-              <th style={{ textAlign: 'center' }}>Thao tác</th>
-              <th style={{ textAlign: 'center' }}>Phê duyệt</th>
-            </tr>
-          </thead>
-          <tbody>
-            {currentRecords.length > 0 ? currentRecords.map(req => {
-              const statusStyle = getStatusStyle(req.status);
-              return (
-                <tr key={req.id} className="table-row">
-                  <td>
-                    <div style={{ fontWeight: '600', color: '#1e293b' }}>{renderEmployeeName(req)}</div>
-                    <div style={{ fontSize: '12px', color: '#94a3b8' }}>{req.employeeId}</div>
-                  </td>
-                  <td>{req.type}</td>
-                  <td>{req.fromDate} → {req.toDate}</td>
-                  <td style={{ maxWidth: '180px' }}>{req.reason}</td>
-                  <td>
-                    <span style={{ 
-                      padding: '5px 12px', borderRadius: '20px', fontSize: '12px', fontWeight: 'bold', 
-                      backgroundColor: statusStyle.bg, color: statusStyle.text 
-                    }}>
-                      {req.status || 'Chờ duyệt'}
-                    </span>
-                  </td>
-                  <td style={{ textAlign: 'center' }}>
-                    <button onClick={() => handleEdit(req)} className="btn btn-primary btn-sm" style={{ display: 'inline-block', marginRight: '5px' }}>Sửa</button>
-                    <button onClick={() => handleDelete(req.id)} className="btn btn-danger btn-sm" style={{ display: 'inline-block' }}>Xóa</button>
-                  </td>
-                  <td style={{ textAlign: 'center' }}>
-                    <button onClick={() => updateStatus(req.id, 'Đã duyệt')} className="btn btn-success btn-sm" style={{ display: 'inline-block', marginRight: '5px' }}>Duyệt</button>
-                    <button onClick={() => updateStatus(req.id, 'Từ chối')} className="btn btn-danger btn-sm" style={{ display: 'inline-block' }}>Từ chối</button>
-                  </td>
-                </tr>
-              );
-            }) : (
-              <tr><td colSpan="7" style={{ textAlign: 'center', padding: '20px', color: '#64748b' }}>Hệ thống không tìm thấy đơn nào!</td></tr>
-            )}
-          </tbody>
-        </table>
+      {/* khối trắng chứa thanh tìm kiếm và bảng dữ liệu (y hệt nhân sự) */}
+      <div style={{ backgroundColor: 'white', padding: '20px', borderRadius: '12px', boxShadow: '0 4px 6px -1px rgba(0,0,0,0.1)' }}>
+        
+        {/* thanh tìm kiếm nằm sát bên trái */}
+        <div style={{ marginBottom: '20px' }}>
+          <input 
+            type="text" 
+            placeholder="🔍 Tìm kiếm theo Mã NV hoặc Tên..." 
+            value={searchTerm}
+            onChange={(e) => {
+              setSearchTerm(e.target.value);
+              setCurrentPage(1); 
+            }}
+            style={{ width: '100%', maxWidth: '400px', padding: '12px', borderRadius: '8px', border: '1px solid #cbd5e1', outline: 'none' }}
+          />
+        </div>
+
+        {/* bảng dữ liệu */}
+        <div style={{ overflowX: 'auto' }}>
+          <table className="custom-table" style={{ width: '100%', borderCollapse: 'collapse', textAlign: 'left' }}>
+            <thead>
+              <tr>
+                <th>Nhân viên</th>
+                <th>Loại nghỉ</th>
+                <th>Thời gian</th>
+                <th>Lý do</th>
+                <th>Trạng thái</th>
+                <th style={{ textAlign: 'center' }}>Thao tác</th>
+                <th style={{ textAlign: 'center' }}>Phê duyệt</th>
+              </tr>
+            </thead>
+            <tbody>
+              {currentRecords.length > 0 ? currentRecords.map(req => {
+                const statusStyle = getStatusStyle(req.status);
+                return (
+                  <tr key={req.id} className="table-row">
+                    <td>
+                      <div style={{ fontWeight: '600', color: '#1e293b' }}>{renderEmployeeName(req)}</div>
+                      <div style={{ fontSize: '12px', color: '#94a3b8' }}>{req.employeeId}</div>
+                    </td>
+                    <td>{req.type}</td>
+                    <td>{req.fromDate} → {req.toDate}</td>
+                    <td style={{ maxWidth: '180px' }}>{req.reason}</td>
+                    <td>
+                      <span style={{ 
+                        padding: '5px 12px', borderRadius: '20px', fontSize: '12px', fontWeight: 'bold', 
+                        backgroundColor: statusStyle.bg, color: statusStyle.text 
+                      }}>
+                        {req.status || 'Chờ duyệt'}
+                      </span>
+                    </td>
+                    <td style={{ textAlign: 'center' }}>
+                      <button onClick={() => handleEdit(req)} className="btn btn-primary btn-sm" style={{ display: 'inline-block', marginRight: '5px' }}>Sửa</button>
+                      <button onClick={() => handleDelete(req.id)} className="btn btn-danger btn-sm" style={{ display: 'inline-block' }}>Xóa</button>
+                    </td>
+                    <td style={{ textAlign: 'center' }}>
+                      <button onClick={() => updateStatus(req.id, 'Đã duyệt')} className="btn btn-success btn-sm" style={{ display: 'inline-block', marginRight: '5px' }}>Duyệt</button>
+                      <button onClick={() => updateStatus(req.id, 'Từ chối')} className="btn btn-danger btn-sm" style={{ display: 'inline-block' }}>Từ chối</button>
+                    </td>
+                  </tr>
+                );
+              }) : (
+                <tr><td colSpan="7" style={{ textAlign: 'center', padding: '30px', color: '#64748b' }}>Không tìm thấy đơn nghỉ phép nào!</td></tr>
+              )}
+            </tbody>
+          </table>
+        </div>
 
         {/* phân trang */}
-        <div className="pagination">
+        <div className="pagination" style={{ backgroundColor: 'transparent', paddingBottom: 0 }}>
           <button disabled={currentPage === 1} onClick={() => setCurrentPage(currentPage - 1)} className="page-btn">Trước</button>
           {[...Array(totalPages)].map((_, i) => (
             <button key={i} onClick={() => setCurrentPage(i + 1)} className={`page-btn ${currentPage === i + 1 ? 'active' : ''}`}>

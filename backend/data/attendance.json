@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 ﻿﻿[
   { "id": "ATT_0326_001", "employeeId": "EMP001", "month": "03/2026", "standardDays": 22, "actualDays": 22, "lateCount": 0, "leaveDays": 0, "overtimeHours": 5 },
   { "id": "ATT_0326_002", "employeeId": "EMP002", "month": "03/2026", "standardDays": 22, "actualDays": 21.5, "lateCount": 2, "leaveDays": 0.5, "overtimeHours": 0 },
@@ -6,4 +7,361 @@
   { "id": "ATT_0326_005", "employeeId": "EMP005", "month": "03/2026", "standardDays": 22, "actualDays": 22, "lateCount": 5, "leaveDays": 0, "overtimeHours": 2 },
   { "id": "ATT_0326_006", "employeeId": "EMP006", "month": "03/2026", "standardDays": 22, "actualDays": 22, "lateCount": 0, "leaveDays": 0, "overtimeHours": 0 },
   { "id": "ATT_0326_007", "employeeId": "EMP007", "month": "03/2026", "standardDays": 22, "actualDays": 21, "lateCount": 0, "leaveDays": 1, "overtimeHours": 0 }
+=======
+[
+  {
+    "id": "ATT_1001",
+    "employeeId": "EMP001",
+    "month": "04/2026",
+    "standardDays": 22,
+    "actualDays": 22,
+    "lateCount": 0,
+    "overtimeHours": 5,
+    "editCount": 0
+  },
+  {
+    "id": "ATT_1002",
+    "employeeId": "EMP002",
+    "month": "04/2026",
+    "standardDays": 22,
+    "actualDays": 21,
+    "lateCount": 1,
+    "overtimeHours": 0,
+    "editCount": 1,
+    "fullName": "Huỳnh Công Hiệp",
+    "lastEditDate": "12:54:13 10/4/2026"
+  },
+  {
+    "id": "ATT_1003",
+    "employeeId": "EMP003",
+    "month": "04/2026",
+    "standardDays": 22,
+    "actualDays": 22,
+    "lateCount": 0,
+    "overtimeHours": 4,
+    "editCount": 0
+  },
+  {
+    "id": "ATT_1004",
+    "employeeId": "EMP004",
+    "month": "04/2026",
+    "standardDays": 22,
+    "actualDays": 20,
+    "lateCount": 0,
+    "overtimeHours": 0,
+    "editCount": 0
+  },
+  {
+    "id": "ATT_1005",
+    "employeeId": "EMP005",
+    "month": "04/2026",
+    "standardDays": 22,
+    "actualDays": 22,
+    "lateCount": 3,
+    "overtimeHours": 2,
+    "editCount": 0
+  },
+  {
+    "id": "ATT_1006",
+    "employeeId": "EMP006",
+    "month": "04/2026",
+    "standardDays": 22,
+    "actualDays": 22,
+    "lateCount": 0,
+    "overtimeHours": 0,
+    "editCount": 0
+  },
+  {
+    "id": "ATT_1007",
+    "employeeId": "EMP007",
+    "month": "04/2026",
+    "standardDays": 22,
+    "actualDays": 22,
+    "lateCount": 0,
+    "overtimeHours": 0,
+    "editCount": 0
+  },
+  {
+    "id": "ATT_1008",
+    "employeeId": "EMP008",
+    "month": "04/2026",
+    "standardDays": 22,
+    "actualDays": 22,
+    "lateCount": 0,
+    "overtimeHours": 8,
+    "editCount": 0
+  },
+  {
+    "id": "ATT_1009",
+    "employeeId": "EMP009",
+    "month": "04/2026",
+    "standardDays": 22,
+    "actualDays": 21,
+    "lateCount": 1,
+    "overtimeHours": 10,
+    "editCount": 0
+  },
+  {
+    "id": "ATT_1010",
+    "employeeId": "EMP010",
+    "month": "04/2026",
+    "standardDays": 22,
+    "actualDays": 22,
+    "lateCount": 0,
+    "overtimeHours": 12,
+    "editCount": 0
+  },
+  {
+    "id": "ATT_1011",
+    "employeeId": "EMP011",
+    "month": "04/2026",
+    "standardDays": 22,
+    "actualDays": 19,
+    "lateCount": 2,
+    "overtimeHours": 5,
+    "editCount": 0
+  },
+  {
+    "id": "ATT_1012",
+    "employeeId": "EMP012",
+    "month": "04/2026",
+    "standardDays": 22,
+    "actualDays": 22,
+    "lateCount": 0,
+    "overtimeHours": 6,
+    "editCount": 0
+  },
+  {
+    "id": "ATT_1013",
+    "employeeId": "EMP013",
+    "month": "04/2026",
+    "standardDays": 22,
+    "actualDays": 21.5,
+    "lateCount": 1,
+    "overtimeHours": 2,
+    "editCount": 0
+  },
+  {
+    "id": "ATT_1014",
+    "employeeId": "EMP014",
+    "month": "04/2026",
+    "standardDays": 22,
+    "actualDays": 20,
+    "lateCount": 0,
+    "overtimeHours": 4,
+    "editCount": 0
+  },
+  {
+    "id": "ATT_1015",
+    "employeeId": "EMP015",
+    "month": "04/2026",
+    "standardDays": 22,
+    "actualDays": 22,
+    "lateCount": 0,
+    "overtimeHours": 0,
+    "editCount": 0
+  },
+  {
+    "id": "ATT_1016",
+    "employeeId": "EMP016",
+    "month": "04/2026",
+    "standardDays": 22,
+    "actualDays": 15,
+    "lateCount": 0,
+    "overtimeHours": 0,
+    "editCount": 0
+  },
+  {
+    "id": "ATT_1017",
+    "employeeId": "EMP017",
+    "month": "04/2026",
+    "standardDays": 22,
+    "actualDays": 22,
+    "lateCount": 0,
+    "overtimeHours": 5,
+    "editCount": 0
+  },
+  {
+    "id": "ATT_1018",
+    "employeeId": "EMP018",
+    "month": "04/2026",
+    "standardDays": 22,
+    "actualDays": 22,
+    "lateCount": 0,
+    "overtimeHours": 2,
+    "editCount": 0
+  },
+  {
+    "id": "ATT_1019",
+    "employeeId": "EMP019",
+    "month": "04/2026",
+    "standardDays": 22,
+    "actualDays": 21,
+    "lateCount": 0,
+    "overtimeHours": 8,
+    "editCount": 0
+  },
+  {
+    "id": "ATT_1020",
+    "employeeId": "EMP020",
+    "month": "04/2026",
+    "standardDays": 22,
+    "actualDays": 22,
+    "lateCount": 2,
+    "overtimeHours": 0,
+    "editCount": 0
+  },
+  {
+    "id": "ATT_1021",
+    "employeeId": "EMP021",
+    "month": "04/2026",
+    "standardDays": 22,
+    "actualDays": 18,
+    "lateCount": 0,
+    "overtimeHours": 0,
+    "editCount": 0
+  },
+  {
+    "id": "ATT_1022",
+    "employeeId": "EMP022",
+    "month": "04/2026",
+    "standardDays": 22,
+    "actualDays": 22,
+    "lateCount": 0,
+    "overtimeHours": 10,
+    "editCount": 0
+  },
+  {
+    "id": "ATT_1023",
+    "employeeId": "EMP023",
+    "month": "04/2026",
+    "standardDays": 22,
+    "actualDays": 22,
+    "lateCount": 0,
+    "overtimeHours": 0,
+    "editCount": 0
+  },
+  {
+    "id": "ATT_1024",
+    "employeeId": "EMP024",
+    "month": "04/2026",
+    "standardDays": 22,
+    "actualDays": 22,
+    "lateCount": 0,
+    "overtimeHours": 15,
+    "editCount": 0
+  },
+  {
+    "id": "ATT_1025",
+    "employeeId": "EMP025",
+    "month": "04/2026",
+    "standardDays": 22,
+    "actualDays": 22,
+    "lateCount": 4,
+    "overtimeHours": 0,
+    "editCount": 0
+  },
+  {
+    "id": "ATT_1026",
+    "employeeId": "EMP026",
+    "month": "04/2026",
+    "standardDays": 22,
+    "actualDays": 21.5,
+    "lateCount": 1,
+    "overtimeHours": 0,
+    "editCount": 0
+  },
+  {
+    "id": "ATT_1027",
+    "employeeId": "EMP027",
+    "month": "04/2026",
+    "standardDays": 22,
+    "actualDays": 22,
+    "lateCount": 0,
+    "overtimeHours": 5,
+    "editCount": 0
+  },
+  {
+    "id": "ATT_1028",
+    "employeeId": "EMP028",
+    "month": "04/2026",
+    "standardDays": 22,
+    "actualDays": 10,
+    "lateCount": 0,
+    "overtimeHours": 0,
+    "editCount": 0
+  },
+  {
+    "id": "ATT_1029",
+    "employeeId": "EMP029",
+    "month": "04/2026",
+    "standardDays": 22,
+    "actualDays": 22,
+    "lateCount": 0,
+    "overtimeHours": 4,
+    "editCount": 0
+  },
+  {
+    "id": "ATT_1030",
+    "employeeId": "EMP030",
+    "month": "04/2026",
+    "standardDays": 22,
+    "actualDays": 22,
+    "lateCount": 0,
+    "overtimeHours": 0,
+    "editCount": 0
+  },
+  {
+    "id": "ATT_1031",
+    "employeeId": "EMP031",
+    "month": "04/2026",
+    "standardDays": 22,
+    "actualDays": 21,
+    "lateCount": 2,
+    "overtimeHours": 0,
+    "editCount": 0
+  },
+  {
+    "id": "ATT_1032",
+    "employeeId": "EMP032",
+    "month": "04/2026",
+    "standardDays": 22,
+    "actualDays": 22,
+    "lateCount": 0,
+    "overtimeHours": 10,
+    "editCount": 0
+  },
+  {
+    "id": "ATT_1033",
+    "employeeId": "EMP033",
+    "month": "04/2026",
+    "standardDays": 22,
+    "actualDays": 22,
+    "lateCount": 0,
+    "overtimeHours": 0,
+    "editCount": 0
+  },
+  {
+    "id": "ATT_1034",
+    "employeeId": "EMP034",
+    "month": "04/2026",
+    "standardDays": 22,
+    "actualDays": 20,
+    "lateCount": 1,
+    "overtimeHours": 0,
+    "editCount": 1,
+    "fullName": "Dương Tư Vấn",
+    "lastEditDate": "13:11:59 10/4/2026"
+  },
+  {
+    "id": "ATT_1035",
+    "employeeId": "EMP035",
+    "month": "04/2026",
+    "standardDays": 22,
+    "actualDays": 22,
+    "lateCount": 0,
+    "overtimeHours": 0,
+    "editCount": 0
+  }
+>>>>>>> e4db912de22c1bfd6caf6091b2d9d2abdcca94b0
 ]

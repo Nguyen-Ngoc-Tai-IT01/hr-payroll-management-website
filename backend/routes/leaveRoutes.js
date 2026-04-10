@@ -41,14 +41,13 @@ router.post('/', (req, res) => {
     }
 });
 
-// cập nhật
+// cập nhật và XỬ LÝ LOGIC TRỪ/CỘNG CÔNG
 router.put('/:id', (req, res) => {
     try {
-        const leaveId = req.params.id; // Lấy ID từ URL (dạng chuỗi)
+        const leaveId = req.params.id; 
         const updateData = req.body;
         
         let leavesList = readJsonFile(leavesPath);
-        // Tìm kiếm linh hoạt: so sánh cả chuỗi và số để tránh lỗi ép kiểu
         const leaveIndex = leavesList.findIndex(l => String(l.id) === String(leaveId));
 
         if (leaveIndex === -1) return res.status(404).json({ message: "Không tìm thấy đơn" });
@@ -56,22 +55,30 @@ router.put('/:id', (req, res) => {
         const oldRecord = leavesList[leaveIndex];
         const newStatus = updateData.status;
 
-        if (newStatus === 'Đã duyệt' && oldRecord.status !== 'Đã duyệt') {
-            const start = new Date(oldRecord.fromDate);
-            const end = new Date(oldRecord.toDate);
-            const diffDays = Math.ceil(Math.abs(end - start) / (1000 * 60 * 60 * 24)) + 1;
+        // Tính toán số ngày nghỉ
+        const start = new Date(oldRecord.fromDate);
+        const end = new Date(oldRecord.toDate);
+        const diffDays = Math.ceil(Math.abs(end - start) / (1000 * 60 * 60 * 24)) + 1;
 
-            let attList = readJsonFile(attendancePath);
-            const attIndex = attList.findIndex(a => String(a.employeeId) === String(oldRecord.employeeId));
+        let attList = readJsonFile(attendancePath);
+        const attIndex = attList.findIndex(a => String(a.employeeId) === String(oldRecord.employeeId));
 
-            if (attIndex !== -1) {
-                let currentDays = parseFloat(attList[attIndex].actualDays) || 0;
+        if (attIndex !== -1) {
+            let currentDays = parseFloat(attList[attIndex].actualDays) || 0;
+
+            // TRƯỜNG HỢP 1: Duyệt đơn -> Trừ công
+            if (newStatus === 'Đã duyệt' && oldRecord.status !== 'Đã duyệt') {
                 attList[attIndex].actualDays = Math.max(0, currentDays - diffDays);
+                fs.writeFileSync(attendancePath, JSON.stringify(attList, null, 2));
+            } 
+            // TRƯỜNG HỢP 2: Hủy duyệt (Từ chối) -> Hoàn lại công
+            else if (newStatus === 'Từ chối' && oldRecord.status === 'Đã duyệt') {
+                attList[attIndex].actualDays = currentDays + diffDays;
                 fs.writeFileSync(attendancePath, JSON.stringify(attList, null, 2));
             }
         }
 
-        // Cập nhật dữ liệu
+        // Cập nhật dữ liệu nghỉ phép
         leavesList[leaveIndex] = { ...oldRecord, ...updateData };
         fs.writeFileSync(leavesPath, JSON.stringify(leavesList, null, 2));
         
@@ -87,7 +94,6 @@ router.delete('/:id', (req, res) => {
         const idToDelete = req.params.id;
         let list = readJsonFile(leavesPath);
         
-        // sủa lỗi Chuyển cả 2 về String để filter chính xác
         const newList = list.filter(item => String(item.id) !== String(idToDelete));
         
         if (list.length === newList.length) {

@@ -22,21 +22,33 @@ router.get('/', (req, res) => {
     });
 });
 
-// thêm
+// thêm mới 
 router.post('/', (req, res) => {
     fs.readFile(dataPath, 'utf8', (err, data) => {
+        if (err) return res.status(500).json({ message: "Lỗi đọc file" });
+
         let list = JSON.parse(data.trim().replace(/^\uFEFF/, ''));
+        
+        // KIỂM TRA TRÙNG LẶP: Tìm xem mã NV (employeeId) đã tồn tại trong list chưa
+        const isExist = list.some(item => String(item.employeeId).toUpperCase() === String(req.body.employeeId).toUpperCase());
+        
+        if (isExist) {
+            // Nếu đã có rồi, chặn lại và báo lỗi về cho giao diện React
+            return res.status(400).json({ message: `Nhân viên có mã ${req.body.employeeId} đã có bảng chấm công!` });
+        }
+
+        // Nếu chưa có, tiến hành thêm mới bình thường
         const newRecord = { 
             ...req.body, 
-            editCount: 0, // Khởi tạo lần sửa là 0
-            lastEditDate: new Date().toLocaleString('vi-VN') // Ngày tạo
+            editCount: 0, 
+            lastEditDate: new Date().toLocaleString('vi-VN') 
         };
         list.push(newRecord);
         fs.writeFile(dataPath, JSON.stringify(list, null, 2), () => res.status(201).json(newRecord));
     });
 });
 
-// cập nhật
+// cập nhật 
 router.put('/:id', (req, res) => {
     const recordId = req.params.id;
     fs.readFile(dataPath, 'utf8', (err, data) => {
@@ -57,7 +69,7 @@ router.put('/:id', (req, res) => {
     });
 });
 
-// xoá
+// xoá 
 router.delete('/:id', (req, res) => {
     const recordId = req.params.id;
     fs.readFile(dataPath, 'utf8', (err, data) => {

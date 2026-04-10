@@ -16,12 +16,9 @@ const Attendance = () => {
   const [editingId, setEditingId] = useState(null);
   const [formData, setFormData] = useState(initialFormState);
 
-  // tìm kiếm và phân trang
   const [searchTerm, setSearchTerm] = useState('');
   const [currentPage, setCurrentPage] = useState(1);
   const [recordsPerPage] = useState(10); 
-
-  // lấy thời gian hiện tại
   const [currentTime, setCurrentTime] = useState(new Date());
 
   useEffect(() => {
@@ -46,22 +43,26 @@ const Attendance = () => {
     }
   };
 
-  // lọc dữ liệu theo mã nhân viên
-  const filteredRecords = attendanceRecords.filter(rec => 
-    rec.employeeId.toLowerCase().includes(searchTerm.toLowerCase())
-  );
-
-  // phân trang trên dữ liệu đã lọc
-  const indexOfLastRecord = currentPage * recordsPerPage;
-  const indexOfFirstRecord = indexOfLastRecord - recordsPerPage;
-  const currentRecords = filteredRecords.slice(indexOfFirstRecord, indexOfLastRecord);
-  const totalPages = Math.ceil(filteredRecords.length / recordsPerPage) || 1;
-
   const renderName = (rec) => {
     if (rec.fullName) return rec.fullName;
     const emp = employees.find(e => e.id === rec.employeeId);
     return emp ? emp.fullName : `NV-${rec.employeeId}`;
   };
+
+  // lọc dữ liệu tìm kiếm
+  const filteredRecords = attendanceRecords.filter(rec => {
+    const searchLower = searchTerm.toLowerCase();
+    const name = renderName(rec);
+    return (
+      (name && name.toLowerCase().includes(searchLower)) ||
+      (rec.employeeId && rec.employeeId.toLowerCase().includes(searchLower))
+    );
+  });
+
+  const indexOfLastRecord = currentPage * recordsPerPage;
+  const indexOfFirstRecord = indexOfLastRecord - recordsPerPage;
+  const currentRecords = filteredRecords.slice(indexOfFirstRecord, indexOfLastRecord);
+  const totalPages = Math.ceil(filteredRecords.length / recordsPerPage) || 1;
 
   const handleAdd = () => { 
     setFormData(initialFormState); 
@@ -117,6 +118,30 @@ const Attendance = () => {
     }
   };
 
+  // chek-in tự động 
+  const handleCheckIn = async (record) => {
+    const updatedRecord = {
+      ...record,
+      actualDays: parseFloat(record.actualDays || 0) + 1
+    };
+
+    try {
+      const res = await fetch(`http://localhost:5000/api/attendance/${record.id}`, {
+        method: 'PUT',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(updatedRecord)
+      });
+
+      if (res.ok) { 
+        loadData(); 
+        Swal.fire({ toast: true, position: 'top-end', icon: 'success', title: `Đã Check-in cho ${renderName(record)}!`, showConfirmButton: false, timer: 1500 }); 
+      }
+    } catch (err) {
+      console.error(err);
+      Swal.fire('Lỗi', 'Không thể Check-in', 'error');
+    }
+  };
+
   const handleExport = () => {
     const headers = ["Mã NV", "Họ và Tên", "Công thực", "Đi muộn", "Tăng ca"];
     const rows = filteredRecords.map(rec => [rec.employeeId, renderName(rec), rec.actualDays, rec.lateCount, rec.overtimeHours + "h"]);
@@ -131,8 +156,6 @@ const Attendance = () => {
 
   return (
     <div className="attendance-wrapper">
-      
-      {/* header chung */}
       <div className="page-header" style={{ marginBottom: '20px' }}>
         <div style={{ display: 'flex', alignItems: 'center', gap: '15px' }}>
           <h2 className="header-title">📅 Hệ Thống Quản Lý Chấm Công ({currentTime.toLocaleDateString('vi-VN')})</h2>
@@ -142,7 +165,6 @@ const Attendance = () => {
         </div>
       </div>
 
-      {/* thanh tab chuyển đổi */}
       <div className="tabs-container">
         <button onClick={() => setActiveTab('attendance')} className={`tab-btn ${activeTab === 'attendance' ? 'active' : ''}`}>
           Bảng Chấm Công
@@ -152,25 +174,13 @@ const Attendance = () => {
         </button>
       </div>
 
-      {/* khu vực hiển thị nội dung tùy theo tab */}
       {activeTab === 'attendance' ? (
-        <div style={{ animation: 'fadeIn 0.3s ease' }}>
+        <div style={{ animation: 'fadeIn 0.3s ease', marginTop: '10px' }}>
           
-          {/* thanh công cụ tìm kiếm của chấm công */}
-          <div className="page-header" style={{ marginTop: '10px', backgroundColor: '#fff', padding: '15px 20px', borderRadius: '12px', boxShadow: '0 2px 4px rgba(0,0,0,0.05)' }}>
-            <h2 className="header-title" style={{ fontSize: '18px', color: '#3b82f6' }}>📋 Quản Lý Bảng Chấm Công</h2>
-            <div className="btn-group" style={{ alignItems: 'center' }}>
-              <input 
-                type="text" 
-                placeholder="Nhập mã NV tìm nhanh..." 
-                value={searchTerm}
-                onChange={(e) => {
-                  setSearchTerm(e.target.value);
-                  setCurrentPage(1); 
-                }}
-                className="form-input"
-                style={{ width: '220px', padding: '10px', borderRadius: '8px' }}
-              />
+          {/* TIÊU ĐỀ VÀ NÚT CHỨC NĂNG NẰM NGOÀI KHỐI TRẮNG (GIỐNG LEAVES) */}
+          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '20px' }}>
+            <h2 style={{ color: '#1e293b', margin: 0, fontSize: '24px' }}>📋 Quản Lý Bảng Chấm Công</h2>
+            <div style={{ display: 'flex', gap: '10px' }}>
               <button onClick={handleExport} className="btn btn-success">
                 📥 Xuất báo cáo
               </button>
@@ -180,40 +190,58 @@ const Attendance = () => {
             </div>
           </div>
 
-          {/* bảng chấm công */}
-          <div className="table-card" style={{ marginTop: '20px' }}>
-            <table className="custom-table">
-              <thead>
-                <tr style={{ textAlign: 'center' }}>
-                  <th>Mã NV</th>
-                  <th style={{ textAlign: 'left' }}>Họ và Tên</th>
-                  <th>Công thực</th>
-                  <th>Đi muộn</th>
-                  <th>Tăng ca</th>
-                  <th>Thao tác</th>
-                </tr>
-              </thead>
-              <tbody>
-                {currentRecords.length > 0 ? currentRecords.map((rec) => (
-                  <tr key={rec.id} className="table-row" style={{ textAlign: 'center' }}>
-                    <td style={{ fontWeight: 'bold', color: '#475569' }}>{rec.employeeId} </td>
-                    <td style={{ textAlign: 'left', fontWeight: '500' }}>{renderName(rec)}</td>
-                    <td style={{ color: '#2563eb', fontWeight: 'bold', fontSize: '18px' }}>{rec.actualDays} ngày </td>
-                    <td style={{ color: rec.lateCount > 0 ? '#dc3545' : '#198754', fontWeight: 'bold' }}>{rec.lateCount} lần</td>
-                    <td>{rec.overtimeHours} giờ</td>
-                    <td>
-                      <button onClick={() => handleEdit(rec)} className="btn btn-primary btn-sm" style={{ display: 'inline-block', marginRight: '5px' }}>Sửa</button>
-                      <button onClick={() => handleDelete(rec.id)} className="btn btn-danger btn-sm" style={{ display: 'inline-block' }}>Xóa</button>
-                    </td>
-                  </tr>
-                )) : (
-                  <tr><td colSpan="6" style={{ textAlign: 'center', padding: '20px', color: '#64748b' }}>Hệ thống không tìm thấy nhân viên nào khớp với mã NV này!</td></tr>
-                )}
-              </tbody>
-            </table>
+          {/* KHỐI TRẮNG CHỨA THANH TÌM KIẾM VÀ BẢNG DỮ LIỆU */}
+          <div style={{ backgroundColor: 'white', padding: '20px', borderRadius: '12px', boxShadow: '0 4px 6px -1px rgba(0,0,0,0.1)' }}>
+            
+            {/* THANH TÌM KIẾM NẰM TRONG KHỐI TRẮNG */}
+            <div style={{ marginBottom: '20px' }}>
+              <input 
+                type="text" 
+                placeholder="🔍 Tìm kiếm theo Mã NV hoặc Tên..." 
+                value={searchTerm}
+                onChange={(e) => { setSearchTerm(e.target.value); setCurrentPage(1); }}
+                style={{ width: '100%', maxWidth: '400px', padding: '12px', borderRadius: '8px', border: '1px solid #cbd5e1', outline: 'none' }}
+              />
+            </div>
 
-            {/* phân trang */}
-            <div className="pagination">
+            {/* BẢNG DỮ LIỆU */}
+            <div style={{ overflowX: 'auto' }}>
+              <table className="custom-table" style={{ width: '100%', borderCollapse: 'collapse', textAlign: 'left' }}>
+                <thead>
+                  <tr>
+                    <th style={{ textAlign: 'center' }}>Mã NV</th>
+                    <th style={{ textAlign: 'left' }}>Họ và Tên</th>
+                    <th style={{ textAlign: 'center' }}>Công thực</th>
+                    <th style={{ textAlign: 'center' }}>Đi muộn</th>
+                    <th style={{ textAlign: 'center' }}>Tăng ca</th>
+                    <th style={{ textAlign: 'center' }}>Thao tác</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {currentRecords.length > 0 ? currentRecords.map((rec) => (
+                    <tr key={rec.id} className="table-row" style={{ textAlign: 'center' }}>
+                      <td style={{ fontWeight: 'bold', color: '#475569' }}>{rec.employeeId} </td>
+                      <td style={{ textAlign: 'left', fontWeight: '500', color: '#0f172a' }}>{renderName(rec)}</td>
+                      <td style={{ color: '#2563eb', fontWeight: 'bold', fontSize: '18px' }}>{rec.actualDays} ngày </td>
+                      <td style={{ color: rec.lateCount > 0 ? '#dc3545' : '#198754', fontWeight: 'bold' }}>{rec.lateCount} lần</td>
+                      <td>{rec.overtimeHours} giờ</td>
+                      <td>
+                        <button onClick={() => handleCheckIn(rec)} className="btn btn-success btn-sm" style={{ display: 'inline-block', marginRight: '5px', backgroundColor: '#198754' }}>
+                           Check-in
+                        </button>
+                        <button onClick={() => handleEdit(rec)} className="btn btn-primary btn-sm" style={{ display: 'inline-block', marginRight: '5px' }}>Sửa</button>
+                        <button onClick={() => handleDelete(rec.id)} className="btn btn-danger btn-sm" style={{ display: 'inline-block' }}>Xóa</button>
+                      </td>
+                    </tr>
+                  )) : (
+                    <tr><td colSpan="6" style={{ textAlign: 'center', padding: '30px', color: '#64748b' }}>Không tìm thấy nhân viên nào khớp với dữ liệu tìm kiếm!</td></tr>
+                  )}
+                </tbody>
+              </table>
+            </div>
+
+            {/* PHÂN TRANG */}
+            <div className="pagination" style={{ backgroundColor: 'transparent', paddingBottom: 0 }}>
               <button disabled={currentPage === 1} onClick={() => setCurrentPage(currentPage - 1)} className="page-btn">Trước</button>
               {[...Array(totalPages)].map((_, i) => (
                 <button key={i} onClick={() => setCurrentPage(i + 1)} className={`page-btn ${currentPage === i + 1 ? 'active' : ''}`}>
@@ -225,13 +253,12 @@ const Attendance = () => {
           </div>
         </div>
       ) : (
-        /* tab nghỉ phép: gọi component leaves */
         <div style={{ animation: 'fadeIn 0.3s ease', marginTop: '10px' }}>
           <Leaves />
         </div>
       )}
-
-      {/* form modal thêm/sửa chấm công */}
+      
+      {/* FORM MODAL THÊM/SỬA */}
       {showForm && (
         <div className="modal-overlay">
           <div className="modal-content">
