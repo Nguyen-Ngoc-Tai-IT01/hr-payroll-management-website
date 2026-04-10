@@ -4,10 +4,9 @@ import './Admin.css';
 
 function Reports() {
   const [reportData, setReportData] = useState({ total: 0, active: 0, employeesList: [] });
-  
-  const [exportHistory, setExportHistory] = useState([]);
 
   useEffect(() => {
+    // Gọi API lấy dữ liệu nhân viên
     fetch('http://localhost:5000/api/reports/employees')
       .then(response => response.json())
       .then(data => {
@@ -15,41 +14,31 @@ function Reports() {
           setReportData({
             total: data.total,
             active: data.active,
-            employeesList: data.list || []
+            employeesList: data.list // Lưu lại danh sách để xuất CSV
           });
         }
       })
       .catch(error => console.error("Lỗi kết nối Backend:", error));
   }, []);
 
-  const logExportHistory = (reportName) => {
-    const now = new Date();
-    const timeString = `${now.toLocaleDateString('vi-VN')} ${now.toLocaleTimeString('vi-VN', { hour: '2-digit', minute: '2-digit' })}`;
-    
-    const newRecord = {
-      id: Date.now(),
-      name: reportName,
-      user: 'Nguyễn Ngọc Tài (Admin)',
-      time: timeString,
-      status: 'Thành công'
-    };
-    
-    setExportHistory(prevHistory => [newRecord, ...prevHistory]);
-  };
-
+  // --- HÀM XUẤT FILE CSV ---
   const exportToCSV = (data, filename) => {
     if (!data || !data.length) {
-      Swal.fire('Trống!', 'Chưa có dữ liệu để xuất!', 'warning');
-      return false; 
+      alert("Chưa có dữ liệu để xuất!");
+      return;
     }
     
+    // Lấy tiêu đề cột
     const headers = Object.keys(data[0]).join(',');
+    // Trích xuất dữ liệu từng dòng
     const rows = data.map(obj => 
       Object.values(obj).map(val => `"${val}"`).join(',')
     ).join('\n');
     
-    // Thêm BOM (\uFEFF) để Excel đọc tiếng Việt không bị lỗi font
+    // Gộp tiêu đề và dữ liệu
     const csvContent = "data:text/csv;charset=utf-8,\uFEFF" + headers + '\n' + rows;
+    
+    // Tạo link ảo để ép trình duyệt tải xuống
     const encodedUri = encodeURI(csvContent);
     const link = document.createElement("a");
     link.setAttribute("href", encodedUri);
@@ -163,6 +152,71 @@ function Reports() {
     }
   };
 
+  // const handleExportPayroll = async () => {
+  //   try {
+  //     Swal.fire({
+  //       title: 'Đang tạo báo cáo...',
+  //       text: 'Vui lòng chờ trong giây lát',
+  //       allowOutsideClick: false,
+  //       didOpen: () => Swal.showLoading()
+  //     });
+
+  //     const res = await fetch('http://localhost:5000/api/payroll');
+  //     if (!res.ok) throw new Error('Lỗi API Báo cáo Tiền lương');
+
+  //     const payrollData = await res.json();
+  //     const payrollRows = Array.isArray(payrollData) ? payrollData : [];
+
+  //     const headers = [
+  //       'Mã Phiếu',
+  //       'Mã Nhân Viên',
+  //       'Họ và Tên',
+  //       'Phòng Ban',
+  //       'Kỳ Lương',
+  //       'Lương Cơ Bản',
+  //       'Phụ Cấp',
+  //       'Thưởng',
+  //       'Khấu Trừ',
+  //       'Thực Lãnh',
+  //       'Trạng Thái'
+  //     ];
+
+  //     const rows = payrollRows.map((row) => [
+  //       row.id || '',
+  //       row.employeeId || '',
+  //       row.name || '',
+  //       row.department || '',
+  //       formatPayrollMonth(row),
+  //       row.baseSalary ?? '',
+  //       row.allowance ?? '',
+  //       row.bonus ?? '',
+  //       row.deduction ?? '',
+  //       row.netSalary ?? '',
+  //       row.paymentStatus || ''
+  //     ]);
+
+  //     const escapedRow = (values) => values.map((value) => {
+  //       const stringValue = String(value ?? '').replace(/"/g, '""');
+  //       return /[",\n]/.test(stringValue) ? `"${stringValue}"` : stringValue;
+  //     }).join(',');
+
+  //     const csvContent = [headers.join(','), ...rows.map(escapedRow)].join('\n');
+  //     const blob = new Blob(['\uFEFF' + csvContent], { type: 'text/csv;charset=utf-8;' });
+  //     const url = URL.createObjectURL(blob);
+  //     const link = document.createElement('a');
+  //     link.href = url;
+  //     link.setAttribute('download', 'Bao_cao_Tien_luong.csv');
+  //     document.body.appendChild(link);
+  //     link.click();
+  //     document.body.removeChild(link);
+
+  //     Swal.fire({ icon: 'success', title: 'Hoàn tất!', text: 'Đã tải xuống báo cáo Tiền lương', timer: 2000, showConfirmButton: false });
+  //   } catch (err) {
+  //     console.error(err);
+  //     Swal.fire('Lỗi!', 'Không thể tải báo cáo Tiền lương. Hãy kiểm tra lại Server!', 'error');
+  //   }
+  // };
+
   return (
     <div className="dashboard-wrapper" style={{ paddingBottom: '50px' }}>
       
@@ -176,109 +230,47 @@ function Reports() {
         </p>
       </div>
 
-      <div className="report-grid" style={{ 
-        display: 'grid', 
-        gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', 
-        gap: '24px'
-      }}>
-        
-        {/* THẺ 1: NHÂN SỰ */}
-        <div className="dash-card report-item-card" style={{ backgroundColor: '#fff', padding: '20px', borderRadius: '12px', boxShadow: '0 2px 4px rgba(0,0,0,0.05)' }}>
-          <div className="report-icon-box" style={{ fontSize: '24px', marginBottom: '15px' }}>👥</div>
-          <h3 style={{ margin: '0 0 10px 0' }}>Dữ liệu Nhân sự (Hiệp)</h3>
-          <p style={{ color: '#64748b', fontSize: '14px', marginBottom: '20px', minHeight: '40px' }}>Danh sách chi tiết hồ sơ nhân viên, chức vụ, phòng ban định dạng CSV.</p>
+      <div className="report-grid">
+        {/* Thẻ Báo cáo Nhân sự */}
+        <div className="dash-card report-item-card">
+          <div className="report-icon-box">👥</div>
+          <h3>Dữ liệu Nhân sự (Hiệp)</h3>
+          <p>Danh sách chi tiết hồ sơ nhân viên, chức vụ, phòng ban định dạng CSV.</p>
           <button 
             className="p-btn p-btn-outline" 
-            onClick={handleExportEmployees}
-            style={{ width: '100%', padding: '10px', borderRadius: '8px', border: '1px solid #cbd5e1', backgroundColor: '#fff', cursor: 'pointer', fontWeight: '600', color: '#334155' }}>
+            onClick={() => exportToCSV(reportData.employeesList, 'Bao_Cao_Nhan_Su')}
+            style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '8px' }}>
              📥 Tải CSV Nhân Sự
           </button>
         </div>
 
-        {/* THẺ 2: CHẤM CÔNG */}
-        <div className="dash-card report-item-card" style={{ backgroundColor: '#fff', padding: '20px', borderRadius: '12px', boxShadow: '0 2px 4px rgba(0,0,0,0.05)' }}>
-          <div className="report-icon-box" style={{ fontSize: '24px', marginBottom: '15px' }}>📅</div>
-          <h3 style={{ margin: '0 0 10px 0' }}>Dữ liệu Chấm công (Sêu)</h3>
-          <p style={{ color: '#64748b', fontSize: '14px', marginBottom: '20px', minHeight: '40px' }}>Báo cáo giờ Check-in/Check-out, số ngày nghỉ phép trong tháng này.</p>
+        {/* Các thẻ khác tạm thời hiện Alert chờ Sêu và Vỹ đẩy API lên */}
+        <div className="dash-card report-item-card">
+          <div className="report-icon-box" style={{ color: '#e67e22', backgroundColor: '#fff7ed' }}>📅</div>
+          <h3>Dữ liệu Chấm công (Sêu)</h3>
+          <p>Báo cáo giờ Check-in/Check-out, số ngày nghỉ phép trong tháng này.</p>
           <button 
             className="p-btn p-btn-outline" 
-            onClick={handleExportAttendance}
-            style={{ width: '100%', padding: '10px', borderRadius: '8px', border: '1px solid #cbd5e1', backgroundColor: '#fff', cursor: 'pointer', fontWeight: '600', color: '#334155' }}>
+            onClick={() => alert("Đang chờ Sêu hoàn thiện API Chấm công!")}
+            style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '8px' }}>
              📥 Tải CSV Chấm Công
           </button>
         </div>
 
-        {/* THẺ 3: TIỀN LƯƠNG */}
-        <div className="dash-card report-item-card" style={{ backgroundColor: '#fff', padding: '20px', borderRadius: '12px', boxShadow: '0 2px 4px rgba(0,0,0,0.05)' }}>
-          <div className="report-icon-box" style={{ fontSize: '24px', marginBottom: '15px' }}>💰</div>
-          <h3 style={{ margin: '0 0 10px 0' }}>Báo cáo Tiền lương (Vỹ)</h3>
-          <p style={{ color: '#64748b', fontSize: '14px', marginBottom: '20px', minHeight: '40px' }}>Bảng lương chi tiết bao gồm lương cơ bản, phụ cấp và các khoản trừ.</p>
+        <div className="dash-card report-item-card">
+          <div className="report-icon-box" style={{ color: '#059669', backgroundColor: '#ecfdf5' }}>💰</div>
+          <h3>Báo cáo Tiền lương (Vỹ)</h3>
+          <p>Bảng lương chi tiết bao gồm lương cơ bản, phụ cấp và các khoản trừ.</p>
           <button 
             className="p-btn p-btn-outline"
-            onClick={handleExportPayroll} 
-            style={{ width: '100%', padding: '10px', borderRadius: '8px', border: '1px solid #cbd5e1', backgroundColor: '#fff', cursor: 'pointer', fontWeight: '600', color: '#334155' }}>
+            onClick={() => alert("Đang chờ Vỹ hoàn thiện API Tiền lương!")} 
+            style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '8px' }}>
              📥 Tải CSV Tiền Lương
           </button>
         </div>
       </div>
       
-      {/* LỊCH SỬ BÁO CÁO */}
-      <div style={{
-        backgroundColor: '#ffffff',
-        borderRadius: '12px',
-        padding: '24px',
-        boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06)',
-        border: '1px solid #e2e8f0',
-        width: '100%',
-        clear: 'both',
-        display: 'block',
-        marginTop: '50px' 
-      }}>
-        <h3 style={{ margin: '0 0 20px 0', fontSize: '18px', color: '#0f172a', fontWeight: '700' }}>
-          Lịch sử xuất báo cáo
-        </h3>
-        
-        <div style={{ overflowX: 'auto' }}>
-          <table style={{ width: '100%', minWidth: '800px', borderCollapse: 'collapse', textAlign: 'left', margin: '0' }}>
-            <thead>
-              <tr style={{ backgroundColor: '#f8fafc', borderBottom: '2px solid #cbd5e1' }}>
-                <th style={{ padding: '16px 20px', color: '#475569', fontSize: '13px', textTransform: 'uppercase', fontWeight: '700', width: '35%' }}>Loại báo cáo</th>
-                <th style={{ padding: '16px 20px', color: '#475569', fontSize: '13px', textTransform: 'uppercase', fontWeight: '700', width: '25%' }}>Người xuất</th>
-                <th style={{ padding: '16px 20px', color: '#475569', fontSize: '13px', textTransform: 'uppercase', fontWeight: '700', width: '25%' }}>Thời gian</th>
-                <th style={{ padding: '16px 20px', color: '#475569', fontSize: '13px', textTransform: 'uppercase', fontWeight: '700', width: '15%' }}>Trạng thái</th>
-              </tr>
-            </thead>
-            <tbody>
-              {exportHistory.length > 0 ? (
-                exportHistory.map((record) => (
-                  <tr 
-                    key={record.id} 
-                    style={{ borderBottom: '1px solid #e2e8f0', transition: 'background-color 0.2s' }}
-                    onMouseEnter={(e) => e.currentTarget.style.backgroundColor = '#f1f5f9'}
-                    onMouseLeave={(e) => e.currentTarget.style.backgroundColor = 'transparent'}
-                  >
-                    <td style={{ padding: '16px 20px', fontWeight: '600', color: '#1e293b' }}>{record.name}</td>
-                    <td style={{ padding: '16px 20px', color: '#475569' }}>{record.user}</td>
-                    <td style={{ padding: '16px 20px', color: '#475569' }}>{record.time}</td>
-                    <td style={{ padding: '16px 20px' }}>
-                      <span style={{ backgroundColor: '#dcfce7', color: '#16a34a', padding: '6px 12px', borderRadius: '20px', fontSize: '12px', fontWeight: 'bold', display: 'inline-block' }}>
-                        {record.status}
-                      </span>
-                    </td>
-                  </tr>
-                ))
-              ) : (
-                <tr>
-                  <td colSpan="4" style={{ padding: '30px', textAlign: 'center', color: '#94a3b8', fontStyle: 'italic', fontSize: '14px' }}>
-                    Chưa có báo cáo nào được xuất trong phiên làm việc này. Bấm vào nút tải CSV ở trên để ghi nhận lịch sử.
-                  </td>
-                </tr>
-              )}
-            </tbody>
-          </table>
-        </div>
-      </div>
-
+      {/* (Phần Table Lịch sử xuất báo cáo giữ nguyên bên dưới...) */}
     </div>
   );
 }

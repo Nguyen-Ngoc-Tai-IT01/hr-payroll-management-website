@@ -1,46 +1,9 @@
-<<<<<<< HEAD
-﻿[
+﻿﻿[
   { "id": "ATT_0326_001", "employeeId": "EMP001", "month": "03/2026", "standardDays": 22, "actualDays": 22, "lateCount": 0, "leaveDays": 0, "overtimeHours": 5 },
-=======
-[
-  { "id": "ATT_0326_001", "employeeId": "EMP001", "month": "03/2026", "standardDays": 22, "actualDays": 20, "lateCount": 2, "leaveDays": 0, "overtimeHours": 6 },
->>>>>>> a99286453b88fb9175ed52b8638c2450c64e9d9c
   { "id": "ATT_0326_002", "employeeId": "EMP002", "month": "03/2026", "standardDays": 22, "actualDays": 21.5, "lateCount": 2, "leaveDays": 0.5, "overtimeHours": 0 },
   { "id": "ATT_0326_003", "employeeId": "EMP003", "month": "03/2026", "standardDays": 22, "actualDays": 22, "lateCount": 0, "leaveDays": 0, "overtimeHours": 12 },
   { "id": "ATT_0326_004", "employeeId": "EMP004", "month": "03/2026", "standardDays": 22, "actualDays": 20, "lateCount": 0, "leaveDays": 2, "overtimeHours": 0 },
   { "id": "ATT_0326_005", "employeeId": "EMP005", "month": "03/2026", "standardDays": 22, "actualDays": 22, "lateCount": 5, "leaveDays": 0, "overtimeHours": 2 },
   { "id": "ATT_0326_006", "employeeId": "EMP006", "month": "03/2026", "standardDays": 22, "actualDays": 22, "lateCount": 0, "leaveDays": 0, "overtimeHours": 0 },
-<<<<<<< HEAD
   { "id": "ATT_0326_007", "employeeId": "EMP007", "month": "03/2026", "standardDays": 22, "actualDays": 21, "lateCount": 0, "leaveDays": 1, "overtimeHours": 0 }
-=======
-  { "id": "ATT_0326_007", "employeeId": "EMP007", "month": "03/2026", "standardDays": 22, "actualDays": 21, "lateCount": 0, "leaveDays": 1, "overtimeHours": 0 },
-  { "id": "ATT_0326_008", "employeeId": "EMP008", "month": "03/2026", "standardDays": 22, "actualDays": 22, "lateCount": 0, "leaveDays": 0, "overtimeHours": 8 },
-  { "id": "ATT_0326_009", "employeeId": "EMP009", "month": "03/2026", "standardDays": 22, "actualDays": 22, "lateCount": 1, "leaveDays": 0, "overtimeHours": 10 },
-  { "id": "ATT_0326_010", "employeeId": "EMP010", "month": "03/2026", "standardDays": 22, "actualDays": 22, "lateCount": 0, "leaveDays": 0, "overtimeHours": 6 },
-  { "id": "ATT_0326_011", "employeeId": "EMP011", "month": "03/2026", "standardDays": 22, "actualDays": 21, "lateCount": 3, "leaveDays": 1, "overtimeHours": 4 },
-  { "id": "ATT_0326_012", "employeeId": "EMP012", "month": "03/2026", "standardDays": 22, "actualDays": 22, "lateCount": 0, "leaveDays": 0, "overtimeHours": 0 },
-  { "id": "ATT_0326_013", "employeeId": "EMP013", "month": "03/2026", "standardDays": 22, "actualDays": 22, "lateCount": 2, "leaveDays": 0, "overtimeHours": 5 },
-  { "id": "ATT_0326_014", "employeeId": "EMP014", "month": "03/2026", "standardDays": 22, "actualDays": 21, "lateCount": 0, "leaveDays": 1, "overtimeHours": 3 },
-  { "id": "ATT_0326_015", "employeeId": "EMP015", "month": "03/2026", "standardDays": 22, "actualDays": 22, "lateCount": 0, "leaveDays": 0, "overtimeHours": 2 },
-  { "id": "ATT_0326_016", "employeeId": "EMP016", "month": "03/2026", "standardDays": 22, "actualDays": 10, "lateCount": 0, "leaveDays": 12, "overtimeHours": 0 },
-  { "id": "ATT_0326_017", "employeeId": "EMP017", "month": "03/2026", "standardDays": 22, "actualDays": 22, "lateCount": 0, "leaveDays": 0, "overtimeHours": 8 },
-  { "id": "ATT_0326_018", "employeeId": "EMP018", "month": "03/2026", "standardDays": 22, "actualDays": 22, "lateCount": 1, "leaveDays": 0, "overtimeHours": 4 },
-  { "id": "ATT_0326_019", "employeeId": "EMP019", "month": "03/2026", "standardDays": 22, "actualDays": 22, "lateCount": 0, "leaveDays": 0, "overtimeHours": 15 },
-  { "id": "ATT_0326_020", "employeeId": "EMP020", "month": "03/2026", "standardDays": 22, "actualDays": 21.5, "lateCount": 2, "leaveDays": 0.5, "overtimeHours": 0 },
-  { "id": "ATT_0326_021", "employeeId": "EMP021", "month": "03/2026", "standardDays": 22, "actualDays": 5, "lateCount": 0, "leaveDays": 17, "overtimeHours": 0 },
-  { "id": "ATT_0326_022", "employeeId": "EMP022", "month": "03/2026", "standardDays": 22, "actualDays": 22, "lateCount": 0, "leaveDays": 0, "overtimeHours": 5 },
-  { "id": "ATT_0326_023", "employeeId": "EMP023", "month": "03/2026", "standardDays": 22, "actualDays": 22, "lateCount": 4, "leaveDays": 0, "overtimeHours": 0 },
-  { "id": "ATT_0326_024", "employeeId": "EMP024", "month": "03/2026", "standardDays": 22, "actualDays": 22, "lateCount": 0, "leaveDays": 0, "overtimeHours": 10 },
-  { "id": "ATT_0326_025", "employeeId": "EMP025", "month": "03/2026", "standardDays": 22, "actualDays": 22, "lateCount": 0, "leaveDays": 0, "overtimeHours": 0 },
-  { "id": "ATT_0326_026", "employeeId": "EMP026", "month": "03/2026", "standardDays": 22, "actualDays": 22, "lateCount": 1, "leaveDays": 0, "overtimeHours": 2 },
-  { "id": "ATT_0326_027", "employeeId": "EMP027", "month": "03/2026", "standardDays": 22, "actualDays": 22, "lateCount": 0, "leaveDays": 0, "overtimeHours": 0 },
-  { "id": "ATT_0326_028", "employeeId": "EMP028", "month": "03/2026", "standardDays": 22, "actualDays": 12, "lateCount": 0, "leaveDays": 10, "overtimeHours": 0 },
-  { "id": "ATT_0326_029", "employeeId": "EMP029", "month": "03/2026", "standardDays": 22, "actualDays": 22, "lateCount": 0, "leaveDays": 0, "overtimeHours": 7 },
-  { "id": "ATT_0326_030", "employeeId": "EMP030", "month": "03/2026", "standardDays": 22, "actualDays": 22, "lateCount": 3, "leaveDays": 0, "overtimeHours": 1 },
-  { "id": "ATT_0326_031", "employeeId": "EMP031", "month": "03/2026", "standardDays": 22, "actualDays": 21, "lateCount": 0, "leaveDays": 1, "overtimeHours": 5 },
-  { "id": "ATT_0326_032", "employeeId": "EMP032", "month": "03/2026", "standardDays": 22, "actualDays": 22, "lateCount": 0, "leaveDays": 0, "overtimeHours": 4 },
-  { "id": "ATT_0326_033", "employeeId": "EMP033", "month": "03/2026", "standardDays": 22, "actualDays": 22, "lateCount": 1, "leaveDays": 0, "overtimeHours": 0 },
-  { "id": "ATT_0326_034", "employeeId": "EMP034", "month": "03/2026", "standardDays": 22, "actualDays": 21, "lateCount": 0, "leaveDays": 0, "overtimeHours": 0 },
-  { "id": "ATT_0326_035", "employeeId": "EMP035", "month": "03/2026", "standardDays": 22, "actualDays": 15, "lateCount": 0, "leaveDays": 7, "overtimeHours": 0 }
->>>>>>> a99286453b88fb9175ed52b8638c2450c64e9d9c
 ]

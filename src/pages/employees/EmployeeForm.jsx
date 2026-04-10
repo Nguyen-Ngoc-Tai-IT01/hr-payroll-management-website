@@ -1,95 +1,129 @@
-// src/pages/employees/EmployeeForm.jsx
 import React, { useState, useEffect } from 'react';
-import { useParams, useNavigate } from 'react-router-dom';
-import employeesData from '../../data/employees.json';
+import { useParams, useNavigate, Link } from 'react-router-dom';
+import './style.css'; // Đảm bảo bạn đã import file css này
 
 const EmployeeForm = () => {
-  const { id } = useParams();        // nếu có id → đang sửa
+  const { id } = useParams();
   const navigate = useNavigate();
+  const isEditMode = !!id;
 
   const [formData, setFormData] = useState({
-    id: '',
-    username: '',
-    fullName: '',
-    email: '',
-    phone: '',
-    department: '',
-    position: '',
-    role: 'Employee',
-    baseSalary: '',
-    joinDate: '',
-    status: 'Đang làm việc'
+    id: '', fullName: '', email: '', phone: '',
+    department: 'Phòng IT', position: '',
+    baseSalary: '', joinDate: '', status: 'Đang làm việc'
   });
 
-  // Nếu sửa → load dữ liệu cũ
+  const [loading, setLoading] = useState(false);
+
   useEffect(() => {
     if (id) {
-      const emp = employeesData.find(e => e.id === id);
-      if (emp) setFormData(emp);
+      fetch('/data/employees.json')
+        .then(res => res.json())
+        .then(data => {
+          const found = data.find(emp => String(emp.id) === String(id));
+          if (found) setFormData(found);
+        })
+        .catch(() => console.error("Lỗi load dữ liệu"));
     }
   }, [id]);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setFormData(prev => ({ ...prev, [name]: name === 'baseSalary' ? Number(value) : value }));
+    setFormData(prev => ({
+      ...prev,
+      [name]: name === 'baseSalary' ? Number(value) || '' : value
+    }));
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (id) {
-      alert(`Cập nhật nhân viên ${formData.fullName} thành công! (mock)`);
-    } else {
-      alert(`Thêm nhân viên mới ${formData.fullName} thành công! (mock)`);
-    }
-    navigate('/employees');
+    setLoading(true);
+    setTimeout(() => {
+      alert(`✅ ${isEditMode ? 'Cập nhật' : 'Thêm'} thành công!`);
+      navigate('/employees');
+      setLoading(false);
+    }, 800);
   };
 
   return (
-    <div className="max-w-2xl mx-auto p-6">
-      <h1 className="text-3xl font-bold mb-8">
-        {id ? 'Chỉnh sửa Nhân viên' : 'Thêm Nhân viên Mới'}
-      </h1>
-
-      <form onSubmit={handleSubmit} className="bg-white p-8 rounded-2xl shadow space-y-6">
-        {/* Các trường form tương tự như trước, nhưng dùng tên trường phù hợp với JSON */}
-        <div className="grid grid-cols-2 gap-6">
-          <div>
-            <label className="block mb-1 font-medium">Mã NV</label>
-            <input type="text" name="id" value={formData.id} onChange={handleChange} required className="w-full p-3 border rounded-lg" />
+    <div className="form-container">
+      <Link to="/employees" className="back-btn">← Quay lại danh sách</Link>
+      <h1 className="form-title">{isEditMode ? `Chỉnh sửa: ${formData.fullName}` : 'Thêm nhân viên mới'}</h1>
+      
+      <div className="form-card">
+        <form onSubmit={handleSubmit}>
+          <div className="form-grid">
+            <div className="form-group">
+              <label>Mã nhân viên</label>
+              <input 
+                type="text" name="id" 
+                value={formData.id} 
+                onChange={handleChange} 
+                required 
+                disabled={isEditMode}
+                className={isEditMode ? "input-disabled" : ""}
+              />
+            </div>
+            <div className="form-group">
+              <label>Họ và tên</label>
+              <input type="text" name="fullName" value={formData.fullName} onChange={handleChange} required />
+            </div>
           </div>
-          <div>
-            <label className="block mb-1 font-medium">Username</label>
-            <input type="text" name="username" value={formData.username} onChange={handleChange} required className="w-full p-3 border rounded-lg" />
+
+          <div className="form-group">
+            <label>Email liên hệ</label>
+            <input type="email" name="email" value={formData.email} onChange={handleChange} required />
           </div>
-        </div>
 
-        <div>
-          <label className="block mb-1 font-medium">Họ và tên</label>
-          <input type="text" name="fullName" value={formData.fullName} onChange={handleChange} required className="w-full p-3 border rounded-lg" />
-        </div>
-
-        <div className="grid grid-cols-2 gap-6">
-          <div>
-            <label className="block mb-1 font-medium">Email</label>
-            <input type="email" name="email" value={formData.email} onChange={handleChange} required className="w-full p-3 border rounded-lg" />
+          <div className="form-grid">
+            <div className="form-group">
+              <label>Số điện thoại</label>
+              <input type="text" name="phone" value={formData.phone} onChange={handleChange} />
+            </div>
+            <div className="form-group">
+              <label>Phòng ban</label>
+              <select name="department" value={formData.department} onChange={handleChange}>
+                <option value="Phòng IT">Phòng IT</option>
+                <option value="Phòng Nhân sự">Phòng Nhân sự</option>
+                <option value="Phòng Kế toán">Phòng Kế toán</option>
+                <option value="Ban Giám đốc">Ban Giám đốc</option>
+              </select>
+            </div>
           </div>
-          <div>
-            <label className="block mb-1 font-medium">Số điện thoại</label>
-            <input type="text" name="phone" value={formData.phone} onChange={handleChange} className="w-full p-3 border rounded-lg" />
+
+          <div className="form-grid">
+            <div className="form-group">
+              <label>Chức vụ</label>
+              <input type="text" name="position" value={formData.position} onChange={handleChange} />
+            </div>
+            <div className="form-group">
+              <label>Lương cơ bản (VNĐ)</label>
+              <input type="number" name="baseSalary" value={formData.baseSalary} onChange={handleChange} />
+            </div>
           </div>
-        </div>
 
-        {/* Thêm các trường khác: department, position, baseSalary, joinDate, status... */}
+          <div className="form-grid">
+            <div className="form-group">
+              <label>Trạng thái</label>
+              <select name="status" value={formData.status} onChange={handleChange}>
+                <option value="Đang làm việc">Đang làm việc</option>
+                <option value="Đã nghỉ việc">Đã nghỉ việc</option>
+              </select>
+            </div>
+            <div className="form-group">
+              <label>Ngày vào làm</label>
+              <input type="date" name="joinDate" value={formData.joinDate} onChange={handleChange} />
+            </div>
+          </div>
 
-        <div className="flex gap-4 pt-6">
-          <button type="submit" className="flex-1 bg-blue-600 text-white py-3 rounded-lg hover:bg-blue-700">
-            {id ? 'Cập nhật' : 'Thêm mới'}
-          </button>
-          <button type="button" onClick={() => navigate('/employees')} className="flex-1 border py-3 rounded-lg hover:bg-gray-50">
-            Hủy
-          </button>
-        </div>
-      </form>
+          <div className="form-actions">
+            <button type="submit" className="btn-save" disabled={loading}>
+              {loading ? 'Đang xử lý...' : isEditMode ? 'Lưu thay đổi' : 'Tạo mới'}
+            </button>
+            <button type="button" className="btn-cancel" onClick={() => navigate('/employees')}>Hủy bỏ</button>
+          </div>
+        </form>
+      </div>
     </div>
   );
 };

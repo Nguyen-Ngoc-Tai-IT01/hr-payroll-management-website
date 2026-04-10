@@ -49,7 +49,12 @@ const PayrollList = () => {
   };
 
   const formatMonthYear = (month, year) => {
-    return `${String(month).padStart(2, "0")}/${year}`;
+    if (typeof month === 'string' && month.includes('/')) {
+      return month;
+    }
+
+    const monthStr = String(month).padStart(2, '0');
+    return year ? `${monthStr}/${year}` : monthStr;
   };
 
   // TÌM KIẾM & LỌC
