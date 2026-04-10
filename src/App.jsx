@@ -3,7 +3,7 @@ import { Routes, Route, NavLink, Link } from 'react-router-dom';
 import './App.css'; 
 import './pages/admin/Admin.css'; 
 
-// --- IMPORT LOGO TỪ THƯ MỤC ASSETS ---
+// --- IMPORT LOGO ---
 import logo from './assets/logo.png';
 
 // --- 1. IMPORT CÁC TRANG CỦA TÀI ---
@@ -11,56 +11,90 @@ import Settings from './pages/admin/Settings';
 import Profile from './pages/admin/Profile';
 import Reports from './pages/admin/Reports';
 
-// --- 2. IMPORT TRANG CỦA TEAM (Tạm ẩn chờ anh em code xong) ---
+// --- 2. IMPORT TRANG CỦA TEAM ---
 // import Login from './pages/auth/Login';
 // import Dashboard from './pages/dashboard/Dashboard';         // Tuyến
-// import EmployeeList from './pages/employees/EmployeeList';   // Hiệp
-import Leaves from './pages/attendance/Leaves';
-import Payslip from './pages/payroll/Payslip'
+import EmployeeList from './pages/employees/EmployeeList'; 
+import EmployeeDetail from './pages/employees/EmployeeDetail';  // Hiệp
 import Attendance from './pages/attendance/Attendance';      // Sêu
+import Leaves from './pages/attendance/Leaves';              // Sêu
 import PayrollList from './pages/payroll/PayrollList';       // Vỹ
+import PayslipDetail from './pages/payroll/Payslip';     // Vỹ (Sửa tên cho khớp)
 
 
 // --- TRANG CHỦ (Home) ---
 function Home() {
   return (
-    <div className="dashboard-wrapper" style={{ minHeight: 'calc(100vh - 70px)' }}>
-      <div className="page-header" style={{ textAlign: 'center', marginBottom: '40px', marginTop: '20px' }}>
-        {/* Đưa Logo to ra giữa trang chủ */}
+    <div className="dashboard-wrapper" style={{ minHeight: 'calc(100vh - 80px)', padding: '40px 20px', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+      
+      {/* Header Trang Chủ - ĐÃ SỬA LỖI LỆCH NGANG */}
+      <div 
+        className="page-header" 
+        style={{ 
+          display: 'flex', 
+          flexDirection: 'column', // Ép xếp dọc từ trên xuống dưới
+          alignItems: 'center',    // Căn giữa tuyệt đối
+          textAlign: 'center', 
+          marginBottom: '40px', 
+          maxWidth: '600px',
+          margin: '0 auto 40px auto' // Ép khối này đứng giữa trang
+        }}
+      >
         <img 
           src={logo} 
           alt="Workforce Manager Logo" 
-          style={{ height: '140px', objectFit: 'contain', marginBottom: '15px', borderRadius: '10px' }} 
+          style={{ height: '120px', objectFit: 'contain', marginBottom: '20px', borderRadius: '12px', boxShadow: '0 4px 6px rgba(0,0,0,0.05)' }} 
         />
-        <h1 style={{ fontSize: '26px', color: '#0f172a', marginBottom: '10px' }}>
-          Hệ thống Quản lý Nhân sự và Tiền lương
+        <h1 style={{ fontSize: '32px', color: '#1e293b', fontWeight: '800', marginBottom: '12px', letterSpacing: '-0.5px', width: '100%' }}>
+          Workforce Manager
         </h1>
-        <p>Nền tảng quản trị doanh nghiệp toàn diện</p>
+        <p style={{ fontSize: '16px', color: '#64748b', lineHeight: '1.5', width: '100%' }}>
+          Hệ thống Quản trị Nhân sự & Tiền lương toàn diện dành cho Doanh nghiệp
+        </p>
       </div>
 
-      <div className="dash-card" style={{ maxWidth: '850px', margin: '0 auto', padding: '35px' }}>
-        <h3 className="card-title" style={{ textAlign: 'center', color: '#3b82f6', fontSize: '20px' }}>
-          Lối tắt truy cập các Phân hệ
-        </h3>
+      {/* Khung chức năng */}
+      <div className="dash-card" style={{ maxWidth: '900px', width: '100%', padding: '40px', borderRadius: '16px', boxShadow: '0 10px 25px -5px rgba(0,0,0,0.05), 0 8px 10px -6px rgba(0,0,0,0.01)' }}>
         
-        {/* Lưới nút bấm cho cả 5 người */}
-        <div className="grid-2" style={{ marginBottom: '30px' }}>
-          <Link to="/dashboard" className="p-btn p-btn-outline" style={{ textAlign: 'center' }}>📈 Tổng quan (Tuyến)</Link>
-          <Link to="/employees" className="p-btn p-btn-outline" style={{ textAlign: 'center' }}>👥 Quản lý Nhân sự (Hiệp)</Link>
-          <Link to="/attendance" className="p-btn p-btn-outline" style={{ textAlign: 'center' }}>📅 Quản lý Chấm công (Sêu)</Link>
-          <Link to="/payroll" className="p-btn p-btn-outline" style={{ textAlign: 'center' }}>💰 Quản lý Tiền lương (Vỹ)</Link>
+        {/* Phân hệ chung */}
+        <div style={{ marginBottom: '40px' }}>
+          <h3 style={{ textAlign: 'center', color: '#334155', fontSize: '18px', textTransform: 'uppercase', letterSpacing: '1px', marginBottom: '24px', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '10px' }}>
+            <span style={{ height: '1px', flex: '1', backgroundColor: '#e2e8f0' }}></span>
+            Lối tắt Phân hệ
+            <span style={{ height: '1px', flex: '1', backgroundColor: '#e2e8f0' }}></span>
+          </h3>
+          
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '16px' }}>
+            <Link to="/dashboard" className="p-btn p-btn-outline" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', padding: '16px', gap: '8px' }}>
+              <span style={{ fontSize: '24px' }}>📈</span> Tổng quan
+            </Link>
+            <Link to="/employees" className="p-btn p-btn-outline" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', padding: '16px', gap: '8px' }}>
+              <span style={{ fontSize: '24px' }}>👥</span> Nhân sự
+            </Link>
+            <Link to="/attendance" className="p-btn p-btn-outline" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', padding: '16px', gap: '8px' }}>
+              <span style={{ fontSize: '24px' }}>📅</span> Chấm công
+            </Link>
+            <Link to="/payroll" className="p-btn p-btn-outline" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', padding: '16px', gap: '8px' }}>
+              <span style={{ fontSize: '24px' }}>💰</span> Tiền lương
+            </Link>
+          </div>
         </div>
 
-        <hr style={{ border: 'none', borderTop: '1px dashed #e2e8f0', margin: '20px 0' }}/>
-
-        <h3 className="card-title" style={{ textAlign: 'center', color: '#059669', fontSize: '18px' }}>
-          Khu vực dành cho Quản trị viên
-        </h3>
-        <div className="home-actions">
-          <Link to="/profile" className="p-btn p-btn-primary">👤 Hồ sơ của tôi</Link>
-          <Link to="/settings" className="p-btn p-btn-outline">⚙️ Cài đặt hệ thống</Link>
-          <Link to="/reports" className="p-btn p-btn-success">📊 Xem báo cáo</Link>
+        {/* Phân hệ Admin */}
+        <div>
+          <h3 style={{ textAlign: 'center', color: '#059669', fontSize: '18px', textTransform: 'uppercase', letterSpacing: '1px', marginBottom: '24px', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '10px' }}>
+            <span style={{ height: '1px', flex: '1', backgroundColor: '#e2e8f0' }}></span>
+            Khu vực Quản trị (Admin)
+            <span style={{ height: '1px', flex: '1', backgroundColor: '#e2e8f0' }}></span>
+          </h3>
+          
+          <div style={{ display: 'flex', justifyContent: 'center', flexWrap: 'wrap', gap: '16px' }}>
+            <Link to="/profile" className="p-btn p-btn-primary" style={{ padding: '12px 24px', borderRadius: '8px' }}>👤 Hồ sơ của tôi</Link>
+            <Link to="/settings" className="p-btn p-btn-outline" style={{ padding: '12px 24px', borderRadius: '8px', borderColor: '#94a3b8', color: '#475569' }}>⚙️ Cài đặt hệ thống</Link>
+            <Link to="/reports" className="p-btn p-btn-success" style={{ padding: '12px 24px', borderRadius: '8px' }}>📊 Xem báo cáo</Link>
+          </div>
         </div>
+
       </div>
     </div>
   );
@@ -70,16 +104,18 @@ function Home() {
 function App() {
   return (
     <div className="app-container">
-      {/* --- THANH MENU ĐIỀU HƯỚNG DÙNG CHUNG CHUNG CẢ TEAM --- */}
-      <nav className="top-nav-modern">
+      {/* --- THANH MENU ĐIỀU HƯỚNG --- */}
+      <nav className="top-nav-modern" style={{ position: 'sticky', top: 0, zIndex: 1000, boxShadow: '0 1px 3px rgba(0,0,0,0.05)' }}>
         <div className="nav-brand">
-          {/* Logo gắn trên góc trái của thanh Menu */}
-          <img 
-            src={logo} 
-            alt="Logo" 
-            style={{ height: '45px', objectFit: 'contain', cursor: 'pointer' }} 
-            onClick={() => window.location.href = '/'}
-          />
+          <Link to="/">
+            <img 
+              src={logo} 
+              alt="Logo" 
+              style={{ height: '40px', objectFit: 'contain', cursor: 'pointer', transition: 'transform 0.2s' }} 
+              onMouseEnter={(e) => e.currentTarget.style.transform = 'scale(1.05)'}
+              onMouseLeave={(e) => e.currentTarget.style.transform = 'scale(1)'}
+            />
+          </Link>
         </div>
         
         <div className="nav-menu">
@@ -89,45 +125,41 @@ function App() {
           <NavLink to="/attendance" className={({isActive}) => isActive ? "nav-item active" : "nav-item"}>📅 Chấm công</NavLink>
           <NavLink to="/payroll" className={({isActive}) => isActive ? "nav-item active" : "nav-item"}>💰 Lương</NavLink>
           
-          {/* Vạch kẻ phân cách menu Admin */}
-          <span style={{ borderLeft: '1px solid #e2e8f0', margin: '0 5px' }}></span>
+          <span style={{ borderLeft: '2px solid #e2e8f0', margin: '0 10px', height: '24px' }}></span>
           
           <NavLink to="/reports" className={({isActive}) => isActive ? "nav-item active" : "nav-item"}>📊 Báo cáo</NavLink>
           <NavLink to="/settings" className={({isActive}) => isActive ? "nav-item active" : "nav-item"}>⚙️ Cài đặt</NavLink>
         </div>
 
-        <div className="nav-user">
-          <div className="nav-avatar">NT</div>
-          {/* Tạm thời để tên chung, sau này Tuyến sẽ đổi thành tên động */}
-          <span>Xin chào, Admin!</span> 
+        <div className="nav-user" style={{ cursor: 'pointer' }}>
+          <div className="nav-avatar" style={{ backgroundColor: '#3b82f6', color: 'white', fontWeight: 'bold' }}>NT</div>
+          <span style={{ fontWeight: '500', color: '#334155' }}>Xin chào, Admin!</span> 
         </div>
       </nav>
 
-      {/* --- KHU VỰC HIỂN THỊ NỘI DUNG TRANG CHÍNH --- */}
-      <div className="main-content">
+      {/* --- KHU VỰC HIỂN THỊ NỘI DUNG --- */}
+      <div className="main-content" style={{ backgroundColor: '#f8fafc', minHeight: '100vh' }}>
         <Routes>
-          {/* Trang chủ */}
           <Route path="/" element={<Home />} />
 
           {/* --- ROUTES CỦA TÀI --- */}
           <Route path="/settings" element={<Settings />} />
           <Route path="/profile" element={<Profile />} />
-          <Route path="/reports" element={<Reports />} />
+          <Route path="/reports" element={<Reports />} />		
 
           {/* --- ROUTES CỦA SÊU --- */}
           <Route path="/attendance" element={<Attendance />} />
           <Route path="/leaves" element={<Leaves />} />
 
-          {/* --- ROUTES CỦA VỸ (Đã được tích hợp thành công) --- */}
+          {/* --- ROUTES CỦA VỸ --- */}
+          {/* Sửa lại tên component cho khớp với import (PayslipDetail thay vì Payslip) */}
           <Route path="/payroll" element={<PayrollList />} />
-          <Route path="/payroll/payslip/:id" element={<Payslip />} />
-
-          {/* --- ROUTES CỦA TEAM (Các bạn khác sẽ tự mở comment khi code xong) --- */}
+          <Route path="/payroll/payslip/:id" element={<PayslipDetail />} />
+			<Route path="/employees/:id" element={<EmployeeDetail />} />
+          {/* --- ROUTES CHỜ HOÀN THIỆN --- */}
           {/* <Route path="/login" element={<Login />} /> */}
           {/* <Route path="/dashboard" element={<Dashboard />} /> */}
-          {/* <Route path="/employees" element={<EmployeeList />} /> */}
-          <Route path="/attendance" element={<Attendance />} />
-          <Route path="/payroll" element={<PayrollList />} />
+          <Route path="/employees" element={<EmployeeList />} />
         </Routes>
       </div>
     </div>
