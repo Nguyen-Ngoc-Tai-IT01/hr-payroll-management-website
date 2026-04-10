@@ -22,35 +22,21 @@ import PayrollList from './pages/payroll/PayrollList';       // Vỹ
 import PayslipDetail from './pages/payroll/Payslip';     // Vỹ (Sửa tên cho khớp)
 
 
-// --- TRANG CHỦ (Home) ---
+// --- Trang Giới thiệu (Dành cho cả Team) ---
 function Home() {
   return (
-    <div className="dashboard-wrapper" style={{ minHeight: 'calc(100vh - 80px)', padding: '40px 20px', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-      
-      {/* Header Trang Chủ - ĐÃ SỬA LỖI LỆCH NGANG */}
-      <div 
-        className="page-header" 
-        style={{ 
-          display: 'flex', 
-          flexDirection: 'column', // Ép xếp dọc từ trên xuống dưới
-          alignItems: 'center',    // Căn giữa tuyệt đối
-          textAlign: 'center', 
-          marginBottom: '40px', 
-          maxWidth: '600px',
-          margin: '0 auto 40px auto' // Ép khối này đứng giữa trang
-        }}
-      >
+    <div className="dashboard-wrapper" style={{ minHeight: 'calc(100vh - 70px)' }}>
+      <div className="page-header" style={{ textAlign: 'center', marginBottom: '40px', marginTop: '20px' }}>
+        {/* Đưa Logo to ra giữa trang chủ */}
         <img 
           src={logo} 
           alt="Workforce Manager Logo" 
-          style={{ height: '120px', objectFit: 'contain', marginBottom: '20px', borderRadius: '12px', boxShadow: '0 4px 6px rgba(0,0,0,0.05)' }} 
+          style={{ height: '140px', objectFit: 'contain', marginBottom: '15px', borderRadius: '10px' }} 
         />
-        <h1 style={{ fontSize: '32px', color: '#1e293b', fontWeight: '800', marginBottom: '12px', letterSpacing: '-0.5px', width: '100%' }}>
-          Workforce Manager
+        <h1 style={{ fontSize: '26px', color: '#0f172a', marginBottom: '10px' }}>
+          Hệ thống Quản lý Nhân sự và Tiền lương
         </h1>
-        <p style={{ fontSize: '16px', color: '#64748b', lineHeight: '1.5', width: '100%' }}>
-          Hệ thống Quản trị Nhân sự & Tiền lương toàn diện dành cho Doanh nghiệp
-        </p>
+        <p>Nền tảng quản trị doanh nghiệp toàn diện</p>
       </div>
 
       {/* Khung chức năng */}
@@ -100,22 +86,19 @@ function Home() {
   );
 }
 
-// --- COMPONENT APP CHÍNH ---
 function App() {
   return (
     <div className="app-container">
       {/* --- THANH MENU ĐIỀU HƯỚNG --- */}
       <nav className="top-nav-modern" style={{ position: 'sticky', top: 0, zIndex: 1000, boxShadow: '0 1px 3px rgba(0,0,0,0.05)' }}>
         <div className="nav-brand">
-          <Link to="/">
-            <img 
-              src={logo} 
-              alt="Logo" 
-              style={{ height: '40px', objectFit: 'contain', cursor: 'pointer', transition: 'transform 0.2s' }} 
-              onMouseEnter={(e) => e.currentTarget.style.transform = 'scale(1.05)'}
-              onMouseLeave={(e) => e.currentTarget.style.transform = 'scale(1)'}
-            />
-          </Link>
+          {/* Logo gắn trên góc trái của thanh Menu */}
+          <img 
+            src={logo} 
+            alt="Logo" 
+            style={{ height: '45px', objectFit: 'contain', cursor: 'pointer' }} 
+            onClick={() => window.location.href = '/'}
+          />
         </div>
         
         <div className="nav-menu">
@@ -137,33 +120,34 @@ function App() {
         </div>
       </nav>
 
-      {/* --- KHU VỰC HIỂN THỊ NỘI DUNG --- */}
-      <div className="main-content" style={{ backgroundColor: '#f8fafc', minHeight: '100vh' }}>
+      {/* --- KHU VỰC HIỂN THỊ NỘI DUNG TRANG CHÍNH --- */}
+      <div className="main-content">
         <Routes>
           <Route path="/" element={<Home />} />
 
-          {/* --- ROUTES CỦA TÀI --- */}
+          {/* --- ROUTES CỦA TÀI (Đang hoạt động) --- */}
           <Route path="/settings" element={<Settings />} />
           <Route path="/profile" element={<Profile />} />
           <Route path="/reports" element={<Reports />} />		
 
-          {/* --- ROUTES CỦA SÊU --- */}
+          {/* route của sêu đang hoạt động */}
           <Route path="/attendance" element={<Attendance />} />
           <Route path="/leaves" element={<Leaves />} />
 
-          {/* --- ROUTES CỦA VỸ --- */}
-          {/* Sửa lại tên component cho khớp với import (PayslipDetail thay vì Payslip) */}
+          {/* --- ROUTES CỦA VỸ (Đã được tích hợp thành công) --- */}
           <Route path="/payroll" element={<PayrollList />} />
           <Route path="/payroll/payslip/:id" element={<PayslipDetail />} />
 			<Route path="/employees/:id" element={<EmployeeDetail />} />
           {/* --- ROUTES CHỜ HOÀN THIỆN --- */}
           {/* <Route path="/login" element={<Login />} /> */}
           {/* <Route path="/dashboard" element={<Dashboard />} /> */}
-          <Route path="/employees" element={<EmployeeList />} />
+          {/* <Route path="/employees" element={<EmployeeList />} /> */}
+          <Route path="/attendance" element={<Attendance />} />
+          <Route path="/payroll" element={<PayrollList />} />
         </Routes>
       </div>
     </div>
   );
 }
 
-export default App;
+ export default App; 
