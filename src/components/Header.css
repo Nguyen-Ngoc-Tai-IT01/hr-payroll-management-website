@@ -1,0 +1,107 @@
+/* src/components/Header.css */
+.app-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 24px;
+  height: 64px;
+  background-color: #ffffff;
+  border-bottom: 1px solid #e5e7eb;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.02);
+}
+
+/* Phần Logo */
+.header-logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.logo-circle {
+  width: 36px;
+  height: 36px;
+  background: linear-gradient(135deg, #0ea5e9, #10b981);
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+}
+
+.logo-text {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.1;
+}
+
+.logo-title {
+  font-weight: 800;
+  font-size: 16px;
+  color: #0f172a;
+  letter-spacing: 0.5px;
+}
+
+.logo-subtitle {
+  font-weight: 600;
+  font-size: 12px;
+  color: #0ea5e9;
+  letter-spacing: 1px;
+}
+
+/* Phần Navigation (Menu) */
+.header-nav {
+  display: flex;
+  height: 100%;
+}
+
+.nav-link {
+  display: flex;
+  align-items: center;
+  padding: 0 20px;
+  text-decoration: none;
+  color: #4b5563;
+  font-weight: 500;
+  font-size: 14px;
+  border-bottom: 3px solid transparent;
+  transition: all 0.2s ease;
+}
+
+.nav-link:hover {
+  color: #0ea5e9;
+  background-color: #f8fafc;
+}
+
+/* Style cho tab đang được chọn (Active) */
+.nav-link.active {
+  color: #0369a1;
+  background-color: #e0f2fe; /* Màu xanh nhạt giống ảnh */
+  border-bottom: 3px solid #0ea5e9;
+}
+
+/* Phần User Profile */
+.header-user {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  cursor: pointer;
+}
+
+.user-avatar {
+  width: 32px;
+  height: 32px;
+  background-color: #e0f2fe;
+  color: #0284c7;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: bold;
+  font-size: 13px;
+}
+
+.user-name {
+  font-size: 14px;
+  font-weight: 500;
+  color: #334155;
+}
