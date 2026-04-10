@@ -1,85 +1,79 @@
-<<<<<<< HEAD
-﻿﻿[
-  { "id": "ATT_0326_001", "employeeId": "EMP001", "month": "03/2026", "standardDays": 22, "actualDays": 22, "lateCount": 0, "leaveDays": 0, "overtimeHours": 5 },
-  { "id": "ATT_0326_002", "employeeId": "EMP002", "month": "03/2026", "standardDays": 22, "actualDays": 21.5, "lateCount": 2, "leaveDays": 0.5, "overtimeHours": 0 },
-  { "id": "ATT_0326_003", "employeeId": "EMP003", "month": "03/2026", "standardDays": 22, "actualDays": 22, "lateCount": 0, "leaveDays": 0, "overtimeHours": 12 },
-  { "id": "ATT_0326_004", "employeeId": "EMP004", "month": "03/2026", "standardDays": 22, "actualDays": 20, "lateCount": 0, "leaveDays": 2, "overtimeHours": 0 },
-  { "id": "ATT_0326_005", "employeeId": "EMP005", "month": "03/2026", "standardDays": 22, "actualDays": 22, "lateCount": 5, "leaveDays": 0, "overtimeHours": 2 },
-  { "id": "ATT_0326_006", "employeeId": "EMP006", "month": "03/2026", "standardDays": 22, "actualDays": 22, "lateCount": 0, "leaveDays": 0, "overtimeHours": 0 },
-  { "id": "ATT_0326_007", "employeeId": "EMP007", "month": "03/2026", "standardDays": 22, "actualDays": 21, "lateCount": 0, "leaveDays": 1, "overtimeHours": 0 }
-=======
 [
   {
-    "id": "ATT_1001",
+    "id": "ATT_0326_001",
     "employeeId": "EMP001",
-    "month": "04/2026",
+    "month": "03/2026",
     "standardDays": 22,
     "actualDays": 22,
     "lateCount": 0,
+    "leaveDays": 0,
     "overtimeHours": 5,
-    "editCount": 0
+    "editCount": 4,
+    "lastEditDate": "18:52:11 10/4/2026",
+    "fullName": "Nguyễn Ngọc Tài"
   },
   {
-    "id": "ATT_1002",
+    "id": "ATT_0326_002",
     "employeeId": "EMP002",
-    "month": "04/2026",
+    "month": "03/2026",
     "standardDays": 22,
     "actualDays": 21,
-    "lateCount": 1,
+    "lateCount": 2,
+    "leaveDays": 0.5,
     "overtimeHours": 0,
-    "editCount": 1,
     "fullName": "Huỳnh Công Hiệp",
-    "lastEditDate": "12:54:13 10/4/2026"
+    "editCount": 1,
+    "lastEditDate": "19:05:30 10/4/2026"
   },
   {
-    "id": "ATT_1003",
+    "id": "ATT_0326_003",
     "employeeId": "EMP003",
-    "month": "04/2026",
+    "month": "03/2026",
     "standardDays": 22,
     "actualDays": 22,
     "lateCount": 0,
-    "overtimeHours": 4,
-    "editCount": 0
+    "leaveDays": 0,
+    "overtimeHours": 12
   },
   {
-    "id": "ATT_1004",
+    "id": "ATT_0326_004",
     "employeeId": "EMP004",
-    "month": "04/2026",
+    "month": "03/2026",
     "standardDays": 22,
     "actualDays": 20,
     "lateCount": 0,
-    "overtimeHours": 0,
-    "editCount": 0
+    "leaveDays": 2,
+    "overtimeHours": 0
   },
   {
-    "id": "ATT_1005",
+    "id": "ATT_0326_005",
     "employeeId": "EMP005",
-    "month": "04/2026",
+    "month": "03/2026",
     "standardDays": 22,
     "actualDays": 22,
-    "lateCount": 3,
-    "overtimeHours": 2,
-    "editCount": 0
+    "lateCount": 5,
+    "leaveDays": 0,
+    "overtimeHours": 2
   },
   {
-    "id": "ATT_1006",
+    "id": "ATT_0326_006",
     "employeeId": "EMP006",
-    "month": "04/2026",
+    "month": "03/2026",
     "standardDays": 22,
     "actualDays": 22,
     "lateCount": 0,
-    "overtimeHours": 0,
-    "editCount": 0
+    "leaveDays": 0,
+    "overtimeHours": 0
   },
   {
-    "id": "ATT_1007",
+    "id": "ATT_0326_007",
     "employeeId": "EMP007",
-    "month": "04/2026",
+    "month": "03/2026",
     "standardDays": 22,
-    "actualDays": 22,
+    "actualDays": 21,
     "lateCount": 0,
-    "overtimeHours": 0,
-    "editCount": 0
+    "leaveDays": 1,
+    "overtimeHours": 0
   },
   {
     "id": "ATT_1008",
@@ -136,10 +130,12 @@
     "employeeId": "EMP013",
     "month": "04/2026",
     "standardDays": 22,
-    "actualDays": 21.5,
+    "actualDays": 2,
     "lateCount": 1,
     "overtimeHours": 2,
-    "editCount": 0
+    "editCount": 1,
+    "fullName": "Phạm Fontend",
+    "lastEditDate": "19:05:58 10/4/2026"
   },
   {
     "id": "ATT_1014",
@@ -266,10 +262,12 @@
     "employeeId": "EMP026",
     "month": "04/2026",
     "standardDays": 22,
-    "actualDays": 21.5,
+    "actualDays": 21,
     "lateCount": 1,
     "overtimeHours": 0,
-    "editCount": 0
+    "editCount": 1,
+    "fullName": "Cao Hoa Hồng",
+    "lastEditDate": "19:06:20 10/4/2026"
   },
   {
     "id": "ATT_1027",
@@ -363,5 +361,4 @@
     "overtimeHours": 0,
     "editCount": 0
   }
->>>>>>> e4db912de22c1bfd6caf6091b2d9d2abdcca94b0
 ]

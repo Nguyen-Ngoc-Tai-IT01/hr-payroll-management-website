@@ -102,7 +102,6 @@ function Reports() {
     }
   };
 
-<<<<<<< HEAD
   // const handleExportPayroll = async () => {
   //   try {
   //     Swal.fire({
@@ -111,7 +110,6 @@ function Reports() {
   //       allowOutsideClick: false,
   //       didOpen: () => Swal.showLoading()
   //     });
-=======
   // --- 3. XUẤT BÁO CÁO TIỀN LƯƠNG (VỸ) ---
   const handleExportPayroll = async () => {
     try {
@@ -121,7 +119,6 @@ function Reports() {
         allowOutsideClick: false,
         didOpen: () => Swal.showLoading()
       });
->>>>>>> e4db912de22c1bfd6caf6091b2d9d2abdcca94b0
 
   //     const res = await fetch('http://localhost:5000/api/payroll');
   //     if (!res.ok) throw new Error('Lỗi API Báo cáo Tiền lương');
@@ -129,7 +126,6 @@ function Reports() {
   //     const payrollData = await res.json();
   //     const payrollRows = Array.isArray(payrollData) ? payrollData : [];
 
-<<<<<<< HEAD
   //     const headers = [
   //       'Mã Phiếu',
   //       'Mã Nhân Viên',
@@ -179,7 +175,6 @@ function Reports() {
   //     Swal.fire('Lỗi!', 'Không thể tải báo cáo Tiền lương. Hãy kiểm tra lại Server!', 'error');
   //   }
   // };
-=======
       if (payrollRows.length === 0) {
         Swal.fire('Thông báo', 'Chưa có bảng lương nào được tạo!', 'info');
         return;
@@ -205,7 +200,6 @@ function Reports() {
       Swal.fire('Lỗi!', 'Không thể tải báo cáo Tiền lương. Hãy kiểm tra lại Server!', 'error');
     }
   };
->>>>>>> e4db912de22c1bfd6caf6091b2d9d2abdcca94b0
 
   return (
     <div className="dashboard-wrapper" style={{ paddingBottom: '50px' }}>

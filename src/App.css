@@ -95,10 +95,8 @@ body {
 
 /* =========================================
    2. TRANG CHỦ (HOME ACTIONS)
-<<<<<<< HEAD
    ========================================= */
-=======
-   ========================================= */
+  
 .home-actions { 
   display: flex; 
   justify-content: center; 
@@ -269,4 +267,3 @@ body {
   background: #fee2e2;
   color: #ef4444;
 }
->>>>>>> e4db912de22c1bfd6caf6091b2d9d2abdcca94b0

@@ -1,15 +1,3 @@
-<<<<<<< HEAD
-import React from "react";
-
-export default function Dashboard() {
-  return (
-    <div className="card">
-      <h2>📊 Dashboard</h2>
-      <p>Chào mừng bạn đến hệ thống quản lý nhân sự</p>
-    </div>
-  );
-}
-=======
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
@@ -206,6 +194,4 @@ const Dashboard = () => {
     </div>
   );
 };
-
 export default Dashboard;
->>>>>>> e4db912de22c1bfd6caf6091b2d9d2abdcca94b0

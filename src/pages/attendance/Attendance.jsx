@@ -193,8 +193,8 @@ const Attendance = () => {
           {/* KHỐI TRẮNG CHỨA THANH TÌM KIẾM VÀ BẢNG DỮ LIỆU */}
           <div style={{ backgroundColor: 'white', padding: '20px', borderRadius: '12px', boxShadow: '0 4px 6px -1px rgba(0,0,0,0.1)' }}>
             
-            {/* THANH TÌM KIẾM NẰM TRONG KHỐI TRẮNG */}
-            <div style={{ marginBottom: '20px' }}>
+            {/* 🚀 ĐÃ SỬA: THANH TÌM KIẾM VÀ TỔNG SỐ NHÂN VIÊN */}
+            <div style={{ marginBottom: '20px', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
               <input 
                 type="text" 
                 placeholder="🔍 Tìm kiếm theo Mã NV hoặc Tên..." 
@@ -202,6 +202,9 @@ const Attendance = () => {
                 onChange={(e) => { setSearchTerm(e.target.value); setCurrentPage(1); }}
                 style={{ width: '100%', maxWidth: '400px', padding: '12px', borderRadius: '8px', border: '1px solid #cbd5e1', outline: 'none' }}
               />
+              <div style={{ fontWeight: '500', color: '#475569', backgroundColor: '#f1f5f9', padding: '8px 16px', borderRadius: '8px', border: '1px solid #e2e8f0' }}>
+                Tổng số: <strong style={{ color: '#2563eb', fontSize: '16px' }}>{filteredRecords.length}</strong> nhân viên
+              </div>
             </div>
 
             {/* BẢNG DỮ LIỆU */}
@@ -227,7 +230,7 @@ const Attendance = () => {
                       <td>{rec.overtimeHours} giờ</td>
                       <td>
                         <button onClick={() => handleCheckIn(rec)} className="btn btn-success btn-sm" style={{ display: 'inline-block', marginRight: '5px', backgroundColor: '#198754' }}>
-                           Check-in
+                          Check-in
                         </button>
                         <button onClick={() => handleEdit(rec)} className="btn btn-primary btn-sm" style={{ display: 'inline-block', marginRight: '5px' }}>Sửa</button>
                         <button onClick={() => handleDelete(rec.id)} className="btn btn-danger btn-sm" style={{ display: 'inline-block' }}>Xóa</button>
