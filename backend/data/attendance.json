@@ -4,144 +4,171 @@
     "employeeId": "EMP001",
     "month": "03/2026",
     "standardDays": 22,
-    "actualDays": 20,
+    "actualDays": 22,
     "lateCount": 2,
     "leaveDays": 0,
     "overtimeHours": 6,
-    "fullName": "Nguyễn Ngọc Tài"
+    "fullName": "Nguyễn Ngọc Tài",
+    "editCount": 16,
+    "lastEditDate": "10:30:58 10/4/2026"
   },
   {
     "id": "ATT_0326_002",
     "employeeId": "EMP002",
     "month": "03/2026",
     "standardDays": 22,
-    "actualDays": 21.5,
+    "actualDays": 22,
     "lateCount": 2,
     "leaveDays": 0.5,
-    "overtimeHours": 0
+    "overtimeHours": 0,
+    "editCount": 25,
+    "lastEditDate": "10:39:50 10/4/2026",
+    "fullName": "Huỳnh Công Hiệp"
   },
   {
     "id": "ATT_0326_003",
     "employeeId": "EMP003",
     "month": "03/2026",
     "standardDays": 22,
-    "actualDays": 22,
+    "actualDays": 23,
     "lateCount": 0,
     "leaveDays": 0,
-    "overtimeHours": 12
+    "overtimeHours": 12,
+    "editCount": 1,
+    "lastEditDate": "10:28:26 10/4/2026"
   },
   {
     "id": "ATT_0326_004",
     "employeeId": "EMP004",
     "month": "03/2026",
     "standardDays": 22,
-    "actualDays": 20,
+    "actualDays": 22,
     "lateCount": 0,
     "leaveDays": 2,
-    "overtimeHours": 0
+    "overtimeHours": 0,
+    "editCount": 2,
+    "lastEditDate": "10:28:32 10/4/2026"
   },
   {
     "id": "ATT_0326_005",
     "employeeId": "EMP005",
     "month": "03/2026",
     "standardDays": 22,
-    "actualDays": 22,
+    "actualDays": 23,
     "lateCount": 5,
     "leaveDays": 0,
-    "overtimeHours": 2
+    "overtimeHours": 2,
+    "editCount": 1,
+    "lastEditDate": "10:28:30 10/4/2026"
   },
   {
     "id": "ATT_0326_006",
     "employeeId": "EMP006",
     "month": "03/2026",
     "standardDays": 22,
-    "actualDays": 22,
+    "actualDays": 23,
     "lateCount": 0,
     "leaveDays": 0,
-    "overtimeHours": 0
+    "overtimeHours": 0,
+    "editCount": 1,
+    "lastEditDate": "10:28:34 10/4/2026"
   },
   {
     "id": "ATT_0326_007",
     "employeeId": "EMP007",
     "month": "03/2026",
     "standardDays": 22,
-    "actualDays": 21,
+    "actualDays": 22,
     "lateCount": 0,
     "leaveDays": 1,
-    "overtimeHours": 0
+    "overtimeHours": 0,
+    "editCount": 1,
+    "lastEditDate": "10:28:36 10/4/2026"
   },
   {
     "id": "ATT_0326_008",
     "employeeId": "EMP008",
     "month": "03/2026",
     "standardDays": 22,
-    "actualDays": 22,
+    "actualDays": 23,
     "lateCount": 0,
     "leaveDays": 0,
     "overtimeHours": 8,
     "fullName": "Đinh Công trinh",
-    "editCount": 2,
-    "lastEditDate": "18:49:41 3/4/2026"
+    "editCount": 3,
+    "lastEditDate": "10:28:37 10/4/2026"
   },
   {
     "id": "ATT_0326_009",
     "employeeId": "EMP009",
     "month": "03/2026",
     "standardDays": 22,
-    "actualDays": 22,
+    "actualDays": 23,
     "lateCount": 1,
     "leaveDays": 0,
-    "overtimeHours": 10
+    "overtimeHours": 10,
+    "editCount": 1,
+    "lastEditDate": "10:28:38 10/4/2026"
   },
   {
     "id": "ATT_0326_010",
     "employeeId": "EMP010",
     "month": "03/2026",
     "standardDays": 22,
-    "actualDays": 22,
+    "actualDays": 23,
     "lateCount": 0,
     "leaveDays": 0,
-    "overtimeHours": 6
+    "overtimeHours": 6,
+    "editCount": 1,
+    "lastEditDate": "10:28:39 10/4/2026"
   },
   {
     "id": "ATT_0326_011",
     "employeeId": "EMP011",
     "month": "03/2026",
     "standardDays": 22,
-    "actualDays": 21,
+    "actualDays": 22,
     "lateCount": 3,
     "leaveDays": 1,
-    "overtimeHours": 4
+    "overtimeHours": 4,
+    "editCount": 1,
+    "lastEditDate": "10:28:45 10/4/2026"
   },
   {
     "id": "ATT_0326_012",
     "employeeId": "EMP012",
     "month": "03/2026",
     "standardDays": 22,
-    "actualDays": 22,
+    "actualDays": 23,
     "lateCount": 0,
     "leaveDays": 0,
-    "overtimeHours": 0
+    "overtimeHours": 0,
+    "editCount": 1,
+    "lastEditDate": "10:28:46 10/4/2026"
   },
   {
     "id": "ATT_0326_013",
     "employeeId": "EMP013",
     "month": "03/2026",
     "standardDays": 22,
-    "actualDays": 22,
+    "actualDays": 23,
     "lateCount": 2,
     "leaveDays": 0,
-    "overtimeHours": 5
+    "overtimeHours": 5,
+    "editCount": 1,
+    "lastEditDate": "10:28:47 10/4/2026"
   },
   {
     "id": "ATT_0326_014",
     "employeeId": "EMP014",
     "month": "03/2026",
     "standardDays": 22,
-    "actualDays": 21,
+    "actualDays": 23,
     "lateCount": 0,
     "leaveDays": 1,
-    "overtimeHours": 3
+    "overtimeHours": 3,
+    "editCount": 2,
+    "lastEditDate": "10:28:51 10/4/2026"
   },
   {
     "id": "ATT_0326_015",
@@ -158,70 +185,86 @@
     "employeeId": "EMP016",
     "month": "03/2026",
     "standardDays": 22,
-    "actualDays": 10,
+    "actualDays": 12,
     "lateCount": 0,
     "leaveDays": 12,
-    "overtimeHours": 0
+    "overtimeHours": 0,
+    "editCount": 2,
+    "lastEditDate": "10:28:57 10/4/2026"
   },
   {
     "id": "ATT_0326_017",
     "employeeId": "EMP017",
     "month": "03/2026",
     "standardDays": 22,
-    "actualDays": 22,
+    "actualDays": 23,
     "lateCount": 0,
     "leaveDays": 0,
-    "overtimeHours": 8
+    "overtimeHours": 8,
+    "editCount": 1,
+    "lastEditDate": "10:28:56 10/4/2026"
   },
   {
     "id": "ATT_0326_018",
     "employeeId": "EMP018",
     "month": "03/2026",
     "standardDays": 22,
-    "actualDays": 22,
+    "actualDays": 23,
     "lateCount": 1,
     "leaveDays": 0,
-    "overtimeHours": 4
+    "overtimeHours": 4,
+    "editCount": 1,
+    "lastEditDate": "10:29:00 10/4/2026"
   },
   {
     "id": "ATT_0326_019",
     "employeeId": "EMP019",
     "month": "03/2026",
     "standardDays": 22,
-    "actualDays": 22,
+    "actualDays": 23,
     "lateCount": 0,
     "leaveDays": 0,
-    "overtimeHours": 15
+    "overtimeHours": 15,
+    "editCount": 1,
+    "lastEditDate": "10:29:01 10/4/2026"
   },
   {
     "id": "ATT_0326_020",
     "employeeId": "EMP020",
     "month": "03/2026",
     "standardDays": 22,
-    "actualDays": 21.5,
+    "actualDays": 23,
     "lateCount": 2,
     "leaveDays": 0.5,
-    "overtimeHours": 0
+    "overtimeHours": 0,
+    "editCount": 3,
+    "lastEditDate": "10:44:35 10/4/2026",
+    "fullName": "Lâm Tuyển Dụng"
   },
   {
     "id": "ATT_0326_021",
     "employeeId": "EMP021",
     "month": "03/2026",
     "standardDays": 22,
-    "actualDays": 5,
+    "actualDays": 20,
     "lateCount": 0,
     "leaveDays": 17,
-    "overtimeHours": 0
+    "overtimeHours": 0,
+    "fullName": "Hồ Chính Sách",
+    "editCount": 1,
+    "lastEditDate": "10:45:01 10/4/2026"
   },
   {
     "id": "ATT_0326_022",
     "employeeId": "EMP022",
     "month": "03/2026",
     "standardDays": 22,
-    "actualDays": 22,
+    "actualDays": 23,
     "lateCount": 0,
     "leaveDays": 0,
-    "overtimeHours": 5
+    "overtimeHours": 5,
+    "editCount": 1,
+    "lastEditDate": "10:23:39 10/4/2026"
   },
   {
     "id": "ATT_0326_023",

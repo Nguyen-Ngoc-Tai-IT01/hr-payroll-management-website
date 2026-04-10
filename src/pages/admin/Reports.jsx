@@ -46,6 +46,40 @@ function Reports() {
     link.click();
     document.body.removeChild(link);
   };
+  // hàm lấy chấm công của sêu 
+  const handleDownloadAttendance = async () => {
+    try {
+      const res = await fetch('http://localhost:5000/api/attendance');
+      const data = await res.json();
+
+      if (data.length === 0) {
+        alert("Chưa có dữ liệu chấm công nào!");
+        return;
+      }
+
+      const headers = ["Mã NV", "Họ và Tên", "Công thực", "Đi muộn", "Tăng ca"];
+      const rows = data.map(rec => [
+        rec.employeeId, 
+        rec.fullName || `NV-${rec.employeeId}`, 
+        rec.actualDays, 
+        rec.lateCount, 
+        rec.overtimeHours + "h"
+      ]);
+      
+      const csvContent = [headers.join(","), ...rows.map(row => row.join(","))].join("\n");
+      
+      const blob = new Blob(["\uFEFF" + csvContent], { type: 'text/csv;charset=utf-8;' });
+      const url = URL.createObjectURL(blob);
+      const link = document.createElement("a");
+      link.href = url; 
+      link.setAttribute("download", `Bao_cao_Cham_cong_Hoan_Chinh.csv`); 
+      link.click();
+      
+    } catch (error) {
+      console.error(error);
+      alert("Không thể kết nối đến API Chấm công của Sêu");
+    }
+  };
 
   return (
     <div className="dashboard-wrapper">
@@ -80,7 +114,7 @@ function Reports() {
           <p>Báo cáo giờ Check-in/Check-out, số ngày nghỉ phép trong tháng này.</p>
           <button 
             className="p-btn p-btn-outline" 
-            onClick={() => alert("Đang chờ Sêu hoàn thiện API Chấm công!")}
+            onClick={handleDownloadAttendance}
             style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '8px' }}>
              📥 Tải CSV Chấm Công
           </button>

@@ -16,12 +16,9 @@ const Attendance = () => {
   const [editingId, setEditingId] = useState(null);
   const [formData, setFormData] = useState(initialFormState);
 
-  // tìm kiếm và phân trang
   const [searchTerm, setSearchTerm] = useState('');
   const [currentPage, setCurrentPage] = useState(1);
   const [recordsPerPage] = useState(10); 
-
-  // lấy thời gian hiện tại
   const [currentTime, setCurrentTime] = useState(new Date());
 
   useEffect(() => {
@@ -46,12 +43,10 @@ const Attendance = () => {
     }
   };
 
-  // lọc dữ liệu theo mã nhân viên
   const filteredRecords = attendanceRecords.filter(rec => 
     rec.employeeId.toLowerCase().includes(searchTerm.toLowerCase())
   );
 
-  // phân trang trên dữ liệu đã lọc
   const indexOfLastRecord = currentPage * recordsPerPage;
   const indexOfFirstRecord = indexOfLastRecord - recordsPerPage;
   const currentRecords = filteredRecords.slice(indexOfFirstRecord, indexOfLastRecord);
@@ -117,6 +112,33 @@ const Attendance = () => {
     }
   };
 
+
+  //  chek-in tự động 
+  
+  const handleCheckIn = async (record) => {
+    // Tự động cộng 1 ngày vào Công thực hiện tại
+    const updatedRecord = {
+      ...record,
+      actualDays: parseFloat(record.actualDays || 0) + 1
+    };
+
+    try {
+      const res = await fetch(`http://localhost:5000/api/attendance/${record.id}`, {
+        method: 'PUT',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(updatedRecord)
+      });
+
+      if (res.ok) { 
+        loadData(); // Tải lại bảng ngay lập tức để thấy số ngày tăng lên
+        Swal.fire({ toast: true, position: 'top-end', icon: 'success', title: `Đã Check-in cho ${renderName(record)}!`, showConfirmButton: false, timer: 1500 }); 
+      }
+    } catch (err) {
+      console.error(err);
+      Swal.fire('Lỗi', 'Không thể Check-in', 'error');
+    }
+  };
+
   const handleExport = () => {
     const headers = ["Mã NV", "Họ và Tên", "Công thực", "Đi muộn", "Tăng ca"];
     const rows = filteredRecords.map(rec => [rec.employeeId, renderName(rec), rec.actualDays, rec.lateCount, rec.overtimeHours + "h"]);
@@ -131,8 +153,6 @@ const Attendance = () => {
 
   return (
     <div className="attendance-wrapper">
-      
-      {/* header chung */}
       <div className="page-header" style={{ marginBottom: '20px' }}>
         <div style={{ display: 'flex', alignItems: 'center', gap: '15px' }}>
           <h2 className="header-title">📅 Hệ Thống Quản Lý Chấm Công ({currentTime.toLocaleDateString('vi-VN')})</h2>
@@ -142,7 +162,6 @@ const Attendance = () => {
         </div>
       </div>
 
-      {/* thanh tab chuyển đổi */}
       <div className="tabs-container">
         <button onClick={() => setActiveTab('attendance')} className={`tab-btn ${activeTab === 'attendance' ? 'active' : ''}`}>
           Bảng Chấm Công
@@ -152,11 +171,8 @@ const Attendance = () => {
         </button>
       </div>
 
-      {/* khu vực hiển thị nội dung tùy theo tab */}
       {activeTab === 'attendance' ? (
         <div style={{ animation: 'fadeIn 0.3s ease' }}>
-          
-          {/* thanh công cụ tìm kiếm của chấm công */}
           <div className="page-header" style={{ marginTop: '10px', backgroundColor: '#fff', padding: '15px 20px', borderRadius: '12px', boxShadow: '0 2px 4px rgba(0,0,0,0.05)' }}>
             <h2 className="header-title" style={{ fontSize: '18px', color: '#3b82f6' }}>📋 Quản Lý Bảng Chấm Công</h2>
             <div className="btn-group" style={{ alignItems: 'center' }}>
@@ -164,10 +180,7 @@ const Attendance = () => {
                 type="text" 
                 placeholder="Nhập mã NV tìm nhanh..." 
                 value={searchTerm}
-                onChange={(e) => {
-                  setSearchTerm(e.target.value);
-                  setCurrentPage(1); 
-                }}
+                onChange={(e) => { setSearchTerm(e.target.value); setCurrentPage(1); }}
                 className="form-input"
                 style={{ width: '220px', padding: '10px', borderRadius: '8px' }}
               />
@@ -180,7 +193,6 @@ const Attendance = () => {
             </div>
           </div>
 
-          {/* bảng chấm công */}
           <div className="table-card" style={{ marginTop: '20px' }}>
             <table className="custom-table">
               <thead>
@@ -202,6 +214,9 @@ const Attendance = () => {
                     <td style={{ color: rec.lateCount > 0 ? '#dc3545' : '#198754', fontWeight: 'bold' }}>{rec.lateCount} lần</td>
                     <td>{rec.overtimeHours} giờ</td>
                     <td>
+                      <button onClick={() => handleCheckIn(rec)} className="btn btn-success btn-sm" style={{ display: 'inline-block', marginRight: '5px', backgroundColor: '#198754' }}>
+                        Check-in
+                      </button>
                       <button onClick={() => handleEdit(rec)} className="btn btn-primary btn-sm" style={{ display: 'inline-block', marginRight: '5px' }}>Sửa</button>
                       <button onClick={() => handleDelete(rec.id)} className="btn btn-danger btn-sm" style={{ display: 'inline-block' }}>Xóa</button>
                     </td>
@@ -212,7 +227,6 @@ const Attendance = () => {
               </tbody>
             </table>
 
-            {/* phân trang */}
             <div className="pagination">
               <button disabled={currentPage === 1} onClick={() => setCurrentPage(currentPage - 1)} className="page-btn">Trước</button>
               {[...Array(totalPages)].map((_, i) => (
@@ -225,13 +239,11 @@ const Attendance = () => {
           </div>
         </div>
       ) : (
-        /* tab nghỉ phép: gọi component leaves */
         <div style={{ animation: 'fadeIn 0.3s ease', marginTop: '10px' }}>
           <Leaves />
         </div>
       )}
-
-      {/* form modal thêm/sửa chấm công */}
+      
       {showForm && (
         <div className="modal-overlay">
           <div className="modal-content">
