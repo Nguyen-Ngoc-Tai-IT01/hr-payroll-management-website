@@ -253,246 +253,60 @@ function Home({ user }) {
   // 2. TRẠNG THÁI ĐÃ ĐĂNG NHẬP: HIỆN BẢNG ĐIỀU KHIỂN
   // =======================================================
   return (
-    <div
-      style={{
-        minHeight: "calc(100vh - 75px)",
-        display: "flex",
-        flexDirection: "column",
-        alignItems: "center",
-        padding: "50px 20px",
-        backgroundColor: "#f8fafc",
-      }}
-    >
-      {/* Lời chào */}
-      <div
-        style={{
-          textAlign: "center",
-          marginBottom: "40px",
-          maxWidth: "800px",
-          display: "flex",
-          flexDirection: "column",
-          alignItems: "center",
-        }}
-      >
-        {/* LOGO LỚN TRÊN BẢNG ĐIỀU KHIỂN (Đã bỏ khung, bo góc và phóng to) */}
-        <img
-          src={logo}
-          alt="Workforce Manager Logo"
-          style={{
-            height: "120px" /* Phóng to chiều cao lên 120px */,
-            width: "auto" /* Giữ nguyên tỷ lệ ảnh */,
-            objectFit: "contain",
-            marginBottom: "20px",
-            borderRadius: "15px",
-            overflow: "hidden",
-            filter: "drop-shadow(0 6px 12px rgba(0,0,0,0.06))",
-          }}
-        />
-
-        <h1
-          style={{
-            fontSize: "28px",
-            color: "#1e293b",
-            marginBottom: "12px",
-            fontWeight: "900",
-          }}
-        >
-          Chào mừng trở lại,{" "}
-          <span style={{ color: "#2563eb" }}>
-            {user.fullName || "Quản trị viên"}
-          </span>{" "}
-          👋
+    <div style={{ minHeight: "calc(100vh - 75px)", display: "flex", flexDirection: "column", alignItems: "center", padding: "50px 20px", backgroundColor: "#f8fafc" }}>
+      
+      <div style={{ textAlign: "center", marginBottom: "40px", maxWidth: "800px", display: "flex", flexDirection: "column", alignItems: "center" }}>
+        <img src={logo} alt="Workforce Manager Logo" style={{ height: "120px", width: "auto", objectFit: "contain", marginBottom: "20px", borderRadius: "15px", filter: "drop-shadow(0 6px 12px rgba(0,0,0,0.06))" }} />
+        <h1 style={{ fontSize: "28px", color: "#1e293b", marginBottom: "12px", fontWeight: "900" }}>
+          Chào mừng trở lại, <span style={{ color: "#2563eb" }}>{user.fullName || "Quản trị viên"}</span> 👋
         </h1>
-        <p style={{ fontSize: "16px", color: "#64748b" }}>
-          Bạn muốn làm việc với phân hệ nào hôm nay? Vui lòng chọn bên dưới.
-        </p>
+        <p style={{ fontSize: "16px", color: "#64748b" }}>Bạn muốn làm việc với phân hệ nào hôm nay?</p>
       </div>
 
       {/* Khu vực Các Module Chức năng */}
       <div style={{ maxWidth: "1000px", width: "100%", marginBottom: "50px" }}>
-        <h3
-          style={{
-            color: "#475569",
-            fontSize: "14px",
-            fontWeight: "700",
-            textTransform: "uppercase",
-            letterSpacing: "1.5px",
-            marginBottom: "24px",
-            paddingLeft: "10px",
-            borderLeft: "4px solid #3b82f6",
-          }}
-        >
+        <h3 style={{ color: "#475569", fontSize: "14px", fontWeight: "700", textTransform: "uppercase", letterSpacing: "1.5px", marginBottom: "24px", paddingLeft: "10px", borderLeft: "4px solid #3b82f6" }}>
           Phân hệ Nghiệp vụ
         </h3>
-        <div
-          className="module-grid"
-          style={{
-            display: "grid",
-            gridTemplateColumns: "repeat(auto-fit, minmax(220px, 1fr))",
-            gap: "24px",
-          }}
-        >
-          <Link
-            to="/dashboard"
-            className="module-card"
-            style={{
-              background: "white",
-              border: "1.5px solid #e2e8f0",
-              borderRadius: "20px",
-              padding: "30px 20px",
-              display: "flex",
-              flexDirection: "column",
-              alignItems: "center",
-              gap: "16px",
-              textDecoration: "none",
-              boxShadow: "0 4px 6px rgba(0,0,0,0.02)",
-            }}
-          >
-            <div style={{ fontSize: "36px" }}>📈</div>
-            <span
-              style={{ fontSize: "16px", fontWeight: "700", color: "#1e293b" }}
-            >
-              Tổng quan
-            </span>
+        <div className="module-grid" style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(220px, 1fr))", gap: "24px" }}>
+          
+          <Link to="/dashboard" className="module-card" style={moduleCardStyle}>
+            <img src="/overview.png" alt="Tổng quan" style={iconStyle} />
+            <span style={textStyle}>Tổng quan</span>
           </Link>
-          <Link
-            to="/employees"
-            className="module-card"
-            style={{
-              background: "white",
-              border: "1.5px solid #e2e8f0",
-              borderRadius: "20px",
-              padding: "30px 20px",
-              display: "flex",
-              flexDirection: "column",
-              alignItems: "center",
-              gap: "16px",
-              textDecoration: "none",
-              boxShadow: "0 4px 6px rgba(0,0,0,0.02)",
-            }}
-          >
-            <div style={{ fontSize: "36px" }}>👥</div>
-            <span
-              style={{ fontSize: "16px", fontWeight: "700", color: "#1e293b" }}
-            >
-              Nhân sự
-            </span>
+          
+          <Link to="/employees" className="module-card" style={moduleCardStyle}>
+            <img src="/human_resources.png" alt="Nhân sự" style={iconStyle} />
+            <span style={textStyle}>Nhân sự</span>
           </Link>
-          <Link
-            to="/attendance"
-            className="module-card"
-            style={{
-              background: "white",
-              border: "1.5px solid #e2e8f0",
-              borderRadius: "20px",
-              padding: "30px 20px",
-              display: "flex",
-              flexDirection: "column",
-              alignItems: "center",
-              gap: "16px",
-              textDecoration: "none",
-              boxShadow: "0 4px 6px rgba(0,0,0,0.02)",
-            }}
-          >
-            <div style={{ fontSize: "36px" }}>📅</div>
-            <span
-              style={{ fontSize: "16px", fontWeight: "700", color: "#1e293b" }}
-            >
-              Chấm công
-            </span>
+          
+          <Link to="/attendance" className="module-card" style={moduleCardStyle}>
+            <img src="/calendar.png" alt="Chấm công" style={iconStyle} />
+            <span style={textStyle}>Chấm công</span>
           </Link>
-          <Link
-            to="/payroll"
-            className="module-card"
-            style={{
-              background: "white",
-              border: "1.5px solid #e2e8f0",
-              borderRadius: "20px",
-              padding: "30px 20px",
-              display: "flex",
-              flexDirection: "column",
-              alignItems: "center",
-              gap: "16px",
-              textDecoration: "none",
-              boxShadow: "0 4px 6px rgba(0,0,0,0.02)",
-            }}
-          >
-            <div style={{ fontSize: "36px" }}>💰</div>
-            <span
-              style={{ fontSize: "16px", fontWeight: "700", color: "#1e293b" }}
-            >
-              Tiền lương
-            </span>
+          
+          <Link to="/payroll" className="module-card" style={moduleCardStyle}>
+            <img src="/salary.png" alt="Tiền lương" style={iconStyle} />
+            <span style={textStyle}>Tiền lương</span>
           </Link>
         </div>
       </div>
 
       {/* Khu vực Quản trị Hệ thống */}
       <div style={{ maxWidth: "1000px", width: "100%" }}>
-        <h3
-          style={{
-            color: "#475569",
-            fontSize: "14px",
-            fontWeight: "700",
-            textTransform: "uppercase",
-            letterSpacing: "1.5px",
-            marginBottom: "24px",
-            paddingLeft: "10px",
-            borderLeft: "4px solid #10b981",
-          }}
-        >
+        <h3 style={{ color: "#475569", fontSize: "14px", fontWeight: "700", textTransform: "uppercase", letterSpacing: "1.5px", marginBottom: "24px", paddingLeft: "10px", borderLeft: "4px solid #10b981" }}>
           Quản trị Hệ thống
         </h3>
-        <div
-          style={{
-            display: "grid",
-            gridTemplateColumns: "repeat(auto-fit, minmax(220px, 300px))",
-            gap: "24px",
-          }}
-        >
-          <Link
-            to="/profile"
-            className="module-card"
-            style={{
-              background: "white",
-              border: "1.5px solid #e2e8f0",
-              borderRadius: "20px",
-              padding: "20px",
-              display: "flex",
-              alignItems: "center",
-              gap: "16px",
-              textDecoration: "none",
-              boxShadow: "0 4px 6px rgba(0,0,0,0.02)",
-            }}
-          >
-            <div style={{ fontSize: "28px" }}>👤</div>
-            <span
-              style={{ fontSize: "15px", fontWeight: "700", color: "#1e293b" }}
-            >
-              Hồ sơ của tôi
-            </span>
+        <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(220px, 300px))", gap: "24px" }}>
+          
+          <Link to="/profile" className="module-card" style={moduleCardStyle}>
+            <img src="/profile.png" alt="Hồ sơ" style={iconStyle} />
+            <span style={textStyle}>Hồ sơ của tôi</span>
           </Link>
-          <Link
-            to="/settings"
-            className="module-card"
-            style={{
-              background: "white",
-              border: "1.5px solid #e2e8f0",
-              borderRadius: "20px",
-              padding: "20px",
-              display: "flex",
-              alignItems: "center",
-              gap: "16px",
-              textDecoration: "none",
-              boxShadow: "0 4px 6px rgba(0,0,0,0.02)",
-            }}
-          >
-            <div style={{ fontSize: "28px" }}>⚙️</div>
-            <span
-              style={{ fontSize: "15px", fontWeight: "700", color: "#1e293b" }}
-            >
-              Cài đặt
-            </span>
+          
+          <Link to="/settings" className="module-card" style={moduleCardStyle}>
+            <img src="/settings.png" alt="Cài đặt" style={iconStyle} />
+            <span style={textStyle}>Cài đặt</span>
           </Link>
         </div>
       </div>
@@ -500,6 +314,22 @@ function Home({ user }) {
   );
 }
 
+// --- CÁC BIẾN STYLE DÙNG CHUNG ĐỂ CODE GỌN HƠN ---
+const moduleCardStyle = {
+  background: "white",
+  border: "1.5px solid #e2e8f0",
+  borderRadius: "20px",
+  padding: "30px 20px",
+  display: "flex",
+  flexDirection: "column",
+  alignItems: "center",
+  gap: "16px",
+  textDecoration: "none",
+  boxShadow: "0 4px 6px rgba(0,0,0,0.02)",
+};
+
+const iconStyle = { width: "40px", height: "40px", objectFit: "contain" };
+const textStyle = { fontSize: "16px", fontWeight: "700", color: "#1e293b" };
 // --- COMPONENT APP CHÍNH ---
 function App() {
   const [user, setUser] = useState(null);

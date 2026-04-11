@@ -98,7 +98,7 @@ const Dashboard = () => {
   if (loading) return (
     <div className="loading-screen">
       <div className="spinner"></div>
-      <p>Đang phân tích dữ liệu IT24B...</p>
+      <p>Đang phân tích dữ liệu...</p>
     </div>
   );
 
@@ -108,7 +108,7 @@ const Dashboard = () => {
         <div className="dashboard-header">
           <div>
             <h1>Dashboard Thống kê</h1>
-            <p>Phân tích hiệu suất nhân sự IT24B</p>
+            <p>Phân tích hiệu suất nhân sự</p>
           </div>
           <div className="header-actions">
             <button className="btn-secondary" onClick={() => window.print()}>Xuất file</button>

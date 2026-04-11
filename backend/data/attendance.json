@@ -8,8 +8,8 @@
     "lateCount": 0,
     "leaveDays": 0,
     "overtimeHours": 0,
-    "editCount": 1,
-    "lastEditDate": "21:57:26 11/4/2026",
+    "editCount": 2,
+    "lastEditDate": "22:30:55 11/4/2026",
     "fullName": "Nguyễn Ngọc Tài",
     "checkInLogs": [
       {
@@ -393,12 +393,27 @@
     "employeeId": "EMP031",
     "month": "05/2026",
     "standardDays": 22,
-    "actualDays": 0,
+    "actualDays": 2,
     "lateCount": 0,
     "overtimeHours": 0,
-    "editCount": 0,
-    "checkInLogs": [],
-    "lastEditDate": "21:56:58 11/4/2026"
+    "editCount": 2,
+    "checkInLogs": [
+      {
+        "timestamp": "2026-04-11T15:31:10.230Z",
+        "dateStr": "11/4/2026",
+        "timeStr": "22:31:10",
+        "oldDays": 0,
+        "newDays": 1
+      },
+      {
+        "timestamp": "2026-04-11T15:31:12.907Z",
+        "dateStr": "11/4/2026",
+        "timeStr": "22:31:12",
+        "oldDays": 1,
+        "newDays": 2
+      }
+    ],
+    "lastEditDate": "22:31:12 11/4/2026"
   },
   {
     "id": "ATT_1032",
