@@ -52,7 +52,7 @@ const Attendance = () => {
     return emp ? emp.fullName : `NV-${rec.employeeId}`;
   };
 
-  // Lọc dữ liệu tìm kiếm (Đã bọc thép chống sập web)
+  // Lọc dữ liệu tìm kiếm 
   const filteredRecords = (Array.isArray(attendanceRecords) ? attendanceRecords : []).filter(rec => {
     const searchLower = searchTerm ? String(searchTerm).toLowerCase() : '';
     const name = renderName(rec) ? String(renderName(rec)).toLowerCase() : '';
@@ -192,7 +192,7 @@ const Attendance = () => {
     });
   };
 
-  // Gom tất cả log lịch sử (Đã bọc thép chống sập web)
+  // Gom tất cả log lịch sử 
   const getAllHistoryLogs = () => {
     let allLogs = [];
     if (Array.isArray(attendanceRecords)) {
@@ -324,7 +324,7 @@ const Attendance = () => {
         </div>
       )}
       
-      {/* FORM MODAL THÊM/SỬA */}
+      {/* thêm và sửa */}
       {showForm && (
         <div className="modal-overlay">
           <div className="modal-content">
@@ -333,7 +333,7 @@ const Attendance = () => {
             </h3>
             <form onSubmit={handleSubmit} className="form-group">
               
-              {/* VÙNG MỚI ĐƯỢC CHỈNH SỬA: CHỌN NHÂN VIÊN TỪ DANH SÁCH */}
+              {/* chọn nhân viên từ ds*/}
               {editingId === null ? (
                 <div>
                   <label className="form-label">Chọn nhân viên :</label>
@@ -365,7 +365,7 @@ const Attendance = () => {
                   </select>
                 </div>
               ) : (
-                // NẾU LÀ CHẾ ĐỘ "SỬA", CHỈ HIỂN THỊ TEXT KHÔNG CHO SỬA TÊN/MÃ
+                // khi sửa chỉ không hiển thị sửa tên và mã
                 <div className="form-row">
                   <div className="form-col">
                     <label className="form-label">Mã NV:</label>
@@ -377,7 +377,7 @@ const Attendance = () => {
                   </div>
                 </div>
               )}
-              {/* HẾT VÙNG CHỈNH SỬA */}
+              {/* hết vùng chỉnh sửa*/}
 
               <div className="form-row" style={{ marginTop: '15px' }}>
                 <div className="form-col">
@@ -402,7 +402,7 @@ const Attendance = () => {
         </div>
       )}
 
-      {/* POPUP: HIỂN THỊ LỊCH SỬ CHECK-IN */}
+      {/* hiển thị lịch sử check in*/}
       {showHistory && (
         <div className="modal-overlay">
           <div className="modal-content" style={{ maxWidth: '700px', width: '90%' }}>
