@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useParams, Link } from "react-router-dom";
-import './style.css';
+import './style.css'; 
 
 const EmployeeDetail = () => {
   const { id } = useParams();
@@ -19,15 +19,18 @@ const EmployeeDetail = () => {
           if (res.ok) {
             const data = await res.json();
             foundData = data.find(emp => String(emp.id) === String(id));
-            if (foundData) break;
+            if (foundData) break; 
           }
-        } catch (err) {}
+        } catch (err) {
+          console.warn(`Không tìm thấy dữ liệu tại: ${path}`);
+        }
       }
 
       if (foundData) {
         setEmployee(foundData);
+        setError(null);
       } else {
-        setError("Không tìm thấy nhân viên.");
+        setError("Không tìm thấy nhân viên trong hệ thống.");
       }
       setLoading(false);
     };
@@ -35,87 +38,94 @@ const EmployeeDetail = () => {
     fetchData();
   }, [id]);
 
-  if (loading) {
-    return (
-      <div className="layout-container">
-        <div className="empty-state">⏳ Đang tải...</div>
-      </div>
-    );
-  }
+  if (loading) return <div className="emp-layout"><div className="emp-empty-state">⏳ Đang tải thông tin nhân viên...</div></div>;
 
-  if (error || !employee) {
-    return (
-      <div className="layout-container">
-        <div className="dash-card" style={{ textAlign: "center", padding: "40px" }}>
-          <h2 style={{ color: "red" }}>❌ Lỗi</h2>
-          <p>{error}</p>
-          <Link className="p-btn p-btn-primary" to="/employees">
-            Quay lại
-          </Link>
-        </div>
+  if (error || !employee) return (
+    <div className="emp-layout">
+      <div className="emp-error-card">
+        <h2>Lỗi load dữ liệu ⚠️</h2>
+        <p>{error}</p>
+        <Link to="/employees" className="emp-btn-back">← Quay lại danh sách</Link>
       </div>
-    );
-  }
+    </div>
+  );
 
   return (
-    <div className="layout-container">
-      <div className="dashboard-full-width">
-
-        {/* HEADER */}
-        <div className="detail-header">
-          <Link to="/employees" className="back-link">
-            ← Danh sách nhân sự
+    <div className="emp-layout">
+      <div className="emp-container">
+        
+        {/* HEADER CHI TIẾT */}
+        <header className="emp-detail-header">
+          <div>
+            <Link to="/employees" className="emp-link-back">← Quay lại danh sách</Link>
+            <h1>Hồ sơ: {employee.fullName}</h1>
+          </div>
+          <Link to={`/employees/edit/${employee.id}`} className="emp-btn-edit-large">
+            ✏️ Sửa thông tin
           </Link>
+        </header>
 
-          <Link to={`/employees/edit/${employee.id}`} className="p-btn p-btn-primary">
-            ✏️ Chỉnh sửa
-          </Link>
-        </div>
-
-        {/* MAIN CARD */}
-        <div className="employee-detail-grid">
-
-          {/* LEFT PROFILE */}
-          <div className="dash-card profile-card">
-            <div className="avatar-big">
-              {employee.fullName?.charAt(0).toUpperCase()}
-            </div>
-
-            <h2 className="emp-name">{employee.fullName}</h2>
-            <p className="emp-id">ID: {employee.id}</p>
-
-            <span className={`status ${employee.status === "Đang làm việc" ? "active" : "off"}`}>
-              {employee.status || "N/A"}
-            </span>
-
-            <div className="contact-box">
-              <p><b>Email:</b> {employee.email}</p>
-              <p><b>Phone:</b> {employee.phone}</p>
+        {/* LAYOUT 2 CỘT */}
+        <div className="emp-detail-grid">
+          
+          {/* CỘT TRÁI: PROFILE CARD */}
+          <div className="emp-detail-card profile-card">
+            <div className="emp-cover"></div>
+            
+            {/* VÙNG CHỨA THÔNG TIN AVATAR VÀ TÊN */}
+            <div className="emp-profile-content" style={{ position: 'relative', paddingBottom: '30px', textAlign: 'center' }}>
+              
+              <div className="emp-big-avatar">
+                {employee.fullName?.charAt(0).toUpperCase()}
+              </div>
+              
+              {/* KHU VỰC CỨU HỘ: Khoảng đệm an toàn để đẩy chữ xuống, không bao giờ bị Avatar đè lên nữa */}
+              <div style={{ height: '70px', width: '100%' }}></div>
+              
+              <h2 className="emp-big-name" style={{ margin: '0 0 5px 0' }}>{employee.fullName}</h2>
+              <span className="emp-big-id">{employee.id}</span>
+              
+              <div className={`emp-status ${employee.status === "Đang làm việc" ? "active" : "inactive"}`}>
+                {employee.status || "N/A"}
+              </div>
+              
+              <div className="emp-contact-box" style={{ margin: '0 20px' }}>
+                <div className="emp-contact-item">
+                  <span>📧 Email</span>
+                  <a href={`mailto:${employee.email}`}>{employee.email}</a>
+                </div>
+                <div className="emp-contact-item">
+                  <span>📞 Điện thoại</span>
+                  <strong>{employee.phone}</strong>
+                </div>
+              </div>
             </div>
           </div>
 
-          {/* RIGHT INFO */}
-          <div className="detail-right">
-
-            <div className="dash-card info-card">
-              <h3>📌 Thông tin công việc</h3>
-
-              <div className="info-grid">
-                <Info label="Phòng ban" value={employee.department} />
-                <Info label="Chức vụ" value={employee.position} />
-                <Info label="Ngày vào làm" value={employee.joinDate} />
-                <Info label="Vai trò" value={employee.role || "Nhân viên"} />
+          {/* CỘT PHẢI: THÔNG TIN TỔ CHỨC */}
+          <div className="emp-detail-main">
+            
+            <div className="emp-detail-card">
+              <h3 className="emp-section-title">🏢 Thông tin tổ chức</h3>
+              <div className="emp-info-grid">
+                <InfoItem label="Phòng ban" value={employee.department} />
+                <InfoItem label="Chức vụ" value={employee.position} />
+                <InfoItem label="Ngày vào làm" value={employee.joinDate} />
+                <InfoItem label="Phân quyền hệ thống" value={employee.role || "Nhân viên tiêu chuẩn"} />
               </div>
             </div>
 
-            <div className="dash-card salary-card">
-              <h3>💰 Thu nhập</h3>
-
-              <div className="salary-value">
-                {employee.baseSalary?.toLocaleString() || 0} VNĐ
+            <div className="emp-detail-card" style={{marginTop: '25px'}}>
+              <h3 className="emp-section-title">💰 Tài chính & Thu nhập</h3>
+              <div className="emp-salary-box">
+                <div>
+                  <span className="emp-salary-label">Lương cơ bản hàng tháng</span>
+                  <div className="emp-salary-value">
+                    {employee.baseSalary?.toLocaleString()} <small>VNĐ</small>
+                  </div>
+                </div>
+                <div className="emp-salary-icon">💳</div>
               </div>
-
-              <p className="salary-note">Lương cơ bản hàng tháng</p>
             </div>
 
           </div>
@@ -125,10 +135,10 @@ const EmployeeDetail = () => {
   );
 };
 
-const Info = ({ label, value }) => (
-  <div className="info-item">
-    <span>{label}</span>
-    <b>{value || "—"}</b>
+const InfoItem = ({ label, value }) => (
+  <div className="emp-info-block">
+    <span className="emp-info-label">{label}</span>
+    <p className="emp-info-value">{value || "Chưa cập nhật"}</p>
   </div>
 );
 

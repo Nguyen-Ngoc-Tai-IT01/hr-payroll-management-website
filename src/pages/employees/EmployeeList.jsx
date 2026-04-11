@@ -33,21 +33,22 @@ const EmployeeList = () => {
     );
   }, [employees, search]);
 
-  if (loading) return <div className="layout-container"><div className="empty-state">⏳ Đang tải...</div></div>;
+  if (loading) return <div className="emp-layout"><div className="emp-empty-state">⏳ Đang tải dữ liệu nhân sự...</div></div>;
 
   return (
-    <div className="layout-container">
-      <div className="dashboard-full-width">
+    <div className="emp-layout">
+      <div className="emp-container">
         
         {/* HEADER & SEARCH DÀN HÀNG NGANG */}
-        <header className="page-header-flex">
-          <div className="header-title">
-            <h1>Nhân sự</h1>
-            <p>Quản lý <span className="highlight-count">{employees.length}</span> nhân viên trong hệ thống</p>
+        <header className="emp-header">
+          <div className="emp-header-title">
+            <h1>Quản lý Nhân sự 👥</h1>
+            <p>Hệ thống đang quản lý <span className="emp-highlight">{employees.length}</span> nhân viên</p>
           </div>
           
-          <div className="header-actions">
-            <div className="search-box-container">
+          <div className="emp-header-actions">
+            <div className="emp-search-box">
+              <span className="emp-search-icon">🔍</span>
               <input 
                 type="text" 
                 placeholder="Tìm tên, mã NV..." 
@@ -55,34 +56,36 @@ const EmployeeList = () => {
                 onChange={(e) => setSearch(e.target.value)}
               />
             </div>
-            <Link to="/employees/new" className="p-btn p-btn-primary">+ Thêm mới</Link>
+            <Link to="/employees/new" className="emp-btn-add">
+              <span style={{ fontSize: '18px', marginRight: '4px' }}>+</span> Thêm mới
+            </Link>
           </div>
         </header>
 
         {/* STATS DÀN ĐỀU 4 CỘT */}
-        <div className="stats-grid">
-          <div className="dash-card stat-card">
-            <span className="stat-label">Tổng nhân viên</span>
-            <span className="stat-value">{employees.length}</span>
+        <div className="emp-stats-grid">
+          <div className="emp-stat-card">
+            <span className="emp-stat-label">Tổng nhân viên</span>
+            <span className="emp-stat-value">{employees.length}</span>
           </div>
-          <div className="dash-card stat-card">
-            <span className="stat-label">Đang hiển thị</span>
-            <span className="stat-value">{filtered.length}</span>
+          <div className="emp-stat-card">
+            <span className="emp-stat-label">Đang hiển thị</span>
+            <span className="emp-stat-value text-blue">{filtered.length}</span>
           </div>
-          <div className="dash-card stat-card">
-            <span className="stat-label">Phòng ban</span>
-            <span className="stat-value">{[...new Set(employees.map(e => e.department))].length}</span>
+          <div className="emp-stat-card">
+            <span className="emp-stat-label">Phòng ban</span>
+            <span className="emp-stat-value text-purple">{[...new Set(employees.map(e => e.department))].length}</span>
           </div>
-          <div className="dash-card stat-card">
-            <span className="stat-label">Cập nhật lúc</span>
-            <span className="stat-value" style={{fontSize: '16px'}}>{new Date().toLocaleTimeString('vi-VN')}</span>
+          <div className="emp-stat-card">
+            <span className="emp-stat-label">Cập nhật lúc</span>
+            <span className="emp-stat-value text-small">{new Date().toLocaleTimeString('vi-VN')}</span>
           </div>
         </div>
 
         {/* TABLE DÀN FULL MÀN HÌNH */}
-        <div className="dash-card main-table-card">
-          <div className="table-responsive">
-            <table>
+        <div className="emp-table-card">
+          <div className="emp-table-responsive">
+            <table className="emp-table">
               <thead>
                 <tr>
                   <th width="30%">Nhân viên</th>
@@ -96,30 +99,35 @@ const EmployeeList = () => {
                 {filtered.map((emp) => (
                   <tr key={emp.id}>
                     <td>
-                      <div className="emp-info-cell">
-                        <div className="avatar-circle">{emp.fullName?.charAt(0)}</div>
+                      <div className="emp-user-info">
+                        <div className="emp-avatar">{emp.fullName?.charAt(0).toUpperCase()}</div>
                         <div>
                           <div className="emp-name">{emp.fullName}</div>
-                          <div className="emp-id-tag">{emp.id}</div>
+                          <div className="emp-id">{emp.id}</div>
                         </div>
                       </div>
                     </td>
                     <td>
-                      <div className="contact-info">
-                        <span>{emp.email}</span>
-                        <small>{emp.phone}</small>
+                      <div className="emp-contact">
+                        <span className="emp-email">📧 {emp.email}</span>
+                        <span className="emp-phone">📞 {emp.phone}</span>
                       </div>
                     </td>
-                    <td><span className="dept-badge">{emp.department}</span></td>
-                    <td className="pos-text">{emp.position}</td>
+                    <td><span className="emp-badge-dept">{emp.department}</span></td>
+                    <td className="emp-position">{emp.position}</td>
                     <td style={{textAlign: 'center'}}>
-                      <div className="action-btns">
-                        <Link to={`/employees/${emp.id}`} className="act-view">Xem</Link>
-                        <Link to={`/employees/edit/${emp.id}`} className="act-edit">Sửa</Link>
+                      <div className="emp-actions">
+                        <Link to={`/employees/${emp.id}`} className="emp-btn-view">Xem</Link>
+                        <Link to={`/employees/edit/${emp.id}`} className="emp-btn-edit">Sửa</Link>
                       </div>
                     </td>
                   </tr>
                 ))}
+                {filtered.length === 0 && (
+                  <tr>
+                    <td colSpan="5" className="emp-no-data">Không tìm thấy nhân viên nào phù hợp với từ khóa "{search}".</td>
+                  </tr>
+                )}
               </tbody>
             </table>
           </div>

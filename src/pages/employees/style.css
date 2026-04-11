@@ -1,243 +1,483 @@
-:root {
-  --primary: #4f46e5;
-  --bg-body: #f1f5f9;
-  --text-main: #1e2937;
-  --text-muted: #64748b;
-  --border: #e2e8f0;
-}
+/* =========================================================
+   STYLE HIỆN ĐẠI CHO PHÂN HỆ NHÂN SỰ (EMPLOYEES)
+   ========================================================= */
 
-.layout-container {
-  background-color: var(--bg-body);
+.emp-layout {
+  padding: 40px 30px;
+  background-color: #f8fafc;
   min-height: 100vh;
-  padding: 30px;
-  display: flex;
-  justify-content: center;
 }
 
-/* Đây là phần giúp màn hình rộng ra */
-.dashboard-full-width {
-  width: 100%;
-  max-width: 1600px; /* Tăng từ 1200 lên 1600 để rộng hơn */
+.emp-container {
+  max-width: 1200px;
+  margin: 0 auto;
 }
 
-/* Header dàn hàng ngang */
-.page-header-flex {
+.emp-empty-state, .emp-no-data {
+  text-align: center;
+  padding: 40px;
+  color: #64748b;
+  font-style: italic;
+  font-weight: 500;
+}
+
+/* Header & Search */
+.emp-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  background: white;
+  padding: 25px 30px;
+  border-radius: 20px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.03);
   margin-bottom: 30px;
+  flex-wrap: wrap;
+  gap: 20px;
 }
 
-.header-actions {
+.emp-header-title h1 {
+  font-size: 28px;
+  color: #1e293b;
+  font-weight: 800;
+  margin: 0 0 8px 0;
+}
+
+.emp-header-title p {
+  color: #64748b;
+  margin: 0;
+  font-size: 15px;
+}
+
+.emp-highlight { color: #2563eb; font-weight: 700; }
+
+.emp-header-actions {
   display: flex;
   gap: 15px;
   align-items: center;
 }
 
-.search-box-container input {
-  padding: 10px 15px;
-  border: 1px solid var(--border);
-  border-radius: 8px;
-  width: 300px;
-  outline: none;
+.emp-search-box {
+  display: flex;
+  align-items: center;
+  background: #f8fafc;
+  border-radius: 12px;
+  padding: 12px 16px;
+  border: 1.5px solid #e2e8f0;
+  transition: all 0.2s ease;
 }
 
-/* Thống kê dàn 4 cột đều nhau */
-.stats-grid {
+.emp-search-box:focus-within {
+  border-color: #3b82f6;
+  background: white;
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+}
+
+.emp-search-icon { opacity: 0.5; }
+
+.emp-search-box input {
+  border: none;
+  background: transparent;
+  outline: none;
+  margin-left: 10px;
+  font-size: 14px;
+  width: 220px;
+  color: #0f172a;
+}
+
+.emp-btn-add {
+  background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);
+  color: white;
+  padding: 12px 24px;
+  border-radius: 12px;
+  text-decoration: none;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
+  transition: all 0.2s ease;
+}
+
+.emp-btn-add:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 15px rgba(59, 130, 246, 0.4);
+}
+
+/* Stats Grid */
+.emp-stats-grid {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 20px;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 24px;
   margin-bottom: 30px;
 }
 
-.stat-card {
-  padding: 20px;
+.emp-stat-card {
   background: white;
-  border-radius: 12px;
+  padding: 24px;
+  border-radius: 16px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.03);
   display: flex;
   flex-direction: column;
+  gap: 8px;
+  border: 1px solid #f1f5f9;
+  transition: transform 0.2s ease;
 }
 
-.stat-label { color: var(--text-muted); font-size: 14px; }
-.stat-value { font-size: 24px; font-weight: 700; color: var(--primary); margin-top: 5px; }
+.emp-stat-card:hover { transform: translateY(-3px); }
 
-/* Bảng dữ liệu */
-.dash-card {
+.emp-stat-label { color: #64748b; font-size: 13px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; }
+.emp-stat-value { color: #0f172a; font-size: 28px; font-weight: 800; }
+.text-blue { color: #3b82f6; }
+.text-purple { color: #8b5cf6; }
+.text-small { font-size: 18px; line-height: 32px; color: #475569; }
+
+/* Table Component */
+.emp-table-card {
   background: white;
-  border-radius: 12px;
-  border: 1px solid var(--border);
-  box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+  border-radius: 20px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.03);
   overflow: hidden;
+  border: 1px solid #f1f5f9;
 }
 
-table {
+.emp-table-responsive { overflow-x: auto; }
+
+.emp-table {
   width: 100%;
   border-collapse: collapse;
 }
 
-th {
+.emp-table th {
   background: #f8fafc;
-  padding: 15px 20px;
+  padding: 18px 24px;
   text-align: left;
   font-size: 13px;
-  color: var(--text-muted);
-  border-bottom: 1px solid var(--border);
+  font-weight: 700;
+  color: #475569;
+  text-transform: uppercase;
+  border-bottom: 1px solid #e2e8f0;
+  letter-spacing: 0.5px;
 }
 
-td { padding: 15px 20px; border-bottom: 1px solid #f1f5f9; vertical-align: middle; }
-
-/* Thành phần trong bảng */
-.emp-info-cell { display: flex; align-items: center; gap: 12px; }
-.avatar-circle {
-  width: 38px; height: 38px;
-  background: var(--primary);
-  color: white;
-  border-radius: 50%;
-  display: flex; align-items: center; justify-content: center;
-  font-weight: 600;
+.emp-table td {
+  padding: 16px 24px;
+  border-bottom: 1px solid #f1f5f9;
+  vertical-align: middle;
 }
 
-.emp-name { font-weight: 600; color: var(--text-main); }
-.emp-id-tag { font-size: 11px; color: var(--text-muted); }
+.emp-table tbody tr { transition: background-color 0.2s ease; }
+.emp-table tbody tr:hover { background-color: #f8fafc; }
 
-.dept-badge {
-  background: #eef2ff;
-  color: #4338ca;
-  padding: 4px 10px;
-  border-radius: 6px;
-  font-size: 12px;
+/* Table Data Styles */
+.emp-user-info { display: flex; align-items: center; gap: 14px; }
+.emp-avatar { 
+  width: 44px; height: 44px; 
+  background: linear-gradient(135deg, #e0f2fe 0%, #bae6fd 100%); 
+  color: #0369a1; 
+  border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 16px; 
+}
+.emp-name { font-weight: 700; color: #0f172a; font-size: 15px; margin-bottom: 4px; }
+.emp-id { font-size: 12px; color: #64748b; font-weight: 600; background: #f1f5f9; padding: 2px 8px; border-radius: 6px; display: inline-block;}
+
+.emp-contact { display: flex; flex-direction: column; gap: 6px; font-size: 13px; color: #475569; font-weight: 500;}
+.emp-badge-dept { background: #eff6ff; color: #2563eb; padding: 6px 12px; border-radius: 8px; font-size: 13px; font-weight: 600; border: 1px solid #bfdbfe; }
+.emp-position { font-size: 14px; font-weight: 600; color: #334155; }
+
+/* Action Buttons */
+.emp-actions { display: flex; gap: 10px; justify-content: center; }
+.emp-btn-view, .emp-btn-edit { 
+  padding: 8px 16px; border-radius: 8px; font-size: 13px; font-weight: 600; text-decoration: none; transition: all 0.2s ease; 
+}
+.emp-btn-view { background: #f1f5f9; color: #475569; border: 1px solid #e2e8f0; }
+.emp-btn-view:hover { background: #e2e8f0; color: #0f172a; }
+
+.emp-btn-edit { background: #eff6ff; color: #2563eb; border: 1px solid #bfdbfe; }
+.emp-btn-edit:hover { background: #dbeafe; color: #1d4ed8; }
+
+/* =========================================================
+   TRANG CHI TIẾT (EMPLOYEE DETAIL)
+   ========================================================= */
+.emp-link-back { 
+  color: #64748b; text-decoration: none; font-weight: 600; font-size: 14px; 
+  display: inline-block; margin-bottom: 15px; transition: 0.2s; 
+}
+.emp-link-back:hover { color: #2563eb; }
+
+.emp-detail-header { 
+  display: flex; justify-content: space-between; align-items: center; margin-bottom: 30px; 
+}
+.emp-detail-header h1 { font-size: 28px; color: #0f172a; margin: 0; font-weight: 800; }
+.emp-btn-edit-large { 
+  background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%); 
+  color: white; padding: 12px 24px; border-radius: 12px; text-decoration: none; 
+  font-weight: 700; transition: 0.2s; box-shadow: 0 4px 10px rgba(59,130,246,0.3); 
+}
+.emp-btn-edit-large:hover { transform: translateY(-2px); box-shadow: 0 6px 15px rgba(59,130,246,0.4); }
+
+.emp-detail-grid { display: flex; gap: 30px; align-items: flex-start; }
+.emp-detail-card { background: white; border-radius: 20px; box-shadow: 0 4px 15px rgba(0,0,0,0.03); overflow: hidden; border: 1px solid #f1f5f9; }
+
+.profile-card { width: 350px; flex-shrink: 0; }
+.emp-cover { height: 120px; background: linear-gradient(135deg, #e0f2fe, #bae6fd); }
+.emp-profile-content { padding: 0 30px 30px; text-align: center; position: relative; }
+.emp-big-avatar { 
+  width: 100px; height: 100px; border-radius: 50%; background: #3b82f6; color: white; 
+  border: 6px solid white; display: flex; align-items: center; justify-content: center; 
+  font-size: 36px; font-weight: bold; position: absolute; top: -50px; left: 50%; transform: translateX(-50%); 
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1); 
+}
+.emp-big-name { margin: 65px 0 5px; font-size: 22px; color: #0f172a; font-weight: 800; }
+.emp-big-id { color: #64748b; font-size: 14px; font-weight: 600; display: block; margin-bottom: 15px; }
+.emp-status { display: inline-block; padding: 6px 16px; border-radius: 20px; font-size: 13px; font-weight: 700; margin-bottom: 25px; }
+.emp-status.active { background: #ecfdf5; color: #059669; }
+.emp-status.inactive { background: #fef2f2; color: #dc2626; }
+
+.emp-contact-box { background: #f8fafc; border-radius: 12px; padding: 20px; text-align: left; display: flex; flex-direction: column; gap: 15px; border: 1px dashed #cbd5e1; }
+.emp-contact-item span { display: block; color: #64748b; font-size: 13px; font-weight: 600; margin-bottom: 4px; }
+.emp-contact-item a, .emp-contact-item strong { color: #0f172a; text-decoration: none; font-size: 14px; }
+
+.emp-detail-main { flex-grow: 1; }
+.emp-section-title { padding: 25px 30px; margin: 0; font-size: 18px; color: #1e293b; border-bottom: 1px solid #f1f5f9; font-weight: 800; }
+.emp-info-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 25px; padding: 30px; }
+.emp-info-block { display: flex; flex-direction: column; gap: 6px; }
+.emp-info-label { color: #64748b; font-size: 13px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; }
+.emp-info-value { margin: 0; color: #0f172a; font-size: 15px; font-weight: 700; }
+
+.emp-salary-box { padding: 30px; display: flex; justify-content: space-between; align-items: center; }
+.emp-salary-label { color: #64748b; font-size: 14px; font-weight: 600; display: block; margin-bottom: 8px; text-transform: uppercase;}
+.emp-salary-value { color: #059669; font-size: 36px; font-weight: 800; }
+.emp-salary-icon { font-size: 48px; background: #ecfdf5; width: 80px; height: 80px; display: flex; align-items: center; justify-content: center; border-radius: 20px; }
+
+/* Lỗi Data */
+.emp-error-card { background: white; text-align: center; padding: 50px; border-radius: 20px; max-width: 500px; margin: 0 auto; box-shadow: 0 4px 15px rgba(0,0,0,0.03); border: 1px solid #fef2f2; }
+.emp-error-card h2 { color: #ef4444; margin-bottom: 10px; }
+.emp-btn-back { display: inline-block; background: #f1f5f9; color: #475569; padding: 10px 20px; border-radius: 10px; text-decoration: none; font-weight: 600; margin-top: 20px; transition: 0.2s;}
+.emp-btn-back:hover { background: #e2e8f0; }
+
+/* =========================================================
+   FORM TẠO/SỬA (EMPLOYEE FORM)
+   ========================================================= */
+.emp-form-container { max-width: 800px; margin: 0 auto; }
+.emp-form-header { margin-bottom: 30px; text-align: center; }
+.emp-form-header h1 { font-size: 28px; color: #0f172a; margin: 0 0 10px; font-weight: 800; }
+.emp-form-header p { color: #64748b; margin: 0; font-size: 15px; }
+
+.emp-form-card { background: white; border-radius: 24px; box-shadow: 0 10px 30px rgba(0,0,0,0.04); padding: 40px; border: 1px solid #f1f5f9; }
+.emp-form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-bottom: 24px; }
+
+.emp-input-group { display: flex; flex-direction: column; gap: 8px; margin-bottom: 24px; }
+.emp-input-group label { font-size: 14px; font-weight: 700; color: #475569; }
+.emp-input-group input, .emp-input-group select { 
+  padding: 14px 16px; border-radius: 12px; font-size: 15px; border: 1.5px solid #cbd5e1; 
+  outline: none; transition: 0.2s; background: white; color: #0f172a; font-family: inherit;
+}
+.emp-input-group input:focus, .emp-input-group select:focus { border-color: #3b82f6; box-shadow: 0 0 0 4px rgba(59,130,246,0.1); }
+.emp-input-group input.disabled { background: #f8fafc; color: #94a3b8; cursor: not-allowed; border-color: #e2e8f0; }
+
+.emp-form-actions { display: flex; justify-content: flex-end; gap: 15px; margin-top: 40px; border-top: 1px dashed #e2e8f0; padding-top: 30px; }
+.emp-btn-cancel { padding: 14px 28px; border-radius: 12px; font-weight: 700; border: 2px solid #cbd5e1; background: transparent; color: #475569; cursor: pointer; transition: 0.2s; font-family: inherit; }
+.emp-btn-cancel:hover { background: #f1f5f9; color: #0f172a; }
+.emp-btn-submit { padding: 14px 32px; border-radius: 12px; font-weight: 800; background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%); color: white; border: none; cursor: pointer; box-shadow: 0 4px 15px rgba(59,130,246,0.3); transition: 0.2s; font-family: inherit; }
+.emp-btn-submit:hover:not(:disabled) { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(59,130,246,0.4); }
+.emp-btn-submit:disabled { background: #94a3b8; cursor: not-allowed; box-shadow: none; }
+
+/* Responsive cho điện thoại */
+@media (max-width: 768px) {
+  .emp-detail-grid { flex-direction: column; }
+  .profile-card { width: 100%; }
+  .emp-form-row { grid-template-columns: 1fr; gap: 0; }
+  .emp-info-grid { grid-template-columns: 1fr; }
+}
+/* =========================================================
+   STYLE HIỆN ĐẠI CHO PHÂN HỆ NHÂN SỰ (EMPLOYEES)
+   ========================================================= */
+
+.emp-layout {
+  padding: 40px 30px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.emp-container {
+  width: 100%;
+}
+
+.emp-empty-state, .emp-no-data {
+  text-align: center;
+  padding: 40px;
+  color: #64748b;
+  font-style: italic;
   font-weight: 500;
 }
 
-.contact-info { display: flex; flex-direction: column; }
-.contact-info small { color: var(--text-muted); }
+/* Header & Search */
+.emp-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: white;
+  padding: 25px 30px;
+  border-radius: 20px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.03);
+  margin-bottom: 30px;
+  flex-wrap: wrap;
+  gap: 20px;
+}
 
-.p-btn {
-  padding: 10px 20px;
-  border-radius: 8px;
-  font-weight: 600;
-  text-decoration: none;
-  background: var(--primary);
+.emp-header-title h1 {
+  font-size: 28px;
+  color: #1e293b;
+  font-weight: 800;
+  margin: 0 0 8px 0;
+}
+
+.emp-header-title p {
+  color: #64748b;
+  margin: 0;
+  font-size: 15px;
+}
+
+.emp-highlight { color: #2563eb; font-weight: 700; }
+
+.emp-header-actions {
+  display: flex;
+  gap: 15px;
+  align-items: center;
+}
+
+.emp-search-box {
+  display: flex;
+  align-items: center;
+  background: #f8fafc;
+  border-radius: 12px;
+  padding: 12px 16px;
+  border: 1.5px solid #e2e8f0;
+  transition: all 0.2s ease;
+}
+
+.emp-search-box:focus-within {
+  border-color: #3b82f6;
+  background: white;
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+}
+
+.emp-search-icon { opacity: 0.5; }
+
+.emp-search-box input {
+  border: none;
+  background: transparent;
+  outline: none;
+  margin-left: 10px;
+  font-size: 14px;
+  width: 220px;
+  color: #0f172a;
+}
+
+.emp-btn-add {
+  background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);
   color: white;
+  padding: 12px 24px;
+  border-radius: 12px;
+  text-decoration: none;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
+  transition: all 0.2s ease;
 }
 
-.action-btns { display: flex; gap: 10px; justify-content: center; }
-.action-btns a { text-decoration: none; font-size: 13px; font-weight: 600; }
-.act-view { color: var(--primary); }
-.act-edit { color: #d97706; }
-
-
-/* Container chính */
-.form-container {
-    max-width: 900px;
-    margin: 40px auto;
-    padding: 0 20px;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+.emp-btn-add:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 15px rgba(59, 130, 246, 0.4);
 }
 
-.back-btn {
-    display: inline-block;
-    color: #4f46e5;
-    text-decoration: none;
-    margin-bottom: 15px;
-    font-weight: 500;
+/* Stats Grid */
+.emp-stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 24px;
+  margin-bottom: 30px;
 }
 
-.form-title {
-    font-size: 28px;
-    color: #1e293b;
-    margin-bottom: 25px;
+.emp-stat-card {
+  background: white;
+  padding: 24px;
+  border-radius: 16px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.03);
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  border: 1px solid #f1f5f9;
+  transition: transform 0.2s ease;
 }
 
-/* Thẻ card trắng chứa form */
-.form-card {
-    background: #ffffff;
-    padding: 40px;
-    border-radius: 16px;
-    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
-    border: 1px solid #f1f5f9;
+.emp-stat-card:hover { transform: translateY(-3px); }
+
+.emp-stat-label { color: #64748b; font-size: 13px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; }
+.emp-stat-value { color: #0f172a; font-size: 28px; font-weight: 800; }
+.text-blue { color: #3b82f6; }
+.text-purple { color: #8b5cf6; }
+.text-small { font-size: 18px; line-height: 32px; color: #475569; }
+
+/* Table Component */
+.emp-table-card {
+  background: white;
+  border-radius: 20px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.03);
+  overflow: hidden;
+  border: 1px solid #f1f5f9;
 }
 
-/* Chia cột cho form */
-.form-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr; /* Chia 2 cột đều nhau */
-    gap: 24px;
-    margin-bottom: 20px;
+.emp-table-responsive { overflow-x: auto; }
+
+.emp-table {
+  width: 100%;
+  border-collapse: collapse;
 }
 
-/* Reset lại input cho rộng 100% - Sửa lỗi bị co nhỏ */
-.form-group {
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-    margin-bottom: 16px;
+.emp-table th {
+  background: #f8fafc;
+  padding: 18px 24px;
+  text-align: left;
+  font-size: 13px;
+  font-weight: 700;
+  color: #475569;
+  text-transform: uppercase;
+  border-bottom: 1px solid #e2e8f0;
+  letter-spacing: 0.5px;
 }
 
-.form-group label {
-    font-size: 14px;
-    font-weight: 600;
-    color: #64748b;
+.emp-table td {
+  padding: 16px 24px;
+  border-bottom: 1px solid #f1f5f9;
+  vertical-align: middle;
 }
 
-.form-group input, 
-.form-group select {
-    width: 100%; /* Ép rộng hết cỡ cột */
-    padding: 12px 16px;
-    border: 1px solid #cbd5e0;
-    border-radius: 8px;
-    font-size: 15px;
-    box-sizing: border-box; /* Quan trọng: để padding không làm tăng chiều rộng */
-    outline: none;
-    transition: all 0.2s;
-}
+.emp-table tbody tr { transition: background-color 0.2s ease; }
+.emp-table tbody tr:hover { background-color: #f8fafc; }
 
-.form-group input:focus, 
-.form-group select:focus {
-    border-color: #4f46e5;
-    box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.1);
+/* Table Data Styles */
+.emp-user-info { display: flex; align-items: center; gap: 14px; }
+.emp-avatar { 
+  width: 44px; height: 44px; 
+  background: linear-gradient(135deg, #e0f2fe 0%, #bae6fd 100%); 
+  color: #0369a1; 
+  border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 16px; 
 }
+.emp-name { font-weight: 700; color: #0f172a; font-size: 15px; margin-bottom: 4px; }
+.emp-id { font-size: 12px; color: #64748b; font-weight: 600; background: #f1f5f9; padding: 2px 8px; border-radius: 6px; display: inline-block;}
 
-.input-disabled {
-    background-color: #f8fafc;
-    cursor: not-allowed;
-    color: #94a3b8;
-}
+.emp-contact { display: flex; flex-direction: column; gap: 6px; font-size: 13px; color: #475569; font-weight: 500;}
+.emp-badge-dept { background: #eff6ff; color: #2563eb; padding: 6px 12px; border-radius: 8px; font-size: 13px; font-weight: 600; border: 1px solid #bfdbfe; }
+.emp-position { font-size: 14px; font-weight: 600; color: #334155; }
 
-/* Nút bấm */
-.form-actions {
-    margin-top: 30px;
-    display: flex;
-    gap: 16px;
+/* Action Buttons */
+.emp-actions { display: flex; gap: 10px; justify-content: center; }
+.emp-btn-view, .emp-btn-edit { 
+  padding: 8px 16px; border-radius: 8px; font-size: 13px; font-weight: 600; text-decoration: none; transition: all 0.2s ease; 
 }
+.emp-btn-view { background: #f1f5f9; color: #475569; border: 1px solid #e2e8f0; }
+.emp-btn-view:hover { background: #e2e8f0; color: #0f172a; }
 
-.btn-save {
-    flex: 2;
-    background: #4f46e5;
-    color: white;
-    padding: 14px;
-    border: none;
-    border-radius: 10px;
-    font-weight: 600;
-    cursor: pointer;
-    transition: background 0.2s;
-}
-
-.btn-save:hover {
-    background: #4338ca;
-}
-
-.btn-cancel {
-    flex: 1;
-    background: white;
-    border: 1px solid #e2e8f0;
-    color: #64748b;
-    padding: 14px;
-    border-radius: 10px;
-    font-weight: 600;
-    cursor: pointer;
-}
-
-.btn-cancel:hover {
-    background: #f8fafc;
-}
+.emp-btn-edit { background: #eff6ff; color: #2563eb; border: 1px solid #bfdbfe; }
+.emp-btn-edit:hover { background: #dbeafe; color: #1d4ed8; }
