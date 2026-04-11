@@ -1,5 +1,5 @@
 /* src/App.css */
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap');
 
 /* Định nghĩa các biến màu chuẩn SaaS để dùng chung */
 :root {
@@ -27,243 +27,128 @@ body {
 }
 
 /* =========================================
-   1. THANH MENU ĐIỀU HƯỚNG (TOP NAV)
+   1. GIAO DIỆN LANDING PAGE (CHƯA ĐĂNG NHẬP)
    ========================================= */
-.top-nav-modern {
-  background-color: var(--nav-bg);
-  border-bottom: 1px solid var(--border-color);
-  padding: 0 30px;
-  height: 70px;
+.landing-hero {
   display: flex;
-  justify-content: space-between;
+  flex-direction: column;
   align-items: center;
-  position: sticky; /* Giữ Menu luôn ở trên cùng khi cuộn trang */
-  top: 0;
-  z-index: 1000;
-  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.05);
+  min-height: calc(100vh - 75px);
+  background: radial-gradient(circle at top, #e0f2fe 0%, #f8fafc 40%, #f1f5f9 100%);
+  padding: 80px 20px 100px;
 }
 
-/* Khu vực Logo */
-.nav-brand { display: flex; align-items: center; gap: 12px; flex-shrink: 0; }
-.brand-logo {
-  background: linear-gradient(135deg, var(--primary), var(--primary-hover));
-  color: white; font-weight: 700; width: 40px; height: 40px;
-  border-radius: 10px; display: flex; align-items: center;
-  justify-content: center; font-size: 17px;
-  box-shadow: 0 4px 6px -1px rgba(59, 130, 246, 0.3);
-}
-.brand-name { font-weight: 700; font-size: 18px; letter-spacing: -0.3px; }
-
-/* Khu vực các nút chuyển trang */
-.nav-menu { 
-  display: flex; 
-  align-items: center; 
-  gap: 8px; 
-  flex-grow: 1; 
-  justify-content: center; /* Đẩy các nút ra giữa màn hình */
+/* STYLE CHUẨN CHO LOGO Ở TRANG CHỦ (TO & RÕ) */
+.home-logo-container {
+  margin-bottom: 24px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-.nav-item {
-  text-decoration: none; color: var(--text-muted); font-weight: 500;
-  font-size: 14px; padding: 10px 15px; border-radius: 8px;
-  transition: all 0.2s ease; display: flex; align-items: center; gap: 6px;
-  white-space: nowrap; /* Cấm chữ bị rớt dòng */
-}
-.nav-item:hover { background-color: #f1f5f9; color: var(--text-main); }
-
-/* Trạng thái trang đang mở (Active) */
-.nav-item.active {
-  background-color: #eff6ff;
-  color: var(--primary);
-  font-weight: 600;
-}
-
-/* Khu vực User Profile góc phải */
-.nav-user { 
-  display: flex; align-items: center; gap: 12px; 
-  font-size: 14px; font-weight: 500; color: var(--text-muted); 
-  flex-shrink: 0; 
-}
-.nav-avatar {
-  background-color: #f1f5f9; color: var(--primary); width: 38px; height: 38px;
-  border-radius: 50%; display: flex; align-items: center;
-  justify-content: center; font-weight: 700; border: 2px solid var(--border-color);
-  cursor: pointer; transition: border-color 0.2s;
-}
-.nav-avatar:hover { border-color: var(--primary); }
-
-
-/* =========================================
-   2. TRANG CHỦ (HOME ACTIONS)
-   ========================================= */
-  
-.home-actions { 
-  display: flex; 
-  justify-content: center; 
-  gap: 16px; 
-  margin-top: 20px; 
-  flex-wrap: wrap; 
-}
-.home-actions a { 
-  text-decoration: none; 
-  display: inline-flex; 
-  align-items: center; 
-  justify-content: center; 
-  gap: 8px; 
-}
-
-/* Hiệu ứng cho Logo ở trang chủ */
-.page-header img {
-  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
+.home-logo-img {
+  height: 90px; /* Phóng to logo lên 90px */
+  object-fit: contain;
+  filter: drop-shadow(0 8px 15px rgba(0,0,0,0.08)); /* Đổ bóng trực tiếp lên logo, bỏ khung trắng */
   transition: transform 0.3s ease;
 }
-.page-header img:hover {
-  transform: translateY(-5px); /* Nảy nhẹ lên khi di chuột */
+
+.home-logo-img:hover {
+  transform: translateY(-5px) scale(1.02);
 }
+
+.feature-card {
+  background: white;
+  padding: 40px 30px;
+  border-radius: 24px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.03);
+  text-align: center;
+  transition: all 0.3s ease !important;
+  border-top: 4px solid var(--border-color);
+}
+
+.feature-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 20px 40px rgba(0,0,0,0.08) !important;
+}
+
+.feature-card.blue:hover { border-top-color: #3b82f6; }
+.feature-card.green:hover { border-top-color: #10b981; }
+.feature-card.purple:hover { border-top-color: #8b5cf6; }
 
 /* =========================================
-   3. RESPONSIVE (Cho laptop nhỏ và Tablet)
+   2. GIAO DIỆN BẢNG ĐIỀU KHIỂN (ĐÃ ĐĂNG NHẬP)
    ========================================= */
-@media (max-width: 1200px) {
-  .nav-menu { gap: 4px; }
-  .nav-item { padding: 8px 10px; font-size: 13px; }
+/* Bỏ khung trắng cho Logo ở Bảng điều khiển */
+.dashboard-logo-img {
+  height: 60px; /* Phóng to logo trên bảng điều khiển */
+  object-fit: contain;
+  margin-bottom: 20px;
+  filter: drop-shadow(0 4px 10px rgba(0,0,0,0.05));
 }
 
-@media (max-width: 992px) {
-  .top-nav-modern { padding: 0 15px; }
-  .nav-user span { display: none; }
-  
-  .nav-menu {
-    overflow-x: auto;
-    justify-content: flex-start;
-  }
-  .nav-menu::-webkit-scrollbar { display: none; }
-  
-  /* Thu nhỏ logo trên điện thoại/tablet */
-  .nav-brand img { height: 35px !important; }
+.module-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 24px;
+  width: 100%;
 }
-/* --- STYLE CHO NÚT ĐĂNG NHẬP / ĐĂNG KÝ (Header) --- */
-.auth-buttons {
+
+.module-card {
+  background: white;
+  border: 1.5px solid var(--border-color);
+  border-radius: 20px;
+  padding: 30px 20px;
   display: flex;
-  gap: 12px;
+  flex-direction: column;
   align-items: center;
-}
-
-/* Nút Đăng nhập - Nổi bật (Primary) */
-.btn-login-nav {
-  background-color: #3b82f6 !important; /* Xanh chủ đạo */
-  color: #ffffff !important;
-  padding: 8px 20px;
-  border-radius: 8px;
-  font-weight: 600;
+  gap: 16px;
   text-decoration: none;
-  font-size: 14px;
-  transition: all 0.3s ease;
-  border: none;
-  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.02);
 }
 
-.btn-login-nav:hover {
-  background-color: #2563eb !important;
-  box-shadow: 0 4px 6px -1px rgba(59, 130, 246, 0.3);
+.module-card:hover {
+  border-color: #3b82f6 !important;
+  transform: translateY(-5px);
+  box-shadow: 0 15px 30px rgba(59, 130, 246, 0.15) !important;
 }
 
-/* Nút Đăng ký - Outline (Secondary) */
-.btn-register-nav {
-  color: #3b82f6 !important;
-  background-color: transparent !important;
-  padding: 8px 20px;
-  border: 1.5px solid #3b82f6 !important;
-  border-radius: 8px;
-  font-weight: 600;
-  text-decoration: none;
-  font-size: 14px;
-  transition: all 0.3s ease;
-}
-
-.btn-register-nav:hover {
-  background-color: #eff6ff !important;
-}
-
-/* Đảm bảo nav-user không bị vỡ layout khi chứa nút */
-.nav-user {
-  display: flex;
-  align-items: center;
-  margin-left: auto; /* Đẩy về phía bên phải */
-}
-/* --- TÍCH HỢP PROFILE VÀ ĐĂNG XUẤT --- */
-.nav-user-container {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  margin-left: auto;
-}
-
-.nav-avatar-circle {
-  width: 38px;
-  height: 38px;
-  background-color: #eff6ff; /* Màu nền nhạt */
-  color: var(--primary);     /* Màu chữ Primary */
-  border-radius: 50%;
+.module-icon-wrap {
+  width: 64px;
+  height: 64px;
+  border-radius: 16px;
   display: flex;
   align-items: center;
   justify-content: center;
+  font-size: 32px;
+  background-color: #f1f5f9;
+  transition: all 0.3s ease;
+}
+
+.module-card:hover .module-icon-wrap {
+  background-color: #eff6ff;
+  transform: scale(1.1);
+}
+
+.module-title {
+  font-size: 16px;
   font-weight: 700;
-  border: 2px solid var(--border-color);
-  font-size: 14px;
-}
-
-.user-full-name {
-  font-weight: 600;
   color: var(--text-main);
-  white-space: nowrap;
 }
 
-.logout-btn-minimal {
-  background: transparent;
-  border: 1px solid #e2e8f0;
-  padding: 6px 12px;
-  border-radius: 8px;
-  color: var(--text-muted);
+.module-desc {
   font-size: 13px;
-  font-weight: 500;
-  cursor: pointer;
-  transition: all 0.2s ease;
-  white-space: nowrap;
+  color: var(--text-muted);
+  text-align: center;
+  line-height: 1.4;
 }
 
-.logout-btn-minimal:hover {
-  background: #fee2e2;
-  color: #ef4444;
-  border-color: #fca5a5;
-}
-/* Khung bao quát Avatar, Tên và Đăng xuất */
-.user-profile-card {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  background: #ffffff;
-  padding: 4px 12px 4px 4px; /* Padding nhẹ để bo tròn đẹp */
-  border-radius: 50px;       /* Bo tròn hoàn toàn 2 đầu */
-  border: 1px solid var(--border-color);
-  box-shadow: 0 2px 4px rgba(0,0,0,0.02);
-  margin-left: auto;
-}
-
-/* Điều chỉnh lại nút đăng xuất cho nhỏ gọn hơn khi nằm trong khung */
-.logout-btn-minimal {
-  background: #f8fafc;
-  border: 1px solid #e2e8f0;
-  padding: 5px 10px;
-  border-radius: 20px; /* Bo tròn nút */
-  color: #64748b;
-  font-size: 12px;
-  font-weight: 500;
-  cursor: pointer;
+/* Nút bấm (Link) chung */
+a {
   transition: all 0.2s ease;
 }
 
-.logout-btn-minimal:hover {
-  background: #fee2e2;
-  color: #ef4444;
+a:hover {
+  filter: brightness(1.05);
 }

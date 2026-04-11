@@ -1,124 +1,143 @@
 import React, { useState, useEffect } from 'react';
-import './Admin.css';
+import Swal from 'sweetalert2';
 
 function Profile() {
-  // Dữ liệu của 5 thành viên trong nhóm (Chuẩn khớp với employees.json)
-  const teamMembers = [
-    { id: 'EMP001', fullName: 'Nguyễn Ngọc Tài', email: 'tai108742@donga.edu.vn', phone: '0912000001', role: 'System Admin (Báo cáo)', department: 'Phòng IT', avatar: 'NT' },
-    { id: 'EMP005', fullName: 'Nguyễn Trọng Tuyến', email: 'tuyen.it@it24b.vn', phone: '0912000005', role: 'IT Helpdesk (Tổng quan)', department: 'Phòng IT', avatar: 'PT' },
-    { id: 'EMP002', fullName: 'Huỳnh Công Hiệp', email: 'hiep.hr@it24b.vn', phone: '0912000002', role: 'Trưởng phòng (Nhân sự)', department: 'Phòng Nhân sự', avatar: 'NH' },
-    { id: 'EMP003', fullName: 'Sêu', email: 'seu.admin@it24b.vn', phone: '0912000003', role: 'Chuyên viên (Chấm công)', department: 'Phòng Nhân sự', avatar: 'TS' },
-    { id: 'EMP004', fullName: 'tăng Tấn Vỹ', email: 'vy.acc@it24b.vn', phone: '0912000004', role: 'Kế toán (Tiền lương)', department: 'Phòng Kế toán', avatar: 'LV' }
-  ];
+  // 1. TỰ ĐỘNG LẤY THÔNG TIN NGƯỜI DÙNG ĐANG ĐĂNG NHẬP
+  const currentUser = JSON.parse(localStorage.getItem("user") || "{}");
 
-  // Trạng thái người đang được chọn xem (Mặc định là Tài - index 0)
-  const [selectedIndex, setSelectedIndex] = useState(0);
-  
-  // Trạng thái dữ liệu đang hiển thị trong Form
-  const [profile, setProfile] = useState(teamMembers[0]);
+  // 2. KHỞI TẠO STATE HỒ SƠ TỪ DỮ LIỆU ĐĂNG NHẬP (Kèm dữ liệu dự phòng nếu thiếu)
+  const [profile, setProfile] = useState({
+    id: currentUser.id || 'ADMIN-001',
+    fullName: currentUser.fullName || 'Quản trị viên',
+    email: currentUser.email || 'admin@it24b.vn',
+    phone: currentUser.phone || '0909 123 456',
+    department: currentUser.department || 'Ban Giám Đốc',
+    role: currentUser.role || 'System Admin',
+    // Lấy chữ cái đầu của tên làm Avatar
+    avatar: currentUser.fullName ? currentUser.fullName.split(' ').pop().charAt(0).toUpperCase() : 'A',
+    color: '#3b82f6' // Màu mặc định cho Avatar
+  });
+
   const [isEditing, setIsEditing] = useState(false);
 
-  // Mỗi khi đổi tab chọn người khác, cập nhật lại form
-  useEffect(() => {
-    setProfile(teamMembers[selectedIndex]);
-    setIsEditing(false); // Tắt chế độ sửa khi đổi người
-  }, [selectedIndex]);
-
+  // 3. HÀM XỬ LÝ LƯU THÔNG TIN THỰC TẾ
   const handleSave = () => {
     setIsEditing(false);
-    alert(`✅ Đã cập nhật hồ sơ cho ${profile.fullName} thành công!`);
+    
+    // Cập nhật lại dữ liệu mới vào LocalStorage để các trang khác (như Header) cũng tự động cập nhật theo
+    const updatedUser = { ...currentUser, ...profile };
+    localStorage.setItem("user", JSON.stringify(updatedUser));
+    
+    // Kích hoạt sự kiện để báo cho Header biết user đã thay đổi thông tin (đổi tên chẳng hạn)
+    window.dispatchEvent(new Event("userChanged"));
+
+    Swal.fire({
+      icon: 'success',
+      title: 'Tuyệt vời!',
+      text: `Hồ sơ cá nhân của bạn đã được cập nhật thành công.`,
+      timer: 2000,
+      showConfirmButton: false
+    });
   };
 
   return (
-    <div className="dashboard-wrapper">
-      <div className="page-header">
-        <h2>Hồ sơ Nhóm Phát triển</h2>
-        <p>Thông tin tài khoản của các thành viên dự án IT24B</p>
+    <div style={{ padding: '40px 30px', maxWidth: '1200px', margin: '0 auto' }}>
+      
+      {/* Tiêu đề trang */}
+      <div style={{ marginBottom: '30px', backgroundColor: 'white', padding: '25px 30px', borderRadius: '20px', boxShadow: '0 4px 15px rgba(0,0,0,0.03)' }}>
+        <h2 style={{ fontSize: '28px', color: '#1e293b', fontWeight: '800', margin: '0 0 8px 0' }}>Hồ sơ Cá nhân 👤</h2>
+        <p style={{ color: '#64748b', margin: 0, fontSize: '15px' }}>Quản lý và cập nhật thông tin tài khoản làm việc của bạn.</p>
       </div>
 
-      {/* Thanh chọn thành viên (Tabs) */}
-      <div style={{ display: 'flex', gap: '10px', marginBottom: '20px', flexWrap: 'wrap', justifyContent: 'center' }}>
-        {teamMembers.map((member, index) => (
-          <button 
-            key={member.id}
-            onClick={() => setSelectedIndex(index)}
-            style={{
-              padding: '10px 20px',
-              borderRadius: '30px',
-              border: 'none',
-              cursor: 'pointer',
-              fontWeight: '600',
-              transition: 'all 0.3s',
-              backgroundColor: selectedIndex === index ? '#3b82f6' : '#e2e8f0',
-              color: selectedIndex === index ? 'white' : '#475569',
-              boxShadow: selectedIndex === index ? '0 4px 6px rgba(59, 130, 246, 0.3)' : 'none'
-            }}
-          >
-            {member.avatar} - {member.fullName.split(' ').pop()}
-          </button>
-        ))}
-      </div>
-
-      {/* Khu vực hiển thị thông tin */}
-      <div className="dash-card" style={{ maxWidth: '800px', margin: '0 auto', display: 'flex', gap: '30px', alignItems: 'flex-start', flexWrap: 'wrap' }}>
+      <div className="profile-layout" style={{ justifyContent: 'center' }}>
         
-        {/* Cột trái: Avatar */}
-        <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '15px', padding: '20px', backgroundColor: '#f8fafc', borderRadius: '12px', minWidth: '200px', flex: '1 1 200px' }}>
-          <div style={{ width: '100px', height: '100px', borderRadius: '50%', backgroundColor: '#3b82f6', color: 'white', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '36px', fontWeight: 'bold' }}>
-            {profile.avatar}
+        {/* THẺ HIỂN THỊ CHI TIẾT HỒ SƠ (Đã được căn giữa và phóng to) */}
+        <div className="profile-main-card" style={{ maxWidth: '800px', width: '100%' }}>
+          
+          {/* Cover Photo */}
+          <div className="profile-cover">
+             <div className="profile-avatar-large" style={{ backgroundColor: profile.color }}>
+               {profile.avatar}
+             </div>
           </div>
-          <div style={{ textAlign: 'center' }}>
-            <h3 style={{ margin: '0 0 5px 0', fontSize: '18px' }}>{profile.fullName}</h3>
-            <span style={{ backgroundColor: '#dbeafe', color: '#1d4ed8', padding: '4px 10px', borderRadius: '20px', fontSize: '12px', fontWeight: '600' }}>
+          
+          {/* Tên và Chức vụ */}
+          <div className="profile-header-info">
+            <h3 style={{ margin: '0 0 5px 0', fontSize: '24px', color: '#0f172a', fontWeight: '800' }}>
+              {profile.fullName}
+            </h3>
+            <span style={{ backgroundColor: '#f1f5f9', color: '#475569', padding: '6px 14px', borderRadius: '20px', fontSize: '13px', fontWeight: '600', border: '1px solid #e2e8f0' }}>
               {profile.role}
             </span>
           </div>
-        </div>
 
-        {/* Cột phải: Form thông tin */}
-        <div style={{ flex: '2 1 400px', width: '100%' }}>
-          <div className="grid-2" style={{ gap: '20px' }}>
-            <div className="form-group">
-              <label style={{ display: 'block', marginBottom: '8px', color: '#64748b', fontSize: '14px' }}>Mã Nhân viên</label>
-              <input type="text" value={profile.id} disabled style={{ width: '100%', padding: '10px', borderRadius: '6px', border: '1px solid #cbd5e1', backgroundColor: '#f1f5f9', fontWeight: 'bold' }} />
+          {/* Form thông tin cá nhân */}
+          <div className="profile-form">
+            <div className="form-grid">
+              
+              <div className="input-group">
+                <label>Mã Định Danh (ID)</label>
+                {/* ID thường không được phép tự sửa */}
+                <input type="text" value={profile.id} disabled className="input-disabled" />
+              </div>
+              
+              <div className="input-group">
+                <label>Phòng ban trực thuộc</label>
+                {/* Phòng ban cũng do HR quyết định, không cho tự sửa */}
+                <input type="text" value={profile.department} disabled className="input-disabled" />
+              </div>
+
+              <div className="input-group">
+                <label>Họ và tên đầy đủ</label>
+                <input 
+                  type="text" 
+                  value={profile.fullName} 
+                  disabled={!isEditing} 
+                  onChange={(e) => setProfile({...profile, fullName: e.target.value})}
+                  className={isEditing ? "input-active" : "input-disabled"}
+                />
+              </div>
+
+              <div className="input-group">
+                <label>Số điện thoại liên hệ</label>
+                <input 
+                  type="text" 
+                  value={profile.phone} 
+                  disabled={!isEditing} 
+                  onChange={(e) => setProfile({...profile, phone: e.target.value})}
+                  className={isEditing ? "input-active" : "input-disabled"}
+                />
+              </div>
+
+              <div className="input-group full-width">
+                <label>Địa chỉ Email</label>
+                <input 
+                  type="email" 
+                  value={profile.email} 
+                  disabled={!isEditing} 
+                  onChange={(e) => setProfile({...profile, email: e.target.value})}
+                  className={isEditing ? "input-active" : "input-disabled"}
+                />
+              </div>
+
             </div>
-            <div className="form-group">
-              <label style={{ display: 'block', marginBottom: '8px', color: '#64748b', fontSize: '14px' }}>Họ và tên</label>
-              <input type="text" value={profile.fullName} disabled={!isEditing} 
-                     onChange={(e) => setProfile({...profile, fullName: e.target.value})}
-                     style={{ width: '100%', padding: '10px', borderRadius: '6px', border: '1px solid #cbd5e1' }} />
-            </div>
-            <div className="form-group">
-              <label style={{ display: 'block', marginBottom: '8px', color: '#64748b', fontSize: '14px' }}>Email</label>
-              <input type="email" value={profile.email} disabled={!isEditing}
-                     onChange={(e) => setProfile({...profile, email: e.target.value})}
-                     style={{ width: '100%', padding: '10px', borderRadius: '6px', border: '1px solid #cbd5e1' }} />
-            </div>
-            <div className="form-group">
-              <label style={{ display: 'block', marginBottom: '8px', color: '#64748b', fontSize: '14px' }}>Số điện thoại</label>
-              <input type="text" value={profile.phone} disabled={!isEditing}
-                     onChange={(e) => setProfile({...profile, phone: e.target.value})}
-                     style={{ width: '100%', padding: '10px', borderRadius: '6px', border: '1px solid #cbd5e1' }} />
-            </div>
-            <div className="form-group" style={{ gridColumn: '1 / -1' }}>
-              <label style={{ display: 'block', marginBottom: '8px', color: '#64748b', fontSize: '14px' }}>Phòng ban trực thuộc</label>
-              <input type="text" value={profile.department} disabled style={{ width: '100%', padding: '10px', borderRadius: '6px', border: '1px solid #cbd5e1', backgroundColor: '#f1f5f9' }} />
+
+            {/* Các nút hành động */}
+            <div className="profile-actions">
+              {isEditing ? (
+                <>
+                  <button className="btn-cancel" onClick={() => setIsEditing(false)}>Hủy bỏ</button>
+                  <button className="btn-save" onClick={handleSave}>💾 Lưu thông tin</button>
+                </>
+              ) : (
+                <button className="btn-edit" onClick={() => setIsEditing(true)}>✏️ Chỉnh sửa hồ sơ</button>
+              )}
             </div>
           </div>
-
-          <div style={{ marginTop: '25px', display: 'flex', justifyContent: 'flex-end', gap: '10px' }}>
-            {isEditing ? (
-              <>
-                <button className="p-btn p-btn-outline" onClick={() => setIsEditing(false)}>Hủy</button>
-                <button className="p-btn p-btn-primary" onClick={handleSave}>💾 Lưu thay đổi</button>
-              </>
-            ) : (
-              <button className="p-btn p-btn-primary" onClick={() => setIsEditing(true)}>✏️ Chỉnh sửa hồ sơ</button>
-            )}
-          </div>
+          
         </div>
-
       </div>
+
     </div>
   );
 }

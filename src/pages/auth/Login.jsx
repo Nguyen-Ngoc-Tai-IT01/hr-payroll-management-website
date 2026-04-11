@@ -13,7 +13,7 @@ const Login = () => {
     useEffect(() => {
         const user = localStorage.getItem("user");
         if (user) {
-            navigate("/dashboard");
+            navigate("/");
         }
     }, [navigate]);
 
@@ -47,7 +47,7 @@ const Login = () => {
                     icon: "success",
                     timer: 1500,
                     showConfirmButton: false,
-                }).then(() => navigate("/dashboard"));
+                }).then(() => navigate("/"));
             }
 
         } catch (err) {

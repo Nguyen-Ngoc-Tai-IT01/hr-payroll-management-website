@@ -4,12 +4,12 @@
     "employeeId": "EMP001",
     "month": "04/2026",
     "standardDays": 22,
-    "actualDays": 22,
+    "actualDays": 24,
     "lateCount": 0,
     "leaveDays": 0,
     "overtimeHours": 0,
-    "editCount": 1,
-    "lastEditDate": "12:55:30 11/4/2026",
+    "editCount": 3,
+    "lastEditDate": "13:43:42 11/4/2026",
     "fullName": "Nguyễn Ngọc Tài",
     "checkInLogs": [
       {
@@ -18,6 +18,20 @@
         "timeStr": "12:55:30",
         "oldDays": 0,
         "newDays": 22
+      },
+      {
+        "timestamp": "2026-04-11T06:43:40.685Z",
+        "dateStr": "11/4/2026",
+        "timeStr": "13:43:40",
+        "oldDays": 22,
+        "newDays": 23
+      },
+      {
+        "timestamp": "2026-04-11T06:43:42.800Z",
+        "dateStr": "11/4/2026",
+        "timeStr": "13:43:42",
+        "oldDays": 23,
+        "newDays": 24
       }
     ]
   },
