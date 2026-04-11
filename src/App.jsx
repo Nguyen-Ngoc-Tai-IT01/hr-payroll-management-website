@@ -540,6 +540,20 @@ function App() {
             element={user ? <Dashboard /> : <Navigate to="/" />}
           />
           <Route
+            path="/employees/new"
+            element={user ? <EmployeeForm /> : <Navigate to="/" />}
+          />
+
+          <Route
+            path="/employees/:id"
+            element={user ? <EmployeeDetail /> : <Navigate to="/" />}
+          />
+
+          <Route
+            path="/employees/edit/:id"
+            element={user ? <EmployeeForm /> : <Navigate to="/" />}
+          />
+          <Route
             path="/employees"
             element={user ? <EmployeeList /> : <Navigate to="/" />}
           />

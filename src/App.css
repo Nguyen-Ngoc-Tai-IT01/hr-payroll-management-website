@@ -1,7 +1,5 @@
-/* src/App.css */
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap');
 
-/* Định nghĩa các biến màu chuẩn SaaS để dùng chung */
 :root {
   --primary: #3b82f6;
   --primary-hover: #2563eb;
@@ -9,144 +7,242 @@
   --text-main: #0f172a;
   --text-muted: #64748b;
   --border-color: #e2e8f0;
-  --nav-bg: #ffffff;
 }
 
 body {
   margin: 0;
   font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-  background-color: var(--bg-light);
+  background: radial-gradient(circle at top, #eef2ff 0%, #f8fafc 50%, #ffffff 100%);
   color: var(--text-main);
-  -webkit-font-smoothing: antialiased;
 }
 
-.app-container {
+/* =========================
+   LAYOUT CHUNG
+========================= */
+.layout-container {
+  padding: 30px;
   min-height: 100vh;
-  display: flex;
-  flex-direction: column;
 }
 
-/* =========================================
-   1. GIAO DIỆN LANDING PAGE (CHƯA ĐĂNG NHẬP)
-   ========================================= */
-.landing-hero {
+.dashboard-full-width {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* =========================
+   HEADER DETAIL
+========================= */
+.detail-header {
   display: flex;
-  flex-direction: column;
+  justify-content: space-between;
   align-items: center;
-  min-height: calc(100vh - 75px);
-  background: radial-gradient(circle at top, #e0f2fe 0%, #f8fafc 40%, #f1f5f9 100%);
-  padding: 80px 20px 100px;
-}
-
-/* STYLE CHUẨN CHO LOGO Ở TRANG CHỦ (TO & RÕ) */
-.home-logo-container {
-  margin-bottom: 24px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.home-logo-img {
-  height: 90px; /* Phóng to logo lên 90px */
-  object-fit: contain;
-  filter: drop-shadow(0 8px 15px rgba(0,0,0,0.08)); /* Đổ bóng trực tiếp lên logo, bỏ khung trắng */
-  transition: transform 0.3s ease;
-}
-
-.home-logo-img:hover {
-  transform: translateY(-5px) scale(1.02);
-}
-
-.feature-card {
-  background: white;
-  padding: 40px 30px;
-  border-radius: 24px;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.03);
-  text-align: center;
-  transition: all 0.3s ease !important;
-  border-top: 4px solid var(--border-color);
-}
-
-.feature-card:hover {
-  transform: translateY(-8px);
-  box-shadow: 0 20px 40px rgba(0,0,0,0.08) !important;
-}
-
-.feature-card.blue:hover { border-top-color: #3b82f6; }
-.feature-card.green:hover { border-top-color: #10b981; }
-.feature-card.purple:hover { border-top-color: #8b5cf6; }
-
-/* =========================================
-   2. GIAO DIỆN BẢNG ĐIỀU KHIỂN (ĐÃ ĐĂNG NHẬP)
-   ========================================= */
-/* Bỏ khung trắng cho Logo ở Bảng điều khiển */
-.dashboard-logo-img {
-  height: 60px; /* Phóng to logo trên bảng điều khiển */
-  object-fit: contain;
   margin-bottom: 20px;
-  filter: drop-shadow(0 4px 10px rgba(0,0,0,0.05));
 }
 
-.module-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  gap: 24px;
-  width: 100%;
-}
-
-.module-card {
-  background: white;
-  border: 1.5px solid var(--border-color);
-  border-radius: 20px;
-  padding: 30px 20px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 16px;
+.back-link {
   text-decoration: none;
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
-  box-shadow: 0 4px 6px rgba(0,0,0,0.02);
+  color: var(--text-muted);
+  font-weight: 500;
+  padding: 8px 14px;
+  border-radius: 10px;
+  background: white;
+  border: 1px solid var(--border-color);
+  transition: 0.25s;
 }
 
-.module-card:hover {
-  border-color: #3b82f6 !important;
-  transform: translateY(-5px);
-  box-shadow: 0 15px 30px rgba(59, 130, 246, 0.15) !important;
+.back-link:hover {
+  color: var(--primary);
+  transform: translateX(-3px);
 }
 
-.module-icon-wrap {
-  width: 64px;
-  height: 64px;
-  border-radius: 16px;
+.p-btn {
+  padding: 10px 16px;
+  border-radius: 12px;
+  font-weight: 600;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  transition: 0.25s;
+}
+
+.p-btn-primary {
+  background: linear-gradient(135deg, #3b82f6, #2563eb);
+  color: white;
+  box-shadow: 0 10px 25px rgba(59,130,246,0.25);
+}
+
+.p-btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 15px 35px rgba(59,130,246,0.35);
+}
+
+/* =========================
+   GRID
+========================= */
+.employee-detail-grid {
+  display: grid;
+  grid-template-columns: 320px 1fr;
+  gap: 24px;
+}
+
+@media (max-width: 900px) {
+  .employee-detail-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* =========================
+   CARD CHUNG
+========================= */
+.dash-card {
+  background: rgba(255,255,255,0.85);
+  backdrop-filter: blur(12px);
+  border: 1px solid var(--border-color);
+  border-radius: 20px;
+  padding: 22px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+  transition: 0.3s ease;
+}
+
+.dash-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 20px 40px rgba(0,0,0,0.08);
+}
+
+/* =========================
+   PROFILE CARD
+========================= */
+.profile-card {
+  text-align: center;
+  position: sticky;
+  top: 20px;
+}
+
+.avatar-big {
+  width: 90px;
+  height: 90px;
+  margin: 0 auto 15px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #3b82f6, #8b5cf6);
+  color: white;
+  font-size: 34px;
+  font-weight: 800;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 32px;
-  background-color: #f1f5f9;
-  transition: all 0.3s ease;
+  box-shadow: 0 10px 25px rgba(59,130,246,0.3);
 }
 
-.module-card:hover .module-icon-wrap {
-  background-color: #eff6ff;
-  transform: scale(1.1);
+.emp-name {
+  font-size: 20px;
+  font-weight: 800;
+  margin-bottom: 5px;
 }
 
-.module-title {
+.emp-id {
+  color: var(--text-muted);
+  font-size: 13px;
+}
+
+.status {
+  display: inline-block;
+  margin-top: 10px;
+  padding: 6px 12px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.status.active {
+  background: #dcfce7;
+  color: #16a34a;
+}
+
+.status.off {
+  background: #fee2e2;
+  color: #dc2626;
+}
+
+.contact-box {
+  margin-top: 15px;
+  text-align: left;
+  font-size: 14px;
+}
+
+/* =========================
+   INFO CARD
+========================= */
+.info-card h3,
+.salary-card h3 {
+  margin-bottom: 16px;
   font-size: 16px;
   font-weight: 700;
-  color: var(--text-main);
 }
 
-.module-desc {
+.info-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+.info-item {
+  background: #f8fafc;
+  padding: 12px;
+  border-radius: 12px;
+  border: 1px solid var(--border-color);
+}
+
+.info-item span {
+  font-size: 12px;
+  color: var(--text-muted);
+}
+
+.info-item b {
+  display: block;
+  margin-top: 4px;
+}
+
+/* =========================
+   SALARY CARD
+========================= */
+.salary-card {
+  margin-top: 20px;
+  text-align: center;
+  background: linear-gradient(135deg, #ecfeff, #f0f9ff);
+  border: 1px solid #bae6fd;
+}
+
+.salary-value {
+  font-size: 30px;
+  font-weight: 900;
+  color: #0369a1;
+  margin: 10px 0;
+}
+
+.salary-note {
   font-size: 13px;
   color: var(--text-muted);
-  text-align: center;
-  line-height: 1.4;
 }
 
-/* Nút bấm (Link) chung */
+/* =========================
+   LOADING / ERROR
+========================= */
+.empty-state {
+  text-align: center;
+  padding: 40px;
+  color: var(--text-muted);
+}
+
+.dash-card[style] {
+  text-align: center;
+}
+
+/* =========================
+   LINK BUTTON GLOBAL
+========================= */
 a {
-  transition: all 0.2s ease;
+  transition: 0.2s ease;
 }
 
 a:hover {
