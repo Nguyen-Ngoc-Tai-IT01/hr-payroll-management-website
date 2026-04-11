@@ -16,6 +16,9 @@ const Attendance = () => {
   const [editingId, setEditingId] = useState(null);
   const [formData, setFormData] = useState(initialFormState);
 
+  // State cho phần hiển thị Lịch sử
+  const [showHistory, setShowHistory] = useState(false);
+
   const [searchTerm, setSearchTerm] = useState('');
   const [currentPage, setCurrentPage] = useState(1);
   const [recordsPerPage] = useState(10); 
@@ -49,14 +52,13 @@ const Attendance = () => {
     return emp ? emp.fullName : `NV-${rec.employeeId}`;
   };
 
-  // lọc dữ liệu tìm kiếm
-  const filteredRecords = attendanceRecords.filter(rec => {
-    const searchLower = searchTerm.toLowerCase();
-    const name = renderName(rec);
-    return (
-      (name && name.toLowerCase().includes(searchLower)) ||
-      (rec.employeeId && rec.employeeId.toLowerCase().includes(searchLower))
-    );
+  // Lọc dữ liệu tìm kiếm (Đã bọc thép chống sập web)
+  const filteredRecords = (Array.isArray(attendanceRecords) ? attendanceRecords : []).filter(rec => {
+    const searchLower = searchTerm ? String(searchTerm).toLowerCase() : '';
+    const name = renderName(rec) ? String(renderName(rec)).toLowerCase() : '';
+    const empId = rec.employeeId ? String(rec.employeeId).toLowerCase() : '';
+    
+    return name.includes(searchLower) || empId.includes(searchLower);
   });
 
   const indexOfLastRecord = currentPage * recordsPerPage;
@@ -118,7 +120,6 @@ const Attendance = () => {
     }
   };
 
-  // chek-in tự động 
   const handleCheckIn = async (record) => {
     const updatedRecord = {
       ...record,
@@ -154,6 +155,62 @@ const Attendance = () => {
     link.click();
   };
 
+  const handleResetMonth = () => {
+    Swal.fire({
+      title: 'Khởi tạo tháng mới?',
+      text: "Toàn bộ ngày công, đi muộn và lịch sử hiện tại sẽ bị reset về 0. Bạn có chắc chắn không?",
+      icon: 'warning',
+      input: 'text',
+      inputPlaceholder: 'Nhập tháng mới (VD: 05/2026)',
+      showCancelButton: true,
+      confirmButtonColor: '#d33',
+      cancelButtonColor: '#3085d6',
+      confirmButtonText: 'Đồng ý Reset',
+      cancelButtonText: 'Hủy Reset',
+      preConfirm: (inputValue) => {
+        if (!inputValue) {
+          Swal.showValidationMessage('Vui lòng nhập tháng mới!');
+        }
+        return inputValue;
+      }
+    }).then(async (result) => {
+      if (result.isConfirmed) {
+        try {
+          const res = await fetch('http://localhost:5000/api/attendance/reset-month', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ month: result.value })
+          });
+          if (res.ok) {
+            loadData();
+            Swal.fire('Thành công!', `Hệ thống đã sẵn sàng cho tháng ${result.value}`, 'success');
+          }
+        } catch (err) {
+          Swal.fire('Lỗi', 'Không thể reset dữ liệu', 'error');
+        }
+      }
+    });
+  };
+
+  // Gom tất cả log lịch sử (Đã bọc thép chống sập web)
+  const getAllHistoryLogs = () => {
+    let allLogs = [];
+    if (Array.isArray(attendanceRecords)) {
+      attendanceRecords.forEach(rec => {
+        if (rec.checkInLogs && Array.isArray(rec.checkInLogs)) {
+          rec.checkInLogs.forEach(log => {
+            allLogs.push({
+              employeeId: rec.employeeId || 'N/A',
+              fullName: renderName(rec) || 'Chưa cập nhật',
+              ...log
+            });
+          });
+        }
+      });
+    }
+    return allLogs.sort((a, b) => new Date(b.timestamp || 0) - new Date(a.timestamp || 0));
+  };
+
   return (
     <div className="attendance-wrapper">
       <div className="page-header" style={{ marginBottom: '20px' }}>
@@ -177,12 +234,14 @@ const Attendance = () => {
       {activeTab === 'attendance' ? (
         <div style={{ animation: 'fadeIn 0.3s ease', marginTop: '10px' }}>
           
-          {/* TIÊU ĐỀ VÀ NÚT CHỨC NĂNG NẰM NGOÀI KHỐI TRẮNG (GIỐNG LEAVES) */}
           <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '20px' }}>
             <h2 style={{ color: '#1e293b', margin: 0, fontSize: '24px' }}>📋 Quản Lý Bảng Chấm Công</h2>
             <div style={{ display: 'flex', gap: '10px' }}>
               <button onClick={handleExport} className="btn btn-success">
                 📥 Xuất báo cáo
+              </button>
+              <button onClick={handleResetMonth} className="btn btn-primary" >
+                🔄 Reset Tháng
               </button>
               <button onClick={handleAdd} className="btn btn-primary">
                 + Thêm mới
@@ -190,10 +249,8 @@ const Attendance = () => {
             </div>
           </div>
 
-          {/* KHỐI TRẮNG CHỨA THANH TÌM KIẾM VÀ BẢNG DỮ LIỆU */}
           <div style={{ backgroundColor: 'white', padding: '20px', borderRadius: '12px', boxShadow: '0 4px 6px -1px rgba(0,0,0,0.1)' }}>
             
-            {/*  THANH TÌM KIẾM VÀ TỔNG SỐ NHÂN VIÊN */}
             <div style={{ marginBottom: '20px', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
               <input 
                 type="text" 
@@ -202,12 +259,19 @@ const Attendance = () => {
                 onChange={(e) => { setSearchTerm(e.target.value); setCurrentPage(1); }}
                 style={{ width: '100%', maxWidth: '400px', padding: '12px', borderRadius: '8px', border: '1px solid #cbd5e1', outline: 'none' }}
               />
-              <div style={{ fontWeight: '500', color: '#475569', backgroundColor: '#f1f5f9', padding: '8px 16px', borderRadius: '8px', border: '1px solid #e2e8f0' }}>
-                Tổng số: <strong style={{ color: '#2563eb', fontSize: '16px' }}>{filteredRecords.length}</strong> nhân viên
+              
+              <div style={{ display: 'flex', alignItems: 'center', gap: '15px' }}>
+                <button 
+                  onClick={() => setShowHistory(true)}
+                  style={{ backgroundColor: '#f59e0b', color: 'white', border: 'none', padding: '8px 16px', borderRadius: '8px', cursor: 'pointer', fontWeight: 'bold' }}>
+                  🕒 Lịch sử Check-in
+                </button>
+                <div style={{ fontWeight: '500', color: '#475569', backgroundColor: '#f1f5f9', padding: '8px 16px', borderRadius: '8px', border: '1px solid #e2e8f0' }}>
+                  Tổng số: <strong style={{ color: '#2563eb', fontSize: '16px' }}>{filteredRecords.length}</strong> nhân viên
+                </div>
               </div>
             </div>
 
-            {/* BẢNG DỮ LIỆU */}
             <div style={{ overflowX: 'auto' }}>
               <table className="custom-table" style={{ width: '100%', borderCollapse: 'collapse', textAlign: 'left' }}>
                 <thead>
@@ -243,7 +307,6 @@ const Attendance = () => {
               </table>
             </div>
 
-            {/* PHÂN TRANG */}
             <div className="pagination" style={{ backgroundColor: 'transparent', paddingBottom: 0 }}>
               <button disabled={currentPage === 1} onClick={() => setCurrentPage(currentPage - 1)} className="page-btn">Trước</button>
               {[...Array(totalPages)].map((_, i) => (
@@ -261,7 +324,7 @@ const Attendance = () => {
         </div>
       )}
       
-      {/* FORM MODAL THÊM/SỬA */}
+      {/* thêm sửa */}
       {showForm && (
         <div className="modal-overlay">
           <div className="modal-content">
@@ -296,6 +359,52 @@ const Attendance = () => {
                 <button type="submit" className="btn btn-success">Lưu dữ liệu</button>
               </div>
             </form>
+          </div>
+        </div>
+      )}
+
+      {/*hiển thị lịch sử check in */}
+      {showHistory && (
+        <div className="modal-overlay">
+          <div className="modal-content" style={{ maxWidth: '700px', width: '90%' }}>
+            <h3 style={{ marginTop: 0, textAlign: 'center', color: '#1e293b', borderBottom: '2px solid #e2e8f0', paddingBottom: '15px' }}>
+              🕒 Lịch sử Check-in Toàn Hệ thống
+            </h3>
+            
+            <div style={{ maxHeight: '400px', overflowY: 'auto', marginTop: '15px' }}>
+              <table className="custom-table" style={{ width: '100%', borderCollapse: 'collapse' }}>
+                <thead style={{ position: 'sticky', top: '0', backgroundColor: '#f8fafc', zIndex: 1 }}>
+                  <tr>
+                    <th style={{ textAlign: 'center' }}>Thời gian</th>
+                    <th style={{ textAlign: 'left' }}>Nhân viên</th>
+                    <th style={{ textAlign: 'center' }}>Thay đổi công</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {getAllHistoryLogs().length > 0 ? getAllHistoryLogs().map((log, index) => (
+                    <tr key={index} style={{ borderBottom: '1px solid #e2e8f0' }}>
+                      <td style={{ textAlign: 'center', padding: '12px' }}>
+                        <div style={{ fontWeight: 'bold', color: '#334155' }}>{log.timeStr}</div>
+                        <div style={{ fontSize: '12px', color: '#64748b' }}>{log.dateStr}</div>
+                      </td>
+                      <td style={{ padding: '12px' }}>
+                        <div style={{ fontWeight: '600', color: '#0f172a' }}>{log.fullName}</div>
+                        <div style={{ fontSize: '12px', color: '#94a3b8' }}>{log.employeeId}</div>
+                      </td>
+                      <td style={{ textAlign: 'center', padding: '12px', fontWeight: 'bold', color: '#059669' }}>
+                        {log.oldDays} → {log.newDays} ngày
+                      </td>
+                    </tr>
+                  )) : (
+                    <tr><td colSpan="3" style={{ textAlign: 'center', padding: '30px', color: '#64748b' }}>Chưa có bản ghi lịch sử nào!</td></tr>
+                  )}
+                </tbody>
+              </table>
+            </div>
+
+            <div style={{ display: 'flex', justifyContent: 'center', marginTop: '20px' }}>
+              <button onClick={() => setShowHistory(false)} className="btn btn-outline" style={{ padding: '10px 30px' }}>Đóng lại</button>
+            </div>
           </div>
         </div>
       )}

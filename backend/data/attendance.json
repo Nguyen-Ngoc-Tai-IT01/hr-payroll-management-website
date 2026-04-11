@@ -2,170 +2,846 @@
   {
     "id": "ATT_0326_001",
     "employeeId": "EMP001",
-    "month": "03/2026",
+    "month": "04/2026",
     "standardDays": 22,
     "actualDays": 22,
     "lateCount": 0,
     "leaveDays": 0,
-    "overtimeHours": 5,
-    "editCount": 4,
-    "lastEditDate": "18:52:11 10/4/2026",
-    "fullName": "Nguyễn Ngọc Tài"
+    "overtimeHours": 0,
+    "editCount": 1,
+    "lastEditDate": "12:55:30 11/4/2026",
+    "fullName": "Nguyễn Ngọc Tài",
+    "checkInLogs": [
+      {
+        "timestamp": "2026-04-11T05:55:30.396Z",
+        "dateStr": "11/4/2026",
+        "timeStr": "12:55:30",
+        "oldDays": 0,
+        "newDays": 22
+      }
+    ]
   },
   {
     "id": "ATT_0326_002",
     "employeeId": "EMP002",
-    "month": "03/2026",
+    "month": "04/2026",
     "standardDays": 22,
     "actualDays": 21,
-    "lateCount": 2,
+    "lateCount": 3,
     "leaveDays": 0.5,
-    "overtimeHours": 0,
+    "overtimeHours": 4,
     "fullName": "Huỳnh Công Hiệp",
-    "editCount": 1,
-    "lastEditDate": "19:05:30 10/4/2026"
+    "editCount": 2,
+    "lastEditDate": "12:57:01 11/4/2026",
+    "checkInLogs": [
+      {
+        "timestamp": "2026-04-11T05:55:36.946Z",
+        "dateStr": "11/4/2026",
+        "timeStr": "12:55:36",
+        "oldDays": 0,
+        "newDays": 21
+      }
+    ]
   },
   {
     "id": "ATT_0326_003",
     "employeeId": "EMP003",
-    "month": "03/2026",
+    "month": "04/2026",
     "standardDays": 22,
-    "actualDays": 22,
+    "actualDays": 24,
     "lateCount": 0,
     "leaveDays": 0,
-    "overtimeHours": 12
+    "overtimeHours": 0,
+    "checkInLogs": [
+      {
+        "timestamp": "2026-04-11T05:55:43.937Z",
+        "dateStr": "11/4/2026",
+        "timeStr": "12:55:43",
+        "oldDays": 0,
+        "newDays": 24
+      }
+    ],
+    "editCount": 1,
+    "lastEditDate": "12:55:43 11/4/2026",
+    "fullName": "Sêu"
   },
   {
     "id": "ATT_0326_004",
     "employeeId": "EMP004",
-    "month": "03/2026",
+    "month": "04/2026",
     "standardDays": 22,
-    "actualDays": 20,
+    "actualDays": 22,
     "lateCount": 0,
     "leaveDays": 2,
-    "overtimeHours": 0
+    "overtimeHours": 0,
+    "checkInLogs": [
+      {
+        "timestamp": "2026-04-11T05:55:49.831Z",
+        "dateStr": "11/4/2026",
+        "timeStr": "12:55:49",
+        "oldDays": 0,
+        "newDays": 22
+      }
+    ],
+    "editCount": 1,
+    "lastEditDate": "12:55:49 11/4/2026",
+    "fullName": "Tăng Tấn Vỹ"
   },
   {
     "id": "ATT_0326_005",
     "employeeId": "EMP005",
-    "month": "03/2026",
+    "month": "04/2026",
     "standardDays": 22,
-    "actualDays": 22,
+    "actualDays": 15,
     "lateCount": 5,
     "leaveDays": 0,
-    "overtimeHours": 2
+    "overtimeHours": 0,
+    "checkInLogs": [
+      {
+        "timestamp": "2026-04-11T05:55:58.357Z",
+        "dateStr": "11/4/2026",
+        "timeStr": "12:55:58",
+        "oldDays": 0,
+        "newDays": 15
+      }
+    ],
+    "editCount": 2,
+    "lastEditDate": "12:57:15 11/4/2026",
+    "fullName": "Nguyễn Trọng Tuyến"
   },
   {
     "id": "ATT_0326_006",
     "employeeId": "EMP006",
-    "month": "03/2026",
+    "month": "04/2026",
     "standardDays": 22,
     "actualDays": 22,
     "lateCount": 0,
     "leaveDays": 0,
-    "overtimeHours": 0
+    "overtimeHours": 0,
+    "checkInLogs": [
+      {
+        "timestamp": "2026-04-11T05:56:04.305Z",
+        "dateStr": "11/4/2026",
+        "timeStr": "12:56:04",
+        "oldDays": 0,
+        "newDays": 22
+      }
+    ],
+    "editCount": 1,
+    "lastEditDate": "12:56:04 11/4/2026",
+    "fullName": "Hoàng Tổng"
   },
   {
     "id": "ATT_0326_007",
     "employeeId": "EMP007",
-    "month": "03/2026",
+    "month": "04/2026",
     "standardDays": 22,
-    "actualDays": 21,
+    "actualDays": 12,
     "lateCount": 0,
     "leaveDays": 1,
-    "overtimeHours": 0
+    "overtimeHours": 0,
+    "checkInLogs": [
+      {
+        "timestamp": "2026-04-11T05:56:13.339Z",
+        "dateStr": "11/4/2026",
+        "timeStr": "12:56:13",
+        "oldDays": 0,
+        "newDays": 12
+      }
+    ],
+    "editCount": 1,
+    "lastEditDate": "12:56:13 11/4/2026",
+    "fullName": "Ngô Phó"
   },
   {
     "id": "ATT_1008",
     "employeeId": "EMP008",
     "month": "04/2026",
     "standardDays": 22,
-    "actualDays": 22,
-    "lateCount": 0,
-    "overtimeHours": 8,
-    "editCount": 0
+    "actualDays": 21,
+    "lateCount": 5,
+    "overtimeHours": 0,
+    "editCount": 2,
+    "checkInLogs": [
+      {
+        "timestamp": "2026-04-11T05:56:19.233Z",
+        "dateStr": "11/4/2026",
+        "timeStr": "12:56:19",
+        "oldDays": 0,
+        "newDays": 21
+      }
+    ],
+    "lastEditDate": "12:57:25 11/4/2026",
+    "fullName": "Đinh Công Trình"
   },
   {
     "id": "ATT_1009",
     "employeeId": "EMP009",
     "month": "04/2026",
     "standardDays": 22,
-    "actualDays": 21,
-    "lateCount": 1,
-    "overtimeHours": 10,
-    "editCount": 0
+    "actualDays": 20,
+    "lateCount": 0,
+    "overtimeHours": 0,
+    "editCount": 1,
+    "checkInLogs": [
+      {
+        "timestamp": "2026-04-11T05:56:24.451Z",
+        "dateStr": "11/4/2026",
+        "timeStr": "12:56:24",
+        "oldDays": 0,
+        "newDays": 20
+      }
+    ],
+    "lastEditDate": "12:56:24 11/4/2026",
+    "fullName": "Võ Kỹ Thuật"
   },
   {
     "id": "ATT_1010",
     "employeeId": "EMP010",
     "month": "04/2026",
     "standardDays": 22,
-    "actualDays": 22,
+    "actualDays": 24,
     "lateCount": 0,
-    "overtimeHours": 12,
-    "editCount": 0
+    "overtimeHours": 7,
+    "editCount": 1,
+    "checkInLogs": [
+      {
+        "timestamp": "2026-04-11T05:56:40.840Z",
+        "dateStr": "11/4/2026",
+        "timeStr": "12:56:40",
+        "oldDays": 0,
+        "newDays": 24
+      }
+    ],
+    "lastEditDate": "12:56:40 11/4/2026",
+    "fullName": "Lý Code Xịn"
   },
   {
     "id": "ATT_1011",
     "employeeId": "EMP011",
     "month": "04/2026",
     "standardDays": 22,
-    "actualDays": 19,
-    "lateCount": 2,
-    "overtimeHours": 5,
-    "editCount": 0
+    "actualDays": 23,
+    "lateCount": 4,
+    "overtimeHours": 4,
+    "editCount": 1,
+    "checkInLogs": [
+      {
+        "timestamp": "2026-04-11T05:57:47.897Z",
+        "dateStr": "11/4/2026",
+        "timeStr": "12:57:47",
+        "oldDays": 0,
+        "newDays": 23
+      }
+    ],
+    "lastEditDate": "12:57:47 11/4/2026",
+    "fullName": "Trần Bug"
   },
   {
     "id": "ATT_1012",
     "employeeId": "EMP012",
     "month": "04/2026",
     "standardDays": 22,
-    "actualDays": 22,
-    "lateCount": 0,
-    "overtimeHours": 6,
-    "editCount": 0
+    "actualDays": 21,
+    "lateCount": 3,
+    "overtimeHours": 0,
+    "editCount": 1,
+    "checkInLogs": [
+      {
+        "timestamp": "2026-04-11T05:57:58.505Z",
+        "dateStr": "11/4/2026",
+        "timeStr": "12:57:58",
+        "oldDays": 0,
+        "newDays": 21
+      }
+    ],
+    "lastEditDate": "12:57:58 11/4/2026",
+    "fullName": "Nguyễn Fix"
   },
   {
     "id": "ATT_1013",
     "employeeId": "EMP013",
     "month": "04/2026",
     "standardDays": 22,
-    "actualDays": 2,
-    "lateCount": 1,
-    "overtimeHours": 2,
-    "editCount": 1,
+    "actualDays": 19,
+    "lateCount": 0,
+    "overtimeHours": 0,
+    "editCount": 19,
     "fullName": "Phạm Fontend",
-    "lastEditDate": "19:05:58 10/4/2026"
+    "lastEditDate": "12:58:07 11/4/2026",
+    "checkInLogs": [
+      {
+        "timestamp": "2026-04-11T05:58:04.266Z",
+        "dateStr": "11/4/2026",
+        "timeStr": "12:58:04",
+        "oldDays": 0,
+        "newDays": 1
+      },
+      {
+        "timestamp": "2026-04-11T05:58:04.438Z",
+        "dateStr": "11/4/2026",
+        "timeStr": "12:58:04",
+        "oldDays": 1,
+        "newDays": 2
+      },
+      {
+        "timestamp": "2026-04-11T05:58:04.598Z",
+        "dateStr": "11/4/2026",
+        "timeStr": "12:58:04",
+        "oldDays": 2,
+        "newDays": 3
+      },
+      {
+        "timestamp": "2026-04-11T05:58:04.743Z",
+        "dateStr": "11/4/2026",
+        "timeStr": "12:58:04",
+        "oldDays": 3,
+        "newDays": 4
+      },
+      {
+        "timestamp": "2026-04-11T05:58:05.102Z",
+        "dateStr": "11/4/2026",
+        "timeStr": "12:58:05",
+        "oldDays": 4,
+        "newDays": 5
+      },
+      {
+        "timestamp": "2026-04-11T05:58:05.287Z",
+        "dateStr": "11/4/2026",
+        "timeStr": "12:58:05",
+        "oldDays": 5,
+        "newDays": 6
+      },
+      {
+        "timestamp": "2026-04-11T05:58:05.431Z",
+        "dateStr": "11/4/2026",
+        "timeStr": "12:58:05",
+        "oldDays": 6,
+        "newDays": 7
+      },
+      {
+        "timestamp": "2026-04-11T05:58:05.622Z",
+        "dateStr": "11/4/2026",
+        "timeStr": "12:58:05",
+        "oldDays": 7,
+        "newDays": 8
+      },
+      {
+        "timestamp": "2026-04-11T05:58:05.790Z",
+        "dateStr": "11/4/2026",
+        "timeStr": "12:58:05",
+        "oldDays": 8,
+        "newDays": 9
+      },
+      {
+        "timestamp": "2026-04-11T05:58:05.966Z",
+        "dateStr": "11/4/2026",
+        "timeStr": "12:58:05",
+        "oldDays": 9,
+        "newDays": 10
+      },
+      {
+        "timestamp": "2026-04-11T05:58:06.142Z",
+        "dateStr": "11/4/2026",
+        "timeStr": "12:58:06",
+        "oldDays": 10,
+        "newDays": 11
+      },
+      {
+        "timestamp": "2026-04-11T05:58:06.310Z",
+        "dateStr": "11/4/2026",
+        "timeStr": "12:58:06",
+        "oldDays": 11,
+        "newDays": 12
+      },
+      {
+        "timestamp": "2026-04-11T05:58:06.478Z",
+        "dateStr": "11/4/2026",
+        "timeStr": "12:58:06",
+        "oldDays": 12,
+        "newDays": 13
+      },
+      {
+        "timestamp": "2026-04-11T05:58:06.654Z",
+        "dateStr": "11/4/2026",
+        "timeStr": "12:58:06",
+        "oldDays": 13,
+        "newDays": 14
+      },
+      {
+        "timestamp": "2026-04-11T05:58:06.838Z",
+        "dateStr": "11/4/2026",
+        "timeStr": "12:58:06",
+        "oldDays": 14,
+        "newDays": 15
+      },
+      {
+        "timestamp": "2026-04-11T05:58:07.030Z",
+        "dateStr": "11/4/2026",
+        "timeStr": "12:58:07",
+        "oldDays": 15,
+        "newDays": 16
+      },
+      {
+        "timestamp": "2026-04-11T05:58:07.222Z",
+        "dateStr": "11/4/2026",
+        "timeStr": "12:58:07",
+        "oldDays": 16,
+        "newDays": 17
+      },
+      {
+        "timestamp": "2026-04-11T05:58:07.824Z",
+        "dateStr": "11/4/2026",
+        "timeStr": "12:58:07",
+        "oldDays": 17,
+        "newDays": 18
+      },
+      {
+        "timestamp": "2026-04-11T05:58:07.998Z",
+        "dateStr": "11/4/2026",
+        "timeStr": "12:58:07",
+        "oldDays": 18,
+        "newDays": 19
+      }
+    ]
   },
   {
     "id": "ATT_1014",
     "employeeId": "EMP014",
     "month": "04/2026",
     "standardDays": 22,
-    "actualDays": 20,
+    "actualDays": 16,
     "lateCount": 0,
-    "overtimeHours": 4,
-    "editCount": 0
+    "overtimeHours": 0,
+    "editCount": 16,
+    "checkInLogs": [
+      {
+        "timestamp": "2026-04-11T05:58:09.383Z",
+        "dateStr": "11/4/2026",
+        "timeStr": "12:58:09",
+        "oldDays": 0,
+        "newDays": 1
+      },
+      {
+        "timestamp": "2026-04-11T05:58:09.550Z",
+        "dateStr": "11/4/2026",
+        "timeStr": "12:58:09",
+        "oldDays": 1,
+        "newDays": 2
+      },
+      {
+        "timestamp": "2026-04-11T05:58:09.718Z",
+        "dateStr": "11/4/2026",
+        "timeStr": "12:58:09",
+        "oldDays": 2,
+        "newDays": 3
+      },
+      {
+        "timestamp": "2026-04-11T05:58:09.910Z",
+        "dateStr": "11/4/2026",
+        "timeStr": "12:58:09",
+        "oldDays": 3,
+        "newDays": 4
+      },
+      {
+        "timestamp": "2026-04-11T05:58:10.079Z",
+        "dateStr": "11/4/2026",
+        "timeStr": "12:58:10",
+        "oldDays": 4,
+        "newDays": 5
+      },
+      {
+        "timestamp": "2026-04-11T05:58:10.247Z",
+        "dateStr": "11/4/2026",
+        "timeStr": "12:58:10",
+        "oldDays": 5,
+        "newDays": 6
+      },
+      {
+        "timestamp": "2026-04-11T05:58:10.438Z",
+        "dateStr": "11/4/2026",
+        "timeStr": "12:58:10",
+        "oldDays": 6,
+        "newDays": 7
+      },
+      {
+        "timestamp": "2026-04-11T05:58:10.615Z",
+        "dateStr": "11/4/2026",
+        "timeStr": "12:58:10",
+        "oldDays": 7,
+        "newDays": 8
+      },
+      {
+        "timestamp": "2026-04-11T05:58:10.798Z",
+        "dateStr": "11/4/2026",
+        "timeStr": "12:58:10",
+        "oldDays": 8,
+        "newDays": 9
+      },
+      {
+        "timestamp": "2026-04-11T05:58:10.974Z",
+        "dateStr": "11/4/2026",
+        "timeStr": "12:58:10",
+        "oldDays": 9,
+        "newDays": 10
+      },
+      {
+        "timestamp": "2026-04-11T05:58:11.158Z",
+        "dateStr": "11/4/2026",
+        "timeStr": "12:58:11",
+        "oldDays": 10,
+        "newDays": 11
+      },
+      {
+        "timestamp": "2026-04-11T05:58:11.361Z",
+        "dateStr": "11/4/2026",
+        "timeStr": "12:58:11",
+        "oldDays": 11,
+        "newDays": 12
+      },
+      {
+        "timestamp": "2026-04-11T05:58:11.550Z",
+        "dateStr": "11/4/2026",
+        "timeStr": "12:58:11",
+        "oldDays": 12,
+        "newDays": 13
+      },
+      {
+        "timestamp": "2026-04-11T05:58:11.774Z",
+        "dateStr": "11/4/2026",
+        "timeStr": "12:58:11",
+        "oldDays": 13,
+        "newDays": 14
+      },
+      {
+        "timestamp": "2026-04-11T05:58:12.376Z",
+        "dateStr": "11/4/2026",
+        "timeStr": "12:58:12",
+        "oldDays": 14,
+        "newDays": 15
+      },
+      {
+        "timestamp": "2026-04-11T05:58:13.129Z",
+        "dateStr": "11/4/2026",
+        "timeStr": "12:58:13",
+        "oldDays": 15,
+        "newDays": 16
+      }
+    ],
+    "lastEditDate": "12:58:13 11/4/2026"
   },
   {
     "id": "ATT_1015",
     "employeeId": "EMP015",
     "month": "04/2026",
     "standardDays": 22,
-    "actualDays": 22,
+    "actualDays": 24,
     "lateCount": 0,
     "overtimeHours": 0,
-    "editCount": 0
+    "editCount": 24,
+    "checkInLogs": [
+      {
+        "timestamp": "2026-04-11T05:58:18.793Z",
+        "dateStr": "11/4/2026",
+        "timeStr": "12:58:18",
+        "oldDays": 0,
+        "newDays": 1
+      },
+      {
+        "timestamp": "2026-04-11T05:58:18.966Z",
+        "dateStr": "11/4/2026",
+        "timeStr": "12:58:18",
+        "oldDays": 1,
+        "newDays": 2
+      },
+      {
+        "timestamp": "2026-04-11T05:58:19.150Z",
+        "dateStr": "11/4/2026",
+        "timeStr": "12:58:19",
+        "oldDays": 2,
+        "newDays": 3
+      },
+      {
+        "timestamp": "2026-04-11T05:58:19.750Z",
+        "dateStr": "11/4/2026",
+        "timeStr": "12:58:19",
+        "oldDays": 3,
+        "newDays": 4
+      },
+      {
+        "timestamp": "2026-04-11T05:58:19.966Z",
+        "dateStr": "11/4/2026",
+        "timeStr": "12:58:19",
+        "oldDays": 4,
+        "newDays": 5
+      },
+      {
+        "timestamp": "2026-04-11T05:58:20.143Z",
+        "dateStr": "11/4/2026",
+        "timeStr": "12:58:20",
+        "oldDays": 5,
+        "newDays": 6
+      },
+      {
+        "timestamp": "2026-04-11T05:58:20.319Z",
+        "dateStr": "11/4/2026",
+        "timeStr": "12:58:20",
+        "oldDays": 6,
+        "newDays": 7
+      },
+      {
+        "timestamp": "2026-04-11T05:58:20.479Z",
+        "dateStr": "11/4/2026",
+        "timeStr": "12:58:20",
+        "oldDays": 7,
+        "newDays": 8
+      },
+      {
+        "timestamp": "2026-04-11T05:58:20.630Z",
+        "dateStr": "11/4/2026",
+        "timeStr": "12:58:20",
+        "oldDays": 8,
+        "newDays": 9
+      },
+      {
+        "timestamp": "2026-04-11T05:58:20.759Z",
+        "dateStr": "11/4/2026",
+        "timeStr": "12:58:20",
+        "oldDays": 9,
+        "newDays": 10
+      },
+      {
+        "timestamp": "2026-04-11T05:58:20.942Z",
+        "dateStr": "11/4/2026",
+        "timeStr": "12:58:20",
+        "oldDays": 10,
+        "newDays": 11
+      },
+      {
+        "timestamp": "2026-04-11T05:58:21.094Z",
+        "dateStr": "11/4/2026",
+        "timeStr": "12:58:21",
+        "oldDays": 11,
+        "newDays": 12
+      },
+      {
+        "timestamp": "2026-04-11T05:58:21.438Z",
+        "dateStr": "11/4/2026",
+        "timeStr": "12:58:21",
+        "oldDays": 12,
+        "newDays": 13
+      },
+      {
+        "timestamp": "2026-04-11T05:58:21.606Z",
+        "dateStr": "11/4/2026",
+        "timeStr": "12:58:21",
+        "oldDays": 13,
+        "newDays": 14
+      },
+      {
+        "timestamp": "2026-04-11T05:58:21.776Z",
+        "dateStr": "11/4/2026",
+        "timeStr": "12:58:21",
+        "oldDays": 14,
+        "newDays": 15
+      },
+      {
+        "timestamp": "2026-04-11T05:58:21.982Z",
+        "dateStr": "11/4/2026",
+        "timeStr": "12:58:21",
+        "oldDays": 15,
+        "newDays": 16
+      },
+      {
+        "timestamp": "2026-04-11T05:58:22.648Z",
+        "dateStr": "11/4/2026",
+        "timeStr": "12:58:22",
+        "oldDays": 16,
+        "newDays": 17
+      },
+      {
+        "timestamp": "2026-04-11T05:58:22.887Z",
+        "dateStr": "11/4/2026",
+        "timeStr": "12:58:22",
+        "oldDays": 17,
+        "newDays": 18
+      },
+      {
+        "timestamp": "2026-04-11T05:58:23.079Z",
+        "dateStr": "11/4/2026",
+        "timeStr": "12:58:23",
+        "oldDays": 18,
+        "newDays": 19
+      },
+      {
+        "timestamp": "2026-04-11T05:58:23.280Z",
+        "dateStr": "11/4/2026",
+        "timeStr": "12:58:23",
+        "oldDays": 19,
+        "newDays": 20
+      },
+      {
+        "timestamp": "2026-04-11T05:58:24.176Z",
+        "dateStr": "11/4/2026",
+        "timeStr": "12:58:24",
+        "oldDays": 20,
+        "newDays": 21
+      },
+      {
+        "timestamp": "2026-04-11T05:58:24.366Z",
+        "dateStr": "11/4/2026",
+        "timeStr": "12:58:24",
+        "oldDays": 21,
+        "newDays": 22
+      },
+      {
+        "timestamp": "2026-04-11T05:58:24.550Z",
+        "dateStr": "11/4/2026",
+        "timeStr": "12:58:24",
+        "oldDays": 22,
+        "newDays": 23
+      },
+      {
+        "timestamp": "2026-04-11T05:58:24.727Z",
+        "dateStr": "11/4/2026",
+        "timeStr": "12:58:24",
+        "oldDays": 23,
+        "newDays": 24
+      }
+    ],
+    "lastEditDate": "12:58:24 11/4/2026"
   },
   {
     "id": "ATT_1016",
     "employeeId": "EMP016",
     "month": "04/2026",
     "standardDays": 22,
-    "actualDays": 15,
+    "actualDays": 17,
     "lateCount": 0,
     "overtimeHours": 0,
-    "editCount": 0
+    "editCount": 17,
+    "checkInLogs": [
+      {
+        "timestamp": "2026-04-11T05:58:14.783Z",
+        "dateStr": "11/4/2026",
+        "timeStr": "12:58:14",
+        "oldDays": 0,
+        "newDays": 1
+      },
+      {
+        "timestamp": "2026-04-11T05:58:14.966Z",
+        "dateStr": "11/4/2026",
+        "timeStr": "12:58:14",
+        "oldDays": 1,
+        "newDays": 2
+      },
+      {
+        "timestamp": "2026-04-11T05:58:15.158Z",
+        "dateStr": "11/4/2026",
+        "timeStr": "12:58:15",
+        "oldDays": 2,
+        "newDays": 3
+      },
+      {
+        "timestamp": "2026-04-11T05:58:15.326Z",
+        "dateStr": "11/4/2026",
+        "timeStr": "12:58:15",
+        "oldDays": 3,
+        "newDays": 4
+      },
+      {
+        "timestamp": "2026-04-11T05:58:15.502Z",
+        "dateStr": "11/4/2026",
+        "timeStr": "12:58:15",
+        "oldDays": 4,
+        "newDays": 5
+      },
+      {
+        "timestamp": "2026-04-11T05:58:15.679Z",
+        "dateStr": "11/4/2026",
+        "timeStr": "12:58:15",
+        "oldDays": 5,
+        "newDays": 6
+      },
+      {
+        "timestamp": "2026-04-11T05:58:15.862Z",
+        "dateStr": "11/4/2026",
+        "timeStr": "12:58:15",
+        "oldDays": 6,
+        "newDays": 7
+      },
+      {
+        "timestamp": "2026-04-11T05:58:16.030Z",
+        "dateStr": "11/4/2026",
+        "timeStr": "12:58:16",
+        "oldDays": 7,
+        "newDays": 8
+      },
+      {
+        "timestamp": "2026-04-11T05:58:16.238Z",
+        "dateStr": "11/4/2026",
+        "timeStr": "12:58:16",
+        "oldDays": 8,
+        "newDays": 9
+      },
+      {
+        "timestamp": "2026-04-11T05:58:16.429Z",
+        "dateStr": "11/4/2026",
+        "timeStr": "12:58:16",
+        "oldDays": 9,
+        "newDays": 10
+      },
+      {
+        "timestamp": "2026-04-11T05:58:16.654Z",
+        "dateStr": "11/4/2026",
+        "timeStr": "12:58:16",
+        "oldDays": 10,
+        "newDays": 11
+      },
+      {
+        "timestamp": "2026-04-11T05:58:16.830Z",
+        "dateStr": "11/4/2026",
+        "timeStr": "12:58:16",
+        "oldDays": 11,
+        "newDays": 12
+      },
+      {
+        "timestamp": "2026-04-11T05:58:17.022Z",
+        "dateStr": "11/4/2026",
+        "timeStr": "12:58:17",
+        "oldDays": 12,
+        "newDays": 13
+      },
+      {
+        "timestamp": "2026-04-11T05:58:17.182Z",
+        "dateStr": "11/4/2026",
+        "timeStr": "12:58:17",
+        "oldDays": 13,
+        "newDays": 14
+      },
+      {
+        "timestamp": "2026-04-11T05:58:17.374Z",
+        "dateStr": "11/4/2026",
+        "timeStr": "12:58:17",
+        "oldDays": 14,
+        "newDays": 15
+      },
+      {
+        "timestamp": "2026-04-11T05:58:17.542Z",
+        "dateStr": "11/4/2026",
+        "timeStr": "12:58:17",
+        "oldDays": 15,
+        "newDays": 16
+      },
+      {
+        "timestamp": "2026-04-11T05:58:17.734Z",
+        "dateStr": "11/4/2026",
+        "timeStr": "12:58:17",
+        "oldDays": 16,
+        "newDays": 17
+      }
+    ],
+    "lastEditDate": "12:58:17 11/4/2026"
   },
   {
     "id": "ATT_1017",
@@ -174,191 +850,2304 @@
     "standardDays": 22,
     "actualDays": 22,
     "lateCount": 0,
-    "overtimeHours": 5,
-    "editCount": 0
+    "overtimeHours": 0,
+    "editCount": 22,
+    "checkInLogs": [
+      {
+        "timestamp": "2026-04-11T05:58:25.263Z",
+        "dateStr": "11/4/2026",
+        "timeStr": "12:58:25",
+        "oldDays": 0,
+        "newDays": 1
+      },
+      {
+        "timestamp": "2026-04-11T05:58:25.575Z",
+        "dateStr": "11/4/2026",
+        "timeStr": "12:58:25",
+        "oldDays": 1,
+        "newDays": 2
+      },
+      {
+        "timestamp": "2026-04-11T05:58:25.758Z",
+        "dateStr": "11/4/2026",
+        "timeStr": "12:58:25",
+        "oldDays": 2,
+        "newDays": 3
+      },
+      {
+        "timestamp": "2026-04-11T05:58:25.927Z",
+        "dateStr": "11/4/2026",
+        "timeStr": "12:58:25",
+        "oldDays": 3,
+        "newDays": 4
+      },
+      {
+        "timestamp": "2026-04-11T05:58:26.102Z",
+        "dateStr": "11/4/2026",
+        "timeStr": "12:58:26",
+        "oldDays": 4,
+        "newDays": 5
+      },
+      {
+        "timestamp": "2026-04-11T05:58:26.270Z",
+        "dateStr": "11/4/2026",
+        "timeStr": "12:58:26",
+        "oldDays": 5,
+        "newDays": 6
+      },
+      {
+        "timestamp": "2026-04-11T05:58:26.430Z",
+        "dateStr": "11/4/2026",
+        "timeStr": "12:58:26",
+        "oldDays": 6,
+        "newDays": 7
+      },
+      {
+        "timestamp": "2026-04-11T05:58:26.607Z",
+        "dateStr": "11/4/2026",
+        "timeStr": "12:58:26",
+        "oldDays": 7,
+        "newDays": 8
+      },
+      {
+        "timestamp": "2026-04-11T05:58:26.774Z",
+        "dateStr": "11/4/2026",
+        "timeStr": "12:58:26",
+        "oldDays": 8,
+        "newDays": 9
+      },
+      {
+        "timestamp": "2026-04-11T05:58:26.943Z",
+        "dateStr": "11/4/2026",
+        "timeStr": "12:58:26",
+        "oldDays": 9,
+        "newDays": 10
+      },
+      {
+        "timestamp": "2026-04-11T05:58:27.095Z",
+        "dateStr": "11/4/2026",
+        "timeStr": "12:58:27",
+        "oldDays": 10,
+        "newDays": 11
+      },
+      {
+        "timestamp": "2026-04-11T05:58:27.263Z",
+        "dateStr": "11/4/2026",
+        "timeStr": "12:58:27",
+        "oldDays": 11,
+        "newDays": 12
+      },
+      {
+        "timestamp": "2026-04-11T05:58:27.438Z",
+        "dateStr": "11/4/2026",
+        "timeStr": "12:58:27",
+        "oldDays": 12,
+        "newDays": 13
+      },
+      {
+        "timestamp": "2026-04-11T05:58:27.615Z",
+        "dateStr": "11/4/2026",
+        "timeStr": "12:58:27",
+        "oldDays": 13,
+        "newDays": 14
+      },
+      {
+        "timestamp": "2026-04-11T05:58:27.798Z",
+        "dateStr": "11/4/2026",
+        "timeStr": "12:58:27",
+        "oldDays": 14,
+        "newDays": 15
+      },
+      {
+        "timestamp": "2026-04-11T05:58:27.974Z",
+        "dateStr": "11/4/2026",
+        "timeStr": "12:58:27",
+        "oldDays": 15,
+        "newDays": 16
+      },
+      {
+        "timestamp": "2026-04-11T05:58:28.150Z",
+        "dateStr": "11/4/2026",
+        "timeStr": "12:58:28",
+        "oldDays": 16,
+        "newDays": 17
+      },
+      {
+        "timestamp": "2026-04-11T05:58:28.334Z",
+        "dateStr": "11/4/2026",
+        "timeStr": "12:58:28",
+        "oldDays": 17,
+        "newDays": 18
+      },
+      {
+        "timestamp": "2026-04-11T05:58:28.518Z",
+        "dateStr": "11/4/2026",
+        "timeStr": "12:58:28",
+        "oldDays": 18,
+        "newDays": 19
+      },
+      {
+        "timestamp": "2026-04-11T05:58:28.704Z",
+        "dateStr": "11/4/2026",
+        "timeStr": "12:58:28",
+        "oldDays": 19,
+        "newDays": 20
+      },
+      {
+        "timestamp": "2026-04-11T05:58:28.903Z",
+        "dateStr": "11/4/2026",
+        "timeStr": "12:58:28",
+        "oldDays": 20,
+        "newDays": 21
+      },
+      {
+        "timestamp": "2026-04-11T05:58:29.175Z",
+        "dateStr": "11/4/2026",
+        "timeStr": "12:58:29",
+        "oldDays": 21,
+        "newDays": 22
+      }
+    ],
+    "lastEditDate": "12:58:29 11/4/2026"
   },
   {
     "id": "ATT_1018",
     "employeeId": "EMP018",
     "month": "04/2026",
     "standardDays": 22,
-    "actualDays": 22,
+    "actualDays": 15,
     "lateCount": 0,
-    "overtimeHours": 2,
-    "editCount": 0
+    "overtimeHours": 0,
+    "editCount": 15,
+    "checkInLogs": [
+      {
+        "timestamp": "2026-04-11T05:58:30.970Z",
+        "dateStr": "11/4/2026",
+        "timeStr": "12:58:30",
+        "oldDays": 0,
+        "newDays": 1
+      },
+      {
+        "timestamp": "2026-04-11T05:58:31.150Z",
+        "dateStr": "11/4/2026",
+        "timeStr": "12:58:31",
+        "oldDays": 1,
+        "newDays": 2
+      },
+      {
+        "timestamp": "2026-04-11T05:58:31.343Z",
+        "dateStr": "11/4/2026",
+        "timeStr": "12:58:31",
+        "oldDays": 2,
+        "newDays": 3
+      },
+      {
+        "timestamp": "2026-04-11T05:58:31.535Z",
+        "dateStr": "11/4/2026",
+        "timeStr": "12:58:31",
+        "oldDays": 3,
+        "newDays": 4
+      },
+      {
+        "timestamp": "2026-04-11T05:58:31.719Z",
+        "dateStr": "11/4/2026",
+        "timeStr": "12:58:31",
+        "oldDays": 4,
+        "newDays": 5
+      },
+      {
+        "timestamp": "2026-04-11T05:58:31.902Z",
+        "dateStr": "11/4/2026",
+        "timeStr": "12:58:31",
+        "oldDays": 5,
+        "newDays": 6
+      },
+      {
+        "timestamp": "2026-04-11T05:58:32.087Z",
+        "dateStr": "11/4/2026",
+        "timeStr": "12:58:32",
+        "oldDays": 6,
+        "newDays": 7
+      },
+      {
+        "timestamp": "2026-04-11T05:58:32.271Z",
+        "dateStr": "11/4/2026",
+        "timeStr": "12:58:32",
+        "oldDays": 7,
+        "newDays": 8
+      },
+      {
+        "timestamp": "2026-04-11T05:58:32.462Z",
+        "dateStr": "11/4/2026",
+        "timeStr": "12:58:32",
+        "oldDays": 8,
+        "newDays": 9
+      },
+      {
+        "timestamp": "2026-04-11T05:58:32.667Z",
+        "dateStr": "11/4/2026",
+        "timeStr": "12:58:32",
+        "oldDays": 9,
+        "newDays": 10
+      },
+      {
+        "timestamp": "2026-04-11T05:58:32.855Z",
+        "dateStr": "11/4/2026",
+        "timeStr": "12:58:32",
+        "oldDays": 10,
+        "newDays": 11
+      },
+      {
+        "timestamp": "2026-04-11T05:58:33.047Z",
+        "dateStr": "11/4/2026",
+        "timeStr": "12:58:33",
+        "oldDays": 11,
+        "newDays": 12
+      },
+      {
+        "timestamp": "2026-04-11T05:58:33.246Z",
+        "dateStr": "11/4/2026",
+        "timeStr": "12:58:33",
+        "oldDays": 12,
+        "newDays": 13
+      },
+      {
+        "timestamp": "2026-04-11T05:58:33.463Z",
+        "dateStr": "11/4/2026",
+        "timeStr": "12:58:33",
+        "oldDays": 13,
+        "newDays": 14
+      },
+      {
+        "timestamp": "2026-04-11T05:58:33.734Z",
+        "dateStr": "11/4/2026",
+        "timeStr": "12:58:33",
+        "oldDays": 14,
+        "newDays": 15
+      }
+    ],
+    "lastEditDate": "12:58:33 11/4/2026"
   },
   {
     "id": "ATT_1019",
     "employeeId": "EMP019",
     "month": "04/2026",
     "standardDays": 22,
-    "actualDays": 21,
+    "actualDays": 16,
     "lateCount": 0,
-    "overtimeHours": 8,
-    "editCount": 0
+    "overtimeHours": 0,
+    "editCount": 16,
+    "checkInLogs": [
+      {
+        "timestamp": "2026-04-11T05:58:34.706Z",
+        "dateStr": "11/4/2026",
+        "timeStr": "12:58:34",
+        "oldDays": 0,
+        "newDays": 1
+      },
+      {
+        "timestamp": "2026-04-11T05:58:34.927Z",
+        "dateStr": "11/4/2026",
+        "timeStr": "12:58:34",
+        "oldDays": 1,
+        "newDays": 2
+      },
+      {
+        "timestamp": "2026-04-11T05:58:35.118Z",
+        "dateStr": "11/4/2026",
+        "timeStr": "12:58:35",
+        "oldDays": 2,
+        "newDays": 3
+      },
+      {
+        "timestamp": "2026-04-11T05:58:35.319Z",
+        "dateStr": "11/4/2026",
+        "timeStr": "12:58:35",
+        "oldDays": 3,
+        "newDays": 4
+      },
+      {
+        "timestamp": "2026-04-11T05:58:35.511Z",
+        "dateStr": "11/4/2026",
+        "timeStr": "12:58:35",
+        "oldDays": 4,
+        "newDays": 5
+      },
+      {
+        "timestamp": "2026-04-11T05:58:35.695Z",
+        "dateStr": "11/4/2026",
+        "timeStr": "12:58:35",
+        "oldDays": 5,
+        "newDays": 6
+      },
+      {
+        "timestamp": "2026-04-11T05:58:35.894Z",
+        "dateStr": "11/4/2026",
+        "timeStr": "12:58:35",
+        "oldDays": 6,
+        "newDays": 7
+      },
+      {
+        "timestamp": "2026-04-11T05:58:36.086Z",
+        "dateStr": "11/4/2026",
+        "timeStr": "12:58:36",
+        "oldDays": 7,
+        "newDays": 8
+      },
+      {
+        "timestamp": "2026-04-11T05:58:36.287Z",
+        "dateStr": "11/4/2026",
+        "timeStr": "12:58:36",
+        "oldDays": 8,
+        "newDays": 9
+      },
+      {
+        "timestamp": "2026-04-11T05:58:36.496Z",
+        "dateStr": "11/4/2026",
+        "timeStr": "12:58:36",
+        "oldDays": 9,
+        "newDays": 10
+      },
+      {
+        "timestamp": "2026-04-11T05:58:36.694Z",
+        "dateStr": "11/4/2026",
+        "timeStr": "12:58:36",
+        "oldDays": 10,
+        "newDays": 11
+      },
+      {
+        "timestamp": "2026-04-11T05:58:36.886Z",
+        "dateStr": "11/4/2026",
+        "timeStr": "12:58:36",
+        "oldDays": 11,
+        "newDays": 12
+      },
+      {
+        "timestamp": "2026-04-11T05:58:37.087Z",
+        "dateStr": "11/4/2026",
+        "timeStr": "12:58:37",
+        "oldDays": 12,
+        "newDays": 13
+      },
+      {
+        "timestamp": "2026-04-11T05:58:37.310Z",
+        "dateStr": "11/4/2026",
+        "timeStr": "12:58:37",
+        "oldDays": 13,
+        "newDays": 14
+      },
+      {
+        "timestamp": "2026-04-11T05:58:37.543Z",
+        "dateStr": "11/4/2026",
+        "timeStr": "12:58:37",
+        "oldDays": 14,
+        "newDays": 15
+      },
+      {
+        "timestamp": "2026-04-11T05:58:37.775Z",
+        "dateStr": "11/4/2026",
+        "timeStr": "12:58:37",
+        "oldDays": 15,
+        "newDays": 16
+      }
+    ],
+    "lastEditDate": "12:58:37 11/4/2026"
   },
   {
     "id": "ATT_1020",
     "employeeId": "EMP020",
     "month": "04/2026",
     "standardDays": 22,
-    "actualDays": 22,
-    "lateCount": 2,
+    "actualDays": 19,
+    "lateCount": 0,
     "overtimeHours": 0,
-    "editCount": 0
+    "editCount": 19,
+    "checkInLogs": [
+      {
+        "timestamp": "2026-04-11T05:58:40.002Z",
+        "dateStr": "11/4/2026",
+        "timeStr": "12:58:40",
+        "oldDays": 0,
+        "newDays": 1
+      },
+      {
+        "timestamp": "2026-04-11T05:58:40.383Z",
+        "dateStr": "11/4/2026",
+        "timeStr": "12:58:40",
+        "oldDays": 1,
+        "newDays": 2
+      },
+      {
+        "timestamp": "2026-04-11T05:58:40.575Z",
+        "dateStr": "11/4/2026",
+        "timeStr": "12:58:40",
+        "oldDays": 2,
+        "newDays": 3
+      },
+      {
+        "timestamp": "2026-04-11T05:58:40.776Z",
+        "dateStr": "11/4/2026",
+        "timeStr": "12:58:40",
+        "oldDays": 3,
+        "newDays": 4
+      },
+      {
+        "timestamp": "2026-04-11T05:58:40.983Z",
+        "dateStr": "11/4/2026",
+        "timeStr": "12:58:40",
+        "oldDays": 4,
+        "newDays": 5
+      },
+      {
+        "timestamp": "2026-04-11T05:58:41.191Z",
+        "dateStr": "11/4/2026",
+        "timeStr": "12:58:41",
+        "oldDays": 5,
+        "newDays": 6
+      },
+      {
+        "timestamp": "2026-04-11T05:58:41.398Z",
+        "dateStr": "11/4/2026",
+        "timeStr": "12:58:41",
+        "oldDays": 6,
+        "newDays": 7
+      },
+      {
+        "timestamp": "2026-04-11T05:58:41.614Z",
+        "dateStr": "11/4/2026",
+        "timeStr": "12:58:41",
+        "oldDays": 7,
+        "newDays": 8
+      },
+      {
+        "timestamp": "2026-04-11T05:58:41.830Z",
+        "dateStr": "11/4/2026",
+        "timeStr": "12:58:41",
+        "oldDays": 8,
+        "newDays": 9
+      },
+      {
+        "timestamp": "2026-04-11T05:58:42.046Z",
+        "dateStr": "11/4/2026",
+        "timeStr": "12:58:42",
+        "oldDays": 9,
+        "newDays": 10
+      },
+      {
+        "timestamp": "2026-04-11T05:58:42.262Z",
+        "dateStr": "11/4/2026",
+        "timeStr": "12:58:42",
+        "oldDays": 10,
+        "newDays": 11
+      },
+      {
+        "timestamp": "2026-04-11T05:58:42.495Z",
+        "dateStr": "11/4/2026",
+        "timeStr": "12:58:42",
+        "oldDays": 11,
+        "newDays": 12
+      },
+      {
+        "timestamp": "2026-04-11T05:58:42.743Z",
+        "dateStr": "11/4/2026",
+        "timeStr": "12:58:42",
+        "oldDays": 12,
+        "newDays": 13
+      },
+      {
+        "timestamp": "2026-04-11T05:58:42.982Z",
+        "dateStr": "11/4/2026",
+        "timeStr": "12:58:42",
+        "oldDays": 13,
+        "newDays": 14
+      },
+      {
+        "timestamp": "2026-04-11T05:58:43.214Z",
+        "dateStr": "11/4/2026",
+        "timeStr": "12:58:43",
+        "oldDays": 14,
+        "newDays": 15
+      },
+      {
+        "timestamp": "2026-04-11T05:58:43.470Z",
+        "dateStr": "11/4/2026",
+        "timeStr": "12:58:43",
+        "oldDays": 15,
+        "newDays": 16
+      },
+      {
+        "timestamp": "2026-04-11T05:58:43.727Z",
+        "dateStr": "11/4/2026",
+        "timeStr": "12:58:43",
+        "oldDays": 16,
+        "newDays": 17
+      },
+      {
+        "timestamp": "2026-04-11T05:58:43.975Z",
+        "dateStr": "11/4/2026",
+        "timeStr": "12:58:43",
+        "oldDays": 17,
+        "newDays": 18
+      },
+      {
+        "timestamp": "2026-04-11T05:58:44.399Z",
+        "dateStr": "11/4/2026",
+        "timeStr": "12:58:44",
+        "oldDays": 18,
+        "newDays": 19
+      }
+    ],
+    "lastEditDate": "12:58:44 11/4/2026"
   },
   {
     "id": "ATT_1021",
     "employeeId": "EMP021",
     "month": "04/2026",
     "standardDays": 22,
-    "actualDays": 18,
+    "actualDays": 16,
     "lateCount": 0,
     "overtimeHours": 0,
-    "editCount": 0
+    "editCount": 16,
+    "checkInLogs": [
+      {
+        "timestamp": "2026-04-11T05:59:02.147Z",
+        "dateStr": "11/4/2026",
+        "timeStr": "12:59:02",
+        "oldDays": 0,
+        "newDays": 1
+      },
+      {
+        "timestamp": "2026-04-11T05:59:02.342Z",
+        "dateStr": "11/4/2026",
+        "timeStr": "12:59:02",
+        "oldDays": 1,
+        "newDays": 2
+      },
+      {
+        "timestamp": "2026-04-11T05:59:02.542Z",
+        "dateStr": "11/4/2026",
+        "timeStr": "12:59:02",
+        "oldDays": 2,
+        "newDays": 3
+      },
+      {
+        "timestamp": "2026-04-11T05:59:03.561Z",
+        "dateStr": "11/4/2026",
+        "timeStr": "12:59:03",
+        "oldDays": 3,
+        "newDays": 4
+      },
+      {
+        "timestamp": "2026-04-11T05:59:03.742Z",
+        "dateStr": "11/4/2026",
+        "timeStr": "12:59:03",
+        "oldDays": 4,
+        "newDays": 5
+      },
+      {
+        "timestamp": "2026-04-11T05:59:03.958Z",
+        "dateStr": "11/4/2026",
+        "timeStr": "12:59:03",
+        "oldDays": 5,
+        "newDays": 6
+      },
+      {
+        "timestamp": "2026-04-11T05:59:04.758Z",
+        "dateStr": "11/4/2026",
+        "timeStr": "12:59:04",
+        "oldDays": 6,
+        "newDays": 7
+      },
+      {
+        "timestamp": "2026-04-11T05:59:04.943Z",
+        "dateStr": "11/4/2026",
+        "timeStr": "12:59:04",
+        "oldDays": 7,
+        "newDays": 8
+      },
+      {
+        "timestamp": "2026-04-11T05:59:05.135Z",
+        "dateStr": "11/4/2026",
+        "timeStr": "12:59:05",
+        "oldDays": 8,
+        "newDays": 9
+      },
+      {
+        "timestamp": "2026-04-11T05:59:05.319Z",
+        "dateStr": "11/4/2026",
+        "timeStr": "12:59:05",
+        "oldDays": 9,
+        "newDays": 10
+      },
+      {
+        "timestamp": "2026-04-11T05:59:05.510Z",
+        "dateStr": "11/4/2026",
+        "timeStr": "12:59:05",
+        "oldDays": 10,
+        "newDays": 11
+      },
+      {
+        "timestamp": "2026-04-11T05:59:05.702Z",
+        "dateStr": "11/4/2026",
+        "timeStr": "12:59:05",
+        "oldDays": 11,
+        "newDays": 12
+      },
+      {
+        "timestamp": "2026-04-11T05:59:05.895Z",
+        "dateStr": "11/4/2026",
+        "timeStr": "12:59:05",
+        "oldDays": 12,
+        "newDays": 13
+      },
+      {
+        "timestamp": "2026-04-11T05:59:06.086Z",
+        "dateStr": "11/4/2026",
+        "timeStr": "12:59:06",
+        "oldDays": 13,
+        "newDays": 14
+      },
+      {
+        "timestamp": "2026-04-11T05:59:06.295Z",
+        "dateStr": "11/4/2026",
+        "timeStr": "12:59:06",
+        "oldDays": 14,
+        "newDays": 15
+      },
+      {
+        "timestamp": "2026-04-11T05:59:06.527Z",
+        "dateStr": "11/4/2026",
+        "timeStr": "12:59:06",
+        "oldDays": 15,
+        "newDays": 16
+      }
+    ],
+    "lastEditDate": "12:59:06 11/4/2026"
   },
   {
     "id": "ATT_1022",
     "employeeId": "EMP022",
     "month": "04/2026",
     "standardDays": 22,
-    "actualDays": 22,
+    "actualDays": 14,
     "lateCount": 0,
-    "overtimeHours": 10,
-    "editCount": 0
+    "overtimeHours": 0,
+    "editCount": 14,
+    "checkInLogs": [
+      {
+        "timestamp": "2026-04-11T05:59:07.171Z",
+        "dateStr": "11/4/2026",
+        "timeStr": "12:59:07",
+        "oldDays": 0,
+        "newDays": 1
+      },
+      {
+        "timestamp": "2026-04-11T05:59:07.342Z",
+        "dateStr": "11/4/2026",
+        "timeStr": "12:59:07",
+        "oldDays": 1,
+        "newDays": 2
+      },
+      {
+        "timestamp": "2026-04-11T05:59:07.535Z",
+        "dateStr": "11/4/2026",
+        "timeStr": "12:59:07",
+        "oldDays": 2,
+        "newDays": 3
+      },
+      {
+        "timestamp": "2026-04-11T05:59:07.751Z",
+        "dateStr": "11/4/2026",
+        "timeStr": "12:59:07",
+        "oldDays": 3,
+        "newDays": 4
+      },
+      {
+        "timestamp": "2026-04-11T05:59:07.951Z",
+        "dateStr": "11/4/2026",
+        "timeStr": "12:59:07",
+        "oldDays": 4,
+        "newDays": 5
+      },
+      {
+        "timestamp": "2026-04-11T05:59:08.143Z",
+        "dateStr": "11/4/2026",
+        "timeStr": "12:59:08",
+        "oldDays": 5,
+        "newDays": 6
+      },
+      {
+        "timestamp": "2026-04-11T05:59:08.343Z",
+        "dateStr": "11/4/2026",
+        "timeStr": "12:59:08",
+        "oldDays": 6,
+        "newDays": 7
+      },
+      {
+        "timestamp": "2026-04-11T05:59:08.543Z",
+        "dateStr": "11/4/2026",
+        "timeStr": "12:59:08",
+        "oldDays": 7,
+        "newDays": 8
+      },
+      {
+        "timestamp": "2026-04-11T05:59:08.743Z",
+        "dateStr": "11/4/2026",
+        "timeStr": "12:59:08",
+        "oldDays": 8,
+        "newDays": 9
+      },
+      {
+        "timestamp": "2026-04-11T05:59:08.950Z",
+        "dateStr": "11/4/2026",
+        "timeStr": "12:59:08",
+        "oldDays": 9,
+        "newDays": 10
+      },
+      {
+        "timestamp": "2026-04-11T05:59:09.168Z",
+        "dateStr": "11/4/2026",
+        "timeStr": "12:59:09",
+        "oldDays": 10,
+        "newDays": 11
+      },
+      {
+        "timestamp": "2026-04-11T05:59:09.383Z",
+        "dateStr": "11/4/2026",
+        "timeStr": "12:59:09",
+        "oldDays": 11,
+        "newDays": 12
+      },
+      {
+        "timestamp": "2026-04-11T05:59:09.607Z",
+        "dateStr": "11/4/2026",
+        "timeStr": "12:59:09",
+        "oldDays": 12,
+        "newDays": 13
+      },
+      {
+        "timestamp": "2026-04-11T05:59:09.870Z",
+        "dateStr": "11/4/2026",
+        "timeStr": "12:59:09",
+        "oldDays": 13,
+        "newDays": 14
+      }
+    ],
+    "lastEditDate": "12:59:09 11/4/2026"
   },
   {
     "id": "ATT_1023",
     "employeeId": "EMP023",
     "month": "04/2026",
     "standardDays": 22,
-    "actualDays": 22,
+    "actualDays": 13,
     "lateCount": 0,
     "overtimeHours": 0,
-    "editCount": 0
+    "editCount": 13,
+    "checkInLogs": [
+      {
+        "timestamp": "2026-04-11T05:59:10.423Z",
+        "dateStr": "11/4/2026",
+        "timeStr": "12:59:10",
+        "oldDays": 0,
+        "newDays": 1
+      },
+      {
+        "timestamp": "2026-04-11T05:59:10.591Z",
+        "dateStr": "11/4/2026",
+        "timeStr": "12:59:10",
+        "oldDays": 1,
+        "newDays": 2
+      },
+      {
+        "timestamp": "2026-04-11T05:59:10.799Z",
+        "dateStr": "11/4/2026",
+        "timeStr": "12:59:10",
+        "oldDays": 2,
+        "newDays": 3
+      },
+      {
+        "timestamp": "2026-04-11T05:59:11.006Z",
+        "dateStr": "11/4/2026",
+        "timeStr": "12:59:11",
+        "oldDays": 3,
+        "newDays": 4
+      },
+      {
+        "timestamp": "2026-04-11T05:59:11.207Z",
+        "dateStr": "11/4/2026",
+        "timeStr": "12:59:11",
+        "oldDays": 4,
+        "newDays": 5
+      },
+      {
+        "timestamp": "2026-04-11T05:59:11.415Z",
+        "dateStr": "11/4/2026",
+        "timeStr": "12:59:11",
+        "oldDays": 5,
+        "newDays": 6
+      },
+      {
+        "timestamp": "2026-04-11T05:59:11.615Z",
+        "dateStr": "11/4/2026",
+        "timeStr": "12:59:11",
+        "oldDays": 6,
+        "newDays": 7
+      },
+      {
+        "timestamp": "2026-04-11T05:59:11.830Z",
+        "dateStr": "11/4/2026",
+        "timeStr": "12:59:11",
+        "oldDays": 7,
+        "newDays": 8
+      },
+      {
+        "timestamp": "2026-04-11T05:59:12.038Z",
+        "dateStr": "11/4/2026",
+        "timeStr": "12:59:12",
+        "oldDays": 8,
+        "newDays": 9
+      },
+      {
+        "timestamp": "2026-04-11T05:59:12.247Z",
+        "dateStr": "11/4/2026",
+        "timeStr": "12:59:12",
+        "oldDays": 9,
+        "newDays": 10
+      },
+      {
+        "timestamp": "2026-04-11T05:59:12.495Z",
+        "dateStr": "11/4/2026",
+        "timeStr": "12:59:12",
+        "oldDays": 10,
+        "newDays": 11
+      },
+      {
+        "timestamp": "2026-04-11T05:59:12.719Z",
+        "dateStr": "11/4/2026",
+        "timeStr": "12:59:12",
+        "oldDays": 11,
+        "newDays": 12
+      },
+      {
+        "timestamp": "2026-04-11T05:59:12.990Z",
+        "dateStr": "11/4/2026",
+        "timeStr": "12:59:12",
+        "oldDays": 12,
+        "newDays": 13
+      }
+    ],
+    "lastEditDate": "12:59:12 11/4/2026"
   },
   {
     "id": "ATT_1024",
     "employeeId": "EMP024",
     "month": "04/2026",
     "standardDays": 22,
-    "actualDays": 22,
+    "actualDays": 17,
     "lateCount": 0,
-    "overtimeHours": 15,
-    "editCount": 0
+    "overtimeHours": 0,
+    "editCount": 17,
+    "checkInLogs": [
+      {
+        "timestamp": "2026-04-11T05:59:13.811Z",
+        "dateStr": "11/4/2026",
+        "timeStr": "12:59:13",
+        "oldDays": 0,
+        "newDays": 1
+      },
+      {
+        "timestamp": "2026-04-11T05:59:14.015Z",
+        "dateStr": "11/4/2026",
+        "timeStr": "12:59:14",
+        "oldDays": 1,
+        "newDays": 2
+      },
+      {
+        "timestamp": "2026-04-11T05:59:14.223Z",
+        "dateStr": "11/4/2026",
+        "timeStr": "12:59:14",
+        "oldDays": 2,
+        "newDays": 3
+      },
+      {
+        "timestamp": "2026-04-11T05:59:14.431Z",
+        "dateStr": "11/4/2026",
+        "timeStr": "12:59:14",
+        "oldDays": 3,
+        "newDays": 4
+      },
+      {
+        "timestamp": "2026-04-11T05:59:14.631Z",
+        "dateStr": "11/4/2026",
+        "timeStr": "12:59:14",
+        "oldDays": 4,
+        "newDays": 5
+      },
+      {
+        "timestamp": "2026-04-11T05:59:14.847Z",
+        "dateStr": "11/4/2026",
+        "timeStr": "12:59:14",
+        "oldDays": 5,
+        "newDays": 6
+      },
+      {
+        "timestamp": "2026-04-11T05:59:15.047Z",
+        "dateStr": "11/4/2026",
+        "timeStr": "12:59:15",
+        "oldDays": 6,
+        "newDays": 7
+      },
+      {
+        "timestamp": "2026-04-11T05:59:15.254Z",
+        "dateStr": "11/4/2026",
+        "timeStr": "12:59:15",
+        "oldDays": 7,
+        "newDays": 8
+      },
+      {
+        "timestamp": "2026-04-11T05:59:15.463Z",
+        "dateStr": "11/4/2026",
+        "timeStr": "12:59:15",
+        "oldDays": 8,
+        "newDays": 9
+      },
+      {
+        "timestamp": "2026-04-11T05:59:15.686Z",
+        "dateStr": "11/4/2026",
+        "timeStr": "12:59:15",
+        "oldDays": 9,
+        "newDays": 10
+      },
+      {
+        "timestamp": "2026-04-11T05:59:15.895Z",
+        "dateStr": "11/4/2026",
+        "timeStr": "12:59:15",
+        "oldDays": 10,
+        "newDays": 11
+      },
+      {
+        "timestamp": "2026-04-11T05:59:16.110Z",
+        "dateStr": "11/4/2026",
+        "timeStr": "12:59:16",
+        "oldDays": 11,
+        "newDays": 12
+      },
+      {
+        "timestamp": "2026-04-11T05:59:16.351Z",
+        "dateStr": "11/4/2026",
+        "timeStr": "12:59:16",
+        "oldDays": 12,
+        "newDays": 13
+      },
+      {
+        "timestamp": "2026-04-11T05:59:16.575Z",
+        "dateStr": "11/4/2026",
+        "timeStr": "12:59:16",
+        "oldDays": 13,
+        "newDays": 14
+      },
+      {
+        "timestamp": "2026-04-11T05:59:16.791Z",
+        "dateStr": "11/4/2026",
+        "timeStr": "12:59:16",
+        "oldDays": 14,
+        "newDays": 15
+      },
+      {
+        "timestamp": "2026-04-11T05:59:17.007Z",
+        "dateStr": "11/4/2026",
+        "timeStr": "12:59:17",
+        "oldDays": 15,
+        "newDays": 16
+      },
+      {
+        "timestamp": "2026-04-11T05:59:17.246Z",
+        "dateStr": "11/4/2026",
+        "timeStr": "12:59:17",
+        "oldDays": 16,
+        "newDays": 17
+      }
+    ],
+    "lastEditDate": "12:59:17 11/4/2026"
   },
   {
     "id": "ATT_1025",
     "employeeId": "EMP025",
     "month": "04/2026",
     "standardDays": 22,
-    "actualDays": 22,
-    "lateCount": 4,
+    "actualDays": 14,
+    "lateCount": 0,
     "overtimeHours": 0,
-    "editCount": 0
+    "editCount": 14,
+    "checkInLogs": [
+      {
+        "timestamp": "2026-04-11T05:59:18.155Z",
+        "dateStr": "11/4/2026",
+        "timeStr": "12:59:18",
+        "oldDays": 0,
+        "newDays": 1
+      },
+      {
+        "timestamp": "2026-04-11T05:59:18.463Z",
+        "dateStr": "11/4/2026",
+        "timeStr": "12:59:18",
+        "oldDays": 1,
+        "newDays": 2
+      },
+      {
+        "timestamp": "2026-04-11T05:59:18.695Z",
+        "dateStr": "11/4/2026",
+        "timeStr": "12:59:18",
+        "oldDays": 2,
+        "newDays": 3
+      },
+      {
+        "timestamp": "2026-04-11T05:59:18.911Z",
+        "dateStr": "11/4/2026",
+        "timeStr": "12:59:18",
+        "oldDays": 3,
+        "newDays": 4
+      },
+      {
+        "timestamp": "2026-04-11T05:59:19.135Z",
+        "dateStr": "11/4/2026",
+        "timeStr": "12:59:19",
+        "oldDays": 4,
+        "newDays": 5
+      },
+      {
+        "timestamp": "2026-04-11T05:59:19.351Z",
+        "dateStr": "11/4/2026",
+        "timeStr": "12:59:19",
+        "oldDays": 5,
+        "newDays": 6
+      },
+      {
+        "timestamp": "2026-04-11T05:59:19.551Z",
+        "dateStr": "11/4/2026",
+        "timeStr": "12:59:19",
+        "oldDays": 6,
+        "newDays": 7
+      },
+      {
+        "timestamp": "2026-04-11T05:59:19.767Z",
+        "dateStr": "11/4/2026",
+        "timeStr": "12:59:19",
+        "oldDays": 7,
+        "newDays": 8
+      },
+      {
+        "timestamp": "2026-04-11T05:59:19.990Z",
+        "dateStr": "11/4/2026",
+        "timeStr": "12:59:19",
+        "oldDays": 8,
+        "newDays": 9
+      },
+      {
+        "timestamp": "2026-04-11T05:59:20.199Z",
+        "dateStr": "11/4/2026",
+        "timeStr": "12:59:20",
+        "oldDays": 9,
+        "newDays": 10
+      },
+      {
+        "timestamp": "2026-04-11T05:59:20.423Z",
+        "dateStr": "11/4/2026",
+        "timeStr": "12:59:20",
+        "oldDays": 10,
+        "newDays": 11
+      },
+      {
+        "timestamp": "2026-04-11T05:59:20.655Z",
+        "dateStr": "11/4/2026",
+        "timeStr": "12:59:20",
+        "oldDays": 11,
+        "newDays": 12
+      },
+      {
+        "timestamp": "2026-04-11T05:59:20.871Z",
+        "dateStr": "11/4/2026",
+        "timeStr": "12:59:20",
+        "oldDays": 12,
+        "newDays": 13
+      },
+      {
+        "timestamp": "2026-04-11T05:59:21.119Z",
+        "dateStr": "11/4/2026",
+        "timeStr": "12:59:21",
+        "oldDays": 13,
+        "newDays": 14
+      }
+    ],
+    "lastEditDate": "12:59:21 11/4/2026"
   },
   {
     "id": "ATT_1026",
     "employeeId": "EMP026",
     "month": "04/2026",
     "standardDays": 22,
-    "actualDays": 21,
-    "lateCount": 1,
+    "actualDays": 14,
+    "lateCount": 0,
     "overtimeHours": 0,
-    "editCount": 1,
+    "editCount": 14,
     "fullName": "Cao Hoa Hồng",
-    "lastEditDate": "19:06:20 10/4/2026"
+    "lastEditDate": "12:59:25 11/4/2026",
+    "checkInLogs": [
+      {
+        "timestamp": "2026-04-11T05:59:22.711Z",
+        "dateStr": "11/4/2026",
+        "timeStr": "12:59:22",
+        "oldDays": 0,
+        "newDays": 1
+      },
+      {
+        "timestamp": "2026-04-11T05:59:22.871Z",
+        "dateStr": "11/4/2026",
+        "timeStr": "12:59:22",
+        "oldDays": 1,
+        "newDays": 2
+      },
+      {
+        "timestamp": "2026-04-11T05:59:23.087Z",
+        "dateStr": "11/4/2026",
+        "timeStr": "12:59:23",
+        "oldDays": 2,
+        "newDays": 3
+      },
+      {
+        "timestamp": "2026-04-11T05:59:23.295Z",
+        "dateStr": "11/4/2026",
+        "timeStr": "12:59:23",
+        "oldDays": 3,
+        "newDays": 4
+      },
+      {
+        "timestamp": "2026-04-11T05:59:23.495Z",
+        "dateStr": "11/4/2026",
+        "timeStr": "12:59:23",
+        "oldDays": 4,
+        "newDays": 5
+      },
+      {
+        "timestamp": "2026-04-11T05:59:23.695Z",
+        "dateStr": "11/4/2026",
+        "timeStr": "12:59:23",
+        "oldDays": 5,
+        "newDays": 6
+      },
+      {
+        "timestamp": "2026-04-11T05:59:23.903Z",
+        "dateStr": "11/4/2026",
+        "timeStr": "12:59:23",
+        "oldDays": 6,
+        "newDays": 7
+      },
+      {
+        "timestamp": "2026-04-11T05:59:24.119Z",
+        "dateStr": "11/4/2026",
+        "timeStr": "12:59:24",
+        "oldDays": 7,
+        "newDays": 8
+      },
+      {
+        "timestamp": "2026-04-11T05:59:24.327Z",
+        "dateStr": "11/4/2026",
+        "timeStr": "12:59:24",
+        "oldDays": 8,
+        "newDays": 9
+      },
+      {
+        "timestamp": "2026-04-11T05:59:24.543Z",
+        "dateStr": "11/4/2026",
+        "timeStr": "12:59:24",
+        "oldDays": 9,
+        "newDays": 10
+      },
+      {
+        "timestamp": "2026-04-11T05:59:24.775Z",
+        "dateStr": "11/4/2026",
+        "timeStr": "12:59:24",
+        "oldDays": 10,
+        "newDays": 11
+      },
+      {
+        "timestamp": "2026-04-11T05:59:25.015Z",
+        "dateStr": "11/4/2026",
+        "timeStr": "12:59:25",
+        "oldDays": 11,
+        "newDays": 12
+      },
+      {
+        "timestamp": "2026-04-11T05:59:25.263Z",
+        "dateStr": "11/4/2026",
+        "timeStr": "12:59:25",
+        "oldDays": 12,
+        "newDays": 13
+      },
+      {
+        "timestamp": "2026-04-11T05:59:25.568Z",
+        "dateStr": "11/4/2026",
+        "timeStr": "12:59:25",
+        "oldDays": 13,
+        "newDays": 14
+      }
+    ]
   },
   {
     "id": "ATT_1027",
     "employeeId": "EMP027",
     "month": "04/2026",
     "standardDays": 22,
-    "actualDays": 22,
+    "actualDays": 20,
     "lateCount": 0,
-    "overtimeHours": 5,
-    "editCount": 0
+    "overtimeHours": 0,
+    "editCount": 20,
+    "checkInLogs": [
+      {
+        "timestamp": "2026-04-11T05:59:26.177Z",
+        "dateStr": "11/4/2026",
+        "timeStr": "12:59:26",
+        "oldDays": 0,
+        "newDays": 1
+      },
+      {
+        "timestamp": "2026-04-11T05:59:26.327Z",
+        "dateStr": "11/4/2026",
+        "timeStr": "12:59:26",
+        "oldDays": 1,
+        "newDays": 2
+      },
+      {
+        "timestamp": "2026-04-11T05:59:26.527Z",
+        "dateStr": "11/4/2026",
+        "timeStr": "12:59:26",
+        "oldDays": 2,
+        "newDays": 3
+      },
+      {
+        "timestamp": "2026-04-11T05:59:26.735Z",
+        "dateStr": "11/4/2026",
+        "timeStr": "12:59:26",
+        "oldDays": 3,
+        "newDays": 4
+      },
+      {
+        "timestamp": "2026-04-11T05:59:26.951Z",
+        "dateStr": "11/4/2026",
+        "timeStr": "12:59:26",
+        "oldDays": 4,
+        "newDays": 5
+      },
+      {
+        "timestamp": "2026-04-11T05:59:27.167Z",
+        "dateStr": "11/4/2026",
+        "timeStr": "12:59:27",
+        "oldDays": 5,
+        "newDays": 6
+      },
+      {
+        "timestamp": "2026-04-11T05:59:27.375Z",
+        "dateStr": "11/4/2026",
+        "timeStr": "12:59:27",
+        "oldDays": 6,
+        "newDays": 7
+      },
+      {
+        "timestamp": "2026-04-11T05:59:27.567Z",
+        "dateStr": "11/4/2026",
+        "timeStr": "12:59:27",
+        "oldDays": 7,
+        "newDays": 8
+      },
+      {
+        "timestamp": "2026-04-11T05:59:27.775Z",
+        "dateStr": "11/4/2026",
+        "timeStr": "12:59:27",
+        "oldDays": 8,
+        "newDays": 9
+      },
+      {
+        "timestamp": "2026-04-11T05:59:27.984Z",
+        "dateStr": "11/4/2026",
+        "timeStr": "12:59:27",
+        "oldDays": 9,
+        "newDays": 10
+      },
+      {
+        "timestamp": "2026-04-11T05:59:28.207Z",
+        "dateStr": "11/4/2026",
+        "timeStr": "12:59:28",
+        "oldDays": 10,
+        "newDays": 11
+      },
+      {
+        "timestamp": "2026-04-11T05:59:28.418Z",
+        "dateStr": "11/4/2026",
+        "timeStr": "12:59:28",
+        "oldDays": 11,
+        "newDays": 12
+      },
+      {
+        "timestamp": "2026-04-11T05:59:28.631Z",
+        "dateStr": "11/4/2026",
+        "timeStr": "12:59:28",
+        "oldDays": 12,
+        "newDays": 13
+      },
+      {
+        "timestamp": "2026-04-11T05:59:28.863Z",
+        "dateStr": "11/4/2026",
+        "timeStr": "12:59:28",
+        "oldDays": 13,
+        "newDays": 14
+      },
+      {
+        "timestamp": "2026-04-11T05:59:29.087Z",
+        "dateStr": "11/4/2026",
+        "timeStr": "12:59:29",
+        "oldDays": 14,
+        "newDays": 15
+      },
+      {
+        "timestamp": "2026-04-11T05:59:29.310Z",
+        "dateStr": "11/4/2026",
+        "timeStr": "12:59:29",
+        "oldDays": 15,
+        "newDays": 16
+      },
+      {
+        "timestamp": "2026-04-11T05:59:29.534Z",
+        "dateStr": "11/4/2026",
+        "timeStr": "12:59:29",
+        "oldDays": 16,
+        "newDays": 17
+      },
+      {
+        "timestamp": "2026-04-11T05:59:29.751Z",
+        "dateStr": "11/4/2026",
+        "timeStr": "12:59:29",
+        "oldDays": 17,
+        "newDays": 18
+      },
+      {
+        "timestamp": "2026-04-11T05:59:29.999Z",
+        "dateStr": "11/4/2026",
+        "timeStr": "12:59:29",
+        "oldDays": 18,
+        "newDays": 19
+      },
+      {
+        "timestamp": "2026-04-11T05:59:30.271Z",
+        "dateStr": "11/4/2026",
+        "timeStr": "12:59:30",
+        "oldDays": 19,
+        "newDays": 20
+      }
+    ],
+    "lastEditDate": "12:59:30 11/4/2026"
   },
   {
     "id": "ATT_1028",
     "employeeId": "EMP028",
     "month": "04/2026",
     "standardDays": 22,
-    "actualDays": 10,
+    "actualDays": 24,
     "lateCount": 0,
     "overtimeHours": 0,
-    "editCount": 0
+    "editCount": 24,
+    "checkInLogs": [
+      {
+        "timestamp": "2026-04-11T05:59:30.978Z",
+        "dateStr": "11/4/2026",
+        "timeStr": "12:59:30",
+        "oldDays": 0,
+        "newDays": 1
+      },
+      {
+        "timestamp": "2026-04-11T05:59:31.167Z",
+        "dateStr": "11/4/2026",
+        "timeStr": "12:59:31",
+        "oldDays": 1,
+        "newDays": 2
+      },
+      {
+        "timestamp": "2026-04-11T05:59:31.383Z",
+        "dateStr": "11/4/2026",
+        "timeStr": "12:59:31",
+        "oldDays": 2,
+        "newDays": 3
+      },
+      {
+        "timestamp": "2026-04-11T05:59:31.591Z",
+        "dateStr": "11/4/2026",
+        "timeStr": "12:59:31",
+        "oldDays": 3,
+        "newDays": 4
+      },
+      {
+        "timestamp": "2026-04-11T05:59:31.799Z",
+        "dateStr": "11/4/2026",
+        "timeStr": "12:59:31",
+        "oldDays": 4,
+        "newDays": 5
+      },
+      {
+        "timestamp": "2026-04-11T05:59:32.024Z",
+        "dateStr": "11/4/2026",
+        "timeStr": "12:59:32",
+        "oldDays": 5,
+        "newDays": 6
+      },
+      {
+        "timestamp": "2026-04-11T05:59:32.248Z",
+        "dateStr": "11/4/2026",
+        "timeStr": "12:59:32",
+        "oldDays": 6,
+        "newDays": 7
+      },
+      {
+        "timestamp": "2026-04-11T05:59:32.448Z",
+        "dateStr": "11/4/2026",
+        "timeStr": "12:59:32",
+        "oldDays": 7,
+        "newDays": 8
+      },
+      {
+        "timestamp": "2026-04-11T05:59:32.663Z",
+        "dateStr": "11/4/2026",
+        "timeStr": "12:59:32",
+        "oldDays": 8,
+        "newDays": 9
+      },
+      {
+        "timestamp": "2026-04-11T05:59:32.879Z",
+        "dateStr": "11/4/2026",
+        "timeStr": "12:59:32",
+        "oldDays": 9,
+        "newDays": 10
+      },
+      {
+        "timestamp": "2026-04-11T05:59:33.127Z",
+        "dateStr": "11/4/2026",
+        "timeStr": "12:59:33",
+        "oldDays": 10,
+        "newDays": 11
+      },
+      {
+        "timestamp": "2026-04-11T05:59:33.666Z",
+        "dateStr": "11/4/2026",
+        "timeStr": "12:59:33",
+        "oldDays": 11,
+        "newDays": 12
+      },
+      {
+        "timestamp": "2026-04-11T05:59:33.823Z",
+        "dateStr": "11/4/2026",
+        "timeStr": "12:59:33",
+        "oldDays": 12,
+        "newDays": 13
+      },
+      {
+        "timestamp": "2026-04-11T05:59:33.943Z",
+        "dateStr": "11/4/2026",
+        "timeStr": "12:59:33",
+        "oldDays": 13,
+        "newDays": 14
+      },
+      {
+        "timestamp": "2026-04-11T05:59:34.063Z",
+        "dateStr": "11/4/2026",
+        "timeStr": "12:59:34",
+        "oldDays": 14,
+        "newDays": 15
+      },
+      {
+        "timestamp": "2026-04-11T05:59:34.183Z",
+        "dateStr": "11/4/2026",
+        "timeStr": "12:59:34",
+        "oldDays": 15,
+        "newDays": 16
+      },
+      {
+        "timestamp": "2026-04-11T05:59:34.327Z",
+        "dateStr": "11/4/2026",
+        "timeStr": "12:59:34",
+        "oldDays": 16,
+        "newDays": 17
+      },
+      {
+        "timestamp": "2026-04-11T05:59:34.471Z",
+        "dateStr": "11/4/2026",
+        "timeStr": "12:59:34",
+        "oldDays": 17,
+        "newDays": 18
+      },
+      {
+        "timestamp": "2026-04-11T05:59:34.607Z",
+        "dateStr": "11/4/2026",
+        "timeStr": "12:59:34",
+        "oldDays": 18,
+        "newDays": 19
+      },
+      {
+        "timestamp": "2026-04-11T05:59:34.736Z",
+        "dateStr": "11/4/2026",
+        "timeStr": "12:59:34",
+        "oldDays": 19,
+        "newDays": 20
+      },
+      {
+        "timestamp": "2026-04-11T05:59:34.871Z",
+        "dateStr": "11/4/2026",
+        "timeStr": "12:59:34",
+        "oldDays": 20,
+        "newDays": 21
+      },
+      {
+        "timestamp": "2026-04-11T05:59:35.003Z",
+        "dateStr": "11/4/2026",
+        "timeStr": "12:59:35",
+        "oldDays": 21,
+        "newDays": 22
+      },
+      {
+        "timestamp": "2026-04-11T05:59:35.103Z",
+        "dateStr": "11/4/2026",
+        "timeStr": "12:59:35",
+        "oldDays": 22,
+        "newDays": 23
+      },
+      {
+        "timestamp": "2026-04-11T05:59:35.223Z",
+        "dateStr": "11/4/2026",
+        "timeStr": "12:59:35",
+        "oldDays": 23,
+        "newDays": 24
+      }
+    ],
+    "lastEditDate": "12:59:35 11/4/2026"
   },
   {
     "id": "ATT_1029",
     "employeeId": "EMP029",
     "month": "04/2026",
     "standardDays": 22,
-    "actualDays": 22,
+    "actualDays": 27,
     "lateCount": 0,
-    "overtimeHours": 4,
-    "editCount": 0
+    "overtimeHours": 0,
+    "editCount": 27,
+    "checkInLogs": [
+      {
+        "timestamp": "2026-04-11T05:59:37.435Z",
+        "dateStr": "11/4/2026",
+        "timeStr": "12:59:37",
+        "oldDays": 0,
+        "newDays": 1
+      },
+      {
+        "timestamp": "2026-04-11T05:59:37.607Z",
+        "dateStr": "11/4/2026",
+        "timeStr": "12:59:37",
+        "oldDays": 1,
+        "newDays": 2
+      },
+      {
+        "timestamp": "2026-04-11T05:59:37.742Z",
+        "dateStr": "11/4/2026",
+        "timeStr": "12:59:37",
+        "oldDays": 2,
+        "newDays": 3
+      },
+      {
+        "timestamp": "2026-04-11T05:59:38.166Z",
+        "dateStr": "11/4/2026",
+        "timeStr": "12:59:38",
+        "oldDays": 3,
+        "newDays": 4
+      },
+      {
+        "timestamp": "2026-04-11T05:59:38.343Z",
+        "dateStr": "11/4/2026",
+        "timeStr": "12:59:38",
+        "oldDays": 4,
+        "newDays": 5
+      },
+      {
+        "timestamp": "2026-04-11T05:59:38.503Z",
+        "dateStr": "11/4/2026",
+        "timeStr": "12:59:38",
+        "oldDays": 5,
+        "newDays": 6
+      },
+      {
+        "timestamp": "2026-04-11T05:59:38.655Z",
+        "dateStr": "11/4/2026",
+        "timeStr": "12:59:38",
+        "oldDays": 6,
+        "newDays": 7
+      },
+      {
+        "timestamp": "2026-04-11T05:59:38.815Z",
+        "dateStr": "11/4/2026",
+        "timeStr": "12:59:38",
+        "oldDays": 7,
+        "newDays": 8
+      },
+      {
+        "timestamp": "2026-04-11T05:59:38.975Z",
+        "dateStr": "11/4/2026",
+        "timeStr": "12:59:38",
+        "oldDays": 8,
+        "newDays": 9
+      },
+      {
+        "timestamp": "2026-04-11T05:59:39.119Z",
+        "dateStr": "11/4/2026",
+        "timeStr": "12:59:39",
+        "oldDays": 9,
+        "newDays": 10
+      },
+      {
+        "timestamp": "2026-04-11T05:59:39.279Z",
+        "dateStr": "11/4/2026",
+        "timeStr": "12:59:39",
+        "oldDays": 10,
+        "newDays": 11
+      },
+      {
+        "timestamp": "2026-04-11T05:59:39.447Z",
+        "dateStr": "11/4/2026",
+        "timeStr": "12:59:39",
+        "oldDays": 11,
+        "newDays": 12
+      },
+      {
+        "timestamp": "2026-04-11T05:59:40.850Z",
+        "dateStr": "11/4/2026",
+        "timeStr": "12:59:40",
+        "oldDays": 12,
+        "newDays": 13
+      },
+      {
+        "timestamp": "2026-04-11T05:59:41.006Z",
+        "dateStr": "11/4/2026",
+        "timeStr": "12:59:41",
+        "oldDays": 13,
+        "newDays": 14
+      },
+      {
+        "timestamp": "2026-04-11T05:59:41.175Z",
+        "dateStr": "11/4/2026",
+        "timeStr": "12:59:41",
+        "oldDays": 14,
+        "newDays": 15
+      },
+      {
+        "timestamp": "2026-04-11T05:59:41.310Z",
+        "dateStr": "11/4/2026",
+        "timeStr": "12:59:41",
+        "oldDays": 15,
+        "newDays": 16
+      },
+      {
+        "timestamp": "2026-04-11T05:59:41.479Z",
+        "dateStr": "11/4/2026",
+        "timeStr": "12:59:41",
+        "oldDays": 16,
+        "newDays": 17
+      },
+      {
+        "timestamp": "2026-04-11T05:59:41.775Z",
+        "dateStr": "11/4/2026",
+        "timeStr": "12:59:41",
+        "oldDays": 17,
+        "newDays": 18
+      },
+      {
+        "timestamp": "2026-04-11T05:59:41.950Z",
+        "dateStr": "11/4/2026",
+        "timeStr": "12:59:41",
+        "oldDays": 18,
+        "newDays": 19
+      },
+      {
+        "timestamp": "2026-04-11T05:59:42.160Z",
+        "dateStr": "11/4/2026",
+        "timeStr": "12:59:42",
+        "oldDays": 19,
+        "newDays": 20
+      },
+      {
+        "timestamp": "2026-04-11T05:59:42.327Z",
+        "dateStr": "11/4/2026",
+        "timeStr": "12:59:42",
+        "oldDays": 20,
+        "newDays": 21
+      },
+      {
+        "timestamp": "2026-04-11T05:59:42.503Z",
+        "dateStr": "11/4/2026",
+        "timeStr": "12:59:42",
+        "oldDays": 21,
+        "newDays": 22
+      },
+      {
+        "timestamp": "2026-04-11T05:59:42.855Z",
+        "dateStr": "11/4/2026",
+        "timeStr": "12:59:42",
+        "oldDays": 22,
+        "newDays": 23
+      },
+      {
+        "timestamp": "2026-04-11T05:59:43.055Z",
+        "dateStr": "11/4/2026",
+        "timeStr": "12:59:43",
+        "oldDays": 23,
+        "newDays": 24
+      },
+      {
+        "timestamp": "2026-04-11T05:59:43.270Z",
+        "dateStr": "11/4/2026",
+        "timeStr": "12:59:43",
+        "oldDays": 24,
+        "newDays": 25
+      },
+      {
+        "timestamp": "2026-04-11T05:59:43.511Z",
+        "dateStr": "11/4/2026",
+        "timeStr": "12:59:43",
+        "oldDays": 25,
+        "newDays": 26
+      },
+      {
+        "timestamp": "2026-04-11T05:59:43.782Z",
+        "dateStr": "11/4/2026",
+        "timeStr": "12:59:43",
+        "oldDays": 26,
+        "newDays": 27
+      }
+    ],
+    "lastEditDate": "12:59:43 11/4/2026"
   },
   {
     "id": "ATT_1030",
     "employeeId": "EMP030",
     "month": "04/2026",
     "standardDays": 22,
-    "actualDays": 22,
+    "actualDays": 20,
     "lateCount": 0,
     "overtimeHours": 0,
-    "editCount": 0
+    "editCount": 20,
+    "checkInLogs": [
+      {
+        "timestamp": "2026-04-11T05:59:46.224Z",
+        "dateStr": "11/4/2026",
+        "timeStr": "12:59:46",
+        "oldDays": 0,
+        "newDays": 1
+      },
+      {
+        "timestamp": "2026-04-11T05:59:46.416Z",
+        "dateStr": "11/4/2026",
+        "timeStr": "12:59:46",
+        "oldDays": 1,
+        "newDays": 2
+      },
+      {
+        "timestamp": "2026-04-11T05:59:46.599Z",
+        "dateStr": "11/4/2026",
+        "timeStr": "12:59:46",
+        "oldDays": 2,
+        "newDays": 3
+      },
+      {
+        "timestamp": "2026-04-11T05:59:46.774Z",
+        "dateStr": "11/4/2026",
+        "timeStr": "12:59:46",
+        "oldDays": 3,
+        "newDays": 4
+      },
+      {
+        "timestamp": "2026-04-11T05:59:46.966Z",
+        "dateStr": "11/4/2026",
+        "timeStr": "12:59:46",
+        "oldDays": 4,
+        "newDays": 5
+      },
+      {
+        "timestamp": "2026-04-11T05:59:47.151Z",
+        "dateStr": "11/4/2026",
+        "timeStr": "12:59:47",
+        "oldDays": 5,
+        "newDays": 6
+      },
+      {
+        "timestamp": "2026-04-11T05:59:47.351Z",
+        "dateStr": "11/4/2026",
+        "timeStr": "12:59:47",
+        "oldDays": 6,
+        "newDays": 7
+      },
+      {
+        "timestamp": "2026-04-11T05:59:47.567Z",
+        "dateStr": "11/4/2026",
+        "timeStr": "12:59:47",
+        "oldDays": 7,
+        "newDays": 8
+      },
+      {
+        "timestamp": "2026-04-11T05:59:47.774Z",
+        "dateStr": "11/4/2026",
+        "timeStr": "12:59:47",
+        "oldDays": 8,
+        "newDays": 9
+      },
+      {
+        "timestamp": "2026-04-11T05:59:47.974Z",
+        "dateStr": "11/4/2026",
+        "timeStr": "12:59:47",
+        "oldDays": 9,
+        "newDays": 10
+      },
+      {
+        "timestamp": "2026-04-11T05:59:48.190Z",
+        "dateStr": "11/4/2026",
+        "timeStr": "12:59:48",
+        "oldDays": 10,
+        "newDays": 11
+      },
+      {
+        "timestamp": "2026-04-11T05:59:48.383Z",
+        "dateStr": "11/4/2026",
+        "timeStr": "12:59:48",
+        "oldDays": 11,
+        "newDays": 12
+      },
+      {
+        "timestamp": "2026-04-11T05:59:48.584Z",
+        "dateStr": "11/4/2026",
+        "timeStr": "12:59:48",
+        "oldDays": 12,
+        "newDays": 13
+      },
+      {
+        "timestamp": "2026-04-11T05:59:48.782Z",
+        "dateStr": "11/4/2026",
+        "timeStr": "12:59:48",
+        "oldDays": 13,
+        "newDays": 14
+      },
+      {
+        "timestamp": "2026-04-11T05:59:48.977Z",
+        "dateStr": "11/4/2026",
+        "timeStr": "12:59:48",
+        "oldDays": 14,
+        "newDays": 15
+      },
+      {
+        "timestamp": "2026-04-11T05:59:49.183Z",
+        "dateStr": "11/4/2026",
+        "timeStr": "12:59:49",
+        "oldDays": 15,
+        "newDays": 16
+      },
+      {
+        "timestamp": "2026-04-11T05:59:49.368Z",
+        "dateStr": "11/4/2026",
+        "timeStr": "12:59:49",
+        "oldDays": 16,
+        "newDays": 17
+      },
+      {
+        "timestamp": "2026-04-11T05:59:49.558Z",
+        "dateStr": "11/4/2026",
+        "timeStr": "12:59:49",
+        "oldDays": 17,
+        "newDays": 18
+      },
+      {
+        "timestamp": "2026-04-11T05:59:49.767Z",
+        "dateStr": "11/4/2026",
+        "timeStr": "12:59:49",
+        "oldDays": 18,
+        "newDays": 19
+      },
+      {
+        "timestamp": "2026-04-11T05:59:49.999Z",
+        "dateStr": "11/4/2026",
+        "timeStr": "12:59:49",
+        "oldDays": 19,
+        "newDays": 20
+      }
+    ],
+    "lastEditDate": "12:59:49 11/4/2026"
   },
   {
     "id": "ATT_1031",
     "employeeId": "EMP031",
     "month": "04/2026",
     "standardDays": 22,
-    "actualDays": 21,
-    "lateCount": 2,
+    "actualDays": 12,
+    "lateCount": 0,
     "overtimeHours": 0,
-    "editCount": 0
+    "editCount": 12,
+    "checkInLogs": [
+      {
+        "timestamp": "2026-04-11T05:58:57.117Z",
+        "dateStr": "11/4/2026",
+        "timeStr": "12:58:57",
+        "oldDays": 0,
+        "newDays": 1
+      },
+      {
+        "timestamp": "2026-04-11T05:58:57.694Z",
+        "dateStr": "11/4/2026",
+        "timeStr": "12:58:57",
+        "oldDays": 1,
+        "newDays": 2
+      },
+      {
+        "timestamp": "2026-04-11T05:58:57.935Z",
+        "dateStr": "11/4/2026",
+        "timeStr": "12:58:57",
+        "oldDays": 2,
+        "newDays": 3
+      },
+      {
+        "timestamp": "2026-04-11T05:58:58.143Z",
+        "dateStr": "11/4/2026",
+        "timeStr": "12:58:58",
+        "oldDays": 3,
+        "newDays": 4
+      },
+      {
+        "timestamp": "2026-04-11T05:58:58.351Z",
+        "dateStr": "11/4/2026",
+        "timeStr": "12:58:58",
+        "oldDays": 4,
+        "newDays": 5
+      },
+      {
+        "timestamp": "2026-04-11T05:58:58.559Z",
+        "dateStr": "11/4/2026",
+        "timeStr": "12:58:58",
+        "oldDays": 5,
+        "newDays": 6
+      },
+      {
+        "timestamp": "2026-04-11T05:58:58.767Z",
+        "dateStr": "11/4/2026",
+        "timeStr": "12:58:58",
+        "oldDays": 6,
+        "newDays": 7
+      },
+      {
+        "timestamp": "2026-04-11T05:58:58.967Z",
+        "dateStr": "11/4/2026",
+        "timeStr": "12:58:58",
+        "oldDays": 7,
+        "newDays": 8
+      },
+      {
+        "timestamp": "2026-04-11T05:58:59.159Z",
+        "dateStr": "11/4/2026",
+        "timeStr": "12:58:59",
+        "oldDays": 8,
+        "newDays": 9
+      },
+      {
+        "timestamp": "2026-04-11T05:58:59.368Z",
+        "dateStr": "11/4/2026",
+        "timeStr": "12:58:59",
+        "oldDays": 9,
+        "newDays": 10
+      },
+      {
+        "timestamp": "2026-04-11T05:58:59.584Z",
+        "dateStr": "11/4/2026",
+        "timeStr": "12:58:59",
+        "oldDays": 10,
+        "newDays": 11
+      },
+      {
+        "timestamp": "2026-04-11T05:58:59.815Z",
+        "dateStr": "11/4/2026",
+        "timeStr": "12:58:59",
+        "oldDays": 11,
+        "newDays": 12
+      }
+    ],
+    "lastEditDate": "12:58:59 11/4/2026"
   },
   {
     "id": "ATT_1032",
     "employeeId": "EMP032",
     "month": "04/2026",
     "standardDays": 22,
-    "actualDays": 22,
+    "actualDays": 6,
     "lateCount": 0,
-    "overtimeHours": 10,
-    "editCount": 0
+    "overtimeHours": 0,
+    "editCount": 6,
+    "checkInLogs": [
+      {
+        "timestamp": "2026-04-11T05:58:55.231Z",
+        "dateStr": "11/4/2026",
+        "timeStr": "12:58:55",
+        "oldDays": 0,
+        "newDays": 1
+      },
+      {
+        "timestamp": "2026-04-11T05:58:55.407Z",
+        "dateStr": "11/4/2026",
+        "timeStr": "12:58:55",
+        "oldDays": 1,
+        "newDays": 2
+      },
+      {
+        "timestamp": "2026-04-11T05:58:55.623Z",
+        "dateStr": "11/4/2026",
+        "timeStr": "12:58:55",
+        "oldDays": 2,
+        "newDays": 3
+      },
+      {
+        "timestamp": "2026-04-11T05:58:55.831Z",
+        "dateStr": "11/4/2026",
+        "timeStr": "12:58:55",
+        "oldDays": 3,
+        "newDays": 4
+      },
+      {
+        "timestamp": "2026-04-11T05:58:56.063Z",
+        "dateStr": "11/4/2026",
+        "timeStr": "12:58:56",
+        "oldDays": 4,
+        "newDays": 5
+      },
+      {
+        "timestamp": "2026-04-11T05:58:56.279Z",
+        "dateStr": "11/4/2026",
+        "timeStr": "12:58:56",
+        "oldDays": 5,
+        "newDays": 6
+      }
+    ],
+    "lastEditDate": "12:58:56 11/4/2026"
   },
   {
     "id": "ATT_1033",
     "employeeId": "EMP033",
     "month": "04/2026",
     "standardDays": 22,
-    "actualDays": 22,
+    "actualDays": 8,
     "lateCount": 0,
     "overtimeHours": 0,
-    "editCount": 0
+    "editCount": 8,
+    "checkInLogs": [
+      {
+        "timestamp": "2026-04-11T05:58:53.239Z",
+        "dateStr": "11/4/2026",
+        "timeStr": "12:58:53",
+        "oldDays": 0,
+        "newDays": 1
+      },
+      {
+        "timestamp": "2026-04-11T05:58:53.399Z",
+        "dateStr": "11/4/2026",
+        "timeStr": "12:58:53",
+        "oldDays": 1,
+        "newDays": 2
+      },
+      {
+        "timestamp": "2026-04-11T05:58:53.599Z",
+        "dateStr": "11/4/2026",
+        "timeStr": "12:58:53",
+        "oldDays": 2,
+        "newDays": 3
+      },
+      {
+        "timestamp": "2026-04-11T05:58:53.799Z",
+        "dateStr": "11/4/2026",
+        "timeStr": "12:58:53",
+        "oldDays": 3,
+        "newDays": 4
+      },
+      {
+        "timestamp": "2026-04-11T05:58:54.007Z",
+        "dateStr": "11/4/2026",
+        "timeStr": "12:58:54",
+        "oldDays": 4,
+        "newDays": 5
+      },
+      {
+        "timestamp": "2026-04-11T05:58:54.223Z",
+        "dateStr": "11/4/2026",
+        "timeStr": "12:58:54",
+        "oldDays": 5,
+        "newDays": 6
+      },
+      {
+        "timestamp": "2026-04-11T05:58:54.439Z",
+        "dateStr": "11/4/2026",
+        "timeStr": "12:58:54",
+        "oldDays": 6,
+        "newDays": 7
+      },
+      {
+        "timestamp": "2026-04-11T05:58:54.675Z",
+        "dateStr": "11/4/2026",
+        "timeStr": "12:58:54",
+        "oldDays": 7,
+        "newDays": 8
+      }
+    ],
+    "lastEditDate": "12:58:54 11/4/2026"
   },
   {
     "id": "ATT_1034",
     "employeeId": "EMP034",
     "month": "04/2026",
     "standardDays": 22,
-    "actualDays": 20,
-    "lateCount": 1,
+    "actualDays": 9,
+    "lateCount": 0,
     "overtimeHours": 0,
-    "editCount": 1,
+    "editCount": 9,
     "fullName": "Dương Tư Vấn",
-    "lastEditDate": "13:11:59 10/4/2026"
+    "lastEditDate": "12:58:52 11/4/2026",
+    "checkInLogs": [
+      {
+        "timestamp": "2026-04-11T05:58:50.784Z",
+        "dateStr": "11/4/2026",
+        "timeStr": "12:58:50",
+        "oldDays": 0,
+        "newDays": 1
+      },
+      {
+        "timestamp": "2026-04-11T05:58:51.409Z",
+        "dateStr": "11/4/2026",
+        "timeStr": "12:58:51",
+        "oldDays": 1,
+        "newDays": 2
+      },
+      {
+        "timestamp": "2026-04-11T05:58:51.487Z",
+        "dateStr": "11/4/2026",
+        "timeStr": "12:58:51",
+        "oldDays": 2,
+        "newDays": 3
+      },
+      {
+        "timestamp": "2026-04-11T05:58:51.711Z",
+        "dateStr": "11/4/2026",
+        "timeStr": "12:58:51",
+        "oldDays": 3,
+        "newDays": 4
+      },
+      {
+        "timestamp": "2026-04-11T05:58:51.919Z",
+        "dateStr": "11/4/2026",
+        "timeStr": "12:58:51",
+        "oldDays": 4,
+        "newDays": 5
+      },
+      {
+        "timestamp": "2026-04-11T05:58:52.119Z",
+        "dateStr": "11/4/2026",
+        "timeStr": "12:58:52",
+        "oldDays": 5,
+        "newDays": 6
+      },
+      {
+        "timestamp": "2026-04-11T05:58:52.320Z",
+        "dateStr": "11/4/2026",
+        "timeStr": "12:58:52",
+        "oldDays": 6,
+        "newDays": 7
+      },
+      {
+        "timestamp": "2026-04-11T05:58:52.510Z",
+        "dateStr": "11/4/2026",
+        "timeStr": "12:58:52",
+        "oldDays": 7,
+        "newDays": 8
+      },
+      {
+        "timestamp": "2026-04-11T05:58:52.743Z",
+        "dateStr": "11/4/2026",
+        "timeStr": "12:58:52",
+        "oldDays": 8,
+        "newDays": 9
+      }
+    ]
   },
   {
     "id": "ATT_1035",
     "employeeId": "EMP035",
     "month": "04/2026",
     "standardDays": 22,
-    "actualDays": 22,
+    "actualDays": 8,
     "lateCount": 0,
     "overtimeHours": 0,
-    "editCount": 0
+    "editCount": 8,
+    "checkInLogs": [
+      {
+        "timestamp": "2026-04-11T05:58:47.079Z",
+        "dateStr": "11/4/2026",
+        "timeStr": "12:58:47",
+        "oldDays": 0,
+        "newDays": 1
+      },
+      {
+        "timestamp": "2026-04-11T05:58:47.455Z",
+        "dateStr": "11/4/2026",
+        "timeStr": "12:58:47",
+        "oldDays": 1,
+        "newDays": 2
+      },
+      {
+        "timestamp": "2026-04-11T05:58:47.678Z",
+        "dateStr": "11/4/2026",
+        "timeStr": "12:58:47",
+        "oldDays": 2,
+        "newDays": 3
+      },
+      {
+        "timestamp": "2026-04-11T05:58:47.903Z",
+        "dateStr": "11/4/2026",
+        "timeStr": "12:58:47",
+        "oldDays": 3,
+        "newDays": 4
+      },
+      {
+        "timestamp": "2026-04-11T05:58:48.131Z",
+        "dateStr": "11/4/2026",
+        "timeStr": "12:58:48",
+        "oldDays": 4,
+        "newDays": 5
+      },
+      {
+        "timestamp": "2026-04-11T05:58:48.359Z",
+        "dateStr": "11/4/2026",
+        "timeStr": "12:58:48",
+        "oldDays": 5,
+        "newDays": 6
+      },
+      {
+        "timestamp": "2026-04-11T05:58:48.583Z",
+        "dateStr": "11/4/2026",
+        "timeStr": "12:58:48",
+        "oldDays": 6,
+        "newDays": 7
+      },
+      {
+        "timestamp": "2026-04-11T05:58:48.942Z",
+        "dateStr": "11/4/2026",
+        "timeStr": "12:58:48",
+        "oldDays": 7,
+        "newDays": 8
+      }
+    ],
+    "lastEditDate": "12:58:48 11/4/2026"
   }
 ]
