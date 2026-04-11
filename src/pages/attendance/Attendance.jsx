@@ -166,7 +166,7 @@ const Attendance = () => {
       confirmButtonColor: '#d33',
       cancelButtonColor: '#3085d6',
       confirmButtonText: 'Đồng ý Reset',
-      cancelButtonText: 'Hủy Reset',
+      cancelButtonText: 'Hủy',
       preConfirm: (inputValue) => {
         if (!inputValue) {
           Swal.showValidationMessage('Vui lòng nhập tháng mới!');
@@ -240,7 +240,7 @@ const Attendance = () => {
               <button onClick={handleExport} className="btn btn-success">
                 📥 Xuất báo cáo
               </button>
-              <button onClick={handleResetMonth} className="btn btn-primary" >
+              <button onClick={handleResetMonth} className="btn btn-primary">
                 🔄 Reset Tháng
               </button>
               <button onClick={handleAdd} className="btn btn-primary">
@@ -324,7 +324,7 @@ const Attendance = () => {
         </div>
       )}
       
-      {/* thêm sửa */}
+      {/* FORM MODAL THÊM/SỬA */}
       {showForm && (
         <div className="modal-overlay">
           <div className="modal-content">
@@ -332,15 +332,54 @@ const Attendance = () => {
               {editingId ? '📝 Sửa Chấm Công' : '🆕 Thêm Mới'}
             </h3>
             <form onSubmit={handleSubmit} className="form-group">
-              <div>
-                <label className="form-label">Mã nhân viên:</label>
-                <input required placeholder="Mã NV" className="form-input" disabled={editingId !== null} value={formData.employeeId} onChange={e => setFormData({...formData, employeeId: e.target.value.toUpperCase()})} />
-              </div>
-              <div>
-                <label className="form-label">Tên nhân viên:</label>
-                <input required placeholder="Tên nhân viên" className="form-input" value={formData.fullName} onChange={e => setFormData({...formData, fullName: e.target.value})} />
-              </div>
-              <div className="form-row">
+              
+              {/* VÙNG MỚI ĐƯỢC CHỈNH SỬA: CHỌN NHÂN VIÊN TỪ DANH SÁCH */}
+              {editingId === null ? (
+                <div>
+                  <label className="form-label">Chọn nhân viên :</label>
+                  <select 
+                    required 
+                    className="form-input" 
+                    value={formData.employeeId}
+                    onChange={e => {
+                      const selectedId = e.target.value;
+                      // Tìm người được chọn trong danh sách nhân sự
+                      const selectedEmp = employees.find(emp => emp.id === selectedId);
+                      setFormData({
+                        ...formData,
+                        employeeId: selectedId,
+                        fullName: selectedEmp ? selectedEmp.fullName : ''
+                      });
+                    }}
+                  >
+                    <option value="">Bấm để chọn nhân viên mới</option>
+                    {employees
+                      // Lọc: Chỉ hiện những người chưa có bảng chấm công trong tháng này
+                      .filter(emp => !attendanceRecords.some(rec => rec.employeeId === emp.id))
+                      .map(emp => (
+                        <option key={emp.id} value={emp.id}>
+                          {emp.id} - {emp.fullName}
+                        </option>
+                      ))
+                    }
+                  </select>
+                </div>
+              ) : (
+                // NẾU LÀ CHẾ ĐỘ "SỬA", CHỈ HIỂN THỊ TEXT KHÔNG CHO SỬA TÊN/MÃ
+                <div className="form-row">
+                  <div className="form-col">
+                    <label className="form-label">Mã NV:</label>
+                    <input disabled className="form-input" value={formData.employeeId} style={{ backgroundColor: '#f1f5f9' }} />
+                  </div>
+                  <div className="form-col">
+                    <label className="form-label">Họ và Tên:</label>
+                    <input disabled className="form-input" value={formData.fullName} style={{ backgroundColor: '#f1f5f9' }} />
+                  </div>
+                </div>
+              )}
+              {/* HẾT VÙNG CHỈNH SỬA */}
+
+              <div className="form-row" style={{ marginTop: '15px' }}>
                 <div className="form-col">
                   <label className="form-label">Công thực:</label>
                   <input type="number" step="0.5" className="form-input" value={formData.actualDays} onChange={e => setFormData({...formData, actualDays: e.target.value})} />
@@ -354,7 +393,7 @@ const Attendance = () => {
                 <label className="form-label">Tăng ca (giờ):</label>
                 <input type="number" className="form-input" value={formData.overtimeHours} onChange={e => setFormData({...formData, overtimeHours: e.target.value})} />
               </div>
-              <div className="form-row" style={{ justifyContent: 'flex-end', marginTop: '10px' }}>
+              <div className="form-row" style={{ justifyContent: 'flex-end', marginTop: '15px' }}>
                 <button type="button" onClick={() => setShowForm(false)} className="btn btn-outline">Hủy</button>
                 <button type="submit" className="btn btn-success">Lưu dữ liệu</button>
               </div>
@@ -363,7 +402,7 @@ const Attendance = () => {
         </div>
       )}
 
-      {/*hiển thị lịch sử check in */}
+      {/* POPUP: HIỂN THỊ LỊCH SỬ CHECK-IN */}
       {showHistory && (
         <div className="modal-overlay">
           <div className="modal-content" style={{ maxWidth: '700px', width: '90%' }}>

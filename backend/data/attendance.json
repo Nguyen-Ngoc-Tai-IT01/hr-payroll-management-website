@@ -3163,5 +3163,68 @@
       }
     ],
     "lastEditDate": "12:58:48 11/4/2026"
+  },
+  {
+    "employeeId": "EMP820",
+    "fullName": "Sou",
+    "month": "04/2026",
+    "standardDays": 22,
+    "actualDays": 1,
+    "lateCount": 0,
+    "overtimeHours": 0,
+    "id": "ATT_0326_1397",
+    "editCount": 1,
+    "lastEditDate": "19:06:23 11/4/2026",
+    "checkInLogs": [
+      {
+        "timestamp": "2026-04-11T12:06:23.798Z",
+        "dateStr": "11/4/2026",
+        "timeStr": "19:06:23",
+        "oldDays": 0,
+        "newDays": 1
+      }
+    ]
+  },
+  {
+    "employeeId": "EMP629",
+    "fullName": "Ngyễn Văn So",
+    "month": "04/2026",
+    "standardDays": 22,
+    "actualDays": 1,
+    "lateCount": 0,
+    "overtimeHours": 0,
+    "id": "ATT_0326_3380",
+    "editCount": 1,
+    "lastEditDate": "19:06:22 11/4/2026",
+    "checkInLogs": [
+      {
+        "timestamp": "2026-04-11T12:06:22.551Z",
+        "dateStr": "11/4/2026",
+        "timeStr": "19:06:22",
+        "oldDays": 0,
+        "newDays": 1
+      }
+    ]
+  },
+  {
+    "employeeId": "EMP726",
+    "fullName": "Mina MIno",
+    "month": "04/2026",
+    "standardDays": 22,
+    "actualDays": 1,
+    "lateCount": 0,
+    "overtimeHours": 0,
+    "id": "ATT_0326_9708",
+    "editCount": 1,
+    "lastEditDate": "19:15:34 11/4/2026",
+    "checkInLogs": [
+      {
+        "timestamp": "2026-04-11T12:15:34.837Z",
+        "dateStr": "11/4/2026",
+        "timeStr": "19:15:34",
+        "oldDays": 0,
+        "newDays": 1
+      }
+    ]
   }
 ]
