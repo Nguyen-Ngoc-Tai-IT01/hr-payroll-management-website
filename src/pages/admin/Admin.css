@@ -1,4 +1,35 @@
 /* =========================================================
+   HỆ THỐNG BIẾN MÀU CHO DARK MODE (CÀI ĐẶT) - ĐÃ FIX LỖI
+   ========================================================= */
+body {
+  transition: background-color 0.3s ease, color 0.3s ease, filter 0.3s ease;
+}
+
+/* TRẢ VỀ MÀU SÁNG ĐỂ THUẬT TOÁN 'INVERT' TỰ ĐỘNG ĐẢO THÀNH ĐEN 
+  (Không ép màu tối ở đây nữa để tránh lỗi lật màu 2 lần thành xám)
+*/
+body.dark-mode {
+  background-color: #f1f5f9; 
+  --card-bg: #ffffff;        
+  --text-main: #1e293b;      
+  --text-muted: #64748b;     
+}
+
+body.dark-mode .settings-card,
+body.dark-mode .dash-card,
+body.dark-mode .report-card {
+  border-color: #f1f5f9;
+}
+
+body.dark-mode .setting-item {
+  border-bottom-color: #e2e8f0;
+}
+
+body.dark-mode .setting-item:hover {
+  background-color: #f8fafc;
+}
+
+/* =========================================================
    1. GIAO DIỆN CÀI ĐẶT HỆ THỐNG (SETTINGS PAGE)
    ========================================================= */
 

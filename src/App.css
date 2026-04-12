@@ -248,3 +248,36 @@ a {
 a:hover {
   filter: brightness(1.05);
 }
+
+/* =========================================================
+   GLOBAL DARK MODE (ĐẢO MÀU TOÀN HỆ THỐNG - DỨT ĐIỂM 100%)
+   ========================================================= */
+
+/* Cài đặt màu nền gốc và hiệu ứng chuyển cảnh mượt mà */
+body {
+  transition: filter 0.3s ease;
+  background-color: #f1f5f9; 
+  min-height: 100vh;
+}
+
+/* Thuật toán Đảo ngược: 
+   - invert(0.92): Đổi Trắng thành Đen Xám chuẩn Dark Mode, Đen thành Trắng.
+   - hue-rotate(180deg): Xoay vòng màu để giữ nguyên tông Xanh, Đỏ, Vàng gốc.
+*/
+body.dark-mode {
+  filter: invert(0.92) hue-rotate(180deg);
+}
+
+/* Chống đảo màu lần 2 cho Ảnh, Biểu đồ (SVG), và các Avatar để hình ảnh không bị biến dạng (chụp X-quang) */
+body.dark-mode img,
+body.dark-mode svg,
+body.dark-mode canvas,
+body.dark-mode iframe,
+body.dark-mode .recharts-wrapper,
+body.dark-mode .user-avatar,
+body.dark-mode .emp-avatar,
+body.dark-mode .emp-big-avatar,
+body.dark-mode .avatar-circle,
+body.dark-mode .profile-avatar-large {
+  filter: invert(1) hue-rotate(180deg);
+}

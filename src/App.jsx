@@ -518,7 +518,17 @@ function App() {
     window.addEventListener("userChanged", checkUser);
     return () => window.removeEventListener("userChanged", checkUser);
   }, []);
-
+  useEffect(() => {
+    const savedSettings = localStorage.getItem("appSettings");
+    if (savedSettings) {
+      const settings = JSON.parse(savedSettings);
+      if (settings.darkMode) {
+        document.body.classList.add("dark-mode");
+      } else {
+        document.body.classList.remove("dark-mode");
+      }
+    }
+  }, []);
   return (
     <div
       className="app-container"
