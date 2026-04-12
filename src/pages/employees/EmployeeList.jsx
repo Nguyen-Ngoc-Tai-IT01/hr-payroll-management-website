@@ -7,21 +7,34 @@ const EmployeeList = () => {
   const [loading, setLoading] = useState(true);
   const [search, setSearch] = useState('');
 
+  // SỬA LỖI: Load dữ liệu từ LocalStorage trước, nếu không có mới đọc file JSON
   useEffect(() => {
     const fetchData = async () => {
-      const paths = ['/data/employees.json', '/backend/data/employees.json'];
-      for (const path of paths) {
-        try {
-          const res = await fetch(path);
-          if (res.ok) {
-            const data = await res.json();
-            setEmployees(data);
-            setLoading(false);
-            return;
-          }
-        } catch (e) { console.error("Lỗi tải dữ liệu"); }
+      // 1. Kiểm tra xem trong bộ nhớ ảo đã có data chưa
+      const localData = localStorage.getItem('employeeData');
+      
+      if (localData) {
+        // Nếu có rồi, dùng luôn data này (sẽ chứa cả nhân viên mới thêm)
+        setEmployees(JSON.parse(localData));
+        setLoading(false);
+      } else {
+        // Nếu chưa có, mới đi đọc file JSON gốc để mồi dữ liệu
+        const paths = ['/data/employees.json', '/backend/data/employees.json'];
+        for (const path of paths) {
+          try {
+            const res = await fetch(path);
+            if (res.ok) {
+              const data = await res.json();
+              setEmployees(data);
+              // Copy dữ liệu gốc bỏ vào bộ nhớ ảo để lát nữa Form có chỗ lưu
+              localStorage.setItem('employeeData', JSON.stringify(data));
+              setLoading(false);
+              return;
+            }
+          } catch (e) { console.error("Lỗi tải dữ liệu"); }
+        }
+        setLoading(false);
       }
-      setLoading(false);
     };
     fetchData();
   }, []);
@@ -39,7 +52,7 @@ const EmployeeList = () => {
     <div className="emp-layout">
       <div className="emp-container">
         
-        {/* HEADER & SEARCH DÀN HÀNG NGANG */}
+        {/* HEADER & SEARCH */}
         <header className="emp-header">
           <div className="emp-header-title">
             <h1>Quản lý Nhân sự 👥</h1>
@@ -62,7 +75,7 @@ const EmployeeList = () => {
           </div>
         </header>
 
-        {/* STATS DÀN ĐỀU 4 CỘT */}
+        {/* STATS */}
         <div className="emp-stats-grid">
           <div className="emp-stat-card">
             <span className="emp-stat-label">Tổng nhân viên</span>
@@ -82,7 +95,7 @@ const EmployeeList = () => {
           </div>
         </div>
 
-        {/* TABLE DÀN FULL MÀN HÌNH */}
+        {/* TABLE */}
         <div className="emp-table-card">
           <div className="emp-table-responsive">
             <table className="emp-table">

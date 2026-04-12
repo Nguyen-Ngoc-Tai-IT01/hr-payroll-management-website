@@ -16,52 +16,43 @@ const EmployeeForm = () => {
 
   const [loading, setLoading] = useState(false);
 
-  // TÍCH HỢP TỰ ĐỘNG TẠO MÃ NHÂN VIÊN MỚI (Tăng dần không trùng lặp)
+  // MÓC NỐI VỚI BỘ NHỚ ẢO ĐỂ TỰ ĐỘNG TẠO ID & LẤY DATA
   useEffect(() => {
     const fetchEmployeeData = async () => {
-      const paths = ['/data/employees.json', '/backend/data/employees.json', './data/employees.json'];
       let allEmployees = [];
+      const localData = localStorage.getItem('employeeData');
 
-      // 1. Quét tìm và tải danh sách nhân viên từ các đường dẫn dự phòng
-      for (const path of paths) {
-        try {
-          const res = await fetch(path);
-          if (res.ok) {
-            allEmployees = await res.json();
-            if (allEmployees && allEmployees.length > 0) break; 
-          }
-        } catch (error) {
-          // Bỏ qua lỗi và thử đường dẫn tiếp theo
+      if (localData) {
+        allEmployees = JSON.parse(localData);
+      } else {
+        const paths = ['/data/employees.json', '/backend/data/employees.json', './data/employees.json'];
+        for (const path of paths) {
+          try {
+            const res = await fetch(path);
+            if (res.ok) {
+              allEmployees = await res.json();
+              if (allEmployees.length > 0) {
+                localStorage.setItem('employeeData', JSON.stringify(allEmployees));
+                break;
+              }
+            }
+          } catch (error) {}
         }
       }
 
       if (isEditMode) {
-        // CHẾ ĐỘ SỬA: Tìm nhân viên theo ID để đổ dữ liệu vào Form
         const foundData = allEmployees.find(emp => String(emp.id) === String(id));
-        if (foundData) {
-          setFormData(foundData);
-        } else {
-          console.error("Không tìm thấy thông tin nhân viên để sửa!");
-        }
+        if (foundData) setFormData(foundData);
       } else {
-        // CHẾ ĐỘ THÊM MỚI: Tự động phát sinh ID mới dựa trên ID lớn nhất hiện có
         if (allEmployees.length > 0) {
-          // Lọc ra mảng các con số từ ID (Ví dụ: EMP001, EMP005 -> [1, 5])
           const idNumbers = allEmployees.map(emp => {
-            const match = emp.id.match(/\d+/); // Biểu thức chính quy lấy phần số
+            const match = emp.id.match(/\d+/);
             return match ? parseInt(match[0], 10) : 0;
           });
-
-          // Tìm số lớn nhất và cộng thêm 1
-          const maxIdNumber = Math.max(...idNumbers);
-          const nextIdNumber = maxIdNumber + 1;
-
-          // Format lại thành chuỗi chuẩn "EMP" + 3 chữ số (VD: EMP006)
+          const nextIdNumber = Math.max(...idNumbers) + 1;
           const nextIdString = `EMP${String(nextIdNumber).padStart(3, '0')}`;
-          
           setFormData(prev => ({ ...prev, id: nextIdString }));
         } else {
-          // Nếu danh sách trống, khởi tạo mã đầu tiên
           setFormData(prev => ({ ...prev, id: 'EMP001' }));
         }
       }
@@ -78,11 +69,27 @@ const EmployeeForm = () => {
     }));
   };
 
+  // SỬA LỖI: LƯU DATA VÀO LOCALSTORAGE THAY VÌ BỎ ĐI
   const handleSubmit = (e) => {
     e.preventDefault();
     setLoading(true);
     
     setTimeout(() => {
+      // 1. Lấy danh sách cũ ra
+      const localData = localStorage.getItem('employeeData');
+      let currentList = localData ? JSON.parse(localData) : [];
+
+      if (isEditMode) {
+        // NẾU SỬA: Tìm và ghi đè
+        currentList = currentList.map(emp => String(emp.id) === String(formData.id) ? formData : emp);
+      } else {
+        // NẾU THÊM MỚI: Đẩy nhân viên mới lên đầu danh sách
+        currentList.unshift(formData); 
+      }
+
+      // 2. Nhét danh sách mới vào lại bộ nhớ
+      localStorage.setItem('employeeData', JSON.stringify(currentList));
+
       setLoading(false);
       Swal.fire({
         icon: 'success',
@@ -111,7 +118,6 @@ const EmployeeForm = () => {
             <div className="emp-form-row">
               <div className="emp-input-group">
                 <label>Mã định danh (ID)</label>
-                {/* ID luôn bị khóa (disabled) ở cả 2 chế độ Sửa và Thêm mới */}
                 <input 
                   type="text" name="id" 
                   value={formData.id} 

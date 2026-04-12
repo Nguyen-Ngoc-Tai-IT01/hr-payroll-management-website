@@ -9,11 +9,10 @@ function Reports() {
   const exporterName = currentUser.fullName || "Quản trị viên";
 
   // ==========================================
-  // ĐÃ SỬA: ĐỌC DỮ LIỆU ĐÚNG THEO CODE CỦA HIỆP
+  // ĐỌC DỮ LIỆU ĐÚNG THEO CODE CỦA HIỆP
   // ==========================================
   useEffect(() => {
     const fetchEmployeeData = async () => {
-      // Dùng chung đường dẫn với module Nhân sự của Hiệp
       const paths = ['/data/employees.json', '/backend/data/employees.json', './data/employees.json'];
       
       for (const path of paths) {
@@ -81,26 +80,31 @@ function Reports() {
       addLog('Nhân sự', 'warning', 'Thất bại: Dữ liệu rỗng');
       return;
     }
-    
-    // Đã map đúng các trường dữ liệu theo form của Hiệp
-    const formattedData = reportData.employeesList.map(emp => ({
-      "Mã NV": emp.id || 'N/A',
-      "Họ và Tên": emp.fullName || 'N/A',
-      "Email": emp.email || 'N/A',
-      "Số điện thoại": emp.phone || 'N/A',
-      "Phòng ban": emp.department || 'N/A',
-      "Chức vụ": emp.position || 'N/A',
-      "Ngày vào làm": emp.joinDate || 'N/A',
-      "Trạng thái": emp.status || 'N/A',
-      "Lương cơ bản": emp.baseSalary || 0,
-      "Người xuất file": exporterName
-    }));
 
-    const isSuccess = exportToCSV(formattedData, 'Bao_Cao_Nhan_Su');
-    if (isSuccess) {
-      Swal.fire({ toast: true, position: 'top-end', icon: 'success', title: 'Đã tải báo cáo nhân sự', showConfirmButton: false, timer: 2000 });
-      addLog('Nhân sự', 'success', 'Xuất file CSV thành công');
-    }
+    // Bật hiệu ứng Loading
+    Swal.fire({ title: 'Đang tạo báo cáo...', text: 'Vui lòng chờ trong giây lát', allowOutsideClick: false, didOpen: () => Swal.showLoading() });
+    
+    // Giả lập thời gian chờ 800ms cho mượt mà
+    setTimeout(() => {
+      const formattedData = reportData.employeesList.map(emp => ({
+        "Mã NV": emp.id || 'N/A',
+        "Họ và Tên": emp.fullName || 'N/A',
+        "Email": emp.email || 'N/A',
+        "Số điện thoại": emp.phone || 'N/A',
+        "Phòng ban": emp.department || 'N/A',
+        "Chức vụ": emp.position || 'N/A',
+        "Ngày vào làm": emp.joinDate || 'N/A',
+        "Trạng thái": emp.status || 'N/A',
+        "Lương cơ bản": emp.baseSalary || 0,
+        "Người xuất file": exporterName
+      }));
+
+      const isSuccess = exportToCSV(formattedData, 'Bao_Cao_Nhan_Su');
+      if (isSuccess) {
+        Swal.fire({ icon: 'success', title: 'Hoàn tất!', text: 'Đã tải xuống báo cáo Nhân sự', timer: 2000, showConfirmButton: false });
+        addLog('Nhân sự', 'success', 'Xuất file CSV thành công');
+      }
+    }, 800);
   };
 
   // ==========================================
@@ -108,6 +112,9 @@ function Reports() {
   // ==========================================
   const handleDownloadAttendance = async () => {
     try {
+      // Bật hiệu ứng Loading
+      Swal.fire({ title: 'Đang tạo báo cáo...', text: 'Vui lòng chờ trong giây lát', allowOutsideClick: false, didOpen: () => Swal.showLoading() });
+
       const res = await fetch('http://localhost:5000/api/attendance');
       const data = await res.json();
 
@@ -128,7 +135,7 @@ function Reports() {
       
       const isSuccess = exportToCSV(formattedData, 'Bao_Cao_Cham_Cong');
       if (isSuccess) {
-        Swal.fire({ toast: true, position: 'top-end', icon: 'success', title: 'Đã tải báo cáo chấm công', showConfirmButton: false, timer: 2000 });
+        Swal.fire({ icon: 'success', title: 'Hoàn tất!', text: 'Đã tải xuống báo cáo Chấm công', timer: 2000, showConfirmButton: false });
         addLog('Chấm công', 'success', 'Xuất file CSV thành công');
       }
       
@@ -144,6 +151,7 @@ function Reports() {
   // ==========================================
   const handleExportPayroll = async () => {
     try {
+      // Bật hiệu ứng Loading
       Swal.fire({ title: 'Đang tạo báo cáo...', text: 'Vui lòng chờ trong giây lát', allowOutsideClick: false, didOpen: () => Swal.showLoading() });
 
       const res = await fetch('http://localhost:5000/api/payroll');
