@@ -556,5 +556,31 @@
     "lastEditDate": "05:39:22 12/4/2026",
     "checkInLogs": [],
     "dailyRecords": []
+  },
+  {
+    "employeeId": "EMP822",
+    "fullName": "Nguyễn Ngọc B",
+    "month": "04/2026",
+    "standardDays": 22,
+    "actualDays": 0,
+    "lateCount": 0,
+    "overtimeHours": 0,
+    "id": "ATT_0326_2460",
+    "dailyRecords": [],
+    "editCount": 0,
+    "lastEditDate": "21:06:32 12/4/2026"
+  },
+  {
+    "employeeId": "EMP823",
+    "fullName": "Nguyễn Ngọc C",
+    "month": "04/2026",
+    "standardDays": 22,
+    "actualDays": 0,
+    "lateCount": 0,
+    "overtimeHours": 0,
+    "id": "ATT_0326_7085",
+    "dailyRecords": [],
+    "editCount": 0,
+    "lastEditDate": "21:07:07 12/4/2026"
   }
 ]

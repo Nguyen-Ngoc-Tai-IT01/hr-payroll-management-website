@@ -19,16 +19,24 @@ const Leaves = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const [recordsPerPage] = useState(10);
 
+  // ĐÃ SỬA: ĐỒNG BỘ DỮ LIỆU NHÂN SỰ TỪ LOCALSTORAGE
   const loadData = async () => {
     try {
-      const [resL, resE] = await Promise.all([
-        fetch('http://localhost:5000/api/leaves'),
-        fetch('http://localhost:5000/api/employees')
-      ]);
+      // 1. Tải dữ liệu Đơn nghỉ phép từ Backend
+      const resL = await fetch('http://localhost:5000/api/leaves');
       const dataL = await resL.json();
-      const dataE = await resE.json();
       setLeaveRequests(dataL);
-      setEmployees(dataE);
+      
+      // 2. Lấy dữ liệu Nhân viên từ LocalStorage
+      const localEmpData = localStorage.getItem('employeeData');
+      if (localEmpData) {
+        setEmployees(JSON.parse(localEmpData));
+      } else {
+        const resE = await fetch('http://localhost:5000/api/employees');
+        const dataE = await resE.json();
+        setEmployees(dataE);
+        localStorage.setItem('employeeData', JSON.stringify(dataE));
+      }
     } catch (err) { 
       console.error(err);
       Swal.fire('Lỗi', 'Không thể kết nối dữ liệu server!', 'error');
@@ -50,7 +58,6 @@ const Leaves = () => {
     return emp ? emp.fullName : `NV-${req.employeeId}`;
   };
 
-  // lọc dữ liệu theo mã nhân viên hoặc tên
   const filteredRecords = leaveRequests.filter(req => {
     const searchLower = searchTerm.toLowerCase();
     const name = renderEmployeeName(req);

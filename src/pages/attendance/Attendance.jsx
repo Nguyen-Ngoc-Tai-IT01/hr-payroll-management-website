@@ -51,19 +51,28 @@ const Attendance = () => {
     return () => clearInterval(timer);
   }, []);
 
+  // ĐÃ SỬA: ĐỒNG BỘ DỮ LIỆU NHÂN SỰ TỪ LOCALSTORAGE
   const loadData = async () => {
     try {
-      const [attRes, empRes] = await Promise.all([
-        fetch('http://localhost:5000/api/attendance'),
-        fetch('http://localhost:5000/api/employees')
-      ]);
+      // 1. Tải dữ liệu chấm công từ Backend như bình thường
+      const attRes = await fetch('http://localhost:5000/api/attendance');
       const attData = await attRes.json();
-      const empData = await empRes.json();
       setAttendanceRecords(attData); 
-      setEmployees(empData);
+
+      // 2. Lấy dữ liệu Nhân viên từ LocalStorage (để thấy được người mới thêm)
+      const localEmpData = localStorage.getItem('employeeData');
+      if (localEmpData) {
+        setEmployees(JSON.parse(localEmpData));
+      } else {
+        // Nếu bộ nhớ ảo rỗng thì mới gọi Backend
+        const empRes = await fetch('http://localhost:5000/api/employees');
+        const empData = await empRes.json();
+        setEmployees(empData);
+        localStorage.setItem('employeeData', JSON.stringify(empData)); // Lưu mồi vào LocalStorage
+      }
     } catch (err) { 
       console.error("Lỗi:", err);
-      Swal.fire('Lỗi!', 'Không thể tải dữ liệu!', 'error');
+      Swal.fire('Lỗi!', 'Không thể kết nối API!', 'error');
     }
   };
 
@@ -91,12 +100,10 @@ const Attendance = () => {
     setShowForm(true); 
   };
 
-  // hàm siêu cấp: đọc trạng thái không bao giờ sai (kết hợp cả frontend và backend cũ)
   const checkStatusForDate = (record, dateString) => {
     const targetDateStr = formatDateVN(dateString);
     const targetObjDate = new Date(dateString);
 
-    // ưu tiên 1: đọc mảng dailyrecords độc lập của frontend (vượt mặt backend)
     if (record.dailyRecords && record.dailyRecords.length > 0) {
       const targetLogs = record.dailyRecords.filter(log => log.dateStr === targetDateStr);
       if (targetLogs.length > 0) {
@@ -108,7 +115,6 @@ const Attendance = () => {
       }
     }
     
-    // dự phòng 2: nếu mảng trên chưa có, đọc lại log cũ của backend để không mất dữ liệu cũ
     if (record.checkInLogs && record.checkInLogs.length > 0) {
       const backendLogs = record.checkInLogs.filter(log => {
         if (!log.timestamp) return false;
@@ -129,7 +135,6 @@ const Attendance = () => {
   };
 
   const handleEdit = (record) => {
-    // gọi hàm siêu cấp để biết trạng thái chính xác
     const { isCheckedIn } = checkStatusForDate(record, selectedDate);
 
     setFormData({ 
@@ -168,12 +173,10 @@ const Attendance = () => {
     const targetDateStr = formatDateVN(selectedDate);
     const now = new Date();
 
-    // nếu admin đổi từ chưa chấm -> đã chấm
     if (formData.todayStatus === 'Đã chấm' && formData._originalStatus === 'Chưa chấm') {
       finalActualDays += 1;
       customLogs.push({ dateStr: targetDateStr, action: 'CHECK_IN', timestamp: now.toISOString() });
     } 
-    // nếu admin đổi từ đã chấm -> hủy chấm
     else if (formData.todayStatus === 'Chưa chấm' && formData._originalStatus === 'Đã chấm') {
       finalActualDays = Math.max(0, finalActualDays - 1); 
       customLogs.push({ dateStr: targetDateStr, action: 'CANCEL', timestamp: now.toISOString() });
@@ -186,7 +189,7 @@ const Attendance = () => {
       actualDays: finalActualDays,
       lateCount: parseInt(formData.lateCount, 10),
       overtimeHours: parseFloat(formData.overtimeHours),
-      dailyRecords: customLogs // bơm mảng bí mật này cho backend giữ hộ
+      dailyRecords: customLogs 
     };
 
     delete submitData.todayStatus;
@@ -272,15 +275,12 @@ const Attendance = () => {
     }).then(async (result) => {
       if (result.isConfirmed) {
         try {
-          // 1. gọi api reset mặc định của backend
           await fetch('http://localhost:5000/api/attendance/reset-month', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ month: result.value })
           });
 
-          // 2. xóa sạch mảng dailyrecords trên frontend bằng cách gọi api tuần tự
-          // (do backend cũ không biết mảng này nên không tự xóa được)
           for (let rec of attendanceRecords) {
             if (rec.dailyRecords && rec.dailyRecords.length > 0) {
               await fetch(`http://localhost:5000/api/attendance/${rec.id}`, {
@@ -308,7 +308,6 @@ const Attendance = () => {
     });
   };
 
-  // gom log cho modal hiển thị lịch sử (vẫn xài checkinlogs để backend tự lo)
   const getAllHistoryLogs = () => {
     let allLogs = [];
     if (Array.isArray(attendanceRecords)) {
@@ -393,7 +392,6 @@ const Attendance = () => {
               
               <div style={{ display: 'flex', alignItems: 'center', gap: '15px' }}>
                 
-                {/* bộ chọn ngày tháng */}
                 <div style={{ display: 'flex', alignItems: 'center', gap: '8px', backgroundColor: '#f1f5f9', padding: '5px 10px', borderRadius: '8px', border: '1px solid #e2e8f0' }}>
                   <span style={{ fontSize: '14px', color: '#475569', fontWeight: 'bold' }}>Ngày:</span>
                   <input 
@@ -457,8 +455,6 @@ const Attendance = () => {
                 </thead>
                 <tbody>
                   {currentRecords.length > 0 ? currentRecords.map((rec) => {
-                    
-                    // đọc trạng thái chuẩn từ hàm siêu cấp
                     const { isCheckedIn, isCancelled } = checkStatusForDate(rec, selectedDate);
 
                     return (
@@ -470,25 +466,21 @@ const Attendance = () => {
                         <td>{rec.overtimeHours} giờ</td>
                         <td>
                           
-                          {/* nếu đã chấm rồi thì hiện nhãn xanh (không quan tâm đóng mở phiên) */}
                           {isCheckedIn ? (
                             <span style={{ display: 'inline-block', marginRight: '5px', padding: '5px 12px', backgroundColor: '#dcfce7', color: '#166534', borderRadius: '4px', fontSize: '12px', fontWeight: 'bold' }}>
                               Đã chấm
                             </span>
                           ) : isCancelled ? (
-                            // nếu vừa hủy xong mà đang mở phiên thì trả lại nút check-in
                             isCheckInActive ? (
                               <button onClick={() => handleCheckIn(rec)} className="btn btn-success btn-sm" style={{ display: 'inline-block', marginRight: '5px', backgroundColor: '#198754', fontWeight: 'bold' }}>
                                 Chấm công
                               </button>
                             ) : (
-                              // đóng phiên rồi thì mới báo là đã hủy
                               <span style={{ display: 'inline-block', marginRight: '5px', padding: '5px 12px', backgroundColor: '#fee2e2', color: '#991b1b', borderRadius: '4px', fontSize: '12px', fontWeight: 'bold' }}>
                                 Hủy chấm
                               </span>
                             )
                           ) : (
-                            // nếu chưa làm gì, mà đang mở khóa -> cho bấm chấm công
                             isCheckInActive && (
                               <button onClick={() => handleCheckIn(rec)} className="btn btn-success btn-sm" style={{ display: 'inline-block', marginRight: '5px', backgroundColor: '#198754', fontWeight: 'bold' }}>
                                 Chấm công
