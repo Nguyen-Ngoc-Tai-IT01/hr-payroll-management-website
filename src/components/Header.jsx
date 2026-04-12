@@ -29,10 +29,10 @@ const Header = ({ user, setUser }) => {
     <header className="glass-header">
       <div className="header-container">
         
-        {/* LOGO SIÊU NÉT */}
+        {/* LOGO */}
         <Link to="/" className="header-brand">
           <div className="brand-logo-icon">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
               <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
               <circle cx="9" cy="7" r="4"></circle>
               <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
@@ -45,34 +45,35 @@ const Header = ({ user, setUser }) => {
           </div>
         </Link>
 
-        {/* NỘI DUNG Ở GIỮA VÀ BÊN PHẢI */}
+        {/* MENU ĐIỀU HƯỚNG */}
         {user ? (
           <>
-            {/* MENU ĐIỀU HƯỚNG MỚI (DẠNG PILL BẮT MẮT) */}
             <nav className="header-nav">
               <NavLink to="/dashboard" className={({ isActive }) => isActive ? "nav-link active" : "nav-link"}>
-                <span className="nav-icon">📈</span> Tổng quan
+                <img src="/overview.png" alt="Overview" className="nav-img-icon" /> Tổng quan
               </NavLink>
               <NavLink to="/employees" className={({ isActive }) => isActive ? "nav-link active" : "nav-link"}>
-                <span className="nav-icon">👥</span> Nhân sự
+                <img src="/human_resources.png" alt="Employees" className="nav-img-icon" /> Nhân sự
               </NavLink>
               <NavLink to="/attendance" className={({ isActive }) => isActive ? "nav-link active" : "nav-link"}>
-                <span className="nav-icon">📅</span> Chấm công
+                <img src="/calendar.png" alt="Attendance" className="nav-img-icon" /> Chấm công
               </NavLink>
               <NavLink to="/payroll" className={({ isActive }) => isActive ? "nav-link active" : "nav-link"}>
-                <span className="nav-icon">💰</span> Tiền lương
+                <img src="/salary.png" alt="Payroll" className="nav-img-icon" /> Tiền lương
               </NavLink>
               
               <div className="nav-divider"></div>
               
-              <NavLink to="/reports" className={({ isActive }) => isActive ? "nav-link active" : "nav-link"}>Báo cáo</NavLink>
-              <NavLink to="/settings" className={({ isActive }) => isActive ? "nav-link active" : "nav-link"}>Cài đặt</NavLink>
+              <NavLink to="/reports" className={({ isActive }) => isActive ? "nav-link active" : "nav-link"}>
+                <img src="/report.png" alt="Reports" className="nav-img-icon" /> Báo cáo
+              </NavLink>
+              <NavLink to="/settings" className={({ isActive }) => isActive ? "nav-link active" : "nav-link"}>
+                <img src="/settings.png" alt="Settings" className="nav-img-icon" /> Cài đặt
+              </NavLink>
             </nav>
 
-            {/* THÔNG TIN USER & ĐĂNG XUẤT */}
+            {/* THÔNG TIN USER */}
             <div className="header-user">
-              
-              {/* ĐÃ CHUYỂN DIV THÀNH LINK ĐỂ DẪN TỚI TRANG /profile */}
               <Link to="/profile" className="user-info" style={{ textDecoration: 'none' }}>
                 <div className="user-avatar">
                   {user.fullName ? user.fullName.charAt(0).toUpperCase() : 'U'}
@@ -83,20 +84,15 @@ const Header = ({ user, setUser }) => {
                 </div>
               </Link>
               
-              {/* NÚT ĐĂNG XUẤT NỔI BẬT HƠN */}
-              <button className="btn-logout" onClick={handleLogout}>
-                <span style={{ marginRight: '6px' }}>🚪</span> Đăng xuất
-              </button>
+              <button className="btn-logout" onClick={handleLogout}>Đăng xuất</button>
             </div>
           </>
         ) : (
-          /* TRẠNG THÁI CHƯA ĐĂNG NHẬP - NÚT BẤM TO RÕ */
           <div className="header-auth">
             <Link to="/login" className="btn-login">Đăng nhập</Link>
             <Link to="/register" className="btn-register">✨ Đăng ký ngay</Link>
           </div>
         )}
-
       </div>
     </header>
   );

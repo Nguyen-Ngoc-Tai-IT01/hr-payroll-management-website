@@ -31,9 +31,18 @@ const Footer = () => {
         <div className="footer-section contact-section">
           <h3 className="footer-title">Hỗ trợ Kỹ thuật</h3>
           <ul className="footer-contact">
-            <li><span>📧</span> Email: hotro@workforce.vn</li>
-            <li><span>📞</span> Hotline: 0912.000.001</li>
-            <li><span>🏢</span> Đơn vị: Nhóm Dev IT24B</li>
+            <li>
+              <img src="/mail.png" alt="Email" className="footer-icon" /> 
+              Email: hotro@workforce.vn
+            </li>
+            <li>
+              <img src="/phone.png" alt="Hotline" className="footer-icon" /> 
+              Hotline: 0912.000.001
+            </li>
+            <li>
+              <img src="/home.png" alt="Đơn vị" className="footer-icon" /> 
+              Đơn vị: Nhóm Dev IT24B
+            </li>
           </ul>
         </div>
       </div>

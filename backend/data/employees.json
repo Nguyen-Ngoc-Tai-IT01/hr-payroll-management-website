@@ -530,5 +530,19 @@
     "baseSalary": 10000000,
     "joinDate": "2026-04-11",
     "status": "Đang làm việc"
+  },
+  {
+    "id": "EMP700",
+    "username": "Me",
+    "password": "123456",
+    "fullName": "Messi",
+    "email": "Me@it24b.vn",
+    "phone": "Chưa cập nhật",
+    "department": "Chưa phân phòng",
+    "position": "Nhân viên mới",
+    "role": "Employee",
+    "baseSalary": 10000000,
+    "joinDate": "2026-04-11",
+    "status": "Đang làm việc"
   }
 ]

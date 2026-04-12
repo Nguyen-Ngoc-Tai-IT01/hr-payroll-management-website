@@ -136,12 +136,11 @@ const Leaves = () => {
   return (
     <div style={{ marginTop: '10px' }}>
       
-      {/* tiêu đề và nút chức năng nằm ngoài khối trắng */}
       <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '20px' }}>
-        <h2 style={{ color: '#1e293b', margin: 0, fontSize: '24px' }}>📝 Quản lý Đơn Nghỉ Phép</h2>
+        <h2 style={{ color: '#1e293b', margin: 0, fontSize: '24px' }}>Quản lý Đơn Nghỉ Phép</h2>
         <div style={{ display: 'flex', gap: '10px' }}>
           <button onClick={handleExport} className="btn btn-success">
-            📥 Xuất báo cáo
+            Xuất báo cáo
           </button>
           <button onClick={() => { setFormData(initialFormState); setEditingId(null); setShowForm(true); }} className="btn btn-primary">
             + Tạo đơn mới
@@ -149,14 +148,12 @@ const Leaves = () => {
         </div>
       </div>
 
-      {/* khối trắng chứa thanh tìm kiếm và bảng dữ liệu  */}
       <div style={{ backgroundColor: 'white', padding: '20px', borderRadius: '12px', boxShadow: '0 4px 6px -1px rgba(0,0,0,0.1)' }}>
         
-        {/* thành tìm kiếm và tổng số nghỉ phép */}
         <div style={{ marginBottom: '20px', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
           <input 
             type="text" 
-            placeholder="🔍 Tìm kiếm theo Mã NV hoặc Tên..." 
+            placeholder="Tìm kiếm theo Mã NV hoặc Tên..." 
             value={searchTerm}
             onChange={(e) => {
               setSearchTerm(e.target.value);
@@ -169,7 +166,6 @@ const Leaves = () => {
           </div>
         </div>
 
-        {/* bảng dữ liệu */}
         <div style={{ overflowX: 'auto' }}>
           <table className="custom-table" style={{ width: '100%', borderCollapse: 'collapse', textAlign: 'left' }}>
             <thead>
@@ -186,6 +182,10 @@ const Leaves = () => {
             <tbody>
               {currentRecords.length > 0 ? currentRecords.map(req => {
                 const statusStyle = getStatusStyle(req.status);
+                
+                // Kiểm tra xem đơn đã được duyệt/từ chối chưa
+                const isProcessed = req.status === 'Đã duyệt' || req.status === 'Từ chối';
+
                 return (
                   <tr key={req.id} className="table-row">
                     <td>
@@ -208,8 +208,30 @@ const Leaves = () => {
                       <button onClick={() => handleDelete(req.id)} className="btn btn-danger btn-sm" style={{ display: 'inline-block' }}>Xóa</button>
                     </td>
                     <td style={{ textAlign: 'center' }}>
-                      <button onClick={() => updateStatus(req.id, 'Đã duyệt')} className="btn btn-success btn-sm" style={{ display: 'inline-block', marginRight: '5px' }}>Duyệt</button>
-                      <button onClick={() => updateStatus(req.id, 'Từ chối')} className="btn btn-danger btn-sm" style={{ display: 'inline-block' }}>Từ chối</button>
+                      {/* KHÓA NÚT NẾU ĐÃ XỬ LÝ */}
+                      <button 
+                        onClick={() => updateStatus(req.id, 'Đã duyệt')} 
+                        className="btn btn-success btn-sm" 
+                        disabled={isProcessed}
+                        style={{ 
+                          display: 'inline-block', 
+                          marginRight: '5px',
+                          opacity: isProcessed ? 0.5 : 1,
+                          cursor: isProcessed ? 'not-allowed' : 'pointer'
+                        }}>
+                        Duyệt
+                      </button>
+                      <button 
+                        onClick={() => updateStatus(req.id, 'Từ chối')} 
+                        className="btn btn-danger btn-sm" 
+                        disabled={isProcessed}
+                        style={{ 
+                          display: 'inline-block',
+                          opacity: isProcessed ? 0.5 : 1,
+                          cursor: isProcessed ? 'not-allowed' : 'pointer'
+                        }}>
+                        Từ chối
+                      </button>
                     </td>
                   </tr>
                 );
@@ -220,7 +242,6 @@ const Leaves = () => {
           </table>
         </div>
 
-        {/* phân trang */}
         <div className="pagination" style={{ backgroundColor: 'transparent', paddingBottom: 0 }}>
           <button disabled={currentPage === 1} onClick={() => setCurrentPage(currentPage - 1)} className="page-btn">Trước</button>
           {[...Array(totalPages)].map((_, i) => (
@@ -232,22 +253,49 @@ const Leaves = () => {
         </div>
       </div>
 
-      {/* form modal */}
       {showForm && (
         <div className="modal-overlay">
           <div className="modal-content">
             <h3 style={{ marginTop: 0, textAlign: 'center', color: '#0f172a' }}>
-              {editingId ? '✍️ Sửa đơn nghỉ' : '🆕 Tạo đơn mới'}
+              {editingId ? 'Sửa đơn nghỉ' : 'Tạo đơn mới'}
             </h3>
             <form onSubmit={handleSubmit} className="form-group">
+              
+              {/* Ô NHẬP MÃ THÔNG MINH - CÓ GỢI Ý VÀ TỰ ĐIỀN TÊN */}
               <div>
-                <label className="form-label">Mã nhân viên:</label>
-                <input required placeholder="VD: EMP001" className="form-input" disabled={editingId !== null} value={formData.employeeId} onChange={e => setFormData({...formData, employeeId: e.target.value.toUpperCase()})} />
+                <label className="form-label">Mã nhân viên (Gõ hoặc chọn):</label>
+                <input 
+                  required 
+                  list="employee-suggestions"
+                  placeholder="VD: EMP001" 
+                  className="form-input" 
+                  disabled={editingId !== null} 
+                  value={formData.employeeId} 
+                  onChange={e => {
+                    const val = e.target.value.toUpperCase();
+                    // Tìm xem mã NV vừa gõ có khớp với ai trong danh sách không
+                    const matchedEmp = employees.find(emp => String(emp.id) === val || String(emp.employeeId) === val);
+                    
+                    setFormData({
+                      ...formData, 
+                      employeeId: val,
+                      // Nếu tìm thấy, tự động điền tên người đó. Nếu không, giữ nguyên tên đang gõ.
+                      fullName: matchedEmp ? matchedEmp.fullName : formData.fullName 
+                    });
+                  }} 
+                />
+                <datalist id="employee-suggestions">
+                  {employees.map(emp => (
+                    <option key={emp.id} value={emp.id}>{emp.fullName}</option>
+                  ))}
+                </datalist>
               </div>
+
               <div>
                 <label className="form-label">Tên nhân viên:</label>
                 <input required placeholder="Tên nhân viên" className="form-input" value={formData.fullName} onChange={e => setFormData({...formData, fullName: e.target.value})} />
               </div>
+              
               <div>
                 <label className="form-label">Loại nghỉ:</label>
                 <select className="form-input" value={formData.type} onChange={e => setFormData({...formData, type: e.target.value})}>

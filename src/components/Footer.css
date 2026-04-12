@@ -103,3 +103,17 @@
     justify-content: center;
   }
 }
+.footer-icon {
+  width: 20px;       /* Điều chỉnh kích thước tùy ý */
+  height: 20px;
+  object-fit: contain;
+  margin-right: 10px;
+  vertical-align: middle;
+}
+
+/* Tùy chỉnh để các icon căn giữa với chữ tốt hơn */
+.footer-contact li {
+  display: flex;
+  align-items: center;
+  margin-bottom: 12px;
+}

@@ -4,7 +4,7 @@
     "employeeId": "EMP001",
     "month": "05/2026",
     "standardDays": 22,
-    "actualDays": 1,
+    "actualDays": 0,
     "lateCount": 0,
     "leaveDays": 0,
     "overtimeHours": 0,
@@ -26,7 +26,8 @@
         "oldDays": 0,
         "newDays": 1
       }
-    ]
+    ],
+    "dailyRecords": []
   },
   {
     "id": "ATT_0326_002",
@@ -48,7 +49,8 @@
         "oldDays": 0,
         "newDays": 1
       }
-    ]
+    ],
+    "dailyRecords": []
   },
   {
     "id": "ATT_0326_003",
@@ -61,8 +63,9 @@
     "overtimeHours": 0,
     "checkInLogs": [],
     "editCount": 0,
-    "lastEditDate": "21:56:58 11/4/2026",
-    "fullName": "Sêu"
+    "lastEditDate": "05:39:22 12/4/2026",
+    "fullName": "Sêu",
+    "dailyRecords": []
   },
   {
     "id": "ATT_0326_004",
@@ -75,8 +78,9 @@
     "overtimeHours": 0,
     "checkInLogs": [],
     "editCount": 0,
-    "lastEditDate": "21:56:58 11/4/2026",
-    "fullName": "Tăng Tấn Vỹ"
+    "lastEditDate": "05:39:22 12/4/2026",
+    "fullName": "Tăng Tấn Vỹ",
+    "dailyRecords": []
   },
   {
     "id": "ATT_0326_005",
@@ -89,8 +93,9 @@
     "overtimeHours": 0,
     "checkInLogs": [],
     "editCount": 0,
-    "lastEditDate": "21:56:58 11/4/2026",
-    "fullName": "Nguyễn Trọng Tuyến"
+    "lastEditDate": "05:39:22 12/4/2026",
+    "fullName": "Nguyễn Trọng Tuyến",
+    "dailyRecords": []
   },
   {
     "id": "ATT_0326_006",
@@ -103,8 +108,9 @@
     "overtimeHours": 0,
     "checkInLogs": [],
     "editCount": 0,
-    "lastEditDate": "21:56:58 11/4/2026",
-    "fullName": "Hoàng Tổng"
+    "lastEditDate": "05:39:22 12/4/2026",
+    "fullName": "Hoàng Tổng",
+    "dailyRecords": []
   },
   {
     "id": "ATT_0326_007",
@@ -117,8 +123,9 @@
     "overtimeHours": 0,
     "checkInLogs": [],
     "editCount": 0,
-    "lastEditDate": "21:56:58 11/4/2026",
-    "fullName": "Ngô Phó"
+    "lastEditDate": "05:39:22 12/4/2026",
+    "fullName": "Ngô Phó",
+    "dailyRecords": []
   },
   {
     "id": "ATT_1008",
@@ -130,8 +137,9 @@
     "overtimeHours": 0,
     "editCount": 0,
     "checkInLogs": [],
-    "lastEditDate": "21:56:58 11/4/2026",
-    "fullName": "Đinh Công Trình"
+    "lastEditDate": "05:39:22 12/4/2026",
+    "fullName": "Đinh Công Trình",
+    "dailyRecords": []
   },
   {
     "id": "ATT_1009",
@@ -143,8 +151,9 @@
     "overtimeHours": 0,
     "editCount": 0,
     "checkInLogs": [],
-    "lastEditDate": "21:56:58 11/4/2026",
-    "fullName": "Võ Kỹ Thuật"
+    "lastEditDate": "05:39:22 12/4/2026",
+    "fullName": "Võ Kỹ Thuật",
+    "dailyRecords": []
   },
   {
     "id": "ATT_1010",
@@ -156,8 +165,9 @@
     "overtimeHours": 0,
     "editCount": 0,
     "checkInLogs": [],
-    "lastEditDate": "21:56:58 11/4/2026",
-    "fullName": "Lý Code Xịn"
+    "lastEditDate": "05:39:22 12/4/2026",
+    "fullName": "Lý Code Xịn",
+    "dailyRecords": []
   },
   {
     "id": "ATT_1011",
@@ -169,8 +179,9 @@
     "overtimeHours": 0,
     "editCount": 0,
     "checkInLogs": [],
-    "lastEditDate": "21:56:58 11/4/2026",
-    "fullName": "Trần Bug"
+    "lastEditDate": "05:39:22 12/4/2026",
+    "fullName": "Trần Bug",
+    "dailyRecords": []
   },
   {
     "id": "ATT_1012",
@@ -182,8 +193,9 @@
     "overtimeHours": 0,
     "editCount": 0,
     "checkInLogs": [],
-    "lastEditDate": "21:56:58 11/4/2026",
-    "fullName": "Nguyễn Fix"
+    "lastEditDate": "05:39:22 12/4/2026",
+    "fullName": "Nguyễn Fix",
+    "dailyRecords": []
   },
   {
     "id": "ATT_1013",
@@ -195,8 +207,9 @@
     "overtimeHours": 0,
     "editCount": 0,
     "fullName": "Phạm Fontend",
-    "lastEditDate": "21:56:58 11/4/2026",
-    "checkInLogs": []
+    "lastEditDate": "05:39:22 12/4/2026",
+    "checkInLogs": [],
+    "dailyRecords": []
   },
   {
     "id": "ATT_1014",
@@ -208,7 +221,8 @@
     "overtimeHours": 0,
     "editCount": 0,
     "checkInLogs": [],
-    "lastEditDate": "21:56:58 11/4/2026"
+    "lastEditDate": "05:39:22 12/4/2026",
+    "dailyRecords": []
   },
   {
     "id": "ATT_1015",
@@ -220,7 +234,8 @@
     "overtimeHours": 0,
     "editCount": 0,
     "checkInLogs": [],
-    "lastEditDate": "21:56:58 11/4/2026"
+    "lastEditDate": "05:39:22 12/4/2026",
+    "dailyRecords": []
   },
   {
     "id": "ATT_1016",
@@ -232,7 +247,8 @@
     "overtimeHours": 0,
     "editCount": 0,
     "checkInLogs": [],
-    "lastEditDate": "21:56:58 11/4/2026"
+    "lastEditDate": "05:39:22 12/4/2026",
+    "dailyRecords": []
   },
   {
     "id": "ATT_1017",
@@ -244,7 +260,8 @@
     "overtimeHours": 0,
     "editCount": 0,
     "checkInLogs": [],
-    "lastEditDate": "21:56:58 11/4/2026"
+    "lastEditDate": "05:39:22 12/4/2026",
+    "dailyRecords": []
   },
   {
     "id": "ATT_1018",
@@ -256,7 +273,8 @@
     "overtimeHours": 0,
     "editCount": 0,
     "checkInLogs": [],
-    "lastEditDate": "21:56:58 11/4/2026"
+    "lastEditDate": "05:39:22 12/4/2026",
+    "dailyRecords": []
   },
   {
     "id": "ATT_1019",
@@ -268,7 +286,8 @@
     "overtimeHours": 0,
     "editCount": 0,
     "checkInLogs": [],
-    "lastEditDate": "21:56:58 11/4/2026"
+    "lastEditDate": "05:39:22 12/4/2026",
+    "dailyRecords": []
   },
   {
     "id": "ATT_1020",
@@ -280,7 +299,8 @@
     "overtimeHours": 0,
     "editCount": 0,
     "checkInLogs": [],
-    "lastEditDate": "21:56:58 11/4/2026"
+    "lastEditDate": "05:39:22 12/4/2026",
+    "dailyRecords": []
   },
   {
     "id": "ATT_1021",
@@ -292,7 +312,8 @@
     "overtimeHours": 0,
     "editCount": 0,
     "checkInLogs": [],
-    "lastEditDate": "21:56:58 11/4/2026"
+    "lastEditDate": "05:39:22 12/4/2026",
+    "dailyRecords": []
   },
   {
     "id": "ATT_1022",
@@ -304,7 +325,8 @@
     "overtimeHours": 0,
     "editCount": 0,
     "checkInLogs": [],
-    "lastEditDate": "21:56:58 11/4/2026"
+    "lastEditDate": "05:39:22 12/4/2026",
+    "dailyRecords": []
   },
   {
     "id": "ATT_1023",
@@ -316,7 +338,8 @@
     "overtimeHours": 0,
     "editCount": 0,
     "checkInLogs": [],
-    "lastEditDate": "21:56:58 11/4/2026"
+    "lastEditDate": "05:39:22 12/4/2026",
+    "dailyRecords": []
   },
   {
     "id": "ATT_1024",
@@ -328,7 +351,8 @@
     "overtimeHours": 0,
     "editCount": 0,
     "checkInLogs": [],
-    "lastEditDate": "21:56:58 11/4/2026"
+    "lastEditDate": "05:39:22 12/4/2026",
+    "dailyRecords": []
   },
   {
     "id": "ATT_1025",
@@ -340,7 +364,8 @@
     "overtimeHours": 0,
     "editCount": 0,
     "checkInLogs": [],
-    "lastEditDate": "21:56:58 11/4/2026"
+    "lastEditDate": "05:39:22 12/4/2026",
+    "dailyRecords": []
   },
   {
     "id": "ATT_1026",
@@ -352,8 +377,9 @@
     "overtimeHours": 0,
     "editCount": 0,
     "fullName": "Cao Hoa Hồng",
-    "lastEditDate": "21:56:58 11/4/2026",
-    "checkInLogs": []
+    "lastEditDate": "05:39:22 12/4/2026",
+    "checkInLogs": [],
+    "dailyRecords": []
   },
   {
     "id": "ATT_1027",
@@ -365,7 +391,8 @@
     "overtimeHours": 0,
     "editCount": 0,
     "checkInLogs": [],
-    "lastEditDate": "21:56:58 11/4/2026"
+    "lastEditDate": "05:39:22 12/4/2026",
+    "dailyRecords": []
   },
   {
     "id": "ATT_1028",
@@ -377,7 +404,8 @@
     "overtimeHours": 0,
     "editCount": 0,
     "checkInLogs": [],
-    "lastEditDate": "21:56:58 11/4/2026"
+    "lastEditDate": "05:39:22 12/4/2026",
+    "dailyRecords": []
   },
   {
     "id": "ATT_1029",
@@ -389,7 +417,8 @@
     "overtimeHours": 0,
     "editCount": 0,
     "checkInLogs": [],
-    "lastEditDate": "21:56:58 11/4/2026"
+    "lastEditDate": "05:39:22 12/4/2026",
+    "dailyRecords": []
   },
   {
     "id": "ATT_1030",
@@ -401,7 +430,8 @@
     "overtimeHours": 0,
     "editCount": 0,
     "checkInLogs": [],
-    "lastEditDate": "21:56:58 11/4/2026"
+    "lastEditDate": "05:39:22 12/4/2026",
+    "dailyRecords": []
   },
   {
     "id": "ATT_1031",
@@ -413,7 +443,9 @@
     "overtimeHours": 0,
     "editCount": 0,
     "checkInLogs": [],
-    "lastEditDate": "21:56:58 11/4/2026"
+    "lastEditDate": "05:39:22 12/4/2026",
+    "fullName": "Kiều Chạy Ads",
+    "dailyRecords": []
   },
   {
     "id": "ATT_1032",
@@ -425,7 +457,9 @@
     "overtimeHours": 0,
     "editCount": 0,
     "checkInLogs": [],
-    "lastEditDate": "21:56:58 11/4/2026"
+    "lastEditDate": "05:39:22 12/4/2026",
+    "fullName": "Phan Thiết Kế",
+    "dailyRecords": []
   },
   {
     "id": "ATT_1033",
@@ -437,7 +471,8 @@
     "overtimeHours": 0,
     "editCount": 0,
     "checkInLogs": [],
-    "lastEditDate": "21:56:58 11/4/2026"
+    "lastEditDate": "05:39:22 12/4/2026",
+    "dailyRecords": []
   },
   {
     "id": "ATT_1034",
@@ -449,8 +484,9 @@
     "overtimeHours": 0,
     "editCount": 0,
     "fullName": "Dương Tư Vấn",
-    "lastEditDate": "21:56:58 11/4/2026",
-    "checkInLogs": []
+    "lastEditDate": "05:39:22 12/4/2026",
+    "checkInLogs": [],
+    "dailyRecords": []
   },
   {
     "id": "ATT_1035",
@@ -462,7 +498,8 @@
     "overtimeHours": 0,
     "editCount": 0,
     "checkInLogs": [],
-    "lastEditDate": "21:56:58 11/4/2026"
+    "lastEditDate": "05:39:22 12/4/2026",
+    "dailyRecords": []
   },
   {
     "employeeId": "EMP820",
@@ -474,8 +511,9 @@
     "overtimeHours": 0,
     "id": "ATT_0326_1397",
     "editCount": 0,
-    "lastEditDate": "21:56:58 11/4/2026",
-    "checkInLogs": []
+    "lastEditDate": "05:39:22 12/4/2026",
+    "checkInLogs": [],
+    "dailyRecords": []
   },
   {
     "employeeId": "EMP629",
@@ -487,8 +525,9 @@
     "overtimeHours": 0,
     "id": "ATT_0326_3380",
     "editCount": 0,
-    "lastEditDate": "21:56:58 11/4/2026",
-    "checkInLogs": []
+    "lastEditDate": "05:39:22 12/4/2026",
+    "checkInLogs": [],
+    "dailyRecords": []
   },
   {
     "employeeId": "EMP726",
@@ -500,7 +539,22 @@
     "overtimeHours": 0,
     "id": "ATT_0326_9708",
     "editCount": 0,
-    "lastEditDate": "21:56:58 11/4/2026",
-    "checkInLogs": []
+    "lastEditDate": "05:39:22 12/4/2026",
+    "checkInLogs": [],
+    "dailyRecords": []
+  },
+  {
+    "employeeId": "EMP700",
+    "fullName": "Messi",
+    "month": "05/2026",
+    "standardDays": 22,
+    "actualDays": 0,
+    "lateCount": 0,
+    "overtimeHours": 0,
+    "id": "ATT_0326_5736",
+    "editCount": 0,
+    "lastEditDate": "05:39:22 12/4/2026",
+    "checkInLogs": [],
+    "dailyRecords": []
   }
 ]
