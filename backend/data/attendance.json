@@ -4,12 +4,12 @@
     "employeeId": "EMP001",
     "month": "05/2026",
     "standardDays": 22,
-    "actualDays": 0,
-    "lateCount": 0,
+    "actualDays": 1,
+    "lateCount": 1,
     "leaveDays": 0,
     "overtimeHours": 0,
-    "editCount": 3,
-    "lastEditDate": "23:10:50 11/4/2026",
+    "editCount": 9,
+    "lastEditDate": "11:01:32 13/4/2026",
     "fullName": "Nguyễn Ngọc Tài",
     "checkInLogs": [
       {
@@ -25,22 +25,83 @@
         "timeStr": "23:10:50",
         "oldDays": 0,
         "newDays": 1
+      },
+      {
+        "timestamp": "2026-04-12T14:23:17.749Z",
+        "dateStr": "12/4/2026",
+        "timeStr": "21:23:17",
+        "oldDays": 0,
+        "newDays": 1
+      },
+      {
+        "timestamp": "2026-04-12T14:23:27.592Z",
+        "dateStr": "12/4/2026",
+        "timeStr": "21:23:27",
+        "oldDays": 1,
+        "newDays": 0
+      },
+      {
+        "timestamp": "2026-04-12T14:34:03.974Z",
+        "dateStr": "12/4/2026",
+        "timeStr": "21:34:03",
+        "oldDays": 0,
+        "newDays": 1
+      },
+      {
+        "timestamp": "2026-04-13T03:54:47.916Z",
+        "dateStr": "13/4/2026",
+        "timeStr": "10:54:47",
+        "oldDays": 1,
+        "newDays": 2
+      },
+      {
+        "timestamp": "2026-04-13T04:00:39.254Z",
+        "dateStr": "13/4/2026",
+        "timeStr": "11:00:39",
+        "oldDays": 2,
+        "newDays": 1
       }
     ],
-    "dailyRecords": []
+    "dailyRecords": [
+      {
+        "dateStr": "12/04/2026",
+        "action": "CHECK_IN",
+        "timestamp": "2026-04-12T14:23:17.411Z"
+      },
+      {
+        "dateStr": "12/04/2026",
+        "action": "CANCEL",
+        "timestamp": "2026-04-12T14:23:27.586Z"
+      },
+      {
+        "dateStr": "12/04/2026",
+        "action": "CHECK_IN",
+        "timestamp": "2026-04-12T14:34:03.969Z"
+      },
+      {
+        "dateStr": "13/04/2026",
+        "action": "CHECK_IN",
+        "timestamp": "2026-04-13T03:54:47.527Z"
+      },
+      {
+        "dateStr": "13/04/2026",
+        "action": "CANCEL",
+        "timestamp": "2026-04-13T04:00:39.247Z"
+      }
+    ]
   },
   {
     "id": "ATT_0326_002",
     "employeeId": "EMP002",
     "month": "05/2026",
     "standardDays": 22,
-    "actualDays": 1,
+    "actualDays": 2,
     "lateCount": 0,
     "leaveDays": 0.5,
     "overtimeHours": 0,
     "fullName": "Huỳnh Công Hiệp",
-    "editCount": 1,
-    "lastEditDate": "22:35:02 11/4/2026",
+    "editCount": 6,
+    "lastEditDate": "11:00:59 13/4/2026",
     "checkInLogs": [
       {
         "timestamp": "2026-04-11T15:35:02.966Z",
@@ -48,539 +109,1206 @@
         "timeStr": "22:35:02",
         "oldDays": 0,
         "newDays": 1
+      },
+      {
+        "timestamp": "2026-04-12T14:33:09.424Z",
+        "dateStr": "12/4/2026",
+        "timeStr": "21:33:09",
+        "oldDays": 1,
+        "newDays": 2
+      },
+      {
+        "timestamp": "2026-04-12T14:34:08.862Z",
+        "dateStr": "12/4/2026",
+        "timeStr": "21:34:08",
+        "oldDays": 2,
+        "newDays": 1
+      },
+      {
+        "timestamp": "2026-04-12T14:34:26.037Z",
+        "dateStr": "12/4/2026",
+        "timeStr": "21:34:26",
+        "oldDays": 1,
+        "newDays": 0
+      },
+      {
+        "timestamp": "2026-04-13T03:54:48.963Z",
+        "dateStr": "13/4/2026",
+        "timeStr": "10:54:48",
+        "oldDays": 0,
+        "newDays": 1
+      },
+      {
+        "timestamp": "2026-04-13T04:00:59.036Z",
+        "dateStr": "13/4/2026",
+        "timeStr": "11:00:59",
+        "oldDays": 1,
+        "newDays": 2
       }
     ],
-    "dailyRecords": []
+    "dailyRecords": [
+      {
+        "dateStr": "12/04/2026",
+        "action": "CHECK_IN",
+        "timestamp": "2026-04-12T14:33:09.417Z"
+      },
+      {
+        "dateStr": "12/04/2026",
+        "action": "CANCEL",
+        "timestamp": "2026-04-12T14:34:08.857Z"
+      },
+      {
+        "dateStr": "13/04/2026",
+        "action": "CHECK_IN",
+        "timestamp": "2026-04-13T03:54:48.958Z"
+      }
+    ]
   },
   {
     "id": "ATT_0326_003",
     "employeeId": "EMP003",
     "month": "05/2026",
     "standardDays": 22,
-    "actualDays": 0,
+    "actualDays": 2,
     "lateCount": 0,
     "leaveDays": 0,
     "overtimeHours": 0,
-    "checkInLogs": [],
-    "editCount": 0,
-    "lastEditDate": "05:39:22 12/4/2026",
+    "checkInLogs": [
+      {
+        "timestamp": "2026-04-12T14:33:10.344Z",
+        "dateStr": "12/4/2026",
+        "timeStr": "21:33:10",
+        "oldDays": 0,
+        "newDays": 1
+      },
+      {
+        "timestamp": "2026-04-13T03:54:49.908Z",
+        "dateStr": "13/4/2026",
+        "timeStr": "10:54:49",
+        "oldDays": 1,
+        "newDays": 2
+      }
+    ],
+    "editCount": 2,
+    "lastEditDate": "10:54:49 13/4/2026",
     "fullName": "Sêu",
-    "dailyRecords": []
+    "dailyRecords": [
+      {
+        "dateStr": "12/04/2026",
+        "action": "CHECK_IN",
+        "timestamp": "2026-04-12T14:33:10.339Z"
+      },
+      {
+        "dateStr": "13/04/2026",
+        "action": "CHECK_IN",
+        "timestamp": "2026-04-13T03:54:49.902Z"
+      }
+    ]
   },
   {
     "id": "ATT_0326_004",
     "employeeId": "EMP004",
     "month": "05/2026",
     "standardDays": 22,
-    "actualDays": 0,
+    "actualDays": 2,
     "lateCount": 0,
     "leaveDays": 2,
     "overtimeHours": 0,
-    "checkInLogs": [],
-    "editCount": 0,
-    "lastEditDate": "05:39:22 12/4/2026",
+    "checkInLogs": [
+      {
+        "timestamp": "2026-04-12T14:33:11.577Z",
+        "dateStr": "12/4/2026",
+        "timeStr": "21:33:11",
+        "oldDays": 0,
+        "newDays": 1
+      },
+      {
+        "timestamp": "2026-04-13T03:54:51.380Z",
+        "dateStr": "13/4/2026",
+        "timeStr": "10:54:51",
+        "oldDays": 1,
+        "newDays": 2
+      }
+    ],
+    "editCount": 2,
+    "lastEditDate": "10:54:51 13/4/2026",
     "fullName": "Tăng Tấn Vỹ",
-    "dailyRecords": []
+    "dailyRecords": [
+      {
+        "dateStr": "12/04/2026",
+        "action": "CHECK_IN",
+        "timestamp": "2026-04-12T14:33:11.571Z"
+      },
+      {
+        "dateStr": "13/04/2026",
+        "action": "CHECK_IN",
+        "timestamp": "2026-04-13T03:54:51.375Z"
+      }
+    ]
   },
   {
     "id": "ATT_0326_005",
     "employeeId": "EMP005",
     "month": "05/2026",
     "standardDays": 22,
-    "actualDays": 0,
+    "actualDays": 2,
     "lateCount": 0,
     "leaveDays": 0,
     "overtimeHours": 0,
-    "checkInLogs": [],
-    "editCount": 0,
-    "lastEditDate": "05:39:22 12/4/2026",
+    "checkInLogs": [
+      {
+        "timestamp": "2026-04-12T14:33:12.073Z",
+        "dateStr": "12/4/2026",
+        "timeStr": "21:33:12",
+        "oldDays": 0,
+        "newDays": 1
+      },
+      {
+        "timestamp": "2026-04-13T03:54:51.996Z",
+        "dateStr": "13/4/2026",
+        "timeStr": "10:54:51",
+        "oldDays": 1,
+        "newDays": 2
+      }
+    ],
+    "editCount": 2,
+    "lastEditDate": "10:54:51 13/4/2026",
     "fullName": "Nguyễn Trọng Tuyến",
-    "dailyRecords": []
+    "dailyRecords": [
+      {
+        "dateStr": "12/04/2026",
+        "action": "CHECK_IN",
+        "timestamp": "2026-04-12T14:33:12.066Z"
+      },
+      {
+        "dateStr": "13/04/2026",
+        "action": "CHECK_IN",
+        "timestamp": "2026-04-13T03:54:51.991Z"
+      }
+    ]
   },
   {
     "id": "ATT_0326_006",
     "employeeId": "EMP006",
     "month": "05/2026",
     "standardDays": 22,
-    "actualDays": 0,
+    "actualDays": 2,
     "lateCount": 0,
     "leaveDays": 0,
     "overtimeHours": 0,
-    "checkInLogs": [],
-    "editCount": 0,
-    "lastEditDate": "05:39:22 12/4/2026",
+    "checkInLogs": [
+      {
+        "timestamp": "2026-04-12T14:33:12.764Z",
+        "dateStr": "12/4/2026",
+        "timeStr": "21:33:12",
+        "oldDays": 0,
+        "newDays": 1
+      },
+      {
+        "timestamp": "2026-04-13T03:54:53.197Z",
+        "dateStr": "13/4/2026",
+        "timeStr": "10:54:53",
+        "oldDays": 1,
+        "newDays": 2
+      }
+    ],
+    "editCount": 2,
+    "lastEditDate": "10:54:53 13/4/2026",
     "fullName": "Hoàng Tổng",
-    "dailyRecords": []
+    "dailyRecords": [
+      {
+        "dateStr": "12/04/2026",
+        "action": "CHECK_IN",
+        "timestamp": "2026-04-12T14:33:12.761Z"
+      },
+      {
+        "dateStr": "13/04/2026",
+        "action": "CHECK_IN",
+        "timestamp": "2026-04-13T03:54:53.191Z"
+      }
+    ]
   },
   {
     "id": "ATT_0326_007",
     "employeeId": "EMP007",
     "month": "05/2026",
     "standardDays": 22,
-    "actualDays": 0,
+    "actualDays": 2,
     "lateCount": 0,
     "leaveDays": 1,
     "overtimeHours": 0,
-    "checkInLogs": [],
-    "editCount": 0,
-    "lastEditDate": "05:39:22 12/4/2026",
+    "checkInLogs": [
+      {
+        "timestamp": "2026-04-12T14:33:13.832Z",
+        "dateStr": "12/4/2026",
+        "timeStr": "21:33:13",
+        "oldDays": 0,
+        "newDays": 1
+      },
+      {
+        "timestamp": "2026-04-13T03:54:53.977Z",
+        "dateStr": "13/4/2026",
+        "timeStr": "10:54:53",
+        "oldDays": 1,
+        "newDays": 2
+      }
+    ],
+    "editCount": 2,
+    "lastEditDate": "10:54:53 13/4/2026",
     "fullName": "Ngô Phó",
-    "dailyRecords": []
+    "dailyRecords": [
+      {
+        "dateStr": "12/04/2026",
+        "action": "CHECK_IN",
+        "timestamp": "2026-04-12T14:33:13.827Z"
+      },
+      {
+        "dateStr": "13/04/2026",
+        "action": "CHECK_IN",
+        "timestamp": "2026-04-13T03:54:53.967Z"
+      }
+    ]
   },
   {
     "id": "ATT_1008",
     "employeeId": "EMP008",
     "month": "05/2026",
     "standardDays": 22,
-    "actualDays": 0,
+    "actualDays": 2,
     "lateCount": 0,
     "overtimeHours": 0,
-    "editCount": 0,
-    "checkInLogs": [],
-    "lastEditDate": "05:39:22 12/4/2026",
+    "editCount": 2,
+    "checkInLogs": [
+      {
+        "timestamp": "2026-04-12T14:33:14.438Z",
+        "dateStr": "12/4/2026",
+        "timeStr": "21:33:14",
+        "oldDays": 0,
+        "newDays": 1
+      },
+      {
+        "timestamp": "2026-04-13T03:54:54.821Z",
+        "dateStr": "13/4/2026",
+        "timeStr": "10:54:54",
+        "oldDays": 1,
+        "newDays": 2
+      }
+    ],
+    "lastEditDate": "10:54:54 13/4/2026",
     "fullName": "Đinh Công Trình",
-    "dailyRecords": []
+    "dailyRecords": [
+      {
+        "dateStr": "12/04/2026",
+        "action": "CHECK_IN",
+        "timestamp": "2026-04-12T14:33:14.433Z"
+      },
+      {
+        "dateStr": "13/04/2026",
+        "action": "CHECK_IN",
+        "timestamp": "2026-04-13T03:54:54.815Z"
+      }
+    ]
   },
   {
     "id": "ATT_1009",
     "employeeId": "EMP009",
     "month": "05/2026",
     "standardDays": 22,
-    "actualDays": 0,
+    "actualDays": 2,
     "lateCount": 0,
     "overtimeHours": 0,
-    "editCount": 0,
-    "checkInLogs": [],
-    "lastEditDate": "05:39:22 12/4/2026",
+    "editCount": 2,
+    "checkInLogs": [
+      {
+        "timestamp": "2026-04-12T14:33:14.831Z",
+        "dateStr": "12/4/2026",
+        "timeStr": "21:33:14",
+        "oldDays": 0,
+        "newDays": 1
+      },
+      {
+        "timestamp": "2026-04-13T03:54:58.485Z",
+        "dateStr": "13/4/2026",
+        "timeStr": "10:54:58",
+        "oldDays": 1,
+        "newDays": 2
+      }
+    ],
+    "lastEditDate": "10:54:58 13/4/2026",
     "fullName": "Võ Kỹ Thuật",
-    "dailyRecords": []
+    "dailyRecords": [
+      {
+        "dateStr": "12/04/2026",
+        "action": "CHECK_IN",
+        "timestamp": "2026-04-12T14:33:14.827Z"
+      },
+      {
+        "dateStr": "13/04/2026",
+        "action": "CHECK_IN",
+        "timestamp": "2026-04-13T03:54:58.479Z"
+      }
+    ]
   },
   {
     "id": "ATT_1010",
     "employeeId": "EMP010",
     "month": "05/2026",
     "standardDays": 22,
-    "actualDays": 0,
+    "actualDays": 2,
     "lateCount": 0,
     "overtimeHours": 0,
-    "editCount": 0,
-    "checkInLogs": [],
-    "lastEditDate": "05:39:22 12/4/2026",
+    "editCount": 2,
+    "checkInLogs": [
+      {
+        "timestamp": "2026-04-12T14:33:15.237Z",
+        "dateStr": "12/4/2026",
+        "timeStr": "21:33:15",
+        "oldDays": 0,
+        "newDays": 1
+      },
+      {
+        "timestamp": "2026-04-13T03:54:59.317Z",
+        "dateStr": "13/4/2026",
+        "timeStr": "10:54:59",
+        "oldDays": 1,
+        "newDays": 2
+      }
+    ],
+    "lastEditDate": "10:54:59 13/4/2026",
     "fullName": "Lý Code Xịn",
-    "dailyRecords": []
+    "dailyRecords": [
+      {
+        "dateStr": "12/04/2026",
+        "action": "CHECK_IN",
+        "timestamp": "2026-04-12T14:33:15.233Z"
+      },
+      {
+        "dateStr": "13/04/2026",
+        "action": "CHECK_IN",
+        "timestamp": "2026-04-13T03:54:59.311Z"
+      }
+    ]
   },
   {
     "id": "ATT_1011",
     "employeeId": "EMP011",
     "month": "05/2026",
     "standardDays": 22,
-    "actualDays": 0,
+    "actualDays": 1,
     "lateCount": 0,
     "overtimeHours": 0,
-    "editCount": 0,
-    "checkInLogs": [],
-    "lastEditDate": "05:39:22 12/4/2026",
+    "editCount": 1,
+    "checkInLogs": [
+      {
+        "timestamp": "2026-04-12T14:33:18.208Z",
+        "dateStr": "12/4/2026",
+        "timeStr": "21:33:18",
+        "oldDays": 0,
+        "newDays": 1
+      }
+    ],
+    "lastEditDate": "21:33:18 12/4/2026",
     "fullName": "Trần Bug",
-    "dailyRecords": []
+    "dailyRecords": [
+      {
+        "dateStr": "12/04/2026",
+        "action": "CHECK_IN",
+        "timestamp": "2026-04-12T14:33:18.203Z"
+      }
+    ]
   },
   {
     "id": "ATT_1012",
     "employeeId": "EMP012",
     "month": "05/2026",
     "standardDays": 22,
-    "actualDays": 0,
+    "actualDays": 1,
     "lateCount": 0,
     "overtimeHours": 0,
-    "editCount": 0,
-    "checkInLogs": [],
-    "lastEditDate": "05:39:22 12/4/2026",
+    "editCount": 1,
+    "checkInLogs": [
+      {
+        "timestamp": "2026-04-12T14:33:18.686Z",
+        "dateStr": "12/4/2026",
+        "timeStr": "21:33:18",
+        "oldDays": 0,
+        "newDays": 1
+      }
+    ],
+    "lastEditDate": "21:33:18 12/4/2026",
     "fullName": "Nguyễn Fix",
-    "dailyRecords": []
+    "dailyRecords": [
+      {
+        "dateStr": "12/04/2026",
+        "action": "CHECK_IN",
+        "timestamp": "2026-04-12T14:33:18.681Z"
+      }
+    ]
   },
   {
     "id": "ATT_1013",
     "employeeId": "EMP013",
     "month": "05/2026",
     "standardDays": 22,
-    "actualDays": 0,
+    "actualDays": 1,
     "lateCount": 0,
     "overtimeHours": 0,
-    "editCount": 0,
+    "editCount": 1,
     "fullName": "Phạm Fontend",
-    "lastEditDate": "05:39:22 12/4/2026",
-    "checkInLogs": [],
-    "dailyRecords": []
+    "lastEditDate": "21:33:19 12/4/2026",
+    "checkInLogs": [
+      {
+        "timestamp": "2026-04-12T14:33:19.148Z",
+        "dateStr": "12/4/2026",
+        "timeStr": "21:33:19",
+        "oldDays": 0,
+        "newDays": 1
+      }
+    ],
+    "dailyRecords": [
+      {
+        "dateStr": "12/04/2026",
+        "action": "CHECK_IN",
+        "timestamp": "2026-04-12T14:33:19.145Z"
+      }
+    ]
   },
   {
     "id": "ATT_1014",
     "employeeId": "EMP014",
     "month": "05/2026",
     "standardDays": 22,
-    "actualDays": 0,
+    "actualDays": 1,
     "lateCount": 0,
     "overtimeHours": 0,
-    "editCount": 0,
-    "checkInLogs": [],
-    "lastEditDate": "05:39:22 12/4/2026",
-    "dailyRecords": []
+    "editCount": 1,
+    "checkInLogs": [
+      {
+        "timestamp": "2026-04-12T14:33:21.398Z",
+        "dateStr": "12/4/2026",
+        "timeStr": "21:33:21",
+        "oldDays": 0,
+        "newDays": 1
+      }
+    ],
+    "lastEditDate": "21:33:21 12/4/2026",
+    "dailyRecords": [
+      {
+        "dateStr": "12/04/2026",
+        "action": "CHECK_IN",
+        "timestamp": "2026-04-12T14:33:21.393Z"
+      }
+    ]
   },
   {
     "id": "ATT_1015",
     "employeeId": "EMP015",
     "month": "05/2026",
     "standardDays": 22,
-    "actualDays": 0,
+    "actualDays": 1,
     "lateCount": 0,
     "overtimeHours": 0,
-    "editCount": 0,
-    "checkInLogs": [],
-    "lastEditDate": "05:39:22 12/4/2026",
-    "dailyRecords": []
+    "editCount": 1,
+    "checkInLogs": [
+      {
+        "timestamp": "2026-04-12T14:33:22.100Z",
+        "dateStr": "12/4/2026",
+        "timeStr": "21:33:22",
+        "oldDays": 0,
+        "newDays": 1
+      }
+    ],
+    "lastEditDate": "21:33:22 12/4/2026",
+    "dailyRecords": [
+      {
+        "dateStr": "12/04/2026",
+        "action": "CHECK_IN",
+        "timestamp": "2026-04-12T14:33:22.097Z"
+      }
+    ]
   },
   {
     "id": "ATT_1016",
     "employeeId": "EMP016",
     "month": "05/2026",
     "standardDays": 22,
-    "actualDays": 0,
+    "actualDays": 1,
     "lateCount": 0,
     "overtimeHours": 0,
-    "editCount": 0,
-    "checkInLogs": [],
-    "lastEditDate": "05:39:22 12/4/2026",
-    "dailyRecords": []
+    "editCount": 1,
+    "checkInLogs": [
+      {
+        "timestamp": "2026-04-12T14:33:22.692Z",
+        "dateStr": "12/4/2026",
+        "timeStr": "21:33:22",
+        "oldDays": 0,
+        "newDays": 1
+      }
+    ],
+    "lastEditDate": "21:33:22 12/4/2026",
+    "dailyRecords": [
+      {
+        "dateStr": "12/04/2026",
+        "action": "CHECK_IN",
+        "timestamp": "2026-04-12T14:33:22.689Z"
+      }
+    ]
   },
   {
     "id": "ATT_1017",
     "employeeId": "EMP017",
     "month": "05/2026",
     "standardDays": 22,
-    "actualDays": 0,
+    "actualDays": 1,
     "lateCount": 0,
     "overtimeHours": 0,
-    "editCount": 0,
-    "checkInLogs": [],
-    "lastEditDate": "05:39:22 12/4/2026",
-    "dailyRecords": []
+    "editCount": 1,
+    "checkInLogs": [
+      {
+        "timestamp": "2026-04-12T14:33:23.389Z",
+        "dateStr": "12/4/2026",
+        "timeStr": "21:33:23",
+        "oldDays": 0,
+        "newDays": 1
+      }
+    ],
+    "lastEditDate": "21:33:23 12/4/2026",
+    "dailyRecords": [
+      {
+        "dateStr": "12/04/2026",
+        "action": "CHECK_IN",
+        "timestamp": "2026-04-12T14:33:23.386Z"
+      }
+    ]
   },
   {
     "id": "ATT_1018",
     "employeeId": "EMP018",
     "month": "05/2026",
     "standardDays": 22,
-    "actualDays": 0,
+    "actualDays": 1,
     "lateCount": 0,
     "overtimeHours": 0,
-    "editCount": 0,
-    "checkInLogs": [],
-    "lastEditDate": "05:39:22 12/4/2026",
-    "dailyRecords": []
+    "editCount": 1,
+    "checkInLogs": [
+      {
+        "timestamp": "2026-04-12T14:33:23.925Z",
+        "dateStr": "12/4/2026",
+        "timeStr": "21:33:23",
+        "oldDays": 0,
+        "newDays": 1
+      }
+    ],
+    "lastEditDate": "21:33:23 12/4/2026",
+    "dailyRecords": [
+      {
+        "dateStr": "12/04/2026",
+        "action": "CHECK_IN",
+        "timestamp": "2026-04-12T14:33:23.922Z"
+      }
+    ]
   },
   {
     "id": "ATT_1019",
     "employeeId": "EMP019",
     "month": "05/2026",
     "standardDays": 22,
-    "actualDays": 0,
+    "actualDays": 1,
     "lateCount": 0,
     "overtimeHours": 0,
-    "editCount": 0,
-    "checkInLogs": [],
-    "lastEditDate": "05:39:22 12/4/2026",
-    "dailyRecords": []
+    "editCount": 1,
+    "checkInLogs": [
+      {
+        "timestamp": "2026-04-12T14:33:24.347Z",
+        "dateStr": "12/4/2026",
+        "timeStr": "21:33:24",
+        "oldDays": 0,
+        "newDays": 1
+      }
+    ],
+    "lastEditDate": "21:33:24 12/4/2026",
+    "dailyRecords": [
+      {
+        "dateStr": "12/04/2026",
+        "action": "CHECK_IN",
+        "timestamp": "2026-04-12T14:33:24.345Z"
+      }
+    ]
   },
   {
     "id": "ATT_1020",
     "employeeId": "EMP020",
     "month": "05/2026",
     "standardDays": 22,
-    "actualDays": 0,
+    "actualDays": 1,
     "lateCount": 0,
     "overtimeHours": 0,
-    "editCount": 0,
-    "checkInLogs": [],
-    "lastEditDate": "05:39:22 12/4/2026",
-    "dailyRecords": []
+    "editCount": 1,
+    "checkInLogs": [
+      {
+        "timestamp": "2026-04-12T14:33:25.399Z",
+        "dateStr": "12/4/2026",
+        "timeStr": "21:33:25",
+        "oldDays": 0,
+        "newDays": 1
+      }
+    ],
+    "lastEditDate": "21:33:25 12/4/2026",
+    "dailyRecords": [
+      {
+        "dateStr": "12/04/2026",
+        "action": "CHECK_IN",
+        "timestamp": "2026-04-12T14:33:25.393Z"
+      }
+    ]
   },
   {
     "id": "ATT_1021",
     "employeeId": "EMP021",
     "month": "05/2026",
     "standardDays": 22,
-    "actualDays": 0,
+    "actualDays": 1,
     "lateCount": 0,
     "overtimeHours": 0,
-    "editCount": 0,
-    "checkInLogs": [],
-    "lastEditDate": "05:39:22 12/4/2026",
-    "dailyRecords": []
+    "editCount": 1,
+    "checkInLogs": [
+      {
+        "timestamp": "2026-04-12T14:33:27.792Z",
+        "dateStr": "12/4/2026",
+        "timeStr": "21:33:27",
+        "oldDays": 0,
+        "newDays": 1
+      }
+    ],
+    "lastEditDate": "21:33:27 12/4/2026",
+    "dailyRecords": [
+      {
+        "dateStr": "12/04/2026",
+        "action": "CHECK_IN",
+        "timestamp": "2026-04-12T14:33:27.786Z"
+      }
+    ]
   },
   {
     "id": "ATT_1022",
     "employeeId": "EMP022",
     "month": "05/2026",
     "standardDays": 22,
-    "actualDays": 0,
+    "actualDays": 1,
     "lateCount": 0,
     "overtimeHours": 0,
-    "editCount": 0,
-    "checkInLogs": [],
-    "lastEditDate": "05:39:22 12/4/2026",
-    "dailyRecords": []
+    "editCount": 1,
+    "checkInLogs": [
+      {
+        "timestamp": "2026-04-12T14:33:28.324Z",
+        "dateStr": "12/4/2026",
+        "timeStr": "21:33:28",
+        "oldDays": 0,
+        "newDays": 1
+      }
+    ],
+    "lastEditDate": "21:33:28 12/4/2026",
+    "dailyRecords": [
+      {
+        "dateStr": "12/04/2026",
+        "action": "CHECK_IN",
+        "timestamp": "2026-04-12T14:33:28.321Z"
+      }
+    ]
   },
   {
     "id": "ATT_1023",
     "employeeId": "EMP023",
     "month": "05/2026",
     "standardDays": 22,
-    "actualDays": 0,
+    "actualDays": 1,
     "lateCount": 0,
     "overtimeHours": 0,
-    "editCount": 0,
-    "checkInLogs": [],
-    "lastEditDate": "05:39:22 12/4/2026",
-    "dailyRecords": []
+    "editCount": 1,
+    "checkInLogs": [
+      {
+        "timestamp": "2026-04-12T14:33:28.812Z",
+        "dateStr": "12/4/2026",
+        "timeStr": "21:33:28",
+        "oldDays": 0,
+        "newDays": 1
+      }
+    ],
+    "lastEditDate": "21:33:28 12/4/2026",
+    "dailyRecords": [
+      {
+        "dateStr": "12/04/2026",
+        "action": "CHECK_IN",
+        "timestamp": "2026-04-12T14:33:28.809Z"
+      }
+    ]
   },
   {
     "id": "ATT_1024",
     "employeeId": "EMP024",
     "month": "05/2026",
     "standardDays": 22,
-    "actualDays": 0,
+    "actualDays": 1,
     "lateCount": 0,
     "overtimeHours": 0,
-    "editCount": 0,
-    "checkInLogs": [],
-    "lastEditDate": "05:39:22 12/4/2026",
-    "dailyRecords": []
+    "editCount": 1,
+    "checkInLogs": [
+      {
+        "timestamp": "2026-04-12T14:33:29.284Z",
+        "dateStr": "12/4/2026",
+        "timeStr": "21:33:29",
+        "oldDays": 0,
+        "newDays": 1
+      }
+    ],
+    "lastEditDate": "21:33:29 12/4/2026",
+    "dailyRecords": [
+      {
+        "dateStr": "12/04/2026",
+        "action": "CHECK_IN",
+        "timestamp": "2026-04-12T14:33:29.281Z"
+      }
+    ]
   },
   {
     "id": "ATT_1025",
     "employeeId": "EMP025",
     "month": "05/2026",
     "standardDays": 22,
-    "actualDays": 0,
+    "actualDays": 1,
     "lateCount": 0,
     "overtimeHours": 0,
-    "editCount": 0,
-    "checkInLogs": [],
-    "lastEditDate": "05:39:22 12/4/2026",
-    "dailyRecords": []
+    "editCount": 1,
+    "checkInLogs": [
+      {
+        "timestamp": "2026-04-12T14:33:30.471Z",
+        "dateStr": "12/4/2026",
+        "timeStr": "21:33:30",
+        "oldDays": 0,
+        "newDays": 1
+      }
+    ],
+    "lastEditDate": "21:33:30 12/4/2026",
+    "dailyRecords": [
+      {
+        "dateStr": "12/04/2026",
+        "action": "CHECK_IN",
+        "timestamp": "2026-04-12T14:33:30.466Z"
+      }
+    ]
   },
   {
     "id": "ATT_1026",
     "employeeId": "EMP026",
     "month": "05/2026",
     "standardDays": 22,
-    "actualDays": 0,
+    "actualDays": 1,
     "lateCount": 0,
     "overtimeHours": 0,
-    "editCount": 0,
+    "editCount": 1,
     "fullName": "Cao Hoa Hồng",
-    "lastEditDate": "05:39:22 12/4/2026",
-    "checkInLogs": [],
-    "dailyRecords": []
+    "lastEditDate": "21:33:31 12/4/2026",
+    "checkInLogs": [
+      {
+        "timestamp": "2026-04-12T14:33:31.608Z",
+        "dateStr": "12/4/2026",
+        "timeStr": "21:33:31",
+        "oldDays": 0,
+        "newDays": 1
+      }
+    ],
+    "dailyRecords": [
+      {
+        "dateStr": "12/04/2026",
+        "action": "CHECK_IN",
+        "timestamp": "2026-04-12T14:33:31.603Z"
+      }
+    ]
   },
   {
     "id": "ATT_1027",
     "employeeId": "EMP027",
     "month": "05/2026",
     "standardDays": 22,
-    "actualDays": 0,
+    "actualDays": 1,
     "lateCount": 0,
     "overtimeHours": 0,
-    "editCount": 0,
-    "checkInLogs": [],
-    "lastEditDate": "05:39:22 12/4/2026",
-    "dailyRecords": []
+    "editCount": 1,
+    "checkInLogs": [
+      {
+        "timestamp": "2026-04-12T14:33:32.092Z",
+        "dateStr": "12/4/2026",
+        "timeStr": "21:33:32",
+        "oldDays": 0,
+        "newDays": 1
+      }
+    ],
+    "lastEditDate": "21:33:32 12/4/2026",
+    "dailyRecords": [
+      {
+        "dateStr": "12/04/2026",
+        "action": "CHECK_IN",
+        "timestamp": "2026-04-12T14:33:32.089Z"
+      }
+    ]
   },
   {
     "id": "ATT_1028",
     "employeeId": "EMP028",
     "month": "05/2026",
     "standardDays": 22,
-    "actualDays": 0,
+    "actualDays": 1,
     "lateCount": 0,
     "overtimeHours": 0,
-    "editCount": 0,
-    "checkInLogs": [],
-    "lastEditDate": "05:39:22 12/4/2026",
-    "dailyRecords": []
+    "editCount": 1,
+    "checkInLogs": [
+      {
+        "timestamp": "2026-04-12T14:33:32.532Z",
+        "dateStr": "12/4/2026",
+        "timeStr": "21:33:32",
+        "oldDays": 0,
+        "newDays": 1
+      }
+    ],
+    "lastEditDate": "21:33:32 12/4/2026",
+    "dailyRecords": [
+      {
+        "dateStr": "12/04/2026",
+        "action": "CHECK_IN",
+        "timestamp": "2026-04-12T14:33:32.529Z"
+      }
+    ]
   },
   {
     "id": "ATT_1029",
     "employeeId": "EMP029",
     "month": "05/2026",
     "standardDays": 22,
-    "actualDays": 0,
+    "actualDays": 1,
     "lateCount": 0,
     "overtimeHours": 0,
-    "editCount": 0,
-    "checkInLogs": [],
-    "lastEditDate": "05:39:22 12/4/2026",
-    "dailyRecords": []
+    "editCount": 1,
+    "checkInLogs": [
+      {
+        "timestamp": "2026-04-12T14:33:33.006Z",
+        "dateStr": "12/4/2026",
+        "timeStr": "21:33:33",
+        "oldDays": 0,
+        "newDays": 1
+      }
+    ],
+    "lastEditDate": "21:33:33 12/4/2026",
+    "dailyRecords": [
+      {
+        "dateStr": "12/04/2026",
+        "action": "CHECK_IN",
+        "timestamp": "2026-04-12T14:33:33.002Z"
+      }
+    ]
   },
   {
     "id": "ATT_1030",
     "employeeId": "EMP030",
     "month": "05/2026",
     "standardDays": 22,
-    "actualDays": 0,
+    "actualDays": 1,
     "lateCount": 0,
     "overtimeHours": 0,
-    "editCount": 0,
-    "checkInLogs": [],
-    "lastEditDate": "05:39:22 12/4/2026",
-    "dailyRecords": []
+    "editCount": 1,
+    "checkInLogs": [
+      {
+        "timestamp": "2026-04-12T14:33:34.151Z",
+        "dateStr": "12/4/2026",
+        "timeStr": "21:33:34",
+        "oldDays": 0,
+        "newDays": 1
+      }
+    ],
+    "lastEditDate": "21:33:34 12/4/2026",
+    "dailyRecords": [
+      {
+        "dateStr": "12/04/2026",
+        "action": "CHECK_IN",
+        "timestamp": "2026-04-12T14:33:34.146Z"
+      }
+    ]
   },
   {
     "id": "ATT_1031",
     "employeeId": "EMP031",
     "month": "05/2026",
     "standardDays": 22,
-    "actualDays": 0,
+    "actualDays": 1,
     "lateCount": 0,
     "overtimeHours": 0,
-    "editCount": 0,
-    "checkInLogs": [],
-    "lastEditDate": "05:39:22 12/4/2026",
+    "editCount": 1,
+    "checkInLogs": [
+      {
+        "timestamp": "2026-04-12T14:33:36.903Z",
+        "dateStr": "12/4/2026",
+        "timeStr": "21:33:36",
+        "oldDays": 0,
+        "newDays": 1
+      }
+    ],
+    "lastEditDate": "21:33:36 12/4/2026",
     "fullName": "Kiều Chạy Ads",
-    "dailyRecords": []
+    "dailyRecords": [
+      {
+        "dateStr": "12/04/2026",
+        "action": "CHECK_IN",
+        "timestamp": "2026-04-12T14:33:36.898Z"
+      }
+    ]
   },
   {
     "id": "ATT_1032",
     "employeeId": "EMP032",
     "month": "05/2026",
     "standardDays": 22,
-    "actualDays": 0,
+    "actualDays": 1,
     "lateCount": 0,
     "overtimeHours": 0,
-    "editCount": 0,
-    "checkInLogs": [],
-    "lastEditDate": "05:39:22 12/4/2026",
+    "editCount": 1,
+    "checkInLogs": [
+      {
+        "timestamp": "2026-04-12T14:33:37.556Z",
+        "dateStr": "12/4/2026",
+        "timeStr": "21:33:37",
+        "oldDays": 0,
+        "newDays": 1
+      }
+    ],
+    "lastEditDate": "21:33:37 12/4/2026",
     "fullName": "Phan Thiết Kế",
-    "dailyRecords": []
+    "dailyRecords": [
+      {
+        "dateStr": "12/04/2026",
+        "action": "CHECK_IN",
+        "timestamp": "2026-04-12T14:33:37.553Z"
+      }
+    ]
   },
   {
     "id": "ATT_1033",
     "employeeId": "EMP033",
     "month": "05/2026",
     "standardDays": 22,
-    "actualDays": 0,
+    "actualDays": 1,
     "lateCount": 0,
     "overtimeHours": 0,
-    "editCount": 0,
-    "checkInLogs": [],
-    "lastEditDate": "05:39:22 12/4/2026",
-    "dailyRecords": []
+    "editCount": 1,
+    "checkInLogs": [
+      {
+        "timestamp": "2026-04-12T14:33:38.246Z",
+        "dateStr": "12/4/2026",
+        "timeStr": "21:33:38",
+        "oldDays": 0,
+        "newDays": 1
+      }
+    ],
+    "lastEditDate": "21:33:38 12/4/2026",
+    "dailyRecords": [
+      {
+        "dateStr": "12/04/2026",
+        "action": "CHECK_IN",
+        "timestamp": "2026-04-12T14:33:38.242Z"
+      }
+    ]
   },
   {
     "id": "ATT_1034",
     "employeeId": "EMP034",
     "month": "05/2026",
     "standardDays": 22,
-    "actualDays": 0,
+    "actualDays": 1,
     "lateCount": 0,
     "overtimeHours": 0,
-    "editCount": 0,
+    "editCount": 1,
     "fullName": "Dương Tư Vấn",
-    "lastEditDate": "05:39:22 12/4/2026",
-    "checkInLogs": [],
-    "dailyRecords": []
+    "lastEditDate": "21:33:38 12/4/2026",
+    "checkInLogs": [
+      {
+        "timestamp": "2026-04-12T14:33:38.676Z",
+        "dateStr": "12/4/2026",
+        "timeStr": "21:33:38",
+        "oldDays": 0,
+        "newDays": 1
+      }
+    ],
+    "dailyRecords": [
+      {
+        "dateStr": "12/04/2026",
+        "action": "CHECK_IN",
+        "timestamp": "2026-04-12T14:33:38.673Z"
+      }
+    ]
   },
   {
     "id": "ATT_1035",
     "employeeId": "EMP035",
     "month": "05/2026",
     "standardDays": 22,
-    "actualDays": 0,
+    "actualDays": 1,
     "lateCount": 0,
     "overtimeHours": 0,
-    "editCount": 0,
-    "checkInLogs": [],
-    "lastEditDate": "05:39:22 12/4/2026",
-    "dailyRecords": []
+    "editCount": 1,
+    "checkInLogs": [
+      {
+        "timestamp": "2026-04-12T14:33:39.647Z",
+        "dateStr": "12/4/2026",
+        "timeStr": "21:33:39",
+        "oldDays": 0,
+        "newDays": 1
+      }
+    ],
+    "lastEditDate": "21:33:39 12/4/2026",
+    "dailyRecords": [
+      {
+        "dateStr": "12/04/2026",
+        "action": "CHECK_IN",
+        "timestamp": "2026-04-12T14:33:39.642Z"
+      }
+    ]
   },
   {
     "employeeId": "EMP820",
     "fullName": "Sou",
     "month": "05/2026",
     "standardDays": 22,
-    "actualDays": 0,
+    "actualDays": 1,
     "lateCount": 0,
     "overtimeHours": 0,
     "id": "ATT_0326_1397",
-    "editCount": 0,
-    "lastEditDate": "05:39:22 12/4/2026",
-    "checkInLogs": [],
-    "dailyRecords": []
+    "editCount": 1,
+    "lastEditDate": "21:33:40 12/4/2026",
+    "checkInLogs": [
+      {
+        "timestamp": "2026-04-12T14:33:40.919Z",
+        "dateStr": "12/4/2026",
+        "timeStr": "21:33:40",
+        "oldDays": 0,
+        "newDays": 1
+      }
+    ],
+    "dailyRecords": [
+      {
+        "dateStr": "12/04/2026",
+        "action": "CHECK_IN",
+        "timestamp": "2026-04-12T14:33:40.914Z"
+      }
+    ]
   },
   {
     "employeeId": "EMP629",
     "fullName": "Ngyễn Văn So",
     "month": "05/2026",
     "standardDays": 22,
-    "actualDays": 0,
+    "actualDays": 1,
     "lateCount": 0,
     "overtimeHours": 0,
     "id": "ATT_0326_3380",
-    "editCount": 0,
-    "lastEditDate": "05:39:22 12/4/2026",
-    "checkInLogs": [],
-    "dailyRecords": []
+    "editCount": 1,
+    "lastEditDate": "21:33:41 12/4/2026",
+    "checkInLogs": [
+      {
+        "timestamp": "2026-04-12T14:33:41.381Z",
+        "dateStr": "12/4/2026",
+        "timeStr": "21:33:41",
+        "oldDays": 0,
+        "newDays": 1
+      }
+    ],
+    "dailyRecords": [
+      {
+        "dateStr": "12/04/2026",
+        "action": "CHECK_IN",
+        "timestamp": "2026-04-12T14:33:41.377Z"
+      }
+    ]
   },
   {
     "employeeId": "EMP726",
     "fullName": "Mina MIno",
     "month": "05/2026",
     "standardDays": 22,
-    "actualDays": 0,
+    "actualDays": 1,
     "lateCount": 0,
     "overtimeHours": 0,
     "id": "ATT_0326_9708",
-    "editCount": 0,
-    "lastEditDate": "05:39:22 12/4/2026",
-    "checkInLogs": [],
-    "dailyRecords": []
+    "editCount": 1,
+    "lastEditDate": "21:33:41 12/4/2026",
+    "checkInLogs": [
+      {
+        "timestamp": "2026-04-12T14:33:41.925Z",
+        "dateStr": "12/4/2026",
+        "timeStr": "21:33:41",
+        "oldDays": 0,
+        "newDays": 1
+      }
+    ],
+    "dailyRecords": [
+      {
+        "dateStr": "12/04/2026",
+        "action": "CHECK_IN",
+        "timestamp": "2026-04-12T14:33:41.921Z"
+      }
+    ]
   },
   {
     "employeeId": "EMP700",
     "fullName": "Messi",
     "month": "05/2026",
     "standardDays": 22,
-    "actualDays": 0,
+    "actualDays": 1,
     "lateCount": 0,
     "overtimeHours": 0,
     "id": "ATT_0326_5736",
-    "editCount": 0,
-    "lastEditDate": "05:39:22 12/4/2026",
-    "checkInLogs": [],
-    "dailyRecords": []
+    "editCount": 1,
+    "lastEditDate": "21:33:43 12/4/2026",
+    "checkInLogs": [
+      {
+        "timestamp": "2026-04-12T14:33:43.183Z",
+        "dateStr": "12/4/2026",
+        "timeStr": "21:33:43",
+        "oldDays": 0,
+        "newDays": 1
+      }
+    ],
+    "dailyRecords": [
+      {
+        "dateStr": "12/04/2026",
+        "action": "CHECK_IN",
+        "timestamp": "2026-04-12T14:33:43.178Z"
+      }
+    ]
   },
   {
-    "employeeId": "EMP822",
-    "fullName": "Nguyễn Ngọc B",
+    "employeeId": "EMP934",
+    "fullName": "Y SÊU",
     "month": "04/2026",
     "standardDays": 22,
-    "actualDays": 0,
+    "actualDays": 1,
     "lateCount": 0,
     "overtimeHours": 0,
-    "id": "ATT_0326_2460",
-    "dailyRecords": [],
-    "editCount": 0,
-    "lastEditDate": "21:06:32 12/4/2026"
-  },
-  {
-    "employeeId": "EMP823",
-    "fullName": "Nguyễn Ngọc C",
-    "month": "04/2026",
-    "standardDays": 22,
-    "actualDays": 0,
-    "lateCount": 0,
-    "overtimeHours": 0,
-    "id": "ATT_0326_7085",
-    "dailyRecords": [],
-    "editCount": 0,
-    "lastEditDate": "21:07:07 12/4/2026"
+    "id": "ATT_0326_7097",
+    "dailyRecords": [
+      {
+        "dateStr": "12/04/2026",
+        "action": "CHECK_IN",
+        "timestamp": "2026-04-12T14:33:43.857Z"
+      }
+    ],
+    "editCount": 1,
+    "lastEditDate": "21:33:43 12/4/2026",
+    "checkInLogs": [
+      {
+        "timestamp": "2026-04-12T14:33:43.860Z",
+        "dateStr": "12/4/2026",
+        "timeStr": "21:33:43",
+        "oldDays": 0,
+        "newDays": 1
+      }
+    ]
   }
 ]
