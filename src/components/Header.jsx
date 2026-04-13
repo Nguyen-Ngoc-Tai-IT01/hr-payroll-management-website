@@ -6,6 +6,9 @@ import './Header.css';
 const Header = ({ user, setUser }) => {
   const navigate = useNavigate();
 
+  // KIỂM TRA QUYỀN ĐỂ ẨN MENU
+  const isPrivileged = user && ["EMP001", "EMP002", "EMP003", "EMP004", "EMP005"].includes(user.id);
+
   const handleLogout = () => {
     Swal.fire({
       title: "Đăng xuất?",
@@ -49,12 +52,18 @@ const Header = ({ user, setUser }) => {
         {user ? (
           <>
             <nav className="header-nav">
-              <NavLink to="/dashboard" className={({ isActive }) => isActive ? "nav-link active" : "nav-link"}>
-                <img src="/overview.png" alt="Overview" className="nav-img-icon" /> Tổng quan
-              </NavLink>
-              <NavLink to="/employees" className={({ isActive }) => isActive ? "nav-link active" : "nav-link"}>
-                <img src="/human_resources.png" alt="Employees" className="nav-img-icon" /> Nhân sự
-              </NavLink>
+              {/* CHỈ 5 VIP MỚI THẤY TỔNG QUAN VÀ NHÂN SỰ */}
+              {isPrivileged && (
+                <>
+                  <NavLink to="/dashboard" className={({ isActive }) => isActive ? "nav-link active" : "nav-link"}>
+                    <img src="/overview.png" alt="Overview" className="nav-img-icon" /> Tổng quan
+                  </NavLink>
+                  <NavLink to="/employees" className={({ isActive }) => isActive ? "nav-link active" : "nav-link"}>
+                    <img src="/human_resources.png" alt="Employees" className="nav-img-icon" /> Nhân sự
+                  </NavLink>
+                </>
+              )}
+
               <NavLink to="/attendance" className={({ isActive }) => isActive ? "nav-link active" : "nav-link"}>
                 <img src="/calendar.png" alt="Attendance" className="nav-img-icon" /> Chấm công
               </NavLink>
@@ -62,14 +71,18 @@ const Header = ({ user, setUser }) => {
                 <img src="/salary.png" alt="Payroll" className="nav-img-icon" /> Tiền lương
               </NavLink>
               
-              <div className="nav-divider"></div>
-              
-              <NavLink to="/reports" className={({ isActive }) => isActive ? "nav-link active" : "nav-link"}>
-                <img src="/report.png" alt="Reports" className="nav-img-icon" /> Báo cáo
-              </NavLink>
-              <NavLink to="/settings" className={({ isActive }) => isActive ? "nav-link active" : "nav-link"}>
-                <img src="/settings.png" alt="Settings" className="nav-img-icon" /> Cài đặt
-              </NavLink>
+              {/* CHỈ 5 VIP MỚI THẤY BÁO CÁO VÀ CÀI ĐẶT */}
+              {isPrivileged && (
+                <>
+                  <div className="nav-divider"></div>
+                  <NavLink to="/reports" className={({ isActive }) => isActive ? "nav-link active" : "nav-link"}>
+                    <img src="/report.png" alt="Reports" className="nav-img-icon" /> Báo cáo
+                  </NavLink>
+                  <NavLink to="/settings" className={({ isActive }) => isActive ? "nav-link active" : "nav-link"}>
+                    <img src="/settings.png" alt="Settings" className="nav-img-icon" /> Cài đặt
+                  </NavLink>
+                </>
+              )}
             </nav>
 
             {/* THÔNG TIN USER */}
@@ -79,8 +92,9 @@ const Header = ({ user, setUser }) => {
                   {user.fullName ? user.fullName.charAt(0).toUpperCase() : 'U'}
                 </div>
                 <div className="user-details">
-                  <span className="user-name">{user.fullName || "Admin"}</span>
-                  <span className="user-role">Quản trị viên</span>
+                  <span className="user-name">{user.fullName || "Người dùng"}</span>
+                  {/* THAY ĐỔI CHỮ QUẢN TRỊ VIÊN/NHÂN VIÊN THEO QUYỀN */}
+                  <span className="user-role">{isPrivileged ? "Quản trị viên" : "Nhân viên"}</span>
                 </div>
               </Link>
               

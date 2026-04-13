@@ -32,6 +32,9 @@ import PayslipDetail from "./pages/payroll/Payslip";
 
 // --- COMPONENT TRANG CHỦ (HOME) ---
 function Home({ user }) {
+  // KIỂM TRA QUYỀN VIP CHO TRANG CHỦ
+  const isPrivileged = user && ["EMP001", "EMP002", "EMP003", "EMP004", "EMP005"].includes(user.id);
+
   // =======================================================
   // 1. TRẠNG THÁI CHƯA ĐĂNG NHẬP: HIỆN TRANG GIỚI THIỆU
   // =======================================================
@@ -258,7 +261,7 @@ function Home({ user }) {
       <div style={{ textAlign: "center", marginBottom: "40px", maxWidth: "800px", display: "flex", flexDirection: "column", alignItems: "center" }}>
         <img src={logo} alt="Workforce Manager Logo" style={{ height: "120px", width: "auto", objectFit: "contain", marginBottom: "20px", borderRadius: "15px", filter: "drop-shadow(0 6px 12px rgba(0,0,0,0.06))" }} />
         <h1 style={{ fontSize: "28px", color: "#1e293b", marginBottom: "12px", fontWeight: "900" }}>
-          Chào mừng trở lại, <span style={{ color: "#2563eb" }}>{user.fullName || "Quản trị viên"}</span> 👋
+          Chào mừng trở lại, <span style={{ color: "#2563eb" }}>{user.fullName || "Người dùng"}</span> 👋
         </h1>
         <p style={{ fontSize: "16px", color: "#64748b" }}>Bạn muốn làm việc với phân hệ nào hôm nay?</p>
       </div>
@@ -270,15 +273,21 @@ function Home({ user }) {
         </h3>
         <div className="module-grid" style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(220px, 1fr))", gap: "24px" }}>
           
-          <Link to="/dashboard" className="module-card" style={moduleCardStyle}>
-            <img src="/overview.png" alt="Tổng quan" style={iconStyle} />
-            <span style={textStyle}>Tổng quan</span>
-          </Link>
-          
-          <Link to="/employees" className="module-card" style={moduleCardStyle}>
-            <img src="/human_resources.png" alt="Nhân sự" style={iconStyle} />
-            <span style={textStyle}>Nhân sự</span>
-          </Link>
+          {/* CHỈ 5 VIP MỚI THẤY NÚT NÀY */}
+          {isPrivileged && (
+            <Link to="/dashboard" className="module-card" style={moduleCardStyle}>
+              <img src="/overview.png" alt="Tổng quan" style={iconStyle} />
+              <span style={textStyle}>Tổng quan</span>
+            </Link>
+          )}
+
+          {/* CHỈ 5 VIP MỚI THẤY NÚT NÀY */}
+          {isPrivileged && (
+            <Link to="/employees" className="module-card" style={moduleCardStyle}>
+              <img src="/human_resources.png" alt="Nhân sự" style={iconStyle} />
+              <span style={textStyle}>Nhân sự</span>
+            </Link>
+          )}
           
           <Link to="/attendance" className="module-card" style={moduleCardStyle}>
             <img src="/calendar.png" alt="Chấm công" style={iconStyle} />
@@ -304,10 +313,13 @@ function Home({ user }) {
             <span style={textStyle}>Hồ sơ của tôi</span>
           </Link>
           
-          <Link to="/settings" className="module-card" style={moduleCardStyle}>
-            <img src="/settings.png" alt="Cài đặt" style={iconStyle} />
-            <span style={textStyle}>Cài đặt</span>
-          </Link>
+          {/* CHỈ 5 VIP MỚI THẤY NÚT NÀY */}
+          {isPrivileged && (
+            <Link to="/settings" className="module-card" style={moduleCardStyle}>
+              <img src="/settings.png" alt="Cài đặt" style={iconStyle} />
+              <span style={textStyle}>Cài đặt</span>
+            </Link>
+          )}
         </div>
       </div>
     </div>
@@ -330,6 +342,7 @@ const moduleCardStyle = {
 
 const iconStyle = { width: "40px", height: "40px", objectFit: "contain" };
 const textStyle = { fontSize: "16px", fontWeight: "700", color: "#1e293b" };
+
 // --- COMPONENT APP CHÍNH ---
 function App() {
   const [user, setUser] = useState(null);
@@ -348,6 +361,7 @@ function App() {
     window.addEventListener("userChanged", checkUser);
     return () => window.removeEventListener("userChanged", checkUser);
   }, []);
+
   useEffect(() => {
     const savedSettings = localStorage.getItem("appSettings");
     if (savedSettings) {
@@ -359,6 +373,10 @@ function App() {
       }
     }
   }, []);
+
+  // KIỂM TRA QUYỀN TRUY CẬP CHO ROUTER
+  const isPrivileged = user && ["EMP001", "EMP002", "EMP003", "EMP004", "EMP005"].includes(user.id);
+
   return (
     <div
       className="app-container"
@@ -375,36 +393,37 @@ function App() {
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
 
+          {/* CÁC ROUTE CHỈ DÀNH CHO 5 VIP */}
           <Route
             path="/dashboard"
-            element={user ? <Dashboard /> : <Navigate to="/" />}
-          />
-          <Route
-            path="/employees/new"
-            element={user ? <EmployeeForm /> : <Navigate to="/" />}
-          />
-
-          <Route
-            path="/employees/:id"
-            element={user ? <EmployeeDetail /> : <Navigate to="/" />}
-          />
-
-          <Route
-            path="/employees/edit/:id"
-            element={user ? <EmployeeForm /> : <Navigate to="/" />}
+            element={user && isPrivileged ? <Dashboard /> : <Navigate to="/" />}
           />
           <Route
             path="/employees"
-            element={user ? <EmployeeList /> : <Navigate to="/" />}
+            element={user && isPrivileged ? <EmployeeList /> : <Navigate to="/" />}
+          />
+          <Route
+            path="/employees/new"
+            element={user && isPrivileged ? <EmployeeForm /> : <Navigate to="/" />}
           />
           <Route
             path="/employees/:id"
-            element={user ? <EmployeeDetail /> : <Navigate to="/" />}
+            element={user && isPrivileged ? <EmployeeDetail /> : <Navigate to="/" />}
           />
           <Route
             path="/employees/edit/:id"
-            element={user ? <EmployeeForm /> : <Navigate to="/" />}
+            element={user && isPrivileged ? <EmployeeForm /> : <Navigate to="/" />}
           />
+          <Route
+            path="/settings"
+            element={user && isPrivileged ? <Settings /> : <Navigate to="/" />}
+          />
+          <Route
+            path="/reports"
+            element={user && isPrivileged ? <Reports /> : <Navigate to="/" />}
+          />
+
+          {/* CÁC ROUTE AI CŨNG VÀO ĐƯỢC (NẾU ĐÃ ĐĂNG NHẬP) */}
           <Route
             path="/attendance"
             element={user ? <Attendance /> : <Navigate to="/" />}
@@ -422,16 +441,8 @@ function App() {
             element={user ? <PayslipDetail /> : <Navigate to="/" />}
           />
           <Route
-            path="/settings"
-            element={user ? <Settings /> : <Navigate to="/" />}
-          />
-          <Route
             path="/profile"
             element={user ? <Profile /> : <Navigate to="/" />}
-          />
-          <Route
-            path="/reports"
-            element={user ? <Reports /> : <Navigate to="/" />}
           />
 
           <Route
@@ -444,7 +455,7 @@ function App() {
                   color: "#ef4444",
                 }}
               >
-                404 - Không tìm thấy trang
+                404 - Không tìm thấy trang (Hoặc bạn không có quyền truy cập)
               </h2>
             }
           />

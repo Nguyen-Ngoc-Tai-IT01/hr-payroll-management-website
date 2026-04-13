@@ -19,7 +19,12 @@ const Leaves = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const [recordsPerPage] = useState(10);
 
-  // ĐÃ SỬA: ĐỒNG BỘ DỮ LIỆU NHÂN SỰ TỪ LOCALSTORAGE
+  // KIỂM TRA CHÍNH XÁC 5 NGƯỜI CÓ QUYỀN XEM TẤT CẢ (ADMIN/HR)
+  const currentUser = JSON.parse(localStorage.getItem("user")) || {};
+  const VIP_ADMINS = ["EMP001", "EMP002", "EMP003", "EMP004", "EMP005"];
+  const isPrivileged = VIP_ADMINS.includes(currentUser.id);
+
+  // LẤY DỮ LIỆU
   const loadData = async () => {
     try {
       // 1. Tải dữ liệu Đơn nghỉ phép từ Backend
@@ -58,7 +63,13 @@ const Leaves = () => {
     return emp ? emp.fullName : `NV-${req.employeeId}`;
   };
 
+  // LỌC DỮ LIỆU THEO QUYỀN
   const filteredRecords = leaveRequests.filter(req => {
+    // BƯỚC LỌC DỮ LIỆU CÁ NHÂN: Nếu không phải 5 VIP, chỉ xem được đơn của chính mình
+    if (!isPrivileged && String(req.employeeId) !== String(currentUser.id)) {
+      return false;
+    }
+
     const searchLower = searchTerm.toLowerCase();
     const name = renderEmployeeName(req);
     return (
@@ -84,6 +95,23 @@ const Leaves = () => {
     link.href = url;
     link.setAttribute("download", `Bao_cao_Nghi_phep.csv`);
     link.click();
+  };
+
+  // MỞ FORM TẠO ĐƠN
+  const handleAddNew = () => {
+    if (!isPrivileged) {
+      // Nếu là nhân viên thường, tự động điền thông tin của họ và khóa ô nhập mã
+      setFormData({
+        ...initialFormState,
+        employeeId: currentUser.id || '',
+        fullName: currentUser.fullName || ''
+      });
+    } else {
+      // Admin thì được nhập tự do
+      setFormData(initialFormState);
+    }
+    setEditingId(null);
+    setShowForm(true);
   };
 
   const handleEdit = (req) => {
@@ -144,12 +172,17 @@ const Leaves = () => {
     <div style={{ marginTop: '10px' }}>
       
       <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '20px' }}>
-        <h2 style={{ color: '#1e293b', margin: 0, fontSize: '24px' }}>Quản lý Đơn Nghỉ Phép</h2>
+        <h2 style={{ color: '#1e293b', margin: 0, fontSize: '24px' }}>
+          {isPrivileged ? "Quản lý Đơn Nghỉ Phép" : "Đơn Xin Phép Của Tôi"}
+        </h2>
         <div style={{ display: 'flex', gap: '10px' }}>
-          <button onClick={handleExport} className="btn btn-success">
-            Xuất báo cáo
-          </button>
-          <button onClick={() => { setFormData(initialFormState); setEditingId(null); setShowForm(true); }} className="btn btn-primary">
+          {/* NÚT XUẤT BÁO CÁO: Chỉ 5 VIP mới thấy */}
+          {isPrivileged && (
+            <button onClick={handleExport} className="btn btn-success">
+              Xuất báo cáo
+            </button>
+          )}
+          <button onClick={handleAddNew} className="btn btn-primary">
             + Tạo đơn mới
           </button>
         </div>
@@ -158,18 +191,22 @@ const Leaves = () => {
       <div style={{ backgroundColor: 'white', padding: '20px', borderRadius: '12px', boxShadow: '0 4px 6px -1px rgba(0,0,0,0.1)' }}>
         
         <div style={{ marginBottom: '20px', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-          <input 
-            type="text" 
-            placeholder="Tìm kiếm theo Mã NV hoặc Tên..." 
-            value={searchTerm}
-            onChange={(e) => {
-              setSearchTerm(e.target.value);
-              setCurrentPage(1); 
-            }}
-            style={{ width: '100%', maxWidth: '400px', padding: '12px', borderRadius: '8px', border: '1px solid #cbd5e1', outline: 'none' }}
-          />
+          {/* Ô TÌM KIẾM: Chỉ hiện cho VIP, vì nhân viên chỉ thấy list của chính mình nên không cần tìm */}
+          {isPrivileged ? (
+            <input 
+              type="text" 
+              placeholder="Tìm kiếm theo Mã NV hoặc Tên..." 
+              value={searchTerm}
+              onChange={(e) => {
+                setSearchTerm(e.target.value);
+                setCurrentPage(1); 
+              }}
+              style={{ width: '100%', maxWidth: '400px', padding: '12px', borderRadius: '8px', border: '1px solid #cbd5e1', outline: 'none' }}
+            />
+          ) : <div />}
+          
           <div style={{ fontWeight: '500', color: '#475569', backgroundColor: '#f1f5f9', padding: '8px 16px', borderRadius: '8px', border: '1px solid #e2e8f0' }}>
-            Tổng số: <strong style={{ color: '#2563eb', fontSize: '16px' }}>{filteredRecords.length}</strong> đơn nghỉ phép
+            Tổng số: <strong style={{ color: '#2563eb', fontSize: '16px' }}>{filteredRecords.length}</strong> đơn
           </div>
         </div>
 
@@ -183,7 +220,8 @@ const Leaves = () => {
                 <th>Lý do</th>
                 <th>Trạng thái</th>
                 <th style={{ textAlign: 'center' }}>Thao tác</th>
-                <th style={{ textAlign: 'center' }}>Phê duyệt</th>
+                {/* CỘT PHÊ DUYỆT: Chỉ hiện cho 5 VIP */}
+                {isPrivileged && <th style={{ textAlign: 'center' }}>Phê duyệt</th>}
               </tr>
             </thead>
             <tbody>
@@ -214,41 +252,45 @@ const Leaves = () => {
                       <button onClick={() => handleEdit(req)} className="btn btn-primary btn-sm" style={{ display: 'inline-block', marginRight: '5px' }}>Sửa</button>
                       <button onClick={() => handleDelete(req.id)} className="btn btn-danger btn-sm" style={{ display: 'inline-block' }}>Xóa</button>
                     </td>
-                    <td style={{ textAlign: 'center' }}>
-                      {/* KHÓA NÚT NẾU ĐÃ XỬ LÝ */}
-                      <button 
-                        onClick={() => updateStatus(req.id, 'Đã duyệt')} 
-                        className="btn btn-success btn-sm" 
-                        disabled={isProcessed}
-                        style={{ 
-                          display: 'inline-block', 
-                          marginRight: '5px',
-                          opacity: isProcessed ? 0.5 : 1,
-                          cursor: isProcessed ? 'not-allowed' : 'pointer'
-                        }}>
-                        Duyệt
-                      </button>
-                      <button 
-                        onClick={() => updateStatus(req.id, 'Từ chối')} 
-                        className="btn btn-danger btn-sm" 
-                        disabled={isProcessed}
-                        style={{ 
-                          display: 'inline-block',
-                          opacity: isProcessed ? 0.5 : 1,
-                          cursor: isProcessed ? 'not-allowed' : 'pointer'
-                        }}>
-                        Từ chối
-                      </button>
-                    </td>
+                    
+                    {/* CÁC NÚT PHÊ DUYỆT: Chỉ 5 VIP mới được thao tác */}
+                    {isPrivileged && (
+                      <td style={{ textAlign: 'center' }}>
+                        <button 
+                          onClick={() => updateStatus(req.id, 'Đã duyệt')} 
+                          className="btn btn-success btn-sm" 
+                          disabled={isProcessed}
+                          style={{ 
+                            display: 'inline-block', 
+                            marginRight: '5px',
+                            opacity: isProcessed ? 0.5 : 1,
+                            cursor: isProcessed ? 'not-allowed' : 'pointer'
+                          }}>
+                          Duyệt
+                        </button>
+                        <button 
+                          onClick={() => updateStatus(req.id, 'Từ chối')} 
+                          className="btn btn-danger btn-sm" 
+                          disabled={isProcessed}
+                          style={{ 
+                            display: 'inline-block',
+                            opacity: isProcessed ? 0.5 : 1,
+                            cursor: isProcessed ? 'not-allowed' : 'pointer'
+                          }}>
+                          Từ chối
+                        </button>
+                      </td>
+                    )}
                   </tr>
                 );
               }) : (
-                <tr><td colSpan="7" style={{ textAlign: 'center', padding: '30px', color: '#64748b' }}>Không tìm thấy đơn nghỉ phép nào!</td></tr>
+                <tr><td colSpan={isPrivileged ? "7" : "6"} style={{ textAlign: 'center', padding: '30px', color: '#64748b' }}>Chưa có đơn nghỉ phép nào!</td></tr>
               )}
             </tbody>
           </table>
         </div>
 
+        {/* Component phân trang giữ nguyên */}
         <div className="pagination" style={{ backgroundColor: 'transparent', paddingBottom: 0 }}>
           <button disabled={currentPage === 1} onClick={() => setCurrentPage(currentPage - 1)} className="page-btn">Trước</button>
           {[...Array(totalPages)].map((_, i) => (
@@ -268,25 +310,23 @@ const Leaves = () => {
             </h3>
             <form onSubmit={handleSubmit} className="form-group">
               
-              {/* Ô NHẬP MÃ THÔNG MINH - CÓ GỢI Ý VÀ TỰ ĐIỀN TÊN */}
+              {/* Ô NHẬP MÃ NV - Khóa nếu là nhân viên hoặc đang Edit */}
               <div>
-                <label className="form-label">Mã nhân viên (Gõ hoặc chọn):</label>
+                <label className="form-label">Mã nhân viên:</label>
                 <input 
                   required 
                   list="employee-suggestions"
                   placeholder="VD: EMP001" 
                   className="form-input" 
-                  disabled={editingId !== null} 
+                  // Khóa không cho sửa nếu là nhân viên bình thường HOẶC đang trong chế độ sửa đơn
+                  disabled={!isPrivileged || editingId !== null} 
                   value={formData.employeeId} 
                   onChange={e => {
                     const val = e.target.value.toUpperCase();
-                    // Tìm xem mã NV vừa gõ có khớp với ai trong danh sách không
                     const matchedEmp = employees.find(emp => String(emp.id) === val || String(emp.employeeId) === val);
-                    
                     setFormData({
                       ...formData, 
                       employeeId: val,
-                      // Nếu tìm thấy, tự động điền tên người đó. Nếu không, giữ nguyên tên đang gõ.
                       fullName: matchedEmp ? matchedEmp.fullName : formData.fullName 
                     });
                   }} 
@@ -300,7 +340,14 @@ const Leaves = () => {
 
               <div>
                 <label className="form-label">Tên nhân viên:</label>
-                <input required placeholder="Tên nhân viên" className="form-input" value={formData.fullName} onChange={e => setFormData({...formData, fullName: e.target.value})} />
+                <input 
+                  required 
+                  placeholder="Tên nhân viên" 
+                  className="form-input" 
+                  value={formData.fullName} 
+                  disabled={!isPrivileged} // Nhân viên tự tạo thì tên tự động điền, cấm sửa tên
+                  onChange={e => setFormData({...formData, fullName: e.target.value})} 
+                />
               </div>
               
               <div>

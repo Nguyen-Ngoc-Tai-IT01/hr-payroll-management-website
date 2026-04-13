@@ -315,5 +315,15 @@
     "toDate": "2026-04-03",
     "reason": "Chuyển nhà về quê",
     "status": "Đã duyệt"
+  },
+  {
+    "employeeId": "EMP009",
+    "fullName": "Võ Kỹ Thuật",
+    "type": "Nghỉ ốm",
+    "fromDate": "2026-04-15",
+    "toDate": "2026-04-29",
+    "reason": "",
+    "status": "Chờ duyệt",
+    "id": 1776091041546
   }
 ]
