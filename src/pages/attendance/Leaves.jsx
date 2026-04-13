@@ -19,7 +19,7 @@ const Leaves = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const [recordsPerPage] = useState(10);
 
-  // ĐÃ SỬA: ĐỒNG BỘ DỮ LIỆU NHÂN SỰ TỪ LOCALSTORAGE
+  // động bộ dữ liệu nhân sự
   const loadData = async () => {
     try {
       // 1. Tải dữ liệu Đơn nghỉ phép từ Backend
@@ -215,7 +215,7 @@ const Leaves = () => {
                       <button onClick={() => handleDelete(req.id)} className="btn btn-danger btn-sm" style={{ display: 'inline-block' }}>Xóa</button>
                     </td>
                     <td style={{ textAlign: 'center' }}>
-                      {/* KHÓA NÚT NẾU ĐÃ XỬ LÝ */}
+                      {/* khoá nút đã xử lý  */}
                       <button 
                         onClick={() => updateStatus(req.id, 'Đã duyệt')} 
                         className="btn btn-success btn-sm" 
@@ -268,7 +268,7 @@ const Leaves = () => {
             </h3>
             <form onSubmit={handleSubmit} className="form-group">
               
-              {/* Ô NHẬP MÃ THÔNG MINH - CÓ GỢI Ý VÀ TỰ ĐIỀN TÊN */}
+              {/* ô nhập theo tên và mã*/}
               <div>
                 <label className="form-label">Mã nhân viên (Gõ hoặc chọn):</label>
                 <input 
