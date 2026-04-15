@@ -170,7 +170,7 @@
     "fromDate": "2026-04-30",
     "toDate": "2026-05-02",
     "reason": "Đi lễ hội",
-    "status": "Chờ duyệt"
+    "status": "Từ chối"
   },
   {
     "id": 20,
@@ -323,7 +323,17 @@
     "fromDate": "2026-04-15",
     "toDate": "2026-04-29",
     "reason": "",
-    "status": "Chờ duyệt",
+    "status": "Đã duyệt",
     "id": 1776091041546
+  },
+  {
+    "employeeId": "EMP006",
+    "fullName": "Hoàng Tổng",
+    "type": "Nghỉ phép năm",
+    "fromDate": "2026-04-16",
+    "toDate": "2026-04-18",
+    "reason": "",
+    "status": "Chờ duyệt",
+    "id": 1776251706007
   }
 ]

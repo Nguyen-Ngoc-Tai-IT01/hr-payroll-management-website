@@ -1,4 +1,4 @@
-[
+﻿[
   {
     "id": "EMP001",
     "username": "admin_tai",
@@ -125,6 +125,7 @@
     "joinDate": "2021-05-10",
     "status": "Đang làm việc"
   },
+  
   {
     "id": "EMP010",
     "username": "dev_03",
