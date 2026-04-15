@@ -134,7 +134,6 @@ const Attendance = () => {
     return { isCheckedIn: false, isCancelled: false };
   };
 
-  // --- CÁC HÀM XỬ LÝ GỐC ĐÃ ĐƯỢC PHỤC HỒI ---
   const handleEdit = (record) => {
     const { isCheckedIn } = checkStatusForDate(record, selectedDate);
     setFormData({ 
@@ -257,10 +256,10 @@ const Attendance = () => {
   const handleResetMonth = () => {
     Swal.fire({
       title: 'Khởi tạo lại mới?',
-      text: "Toàn bộ ngày công, đi muộn và lịch sử hiện tại sẽ bị thiệt lập lại về 0. Bạn có chắc chắn không?",
+      text: "Toàn bộ ngày công, đi muộn và lịch sử hiện tại sẽ bị thiết lập lại về 0. Bạn có chắc chắn không?",
       icon: 'warning',
       input: 'text',
-      inputPlaceholder: 'Nhập tháng mới (VD: 05/2026) để thiệt lập lại',
+      inputPlaceholder: 'Nhập tháng mới (VD: 05/2026) để thiết lập lại',
       showCancelButton: true,
       confirmButtonColor: '#d33',
       cancelButtonColor: '#3085d6',
@@ -334,7 +333,7 @@ const Attendance = () => {
         const last = rec.checkInLogs[rec.checkInLogs.length - 1];
         if (last.timestamp && new Date(last.timestamp).getTime() > latestTimestamp) {
           latestTimestamp = new Date(last.timestamp).getTime();
-          latestTime = last.timeStr;
+          latestTime = last.timeStr || new Date(last.timestamp).toLocaleTimeString('vi-VN');
         }
       }
     });
@@ -396,6 +395,11 @@ const Attendance = () => {
                   />
                 </div>
 
+                {/* --- PHỤC HỒI: GIỜ CẬP NHẬT CUỐI --- */}
+                <div style={{ fontSize: '14px', color: '#64748b', fontWeight: '500' }}>
+                  Cập nhật: <span style={{ color: '#0f172a', fontWeight: 'bold' }}>{getLastGlobalCheckInDate()}</span>
+                </div>
+
                 {isPrivileged && (
                   !isCheckInActive ? (
                     <button onClick={() => setIsCheckInActive(true)} style={{ backgroundColor: '#10b981', color: 'white', border: 'none', padding: '8px 16px', borderRadius: '8px', cursor: 'pointer', fontWeight: 'bold', boxShadow: '0 2px 4px rgba(16, 185, 129, 0.3)' }}>Bắt đầu chấm công</button>
@@ -407,6 +411,12 @@ const Attendance = () => {
                 {isPrivileged && (
                   <button onClick={() => setShowHistory(true)} style={{ backgroundColor: '#f59e0b', color: 'white', border: 'none', padding: '8px 16px', borderRadius: '8px', cursor: 'pointer', fontWeight: 'bold' }}>Lịch sử chấm công</button>
                 )}
+
+                {/* --- PHỤC HỒI: TỔNG SỐ NHÂN VIÊN --- */}
+                <div style={{ fontWeight: '500', color: '#475569', backgroundColor: '#f1f5f9', padding: '8px 16px', borderRadius: '8px', border: '1px solid #e2e8f0' }}>
+                  Tổng: <strong style={{ color: '#2563eb', fontSize: '16px' }}>{filteredRecords.length} nhân viên</strong>
+                </div>
+
               </div>
             </div>
 
@@ -480,7 +490,6 @@ const Attendance = () => {
         </div>
       )}
 
-      {/* PHỤC HỒI FORM MODAL THÊM/SỬA */}
       {showForm && (
         <div className="modal-overlay">
           <div className="modal-content">
@@ -571,7 +580,6 @@ const Attendance = () => {
         </div>
       )}
 
-      {/* PHỤC HỒI MODAL LỊCH SỬ CHẤM CÔNG */}
       {showHistory && (
         <div className="modal-overlay">
           <div className="modal-content" style={{ maxWidth: '700px', width: '90%' }}>
