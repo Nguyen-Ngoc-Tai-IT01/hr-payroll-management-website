@@ -3,6 +3,15 @@ import { useParams, useNavigate, Link } from 'react-router-dom';
 import Swal from 'sweetalert2'; 
 import './style.css'; 
 
+// THÊM HÀM LẤY NGÀY HÔM NAY THEO CHUẨN YYYY-MM-DD
+const getTodayDate = () => {
+  const d = new Date();
+  const year = d.getFullYear();
+  const month = String(d.getMonth() + 1).padStart(2, '0');
+  const day = String(d.getDate()).padStart(2, '0');
+  return `${year}-${month}-${day}`;
+};
+
 const EmployeeForm = () => {
   const { id } = useParams();
   const navigate = useNavigate();
@@ -11,12 +20,13 @@ const EmployeeForm = () => {
   const [formData, setFormData] = useState({
     id: '', fullName: '', email: '', phone: '',
     department: 'Phòng IT', position: '',
-    baseSalary: '', joinDate: '', status: 'Đang làm việc'
+    baseSalary: '', 
+    joinDate: getTodayDate(), // <--- ĐẶT MẶC ĐỊNH LÀ NGÀY HÔM NAY
+    status: 'Đang làm việc'
   });
 
   const [loading, setLoading] = useState(false);
 
-  // MÓC NỐI VỚI BỘ NHỚ ẢO ĐỂ TỰ ĐỘNG TẠO ID & LẤY DATA
   useEffect(() => {
     const fetchEmployeeData = async () => {
       let allEmployees = [];
@@ -51,6 +61,7 @@ const EmployeeForm = () => {
           });
           const nextIdNumber = Math.max(...idNumbers) + 1;
           const nextIdString = `EMP${String(nextIdNumber).padStart(3, '0')}`;
+          
           setFormData(prev => ({ ...prev, id: nextIdString }));
         } else {
           setFormData(prev => ({ ...prev, id: 'EMP001' }));
@@ -69,25 +80,25 @@ const EmployeeForm = () => {
     }));
   };
 
-  // SỬA LỖI: LƯU DATA VÀO LOCALSTORAGE THAY VÌ BỎ ĐI
   const handleSubmit = (e) => {
     e.preventDefault();
     setLoading(true);
     
     setTimeout(() => {
-      // 1. Lấy danh sách cũ ra
       const localData = localStorage.getItem('employeeData');
       let currentList = localData ? JSON.parse(localData) : [];
 
       if (isEditMode) {
-        // NẾU SỬA: Tìm và ghi đè
         currentList = currentList.map(emp => String(emp.id) === String(formData.id) ? formData : emp);
       } else {
-        // NẾU THÊM MỚI: Đẩy nhân viên mới lên đầu danh sách
-        currentList.unshift(formData); 
+        // NẾU THÊM MỚI MÀ NGƯỜI DÙNG CỐ TÌNH XÓA TRỐNG Ô NGÀY, HỆ THỐNG TỰ ĐỘNG CHÈN NGÀY HÔM NAY
+        const finalData = {
+            ...formData,
+            joinDate: formData.joinDate || getTodayDate() 
+        };
+        currentList.unshift(finalData); 
       }
 
-      // 2. Nhét danh sách mới vào lại bộ nhớ
       localStorage.setItem('employeeData', JSON.stringify(currentList));
 
       setLoading(false);
@@ -151,6 +162,10 @@ const EmployeeForm = () => {
                   <option value="Phòng Nhân sự">Phòng Nhân sự</option>
                   <option value="Phòng Kế toán">Phòng Kế toán</option>
                   <option value="Ban Giám đốc">Ban Giám đốc</option>
+                  <option value="Phòng Phần mềm">Phòng Phần mềm</option>
+                  <option value="Phòng Kinh doanh">Phòng Kinh doanh</option>
+                  <option value="Phòng Marketing">Phòng Marketing</option>
+                  <option value="Phòng CSKH">Phòng CSKH</option>
                 </select>
               </div>
             </div>
@@ -172,11 +187,12 @@ const EmployeeForm = () => {
                 <select name="status" value={formData.status} onChange={handleChange}>
                   <option value="Đang làm việc">Đang làm việc</option>
                   <option value="Đã nghỉ việc">Đã nghỉ việc</option>
+                  <option value="Chờ duyệt">Chờ duyệt</option>
                 </select>
               </div>
               <div className="emp-input-group">
                 <label>Ngày vào làm</label>
-                <input type="date" name="joinDate" value={formData.joinDate} onChange={handleChange} />
+                <input type="date" name="joinDate" value={formData.joinDate} onChange={handleChange} required />
               </div>
             </div>
 

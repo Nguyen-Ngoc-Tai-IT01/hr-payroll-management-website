@@ -1295,5 +1295,18 @@
         "newDays": 1
       }
     ]
+  },
+  {
+    "employeeId": "EMP825",
+    "fullName": "Nguyễn G",
+    "month": "04/2026",
+    "standardDays": 22,
+    "actualDays": 1,
+    "lateCount": 0,
+    "overtimeHours": 0,
+    "id": "ATT_0326_1872",
+    "dailyRecords": [],
+    "editCount": 0,
+    "lastEditDate": "20:43:51 16/4/2026"
   }
 ]

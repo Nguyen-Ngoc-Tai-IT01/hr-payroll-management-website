@@ -10,22 +10,38 @@ const EmployeeDetail = () => {
 
   useEffect(() => {
     const fetchData = async () => {
-      const paths = ['/data/employees.json', '/backend/data/employees.json', './data/employees.json'];
       let foundData = null;
 
-      for (const path of paths) {
-        try {
-          const res = await fetch(path);
-          if (res.ok) {
-            const data = await res.json();
-            foundData = data.find(emp => String(emp.id) === String(id));
-            if (foundData) break; 
+      // 1. SỬA LỖI: TÌM TRONG LOCALSTORAGE TRƯỚC (Để lấy được nhân viên vừa thêm mới)
+      const localData = localStorage.getItem('employeeData');
+      if (localData) {
+        const allEmployees = JSON.parse(localData);
+        foundData = allEmployees.find(emp => String(emp.id) === String(id));
+      }
+
+      // 2. NẾU LOCALSTORAGE KHÔNG CÓ, MỚI ĐI ĐỌC FILE JSON
+      if (!foundData) {
+        const paths = ['/data/employees.json', '/backend/data/employees.json', './data/employees.json'];
+        
+        for (const path of paths) {
+          try {
+            const res = await fetch(path);
+            if (res.ok) {
+              const data = await res.json();
+              foundData = data.find(emp => String(emp.id) === String(id));
+              if (foundData) {
+                  // Nếu tìm thấy trong JSON, lưu ngược lại vào LocalStorage để đồng bộ
+                  localStorage.setItem('employeeData', JSON.stringify(data));
+                  break; 
+              }
+            }
+          } catch (err) {
+            console.warn(`Không tìm thấy dữ liệu tại: ${path}`);
           }
-        } catch (err) {
-          console.warn(`Không tìm thấy dữ liệu tại: ${path}`);
         }
       }
 
+      // 3. XỬ LÝ KẾT QUẢ CUỐI CÙNG
       if (foundData) {
         setEmployee(foundData);
         setError(null);
