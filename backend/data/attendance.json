@@ -1308,5 +1308,57 @@
     "dailyRecords": [],
     "editCount": 0,
     "lastEditDate": "20:43:51 16/4/2026"
+  },
+  {
+    "employeeId": "EMP827",
+    "fullName": "Nguyễn Hoàng Anh Vũ",
+    "month": "04/2026",
+    "standardDays": 22,
+    "actualDays": 1,
+    "lateCount": 0,
+    "overtimeHours": 0,
+    "id": "ATT_0326_7047",
+    "dailyRecords": [
+      {
+        "dateStr": "17/04/2026",
+        "action": "CHECK_IN",
+        "timestamp": "2026-04-17T03:24:27.484Z"
+      },
+      {
+        "dateStr": "17/04/2026",
+        "action": "CANCEL",
+        "timestamp": "2026-04-17T03:24:37.397Z"
+      },
+      {
+        "dateStr": "17/04/2026",
+        "action": "CHECK_IN",
+        "timestamp": "2026-04-17T03:25:05.373Z"
+      }
+    ],
+    "editCount": 3,
+    "lastEditDate": "10:25:05 17/4/2026",
+    "checkInLogs": [
+      {
+        "timestamp": "2026-04-17T03:24:27.498Z",
+        "dateStr": "17/4/2026",
+        "timeStr": "10:24:27",
+        "oldDays": 0,
+        "newDays": 1
+      },
+      {
+        "timestamp": "2026-04-17T03:24:37.413Z",
+        "dateStr": "17/4/2026",
+        "timeStr": "10:24:37",
+        "oldDays": 1,
+        "newDays": 0
+      },
+      {
+        "timestamp": "2026-04-17T03:25:05.385Z",
+        "dateStr": "17/4/2026",
+        "timeStr": "10:25:05",
+        "oldDays": 0,
+        "newDays": 1
+      }
+    ]
   }
 ]

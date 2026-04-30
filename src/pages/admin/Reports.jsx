@@ -8,9 +8,9 @@ function Reports() {
   const currentUser = JSON.parse(localStorage.getItem("user") || "{}");
   const exporterName = currentUser.fullName || "Quản trị viên";
 
-  // ==========================================
+  
   // ĐỌC DỮ LIỆU ĐÚNG THEO CODE CỦA HIỆP
-  // ==========================================
+
   useEffect(() => {
     const fetchEmployeeData = async () => {
       const paths = ['/data/employees.json', '/backend/data/employees.json', './data/employees.json'];
@@ -71,9 +71,8 @@ function Reports() {
     return true; 
   };
 
-  // ==========================================
   // 1. XUẤT BÁO CÁO NHÂN SỰ (Dữ liệu của Hiệp)
-  // ==========================================
+
   const handleExportEmployees = () => {
     if (!reportData.employeesList || reportData.employeesList.length === 0) {
       Swal.fire('Chờ chút', 'Không tìm thấy file employees.json của Hiệp.', 'warning');
@@ -107,9 +106,9 @@ function Reports() {
     }, 800);
   };
 
-  // ==========================================
+
   // 2. XUẤT BÁO CÁO CHẤM CÔNG (Của Sêu)
-  // ==========================================
+
   const handleDownloadAttendance = async () => {
     try {
       // Bật hiệu ứng Loading
@@ -146,9 +145,8 @@ function Reports() {
     }
   };
 
-  // ==========================================
   // 3. XUẤT BÁO CÁO TIỀN LƯƠNG (Của Vỹ)
-  // ==========================================
+
   const handleExportPayroll = async () => {
     try {
       // Bật hiệu ứng Loading
